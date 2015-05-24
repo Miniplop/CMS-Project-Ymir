@@ -19,6 +19,7 @@ Dans un premier temps mes amis vous devez telecharger et installer :
 
 - http://nodejs.org/dist/v0.12.4/x64/node-v0.12.4-x64.msi
 
+- http://www.wampserver.com/en/download-wampserver-32bits/
 
 
 Puis lancer votre terminal : 
