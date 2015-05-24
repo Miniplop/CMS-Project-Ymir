@@ -9,4 +9,4 @@
 /vendor/
 /bin/
 /composer.phar
-/app/Resources/public/vendor/
+/src/Ymir/TyrBundle/Resources/public/vendor/

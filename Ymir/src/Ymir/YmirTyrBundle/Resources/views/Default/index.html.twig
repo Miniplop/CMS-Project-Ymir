@@ -1,0 +1,19 @@
+{% extends "YmirTyrBundle::layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+	{% stylesheets filter="cssrewrite" output="css/ymir.css" 
+		"@TyrBundle/Resources/public/css/*.css" %}
+		<link rel="stylesheet" href="{{ asset_url }}"/>
+	{% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+	Hello Body!
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts  output='js/ymir.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
