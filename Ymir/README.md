@@ -8,9 +8,9 @@ This application is developed by 4 students of Ensimag.
 ----------------------------------
 
 Dans un premier temps mes amis vous devez telecharger et installer : 
-http://rubyinstaller.org/
-https://getcomposer.org/Composer-Setup.exe
-http://nodejs.org/dist/v0.12.4/x64/node-v0.12.4-x64.msi
+- http://rubyinstaller.org/
+- https://getcomposer.org/Composer-Setup.exe
+- http://nodejs.org/dist/v0.12.4/x64/node-v0.12.4-x64.msi
 
 Puis lancer votre terminal : 
 npm install -g bower
