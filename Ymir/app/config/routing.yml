@@ -1,0 +1,10 @@
+typ:
+    resource: "@TypBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+tyr:
+    resource: "@TyrBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
