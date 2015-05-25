@@ -1,4 +1,4 @@
-{% extends "YmirTyrBundle::layout.html.twig" %}
+{% extends "TyrBundle::layout.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
 	{% stylesheets filter="cssrewrite" output="css/ymir.css" 
@@ -11,39 +11,39 @@
 		<link rel="stylesheet" href="{{ asset_url }}"/>
 	{% endstylesheets %}
 	<script id="profil">
-		{{ include("YmirTyrBundle:Profil:index.html.twig") }}
+		{{ include("TyrBundle:Profil:index.html.twig") }}
 	</script>
 	<script id="creative">
-		{{ include("YmirTyrBundle:Creative:index.html.twig") }}
+		{{ include("TyrBundle:Creative:index.html.twig") }}
 	</script>
 {% endblock %}
 
 {% block body %}
 <header>
-	{{ include("YmirTyrBundle:Default:header.html.twig") }}
+	{{ include("TyrBundle:Default:header.html.twig") }}
 </header>
 <section>
 	<article>
-		{{ include("YmirTyrBundle:Form:login_register.html.twig") }}
+		{{ include("TyrBundle:Form:login_register.html.twig") }}
 	</article>
 	<article>
-		{{ include("YmirTyrBundle:Default:tryit.html.twig") }}
+		{{ include("TyrBundle:Default:tryit.html.twig") }}
 	</article>
 </section>
 <section>
-		{{ include("YmirTyrBundle:Default:presentation.html.twig") }}
+		{{ include("TyrBundle:Default:presentation.html.twig") }}
 </section>
 <footer>
-		{{ include("YmirTyrBundle:Default:footer.html.twig") }}
+		{{ include("TyrBundle:Default:footer.html.twig") }}
 </footer>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     {% javascripts  output='js/ymir.js' 
-		""@TyrBundle/Resources/public/js/src/Ymir.class.js"
-		""@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
-		""@TyrBundle/Resources/public/js/src//Model/Widget.class.js"
+		"@TyrBundle/Resources/public/js/src/Ymir.class.js"
+		      "@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
+		"@TyrBundle/Resources/public/js/src//Model/Widget.class.js"
 		%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
