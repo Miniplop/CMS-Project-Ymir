@@ -5,10 +5,32 @@
 		"@TyrBundle/Resources/public/css/*.css" %}
 		<link rel="stylesheet" href="{{ asset_url }}"/>
 	{% endstylesheets %}
+	<script id="profil">
+		{{ include("YmirTyrBundle:Profil:index.html.twig") }}
+	</script>
+	<script id="creative">
+		{{ include("YmirTyrBundle:Creative:index.html.twig") }}
+	</script>
 {% endblock %}
 
 {% block body %}
-	Hello Body!
+<header>
+	{{ include("YmirTyrBundle:Default:header.html.twig") }}
+</header>
+<section>
+	<article>
+		{{ include("YmirTyrBundle:Form:login_register.html.twig") }}
+	</article>
+	<article>
+		{{ include("YmirTyrBundle:Default:tryit.html.twig") }}
+	</article>
+</section>
+<section>
+		{{ include("YmirTyrBundle:Default:presentation.html.twig") }}
+</section>
+<footer>
+		{{ include("YmirTyrBundle:Default:footer.html.twig") }}
+</footer>
 {% endblock %}
 
 {% block javascripts %}
