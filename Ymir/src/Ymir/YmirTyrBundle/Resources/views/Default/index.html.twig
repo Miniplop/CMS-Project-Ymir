@@ -23,15 +23,21 @@
 	{{ include("TyrBundle:Default:header.html.twig") }}
 </header>
 <section>
-	<article>
-		{{ include("TyrBundle:Form:login_register.html.twig") }}
-	</article>
-	<article>
-		{{ include("TyrBundle:Default:tryit.html.twig") }}
-	</article>
-</section>
-<section>
-		{{ include("TyrBundle:Default:presentation.html.twig") }}
+    <div class ="row">
+        <div class="large-8 columns">
+        <article>
+            {{ include("TyrBundle:Form:login_register.html.twig") }}
+        </article>
+        </div>
+        <section>
+        <div class="large-4 columns">
+            {{ include("TyrBundle:Default:presentation.html.twig") }}
+            {{ include("TyrBundle:Default:tryit.html.twig") }}
+        </div>
+            
+        </section>   
+    </div>
+	   
 </section>
 <footer>
 		{{ include("TyrBundle:Default:footer.html.twig") }}
