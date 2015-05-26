@@ -26,25 +26,29 @@ Puis lancer votre terminal :
 
 - npm install -g bower
 
-- gem install sass	
+- gem install sass
+
+- gem update --system
+
+- gem install compass
 
 
 Maintenant il ne reste plus qu'a mettre à jour fichier.
 
-Vous devez aller, avec otre terminal, dans le fichier contenant le bower.json et composer.json
+Vous devez aller, avec votre terminal, dans le fichier contenant le bower.json et composer.json
 
 Tapez les commandes suivantes :
 
 - bower update
 
 - composer update
-### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
 
-### Who do I talk to? ###
+2) Deployement des ressources publiques :
+----------------------------------
 
-* Repo owner or admin
-* Other community or team contact
+Dans le répertoire de base (contenant bower.json et composer.json) et tapez les commandes : 
+
+-php app/console assets:install
+
+-php app/console assetic:dump
