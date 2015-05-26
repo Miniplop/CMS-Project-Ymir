@@ -41,3 +41,13 @@ Tapez les commandes suivantes :
 - bower update
 
 - composer update
+
+
+2) Deployement des ressources publiques :
+----------------------------------
+
+Dans le répertoire de base (contenant bower.json et composer.json) et tapez les commandes : 
+
+-php app/console assets:install
+
+-php app/console assetic:dump
