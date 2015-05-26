@@ -4,17 +4,16 @@
 <header>
 	{{ include("TyrBundle:Profil:header.html.twig") }}
 </header>
-<section>
+<section class="full-height">
        
-        <section>
-        <div class="small-3 large-2 columns">
-            {{ include("TyrBundle:Creative:toolsbar.html.twig") }}
-        </div>
-        <div class="small-9 large 11 columns end">
-            {{ include("TyrBundle:Creative:globaltoolsbar.html.twig") }}   
-            {{ include("TyrBundle:Creative:stage.html.twig") }}  
-        </div>
-            
+        <section class="full-height">
+	        <div class="small-3 large-2 columns full-height no-padding">
+	            {{ include("TyrBundle:Creative:toolsbar.html.twig") }}
+	        </div>
+	        <div class="small-9 large 11 columns end">
+	            {{ include("TyrBundle:Creative:globaltoolsbar.html.twig") }}   
+	            {{ include("TyrBundle:Creative:stage.html.twig") }}  
+	        </div>
         </section>   
 </section>
 {% endblock %}
