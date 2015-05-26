@@ -1,3 +1,7 @@
+<a href="#" class="button radius large">Try it !</a>
+
+{% extends "TyrBundle::layout.html.twig" %}
+
 {% extends "TyrBundle::layout.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
@@ -30,14 +34,26 @@
         </section>   
 </section>
 {% endblock %}
+{% block body %}
+<header>
+	{{ include("TyrBundle:Default:header.html.twig") }}
+</header>
+<section>
+    <div class ="row">
+        <div class="large-8 columns">
+        <article>
+            {{ include("TyrBundle:Form:login_register.html.twig") }}
+        </article>
+        </div>  
+        <section>
+        <div class="large-4 columns">
+            {{ include("TyrBundle:Default:presentation.html.twig") }}
+            <p class = "text-center ">
+                {{ include("TyrBundle:Default:tryit.html.twig") }}
+            </p>  
+        </div>   
+        </section>   
+    </div>
+	   
+</section>
 
-{% block javascripts %}
-    {{ parent() }}
-    {% javascripts  output='js/ymir.js' 
-		"@TyrBundle/Resources/public/js/src/Ymir.class.js"
-		      "@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
-		"@TyrBundle/Resources/public/js/src//Model/Widget.class.js"
-		%}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
