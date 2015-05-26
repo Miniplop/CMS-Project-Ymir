@@ -1,24 +1,32 @@
+
 <div class ="panel callout radius ">
 <ul class="tabs" data-tab>
   <li class="tab-title active"><a href="#panel1">Sign in</a></li>
   <li class="tab-title"><a href="#panel2">Sign Up</a></li>
 </ul>
-<div class="tabs-content">
     
-  <div class="content active" id="panel1"> 
+<div class="tabs-content">
+  <div class="content " id="panel1"> 
     <!-- Formulaire de connexion -->
-    <form>
+    <form id ="FormulaireConnexion">
       <div class="row">
         <div class="large-6 columns">
-          <label>Email
-            <input type="text" />
-          </label>
+          <div class="control-group">
+            <label class="control-label" for="inputEmail">Email</label>
+            <div class="controls">
+              <input type="text" id="inputEmail" placeholder="Email">
+            </div>     
+          </div>
         </div>
-          <div class="large-6 columns">
-          <label>Password
-            <input type="text"/>
-          </label>
+        <div class="large-6 columns">
+          <div class="control-group">
+            <label class="control-label" for="inputPassword">Password</label>
+            <div class="controls">
+                <input type="password" id="inputPassword" placeholder="Password">
+            </div>     
+          </div>
         </div>
+<<<<<<< HEAD
       </div>
       <div class ="button large radius">Sign In</div>
     </form>
@@ -27,47 +35,78 @@
     
     <!-- Sign up -->
   <div class="content " id="panel2">
+=======
+      </div>      
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="button radius" id="loginButton">Sign in</button>
+        </div>
+    </div>
+    </form>   
+  </div>
+    
+    <!-- Sign up -->
+  <div class="content active" id="panel2">
+>>>>>>> d6a48864fa7e0d4583556fa4b7dee2fd88d55f4b
       
      <!-- Formulaire d'inscription -->
-    <form>
+    <form id="FormulaireInscrpition">
       <div class="row">
         <div class="large-6 columns">
-          <label>First Name
-            <input type="text" />
-          </label>
+          <div class="control-group">
+            <label class="control-label" for="inputFName">First Name</label>
+            <div class="controls">
+                <input type="text" id="inputFName">
+            </div>     
+          </div>
         </div>
           <div class="large-6 columns">
-          <label>Last Name
-            <input type="text"/>
-          </label>
+         <div class="control-group">
+            <label class="control-label" for="inputLName">Last Name</label>
+            <div class="controls">
+                <input type="text" id="inputLName">
+            </div>     
+          </div>
         </div>
       </div>
       <div class="row">
             <div class="large-6 columns">
-              <label>Password
-                <input type="text" />
-              </label>
+               <div class="control-group">
+                <label class="control-label" for="inputPassword">Password</label>
+                <div class="controls">
+                    <input type="password" id="inputPassword" placeholder="Password">
+                </div>     
+             </div>
             </div>
 
             <div class="large-6 columns">
-              <label>Confirm Pasword
-                <input type="text" />
-              </label>
+             <div class="control-group">
+                <label class="control-label" for="inputConfirmPassword">Confirme Password</label>
+                <div class="controls">
+                    <input type="password" id="inputConfirmPassword" placeholder="">
+                </div>     
+             </div>
             </div>
         </div>
          <div class="row">
             <div class="large-6 columns">
-              <label>Email Adress
-                <input type="text" />
-              </label>
+              <div class="control-group">
+                <label class="control-label" for="inputAdresse">Email</label>
+                <div class="controls">
+                    <input type="text" id="inputAdresse">
+                </div>     
+          </div>
             </div>
         </div>
-          <div class ="button large radius">Sign Up</div>
+          <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="button radius" id="SignupButton">Sign up</button>
+            </div>
+        </div>
     </form>
   </div>
 </div>
 
-</div>
 
 
     

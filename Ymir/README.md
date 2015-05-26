@@ -25,7 +25,11 @@ Puis lancer votre terminal :
 
 - npm install -g bower
 
-- gem install sass	
+- gem install sass
+
+- gem update --system
+
+- gem install compass
 
 
 Maintenant il ne reste plus qu'a mettre à jour fichier.

@@ -1,5 +1,4 @@
 tyr:
     resource: "@TyrBundle/Controller/"
     type:     annotation
-    prefix:   /
 

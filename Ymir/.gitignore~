@@ -9,8 +9,5 @@
 /vendor/
 /bin/
 /composer.phar
-/src/Ymir/YmirTyrBundle/Resources/public/vendor/
-/src/Ymir/YmirTyrBundle/Resources/public/css/.sass-cache/
-.buildpath
-.project
-.settings/
+/src/Ymir/TyrBundle/Resources/public/vendor/
+./src/Ymir/TyrBundle/Resources/public/vendor
