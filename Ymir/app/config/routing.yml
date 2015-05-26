@@ -3,3 +3,7 @@ tyr:
     type:     annotation
     prefix:   /
 
+tyr_creative:
+    resource: "@TyrBundle/Controller/"
+    type:     annotation
+    prefix:   /creative

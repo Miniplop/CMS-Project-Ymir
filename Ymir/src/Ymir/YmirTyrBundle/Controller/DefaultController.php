@@ -16,4 +16,13 @@ class DefaultController extends Controller
     {
         return array();
     }
+    
+    /**
+     * @Route("/creative")
+     * @Template()
+     */
+    public function creativeAction()
+    {
+        return array();
+    }
 }
