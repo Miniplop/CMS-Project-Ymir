@@ -2,7 +2,7 @@
 
 {% block body %}
 <header>
-	{{ include("TyrBundle:Default:header.html.twig") }}
+    {{ include("TyrBundle:Default:header.html.twig") }}
 </header>
 <section>
     <div class ="row">
@@ -20,10 +20,21 @@
         </div>   
         </section>   
     </div>
-	   
+       
 </section>
 <footer>
-		{{ include("TyrBundle:Default:footer.html.twig") }}
+        {{ include("TyrBundle:Default:footer.html.twig") }}
 </footer>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}d
+    {% javascripts  output='js/ymir.js' 
+        "@TyrBundle/Resources/public/js/src/ymir.class.js"
+        "@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
+        "@TyrBundle/Resources/public/js/src//Model/Widget.class.js"
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
