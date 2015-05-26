@@ -17,6 +17,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "foundation": "~5.5.2",
+	"foundation-icon-fonts": "*",
     "backbone": "~1.2.0"
   }
 }
