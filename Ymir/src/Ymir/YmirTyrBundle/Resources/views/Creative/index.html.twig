@@ -19,18 +19,19 @@
 <section>
        
         <section>
-        <div class="large-4 columns">
-            {{ include("TyrBundle:Creative:toolsbar.html.twig") }}
+        <div class="small-3 large-2 columns">
+            <div class="panel">
+                 {{ include("TyrBundle:Creative:toolsbar.html.twig") }}
+            </div>
+           
         </div>
+        <div class="small-9 large 11 columns end">
             {{ include("TyrBundle:Creative:globaltoolsbar.html.twig") }}   
             {{ include("TyrBundle:Creative:stage.html.twig") }}  
+        </div>
+            
         </section>   
 </section>
-<footer>
-		{{ include("TyrBundle:Default:footer.html.twig") }}
-</footer>      
-
-
 {% endblock %}
 
 {% block javascripts %}
