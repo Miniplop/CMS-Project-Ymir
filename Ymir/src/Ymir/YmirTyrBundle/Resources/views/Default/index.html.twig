@@ -1,40 +1,43 @@
 {% extends "TyrBundle::layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+	{% stylesheets filter="cssrewrite" output="css/ymir.css" 
+		"@TyrBundle/Resources/public/css/header.css"
+		"@TyrBundle/Resources/public/css/accueil.css"
+		"@TyrBundle/Resources/public/css/profil.css"
+		"@TyrBundle/Resources/public/css/creative.css"
+		"@TyrBundle/Resources/public/css/stage.css"
+		"@TyrBundle/Resources/public/css/footer.css" %}
+		<link rel="stylesheet" href="{{ asset_url }}"/>
+	{% endstylesheets %}
+{% endblock %}
 
 {% block body %}
 <header>
-	{{ include("TyrBundle:Default:header.html.twig") }}
+	{{ include("TyrBundle:Profil:header.html.twig") }}
 </header>
 <section>
-    <div class ="row">
-        <div class="large-8 columns">
-        <article>
-            {{ include("TyrBundle:Form:login_register.html.twig") }}
-        </article>
-        </div>  
+       
         <section>
-        <div class="large-4 columns">
-            {{ include("TyrBundle:Default:presentation.html.twig") }}
-            <p class = "text-center ">
-                {{ include("TyrBundle:Default:tryit.html.twig") }}
-            </p>  
-        </div>   
+        <div class="small-3 large-2 columns">
+            {{ include("TyrBundle:Creative:toolsbar.html.twig") }}
+        </div>
+        <div class="small-9 large 11 columns end">
+            {{ include("TyrBundle:Creative:globaltoolsbar.html.twig") }}   
+            {{ include("TyrBundle:Creative:stage.html.twig") }}  
+        </div>
+            
         </section>   
-    </div>
-	   
 </section>
-<footer>
-		{{ include("TyrBundle:Default:footer.html.twig") }}
-</footer>
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}d
+    {{ parent() }}
     {% javascripts  output='js/ymir.js' 
-		"@TyrBundle/Resources/public/js/src/ymir.class.js"
-        "@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
+		"@TyrBundle/Resources/public/js/src/Ymir.class.js"
+		      "@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
 		"@TyrBundle/Resources/public/js/src//Model/Widget.class.js"
 		%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
-
