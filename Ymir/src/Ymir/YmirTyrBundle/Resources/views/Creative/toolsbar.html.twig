@@ -1,22 +1,70 @@
-<div class="panel">
-    <nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="#">Widget</a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
-        <section class="top-bar-section">
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li><a href="#">HTML,CSS</a></li>
-        <li><a href="#">Grille</a></li>
-    </ul>
-  </section>
-</nav>
+<ul class="side-nav">
+    <div class="fixedPosition"
+    <div class="row">
+        <ul class="tabs" data-tab>
+          <li class="tab-title active"><a href="#panel1">Widget</a></li>
+          <li class="tab-title"><a href="#panel2">HTML,CSS</a></li>
+          <li class="tab-title"><a href="#panel3">Grid</a></li>
+        </ul>
+        <div class="tabs-content">
+            <!--Panel Widget-->
+          <div class="content active" id="panel1">
+               <li class="has-dropdown">
+                <a href="#">Catégorie 1</a>
+                <ul class="dropdown">
+                  <li><a href="#">Widget 1</a></li>
+                  <li class="active"><a href="#">Widget 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Catégorie 2</a>
+            </li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </div>
+            
+            <!--Panel HTML,CSS-->
+          <div class="content" id="panel2">
+           
+          </div>
+            <!--Panel Grille-->
+          <div class="content" id="panel3">
+          
+          </div>
+        </div>
+    </div>
     
-
-
-</div>
+    <div class="row">
+        <span class="text-center">
+            <h2>Paramétres</h2>
+        </span>      
+    </div>
+    <ul>
+        <li>
+            <div> 
+                 <a href="#">Param 1</a>
+                <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">Param</button><br>
+                 <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
+                  <li><a href="#">This is a link</a></li>
+                  <li><a href="#">This is another</a></li>
+                  <li><a href="#">Yet another</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div> 
+                 <a href="#">Param 2</a>
+            </div>
+        </li>
+        <li>
+            <div> 
+                 <a href="#">Param 3</a>
+            </div>
+        </li>
+    
+    </ul>
+    
+    
+</ul>
