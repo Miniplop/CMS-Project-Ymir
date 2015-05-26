@@ -1,3 +1,4 @@
+
 {% extends "TyrBundle::layout.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
@@ -40,7 +41,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
+    {{ parent() }}d
     {% javascripts  output='js/ymir.js' 
 		"@TyrBundle/Resources/public/js/src/ymir.class.js"
 		      "@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
