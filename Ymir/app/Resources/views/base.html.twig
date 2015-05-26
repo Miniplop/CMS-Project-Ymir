@@ -5,9 +5,9 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
 			{% stylesheets filter="cssrewrite" output="css/vendor.css" 
-				"@TyrBundle/Resources/public/vendor/foundation/css/normalize.min.css"
-				"@TyrBundle/Resources/public/vendor/foundation/css/foundation.min.css"
-				"@TyrBundle/Resources/public/vendor/foundation-icon-fonts/foundation-icons.css"
+				"bundles/tyr/vendor/foundation/css/normalize.min.css"
+				"bundles/tyr/vendor/foundation/css/foundation.min.css"
+				"bundles/tyr/vendor/foundation-icon-fonts/foundation-icons.css"
 			%}
 				<link rel="stylesheet" href="{{ asset_url }}"/>
 			{% endstylesheets %}
@@ -15,14 +15,15 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <i class="fi-social-snapchat"></i>
         {% block body %}{% endblock %}
         {% block javascripts %}
 			{% javascripts  output='js/vendor.js'
-						'@TyrBundle/Resources/public/vendor/jquery/dist/jquery.min.js'
-						'@TyrBundle/Resources/public/vendor/modernizr/modernizr.js'
-						'@TyrBundle/Resources/public/vendor/underscore/underscore-min.js'
-						'@TyrBundle/Resources/public/vendor/foundation/js/foundation.min.js'
-						'@TyrBundle/Resources/public/vendor/backbone/backbone-min.js'
+						'bundles/tyr/vendor/jquery/dist/jquery.min.js'
+						'bundles/tyr/vendor/modernizr/modernizr.js'
+						'bundles/tyr/vendor/underscore/underscore-min.js'
+						'bundles/tyr/vendor/foundation/js/foundation.min.js'
+						'bundles/tyr/vendor/backbone/backbone-min.js'
 			%}
 				<script type="text/javascript" src="{{ asset_url }}"></script>
 			{% endjavascripts %}
