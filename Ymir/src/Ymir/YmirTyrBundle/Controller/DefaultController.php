@@ -19,7 +19,7 @@ class DefaultController extends Controller
     
     /**
      * @Route("/creative")
-     * @Template()
+     * @Template("TyrBundle:Creative:index.html.twig")
      */
     public function creativeAction()
     {
