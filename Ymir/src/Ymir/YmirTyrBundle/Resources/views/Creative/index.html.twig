@@ -1,16 +1,4 @@
 {% extends "TyrBundle::layout.html.twig" %}
-{% block stylesheets %}
-    {{ parent() }}
-	{% stylesheets filter="cssrewrite" output="css/ymir.css" 
-		"@TyrBundle/Resources/public/css/header.css"
-		"@TyrBundle/Resources/public/css/accueil.css"
-		"@TyrBundle/Resources/public/css/profil.css"
-		"@TyrBundle/Resources/public/css/creative.css"
-		"@TyrBundle/Resources/public/css/stage.css"
-		"@TyrBundle/Resources/public/css/footer.css" %}
-		<link rel="stylesheet" href="{{ asset_url }}"/>
-	{% endstylesheets %}
-{% endblock %}
 
 {% block body %}
 <header>
@@ -32,15 +20,4 @@
             
         </section>   
 </section>
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    {% javascripts  output='js/ymir.js' 
-		"@TyrBundle/Resources/public/js/src/Ymir.class.js"
-		      "@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
-		"@TyrBundle/Resources/public/js/src//Model/Widget.class.js"
-		%}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
 {% endblock %}

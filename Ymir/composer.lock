@@ -1,11 +1,57 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4c3dd43b6f8ba0bafeed242bc9eca4b0",
+    "hash": "4f2f20bbde22b613eb2471a6e87eee81",
     "packages": [
+        {
+            "name": "devtime/backbone-bundle",
+            "version": "dev-master",
+            "target-dir": "Devtime/BackboneBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gigo6000/DevtimeBackboneBundle.git",
+                "reference": "00201a08524bf1e80ddb63bb22a2a3098235b43f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gigo6000/DevtimeBackboneBundle/zipball/00201a08524bf1e80ddb63bb22a2a3098235b43f",
+                "reference": "00201a08524bf1e80ddb63bb22a2a3098235b43f",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": ">=2.1.1",
+                "symfony/finder": ">=2.1.1",
+                "symfony/framework-bundle": ">=2.1.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Devtime\\BackboneBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Mafla",
+                    "email": "gigo6000@hotmail.com"
+                }
+            ],
+            "description": "Easily setup and use backbone.js with Symfony2",
+            "homepage": "http://github.com/gigo6000/DevtimeBackboneBundle",
+            "keywords": [
+                "Symfony2",
+                "backbone",
+                "backbone.js",
+                "underscore"
+            ],
+            "time": "2015-03-03 09:56:17"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.2.4",
@@ -1666,9 +1712,10 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "devtime/backbone-bundle": 20
+    },
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.3"
     },

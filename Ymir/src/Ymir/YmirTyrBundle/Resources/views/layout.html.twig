@@ -15,9 +15,7 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts  output='js/ymir.js' 
-				"bundles/tyr/js/src/ymir.class.js"
-		      "bundles/tyr/js/src/View/ViewProfil.class.js"
-				"bundles/tyr/js/src//Model/Widget.class.js"
+				"bundles/tyr/js/app.js"
 		%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
