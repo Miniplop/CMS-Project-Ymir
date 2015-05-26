@@ -10,12 +10,6 @@
 		"@TyrBundle/Resources/public/css/footer.css" %}
 		<link rel="stylesheet" href="{{ asset_url }}"/>
 	{% endstylesheets %}
-	<script id="profil">
-		{{ include("TyrBundle:Profil:index.html.twig") }}
-	</script>
-	<script id="creative">
-		{{ include("TyrBundle:Creative:index.html.twig") }}
-	</script>
 {% endblock %}
 
 {% block body %}
@@ -28,13 +22,14 @@
         <article>
             {{ include("TyrBundle:Form:login_register.html.twig") }}
         </article>
-        </div>
+        </div>  
         <section>
         <div class="large-4 columns">
             {{ include("TyrBundle:Default:presentation.html.twig") }}
-            {{ include("TyrBundle:Default:tryit.html.twig") }}
-        </div>
-            
+            <p class = "text-center ">
+                {{ include("TyrBundle:Default:tryit.html.twig") }}
+            </p>  
+        </div>   
         </section>   
     </div>
 	   
