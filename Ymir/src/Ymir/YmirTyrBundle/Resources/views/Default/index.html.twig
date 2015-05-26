@@ -1,4 +1,3 @@
-
 {% extends "TyrBundle::layout.html.twig" %}
 
 {% block body %}
@@ -27,3 +26,15 @@
 		{{ include("TyrBundle:Default:footer.html.twig") }}
 </footer>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}d
+    {% javascripts  output='js/ymir.js' 
+		"@TyrBundle/Resources/public/js/src/ymir.class.js"
+        "@TyrBundle/Resources/public/js/src/View/ViewProfil.class.js"
+		"@TyrBundle/Resources/public/js/src//Model/Widget.class.js"
+		%}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
