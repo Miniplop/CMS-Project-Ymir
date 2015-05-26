@@ -11,6 +11,7 @@
 /composer.phar
 /src/Ymir/YmirTyrBundle/Resources/public/vendor/
 /src/Ymir/YmirTyrBundle/Resources/public/css/.sass-cache/
+/.sass-cache/
 .buildpath
 .project
 .settings/
