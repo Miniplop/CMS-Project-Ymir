@@ -27,14 +27,18 @@ var app = (function() {
            menu: function(){
             if(!this.menuView){
                 this.menuView = new App.Views.ProjectsIndex({
-                    el: $("#menu>h1:first-child")
+                    el: $("#menu")
                 });
             }
             return this.menuView;
             }
     };
 
-    var Router = Backbone.Router.extend({});
+    var Router = Backbone.Router.extend({
+        routes: {},
+        
+    
+    });
     App.Router = new Router();
     return window.App;	
     

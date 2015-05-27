@@ -34,7 +34,11 @@ var app = (function() {
             }
     };
 
-    var Router = Backbone.Router.extend({});
+    var Router = Backbone.Router.extend({
+        routes: {},
+        
+    
+    });
     App.Router = new Router();
     return window.App;	
     
