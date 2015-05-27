@@ -9,6 +9,7 @@
 /vendor/
 /bin/
 /composer.phar
+/composer.lock
 /src/Ymir/YmirTyrBundle/Resources/public/vendor/
 /src/Ymir/YmirTyrBundle/Resources/public/css/.sass-cache/
 /.sass-cache/
