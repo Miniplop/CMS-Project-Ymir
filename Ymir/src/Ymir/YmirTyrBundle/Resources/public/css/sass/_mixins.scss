@@ -1,0 +1,19 @@
+$dark_grey_color: #2A2B30;
+$light_grey_color: #CECECE;
+$widget_toolbar_title_color: #43444A;
+$widget_toolbar_title_active_color: #42444F;
+$widget_toolbar_title_hover_color: #37383E;
+
+$header_height: 50px;
+$global_toolbar_height: 40px;
+
+
+@mixin pad-marg($pad-marg) {
+	padding: $pad-marg !important;
+	margin: $pad-marg !important;
+}
+
+@mixin calc($property, $expression) { 
+  #{$property}: -webkit-calc(#{$expression}) !important; 
+  #{$property}: calc(#{$expression}) !important; 
+} 

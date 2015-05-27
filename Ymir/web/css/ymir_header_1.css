@@ -62,3 +62,32 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
+
+/* line 4, sass/header.scss */
+header {
+  height: 50px !important;
+}
+/* line 6, sass/header.scss */
+header > .top-bar {
+  height: 100% !important;
+  overflow: hidden !important;
+  background-color: #2A2B30 !important;
+  color: #CECECE;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: medium none !important;
+  border-bottom: 1px solid gray !important;
+}
+/* line 17, sass/header.scss */
+header > .top-bar .top-bar-section .has-form > button {
+  top: inherit !important;
+}
+/* line 21, sass/header.scss */
+header > .top-bar .top-bar-section h1 {
+  color: inherit !important;
+}
+
+/* line 29, sass/header.scss */
+.image-profil .fi-torso {
+  font-size: 1.5rem !important;
+}

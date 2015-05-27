@@ -1,13 +1,16 @@
 
-<ul class="side-nav widget-toolbar full-height no-padding">
+<ul class="side-nav toolbar-widget no-padding">
 	<div class="row">
-		<ul class="tabs widget-toolbar-titles" data-tab>
-			<li class="tab-title active">Widget</li>
-			<li class="tab-title">HTML,CSS</li>
-			<li class="tab-title">Grid</li>
+		<ul class="tabs" data-tab>
+			<li class="tab-title active"><a href="#widgets-panel">Widget</a></li>
+			<li class="tab-title"><a href="#htmlcss-panel">HTML,CSS</a></li>
+			<li class="tab-title"><a href="#grid-panel">Grid</a></li>
 		</ul>
-		<div class="tabs-content">
-			<ul class="accordion" data-accordion="myAccordionGroup">
+
+		<!--Panel widget-->
+		<div class="tabs-content" id="widgets-panel">
+			<ul class="accordion toolbar-widget-categorie-list"
+				data-accordion="myAccordionGroup">
 				<li class="accordion-navigation"><a href="#Cat1">Catégorie 1 <i
 						class="fi-arrow-down "></i></a>
 					<div id="Cat1" class="content">
@@ -28,48 +31,44 @@
 		</div>
 
 		<!--Panel HTML,CSS-->
-		<div class="content" id="panel2"></div>
+		<div class="content" id="htmlcss-panel"></div>
 		<!--Panel Grille-->
-		<div class="content" id="panel3"></div>
+		<div class="content" id="grid-panel"></div>
 	</div>
+</ul>
 
-	<div class="row">
-		<span class="text-center">
-			<hr>
-			<h2>Paramétres</h2>
-			<hr>
-		</span>
+<div class="side-nav no-padding toolbar-parameter">
+	<div>
+		<hr class="no-margin">
+		<h2>Parameters</h2>
+		<hr class="no-margin">
 	</div>
 	<ul>
 		<li>
-			<div class="row">
-
+			<div class="row toolbar-parameter-edition">
 				<div>
-					Param 1
-					<div class="text right">
-						<button href="#" data-dropdown="drop1" aria-controls="drop1"
-							aria-expanded="false" class="button radius dropdown tiny">Param</button>
-						<br>
-						<ul id="drop1" data-dropdown-content class="f-dropdown"
-							aria-hidden="true">
-							<li><a href="#">This is a link</a></li>
-							<li><a href="#">This is another</a></li>
-							<li><a href="#">Yet another</a></li>
-						</ul>
-					</div>
+					<label for="" class="left inline">color : </label>
+					<input class="toolbar-parameter-input-text" type="text" id="" placeholder="white">
 				</div>
 			</div>
 		</li>
 		<li>
-			<div>
-				<a href="#">Param 2</a>
+			<div class="row toolbar-parameter-edition">
+				<div>
+					<label for="" class="left inline">background-color : </label>
+					<input class="toolbar-parameter-input-text" type="text" id="" placeholder="black">
+				</div>
 			</div>
 		</li>
 		<li>
-			<div>
-				<a href="#">Param 3</a>
+			<div class="row toolbar-parameter-edition">
+				<div>
+					<label for="" class="left inline">height : </label>
+				</div>
+				<div>
+					<input class="toolbar-parameter-input-text" type="text" id="" placeholder="15px">
+				</div>
 			</div>
 		</li>
-
 	</ul>
-</ul>
+</div>
