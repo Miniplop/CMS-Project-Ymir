@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4f2f20bbde22b613eb2471a6e87eee81",
+    "hash": "8f3970a68356c6a77719b4a1e4b5c9d6",
     "packages": [
         {
             "name": "devtime/backbone-bundle",
@@ -1716,6 +1716,7 @@
         "devtime/backbone-bundle": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.3"
     },
