@@ -1,2 +1,26 @@
 $widget_toolbar_color: #2A2B30;
+$widget_toolbar_font_color: #CECECE;
+$widget_toolbar_title_color: #43444A;
+$widget_toolbar_title_active_color: #42444F;
+$widget_toolbar_title_hover_color: #37383E;
 
+.widget-toolbar {
+	color : $widget_toolbar_font_color;
+	background: none repeat scroll 0% 0% $widget_toolbar_color;
+}
+.widget-toolbar-titles {
+	li {
+		background: none repeat scroll 0% 0% $widget_toolbar_title_color;
+		padding: 4px;
+		border-style: solid;
+    	border-right: 1px solid #676767;
+    	cursor: pointer;
+	}
+	li.active {
+		background: none repeat scroll 0% 0% $widget_toolbar_title_active_color;
+    	cursor: default;
+	}
+	li:not(.active):hover {
+		background: none repeat scroll 0% 0% $widget_toolbar_title_hover_color;
+	}
+}

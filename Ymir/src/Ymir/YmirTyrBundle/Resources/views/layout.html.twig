@@ -1,8 +1,9 @@
 {% extends "::base.html.twig" %} 
 {% block stylesheets %}
     {{ parent() }}
-	{% stylesheets filter="cssrewrite" output="css/ymir.css" 
+	{% stylesheets filter="cssrewrite" output="css/ymir.css"
 		"bundles/tyr/css/header.css"
+		"bundles/tyr/css/util.css"
 		"bundles/tyr/css/accueil.css"
 		"bundles/tyr/css/profil.css"
 		"bundles/tyr/css/creative.css"
