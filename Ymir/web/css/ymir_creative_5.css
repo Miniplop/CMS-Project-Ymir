@@ -15,8 +15,9 @@
 /* line 19, sass/creative.scss */
 .widget-toolbar-titles li.active {
   background: none repeat scroll 0% 0% #42444F;
+  cursor: default;
 }
-/* line 22, sass/creative.scss */
+/* line 23, sass/creative.scss */
 .widget-toolbar-titles li:not(.active):hover {
   background: none repeat scroll 0% 0% #37383E;
 }

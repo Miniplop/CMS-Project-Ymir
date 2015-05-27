@@ -1,0 +1,22 @@
+{% extends "TyrBundle::layout.html.twig" %}
+
+{% block body %}
+<header>
+    {{ include("TyrBundle:Profil:header.html.twig") }}
+</header>
+<section>
+	<div class ="row">
+	    <article>
+	        {{ include("TyrBundle:Profil:listeProjets.html.twig") }}
+	    </article>
+	</div>
+	<div class = "row">
+	    <article>
+	        {{ include("TyrBundle:Profil:listeWidgets.html.twig") }}
+	    </article>
+	</div>
+</section>
+<footer>
+        {{ include("TyrBundle:Profil:footer.html.twig") }}
+</footer>
+{% endblock %}
