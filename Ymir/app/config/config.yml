@@ -68,7 +68,7 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Ymir\TyrBundle\Entity\User
+    user_class: Ymir\YmirTyrBundle\Entity\User
 #    registration:
 #        form:
 #            type: appartoo_user_registration
