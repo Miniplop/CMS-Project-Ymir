@@ -15,13 +15,13 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-    <i class="fi-social-snapchat"></i>
         {% block body %}{% endblock %}
         {% block javascripts %}
 			{% javascripts  output='js/vendor.js'
 						'bundles/tyr/vendor/jquery/dist/jquery.min.js'
 						'bundles/tyr/vendor/modernizr/modernizr.js'
 						'bundles/tyr/vendor/underscore/underscore-min.js'
+						'bundles/tyr/vendor/fastclick/lib/fastclick.js'
 						'bundles/tyr/vendor/foundation/js/foundation.min.js'
 						'bundles/tyr/vendor/backbone/backbone-min.js'
 			%}

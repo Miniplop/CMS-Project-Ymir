@@ -9,6 +9,7 @@
 /vendor/
 /bin/
 /composer.phar
+/composer.lock
 /src/Ymir/YmirTyrBundle/Resources/public/vendor/
 /src/Ymir/YmirTyrBundle/Resources/public/css/.sass-cache/
 /.sass-cache/
@@ -16,3 +17,9 @@
 .project
 .settings/
 /src/Ymir/YmirTyrBundle/Resources/public/css/*.css
+
+lancement.sh
+composer.lock
+web/css/ymir.css
+web/css/ymir_header_1.css
+web/js/ymir_ymir.class_1.js

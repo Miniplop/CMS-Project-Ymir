@@ -1,8 +1,9 @@
 {% extends "::base.html.twig" %} 
 {% block stylesheets %}
     {{ parent() }}
-	{% stylesheets filter="cssrewrite" output="css/ymir.css" 
+	{% stylesheets filter="cssrewrite" output="css/ymir.css"
 		"bundles/tyr/css/header.css"
+		"bundles/tyr/css/util.css"
 		"bundles/tyr/css/accueil.css"
 		"bundles/tyr/css/profil.css"
 		"bundles/tyr/css/creative.css"
@@ -15,9 +16,7 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts  output='js/ymir.js' 
-				"bundles/tyr/js/src/ymir.class.js"
-		      "bundles/tyr/js/src/View/ViewProfil.class.js"
-				"bundles/tyr/js/src//Model/Widget.class.js"
+				"bundles/tyr/js/app.js"
 		%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
