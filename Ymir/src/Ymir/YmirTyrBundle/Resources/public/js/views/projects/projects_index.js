@@ -2,11 +2,11 @@
 // view qui rend la liste des projets
   App.Views.ProjectsIndex = Backbone.View.extend({
         
-        el:".list-projet",
+        el:".list-projet", 
       
-        tagName:"ul",
+        tagName:"ul", 
 
-        className :"projets",
+        className :"projets", 
 
         attributes:"",
       
