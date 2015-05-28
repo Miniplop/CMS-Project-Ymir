@@ -23,7 +23,7 @@
 		<div id="categorie_<%= id %>" class="content">
 			<ul class="dropdown">
 			<% widgets.each(function(widget) { %>
-				<li><a href="#<%= widget.get('id') %>"><%= widget.get('name') %></a></li>
+				<li class="show-widget-preview"><a href="#<%= widget.get('id') %>"><%= widget.get('name') %></a><div class="widget-preview" disabled="true"><%= widget.get('htmlPreview') %></div></li>
 			<% }); %>
 			</ul>
 		</div>

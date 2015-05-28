@@ -5,7 +5,7 @@
 			"id": 1,
 			"name": "Buttons",
 			"widgets": 			[ 
-				{"name": "Button", "htmlElements": 
+				{"name": "Button", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {
 											"balise": "button", 
 											"metaParameters": [ {"name": "class", "value": "button"} ], 
@@ -22,7 +22,7 @@
 			"name": "Icons",
 			"widgets": 
 			[ 
-				{"name": "Torso", "htmlElements": 
+				{"name": "Torso", "htmlPreview": "<i disabled=\"true\" class=\"fi-torso\"></i>", "htmlElements": 
 											[ {
 											"balise": "i", 
 											"metaParameters": [ {"name": "class", "value": "fi-torso"} ], 
@@ -39,7 +39,7 @@
 			"name": "Containers",
 			"widgets": 
 			[ 
-				{"name": "12 columns", "htmlElements": 
+				{"name": "12 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-12 columns"} ], "children": [], "value": ""} ], 
@@ -48,7 +48,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				},
-				{"name": "1-11 columns", "htmlElements": 
+				{"name": "1-11 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-1 columns"} ], "children": [], "value": ""},
@@ -59,7 +59,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "2-10 columns", "htmlElements": 
+				{"name": "2-10 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-2 columns"} ], "children": [], "value": ""},
@@ -70,7 +70,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "3-9 columns", "htmlElements": 
+				{"name": "3-9 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-3 columns"} ], "children": [], "value": ""},
@@ -81,7 +81,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "4-8 columns", "htmlElements": 
+				{"name": "4-8 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-4 columns"} ], "children": [], "value": ""},
@@ -92,7 +92,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "5-7 columns", "htmlElements": 
+				{"name": "5-7 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-5 columns"} ], "children": [], "value": ""},
@@ -103,7 +103,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "6-6 columns", "htmlElements": 
+				{"name": "6-6 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-6 columns"} ], "children": [], "value": ""},
@@ -114,7 +114,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "7-5 columns", "htmlElements": 
+				{"name": "7-5 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-7 columns"} ], "children": [], "value": ""},
@@ -125,7 +125,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "8-4 columns", "htmlElements": 
+				{"name": "8-4 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-8 columns"} ], "children": [], "value": ""},
@@ -136,7 +136,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "9-3 columns", "htmlElements": 
+				{"name": "9-3 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-9 columns"} ], "children": [], "value": ""},
@@ -147,7 +147,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "10-2 columns", "htmlElements": 
+				{"name": "10-2 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-10 columns"} ], "children": [], "value": ""},
@@ -158,7 +158,7 @@
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "11-1 columns", "htmlElements": 
+				{"name": "11-1 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
 											[ {"balise": "div", 
 											"metaParameters": [ {"name": "class", "value": "row"} ], 
 											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-11 columns"} ], "children": [], "value": ""},

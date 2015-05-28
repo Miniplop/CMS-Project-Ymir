@@ -136,3 +136,17 @@
 		}
 	}
 }
+
+.show-widget-preview {
+	.widget-preview {
+		display: none;
+		position: fixed;
+		pointer-events: none;
+	}
+}
+
+.show-widget-preview:hover {
+	>.widget-preview {
+		display: inline;
+	}
+}
