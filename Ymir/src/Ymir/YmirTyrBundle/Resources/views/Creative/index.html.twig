@@ -16,4 +16,18 @@
 	        </div>
         </section>   
 </section>
+<script type="text/template" id="categorie-template">
+    <li class="accordion-navigation">
+		<a href="#<%= name %>"><%= name %>
+			<i class="fi-arrow-down "></i>
+		</a>
+		<div id="<%= name %>" class="content">
+			<ul class="dropdown">
+			<% _.each(widgets, function(widget) { %>
+				<li><a href="#<%= widget.get('name') %>"><%= widget.get('name') %></a></li>
+			</ul>
+			<% }); %>
+		</div>
+	</li>
+</script>
 {% endblock %}

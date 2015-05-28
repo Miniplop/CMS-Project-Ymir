@@ -15,9 +15,10 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts  output='js/ymir.js' 
+    {% javascripts  output='js/ymir.js'
 				"bundles/tyr/js/app.js"
                 "bundles/tyr/js/views/projects/*.js"
+                "bundles/tyr/js/views/*.js"
                 "bundles/tyr/js/views/users/*.js"
                 "bundles/tyr/js/models/*.js"
                 "bundles/tyr/js/collections/*.js"

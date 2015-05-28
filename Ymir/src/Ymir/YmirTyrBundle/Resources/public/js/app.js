@@ -9,8 +9,10 @@ var app = (function() {
       content: null,
 	  init: function(){
         //this.content = $("#content");
-        this.todos = new App.Collections.Projects();
-        ViewsFactory.menu();
+        /*this.todos = new App.Collections.Projects();
+        ViewsFactory.menu();*/
+		var catList = new App.Collections.CategorieList().parse();
+		var catlistview = new App.Views.CategorieListView({collection: catList}).render();
         return this;
       },
       changeContent: function(el){
