@@ -20,6 +20,5 @@
 
 lancement.sh
 composer.lock
-web/css/ymir.css
-web/css/ymir_header_1.css
-web/js/ymir_ymir.class_1.js
+web/css/*.css
+web/js/*.js
