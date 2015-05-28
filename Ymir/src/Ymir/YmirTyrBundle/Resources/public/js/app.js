@@ -11,7 +11,8 @@ var app = (function() {
         //this.content = $("#content");
         /*this.todos = new App.Collections.Projects();
         ViewsFactory.menu();*/
-		var catList = new App.Collections.CategorieList().parse();
+		var catList = new App.Collections.CategorieList();
+		catList.fetch();
 		var catlistview = new App.Views.CategorieListView({collection: catList}).render();
         return this;
       },
