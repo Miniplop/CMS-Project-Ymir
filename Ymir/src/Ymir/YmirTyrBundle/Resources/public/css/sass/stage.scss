@@ -1,0 +1,8 @@
+@import "mixins";
+
+.stage {
+	@include calc(height, "100% - #{$global_toolbar_height}");
+	background-color: white !important;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
