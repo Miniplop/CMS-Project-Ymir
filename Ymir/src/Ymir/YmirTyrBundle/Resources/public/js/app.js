@@ -10,9 +10,15 @@ var app = (function() {
 		  Router: {},
 	      todos: null,
 		  init: function(){
-            var listprojet = new App.Collections.Projects();
+              
+            var collecPage = new App.Collections.PageList();
+            var arbreWidget = new App.Views.WidgetListView({collection: collecPage});
+              
+              
+            var listprojet = new App.Collections.ProjectList();
             var view = new App.Views.ProjectsIndex({collection : listprojet});
-            view.render();   
+            view.render();
+              
             this.categories = new App.Collections.CategorieList();
             var catlistview = new App.Views.CategorieListView({collection: this.categories});
             return this;

@@ -1,4 +1,3 @@
-
 var App = App || {};
 App.Views.ProjectPageView = Backbone.View.extend({
     

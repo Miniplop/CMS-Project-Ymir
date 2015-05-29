@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-/*App.Views.CategorieView = Backbone.View.extend({
-=======
 var App = App || {};
 App.Views.CategorieView = Backbone.View.extend({
->>>>>>> 25756b57e28fc9e8b678b52808238de61e629cd7
     template: _.template($('#categorie-template').html()),
     tagName: 'li',
     className: 'accordion-navigation',
@@ -12,4 +8,4 @@ App.Views.CategorieView = Backbone.View.extend({
         this.$el.html(html);
         return this;
     }
-});*/
+});
