@@ -1,0 +1,60 @@
+{# {% extends "TyrBundle::layout.html.twig" %} #}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{# {% block body %} #}
+	<section>
+        <article>
+			<!--<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">-->
+			{{ form_start(form) }}
+				{% block form_errors %}
+				    {% spaceless %}
+
+				        {% if errors|length > 0 %}
+				        <div data-alert class="alert-box secondary">
+				        	<ul class="error_list">
+					            {% for error in errors %}
+					                <li>{{
+					                	error
+					                }}</li>
+					            {% endfor %}
+					        </ul>
+					        <a href="#" class="close">&times;</a>
+				        </div>
+				        {% endif %}
+				    {% endspaceless %}
+				{% endblock form_errors %}					  	
+					
+
+				<div class="row">
+					<div class="large-6 columns">
+						{{ form_label(form.email) }}
+				    	{{ form_widget(form.email) }}
+				    </div>
+				    <div class="large-6 columns">
+				    	{{ form_label(form.username) }}
+				    	{{ form_widget(form.username) }}
+				    </div>
+			    </div>
+
+			    <div class="row">
+					<div class="large-6 columns">
+						{{ form_label(form.plainPassword.first) }}
+				    	{{ form_widget(form.plainPassword.first) }}
+				    </div>
+				    <div class="large-6 columns">
+				    	{{ form_label(form.plainPassword.second) }}
+				    	{{ form_widget(form.plainPassword.second) }}
+				    </div>
+			    </div>
+
+			    <div class="control-group">
+		            <div class="controls">
+		                <button type="submit" class="button success radius" >{{ 'registration.submit'|trans }}</button>
+		            </div>
+		        </div>
+			{{ form_end(form) }}
+		</article>  
+	</section>
+{# {% endblock body%} #}
