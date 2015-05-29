@@ -19,18 +19,12 @@
     {% javascripts  output='js/ymir.js'
 				"bundles/tyr/js/app.js"
                 "bundles/tyr/js/views/projects/*.js"
-                "bundles/tyr/js/views/CategorieView.js"
-                "bundles/tyr/js/views/CategorieListView.js"
-                "bundles/tyr/js/views/users/users_index.js"
-                "bundles/tyr/js/models/widget.js"
-                "bundles/tyr/js/collections/widgets.js"
-                "bundles/tyr/js/models/categorie.js"
-                "bundles/tyr/js/collections/categories.js"
-                "bundles/tyr/js/models/project.js"
-                "bundles/tyr/js/models/user.js"
-                "bundles/tyr/js/collections/projects.js"
-                "bundles/tyr/js/collections/users.js"
+                "bundles/tyr/js/views/widgets/*.js"
+                "bundles/tyr/js/views/*.js"
+                "bundles/tyr/js/models/*.js"
+                "bundles/tyr/js/collections/*.js"
 				"bundles/tyr/js/DragDropHandler.js"
+                
 		%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -41,4 +35,5 @@
                 DragDropHandler();
             }
     </script>
+
 {% endblock %}

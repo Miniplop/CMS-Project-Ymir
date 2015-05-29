@@ -10,9 +10,18 @@ var app = (function() {
 		  Router: {},
 	      todos: null,
 		  init: function(){
-			  	this.categories = new App.Collections.CategorieList();
-				var catlistview = new App.Views.CategorieListView({collection: this.categories});
-				return this;
+              
+            var collecPage = new App.Collections.PageList();
+            var arbreWidget = new App.Views.WidgetListView({collection: collecPage});
+              
+              
+            var listprojet = new App.Collections.ProjectList();
+            var view = new App.Views.ProjectsIndex({collection : listprojet});
+            view.render();
+              
+            this.categories = new App.Collections.CategorieList();
+            var catlistview = new App.Views.CategorieListView({collection: this.categories});
+            return this;
 	      },
 	      changeContent: function(el){
 	        this.content.empty().append(el);
@@ -23,18 +32,7 @@ var app = (function() {
 	        return this;
 	      }
 		};
-	           
-	    var ViewsFactory = {
-	           menu: function(){
-	            if(!this.menuView){
-	                this.menuView = new App.Views.ProjectsIndex({
-	                    el: $("#menu")
-	                });
-	            }
-	            return this.menuView;
-	            }
-	    };
-	
+    
 	    var Router = Backbone.Router.extend({
 	        routes: {},
 	        
@@ -59,5 +57,4 @@ var app = (function() {
 	    
 	    App.Router = new Router();
 	    return window.App;	
-	    
 })();

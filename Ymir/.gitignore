@@ -10,6 +10,7 @@
 /bin/
 /composer.phar
 /composer.lock
+Ymir/composer.lock
 /src/Ymir/YmirTyrBundle/Resources/public/vendor/
 /src/Ymir/YmirTyrBundle/Resources/public/css/.sass-cache/
 /.sass-cache/
@@ -19,6 +20,5 @@
 /src/Ymir/YmirTyrBundle/Resources/public/css/*.css
 
 lancement.sh
-composer.lock
 /web/css/*.css
 /web/js/*.js

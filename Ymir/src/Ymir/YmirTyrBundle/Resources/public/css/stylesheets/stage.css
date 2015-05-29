@@ -1,0 +1,8 @@
+/* line 3, ../sass/stage.scss */
+.stage {
+  height: -webkit-calc(100% - 40px) !important;
+  height: calc(100% - 40px) !important;
+  background-color: white !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

@@ -1,0 +1,20 @@
+{
+	"pages":
+	[
+		{
+			"id": 1,
+			"title": "Page 1",
+			"widgetSource":		
+            [ 
+				{
+                 "id": 1,
+                 "class": "",
+                 "tag": "p",
+                 "content": "Adrien",
+                 "children": []
+				}
+			]
+		},
+		
+	]
+}

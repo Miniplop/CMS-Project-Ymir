@@ -13,21 +13,8 @@
 	        </div>
         </section>
 </section>
-<script type="text/template" id="categorie-template">
-		<a href="#categorie_<%= id %>"><%= name %>
-			<i class="fi-arrow-down "></i>
-		</a>
-		<div id="categorie_<%= id %>" class="content">
-			<ul class="dropdown">
-			<% widgets.each(function(widget) { %>
-				<li class="show-widget-preview draggable" data-widget-id="<%= widget.get('id') %>">
-					<a href="#<%= widget.get('id') %>"><%= widget.get('name') %></a>
-					<div class="widget-preview" disabled="true"><%= widget.get('htmlPreview') %></div>
-				</li>
-			<% }); %>
-			</ul>
-		</div>
-</script>
+
+
 <div id="mockup-mobile" class="device-draggable">
 	<div class="device-mockup lumia920">
 		<div class="device">
@@ -58,6 +45,26 @@
 		</div>
 	</div>
 </div>
-{% endblock %}
-{% block header %}
+
+
+<script type="text/template" id="categorie-template">
+		<a href="#categorie_<%= id %>"><%= name %>
+			<i class="fi-arrow-down "></i>
+		</a>
+		<div id="categorie_<%= id %>" class="content">
+			<ul class="dropdown">
+			<% widgets.each(function(widget) { %>
+				<li class="show-widget-preview draggable" data-widget-id="<%= widget.get('id') %>">
+					<a href="#<%= widget.get('id') %>"><%= widget.get('name') %></a>
+					<div class="widget-preview" disabled="true"><%= widget.get('htmlPreview') %></div>
+				</li>
+			<% }); %>
+			</ul>
+		</div>
+</script>
+
+<script type="text/template" id="widget-template">
+    <%= content %>
+</script>
+
 {% endblock %}
