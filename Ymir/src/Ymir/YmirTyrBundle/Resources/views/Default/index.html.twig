@@ -1,7 +1,6 @@
 {% extends "TyrBundle::layout.html.twig" %}
 
 {% block body %}
-
 <!--
 
 
@@ -20,30 +19,30 @@
 
 -->
 
-<header>
-    {{ include("TyrBundle:Default:header.html.twig") }}
-</header>
+
 <section>
-    <div class ="row">
-        <div class="large-8 columns">
-        <article>
-            {{ include("TyrBundle:Form:login_register.html.twig") }}
-        </article>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") != true %}
+        <div class ="row">
+            <div class="large-8 columns">
+                <article>
+                    {{ include("TyrBundle:Security:register.html.twig") }}
+                </article>
+            </div>
+            <section>
+            <div class="large-4 columns">
+                <div class="panel">
+                    <h1>About Us :</h1>
+                    <p> Tired of sleepless nights to code websites ? watch tons of tutorials on web languages ​​? So Ymir is for you a few clicks to create a beautiful suffisents sites. <br />
+                    <h3>Join Us !  <a>Learn more</a> </h3>
+                    </p>
+                    <hr>
+                    {{ include("TyrBundle:Default:tryit.html.twig") }}
+                </div>
+            </div>
+            </section>
         </div>
-        <section>
-        <div class="large-4 columns">
-            {{ include("TyrBundle:Default:presentation.html.twig") }}
-            <p class = "text-center ">
-                {{ include("TyrBundle:Default:tryit.html.twig") }}
-            </p>
-        </div>
-        </section>
-    </div>
-       
+    {% endif %}
 </section>
-<footer>
-        {{ include("TyrBundle:Default:footer.html.twig") }}
-</footer>
 
 <div id="project-panel">
     <ul class="accordion project-list" data-accordion="myAccordionProject">

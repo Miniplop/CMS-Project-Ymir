@@ -19,6 +19,7 @@ class AppKernel extends Kernel
         	
         	// Added Bundle
         	new Devtime\BackboneBundle\DevtimeBackboneBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         		
         	// My bundles
             new Ymir\YmirTyrBundle\TyrBundle(),

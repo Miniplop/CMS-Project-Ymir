@@ -20,5 +20,5 @@
 
 lancement.sh
 composer.lock
-web/css/*.css
-web/js/*.js
+/web/css/*.css
+/web/js/*.js
