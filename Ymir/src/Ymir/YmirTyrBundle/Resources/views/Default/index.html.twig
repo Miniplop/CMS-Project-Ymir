@@ -1,10 +1,6 @@
 {% extends "TyrBundle::layout.html.twig" %}
 
 {% block body %}
-<header>
-    {{ include("TyrBundle:Default:header.html.twig") }}
-</header>
-
 <section>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") != true %}
         <div class ="row">
@@ -28,10 +24,6 @@
         </div>
     {% endif %}
 </section>
-
-<footer>
-        {{ include("TyrBundle:Default:footer.html.twig") }}
-</footer>
 
 <div class="panel">
     <div id="menu"></div>

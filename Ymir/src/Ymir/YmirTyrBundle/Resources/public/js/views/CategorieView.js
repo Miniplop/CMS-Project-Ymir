@@ -1,3 +1,4 @@
+var App = App || {};
 App.Views.CategorieView = Backbone.View.extend({
     template: _.template($('#categorie-template').html()),
     tagName: 'li',

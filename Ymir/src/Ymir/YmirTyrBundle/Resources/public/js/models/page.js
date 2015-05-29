@@ -1,21 +1,25 @@
-App.Models.Project = Backbone.Model.extend({
+var App = App || {};
+App.Collections.WidgetList = App.Collections.WidgetList || {};
+App.Models.Page = Backbone.Model.extend({
 
     defaults: {
         id : 0,
         title: "Page 1",
-        widgetSource: new App.Collections.collectionWidgetListe() // contient uniquement le wdget source (body)
+        widgets: null // contient uniquement le wdget source (body)
     },
-    
+    initialize: function () {
+        this.widgets = new App.Collections.WidgetList();
+    },
     addWidget : function (idParent, widget) {
-        this.widgetSource.addWidget(idParent, widget);
+        this.widgets.addWidget(idParent, widget);
     },
     
     removeWidget : function (idWidget) {
-        this.widgetSource.removeWidget(idWidget);
+        this.widgets.removeWidget(idWidget);
     },
     
-    moveWidget : function (Widget, idNewParent) {
-        this.widgetSource.removeWidget(Widget.get("id"));
-        this.widgetSource.addWidget(idNewParent, Widget);
+    moveWidget : function (widget, idNewParent) {
+        this.widgets.removeWidget(widget.get("id"));
+        this.widgets.addWidget(idNewParent, Widget);
     }
 });
