@@ -1,13 +1,10 @@
 App.Models.Project = Backbone.Model.extend({
 
-    url : '/page',
     defaults: {
+        id : 0,
         title: "Page 1",
-        archived: false,
-        listeWidget: new App.Collections.widgets_liste()
+        widgetSource: new App.Collections.collectionWidgetListe() // contient uniquement le wdget source (body)
     },
-    // Collection de widget contenant uniquement le widget source de la page, celui qui contient tous les autres (body).
-    widgetSource : App.Collections.widgets,
     
     addWidget : function (idParent, widget) {
         this.widgetSource.addWidget(idParent, widget);

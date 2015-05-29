@@ -13,6 +13,9 @@ var app = (function() {
 	        ViewsFactory.menu();*/
 			var catList = new App.Collections.CategorieList();
 			var catlistview = new App.Views.CategorieListView({collection: catList});
+              
+            var collecPage = new App.Collections.collectionPage();
+            var arbreWidget = new App.Views.WidgetsIndex({collection: collecPage});
 	        return this;
 	      },
 	      changeContent: function(el){
