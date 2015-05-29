@@ -16,7 +16,7 @@ var app = (function() {
               
               
             var listprojet = new App.Collections.ProjectList();
-            var view = new App.Views.ProjectsIndex({collection : listprojet});
+            var view = new App.Views.ProjectListView({collection : listprojet});
             view.render();
               
             this.categories = new App.Collections.CategorieList();
