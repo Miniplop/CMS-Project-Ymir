@@ -1,6 +1,25 @@
 {% extends "TyrBundle::layout.html.twig" %}
 
 {% block body %}
+
+<!--
+
+
+
+<% pages.each(function(page) { %>
+                <li>
+                    <ul class="inline-list">
+                        <li><span>"><%= page.get('title') %></span></li>
+				        <li><a href="#editpage<%= page.get('id') %>"><i class="fi-page-edit"></i></a></li>
+				        <li><a href="#deletepage<%= page.get('id') %>"><i class="fi-x"></i></a></li>
+                    </ul>
+                </li>
+			<% }); %>
+
+
+
+-->
+
 <header>
     {{ include("TyrBundle:Default:header.html.twig") }}
 </header>
@@ -26,29 +45,35 @@
         {{ include("TyrBundle:Default:footer.html.twig") }}
 </footer>
 
+<div id="project-panel">
+    <ul class="accordion project-list" data-accordion="myAccordionProject">
+                    <!-- Backbone template -->
+    </ul>
+</div>
+
 <script type="text/template" id="list-projet-template">
     <li class="accordion-navigation">
-		<li><a href="#<%= name %>"><%= name %><i class="fi-arrow-down "></i></a></li>				  
-        <li><a href="#download<%= name%>"><i class="fi-download"></i></a></li>
-        <li><a href="#remove<%= name%>"><i class="fi-x"></i></a></li>
-		<div id="<%= name %>" class="content">
-        
+           <div class="row">
+              <div class="small-8 large-8 columns">
+                <a href="#projet-<%= id%>"><%= nom %>
+                </a>
+              </div>
+              <div class="small-2 large-2 columns">
+                <a href="#download<%= id%>"><i class="fi-download"></i>
+                </a>
+              </div>
+              <div class="small-2 large-2 columns">
+                <a href="#remove<%= id%>"><i class="fi-x"></i>
+                </a>
+            </div>
+         </div>				  
+        <div id="projet-<%= id%>" class="content">
 			<ul class="dropdown">
-			<% _.each(widgets, function(widget) { %>
-                <li>
-                    <ul class="inline-list">
-                        <li><span>"><%= widget.get('name') %></span></li>
-				        <li><a href="#editpage"><i class="fi-page-edit"></i></a></li>
-				        <li><a href="#deletepage"><i class="fi-x"></i></a></li>
-                    </ul>
-                </li>
-			</ul>
-			<% }); %>
+            </ul>
 		</div>
 	</li>
 </script>
 
 
-<div id = "menu" class ="menu"></div>
-
 {% endblock %}
+

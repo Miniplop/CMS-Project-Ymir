@@ -11,8 +11,8 @@ App.Collections.Projects = Backbone.Collection.extend({
         pages1.set("id", "1");
         var pages2 = new App.Collections.Pages({id : "2"});
         pages2.add([page2,page3]);*/
-        var pages3 = new App.Collections.Pages({id : "3"});
-        pages3.add([page1,page3]);
+/*        var pages3 = new App.Collections.Pages({id : "3"});
+        pages3.add([page1,page3]);*/
         var p1 = new App.Models.Project().set("nom" , "Projet 1");
         p1.set("id","1");
         /*p1.set("pages",pages1);*/

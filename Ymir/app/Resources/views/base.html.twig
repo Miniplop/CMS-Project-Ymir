@@ -18,12 +18,13 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
 			{% javascripts  output='js/vendor.js'
-						'bundles/tyr/vendor/jquery/dist/jquery.min.js'
+						'bundles/tyr/vendor/jquery/dist/jquery.js'
+						'bundles/tyr/vendor/jquery-ui/jquery-ui.js'
 						'bundles/tyr/vendor/modernizr/modernizr.js'
-						'bundles/tyr/vendor/underscore/underscore-min.js'
+						'bundles/tyr/vendor/underscore/underscore.js'
+						'bundles/tyr/vendor/backbone/backbone.js'
 						'bundles/tyr/vendor/fastclick/lib/fastclick.js'
-						'bundles/tyr/vendor/foundation/js/foundation.min.js'
-						'bundles/tyr/vendor/backbone/backbone-min.js'
+						'bundles/tyr/vendor/foundation/js/foundation.js'
 			%}
 				<script type="text/javascript" src="{{ asset_url }}"></script>
 			{% endjavascripts %}
