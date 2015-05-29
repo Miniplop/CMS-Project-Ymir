@@ -1,5 +1,5 @@
 var App = App || {};
-App.Routers.ProjectListRouter = Backbone.Router.extend({
+App.Router.ProjectListRouter = Backbone.Router.extend({
     
     routes: {
 		'/' : 'home',

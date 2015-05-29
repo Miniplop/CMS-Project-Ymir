@@ -12,10 +12,11 @@ var app = (function() {
 	      todos: null,
 		  init: function(){
               
+            var routeur = new App.Router.ProjectListRouter();
             this.pages = new App.Collections.PageList();
             var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
               
-            var routeur = new App.Routers.ProjectListRouter();
+            
               
 
             var listprojet = new App.Collections.ProjectList();
