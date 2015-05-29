@@ -64,8 +64,8 @@
 </script>
 
 <script type="text/template" id="widget-template">
-    <% widgets.each(function(fils) { %>
-        <<%= fils.get('tag') %>><%= fils.get('content') %></<%= fils.get('tag') %>>
+    <% widgets.each(function(widget) { %>
+        <<%= widget.get('tag') %>><%= widget.get('content') %></<%= widget.get('tag') %>>
    <% }); %>
 </script>
 
