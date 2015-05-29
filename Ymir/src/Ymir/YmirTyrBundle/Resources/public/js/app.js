@@ -11,16 +11,19 @@ var app = (function() {
 	      todos: null,
 		  init: function(){
               
-            var collecPage = new App.Collections.PageList();
-            var arbreWidget = new App.Views.WidgetListView({collection: collecPage});
+         /*   var collecPage = new App.Collections.PageList();
+            var arbreWidget = new App.Views.WidgetListView({collection: collecPage});*/
               
               
             var listprojet = new App.Collections.ProjectList();
-            var view = new App.Views.ProjectListView({collection : listprojet});
-            view.render();
+            var view = new App.Views.ProjectListView({collection : listprojet}).render();
+           
+           /* this.categories = new App.Collections.CategorieList();
+            var catlistview = new App.Views.CategorieListView({collection: this.categories});*/
               
-            this.categories = new App.Collections.CategorieList();
-            var catlistview = new App.Views.CategorieListView({collection: this.categories});
+            var routeur = new App.Routers.ProjectListRouter();
+            Backbone.history.start();
+              
             return this;
 	      },
 	      changeContent: function(el){
@@ -55,6 +58,5 @@ var app = (function() {
 		});
 	    
 	    
-	    App.Router = new Router();
 	    return window.App;	
 })();
