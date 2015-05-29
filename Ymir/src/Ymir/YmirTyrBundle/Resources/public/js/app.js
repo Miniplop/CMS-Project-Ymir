@@ -3,6 +3,7 @@ var app = (function() {
 		window.App = {
 		  defaults: {
 			  categories: null,
+              collecPage: null,
 		  },
 		  Models: {},
 		  Collections: {},
@@ -11,17 +12,18 @@ var app = (function() {
 	      todos: null,
 		  init: function(){
               
-         /*   var collecPage = new App.Collections.PageList();
-            var arbreWidget = new App.Views.WidgetListView({collection: collecPage});*/
+            var routeur = new App.Routers.ProjectListRouter();
               
-              
+            var collecPage = new App.Collections.PageList();
+            var arbreWidget = new App.Views.WidgetListView({collection: this.collecPage});
+
             var listprojet = new App.Collections.ProjectList();
             var view = new App.Views.ProjectListView({collection : listprojet}).render();
            
            /* this.categories = new App.Collections.CategorieList();
             var catlistview = new App.Views.CategorieListView({collection: this.categories});*/
               
-            var routeur = new App.Routers.ProjectListRouter();
+            
             Backbone.history.start();
               
             return this;
