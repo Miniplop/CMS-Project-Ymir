@@ -12,6 +12,9 @@ App.Models.Categorie = Backbone.Model.extend({
     parse: function(result) {
     	result.widgets = new App.Collections.MetaWidgetList(result.widgets);
     	return result;
-    }
-	
+    },
+	getWidget: function(id) {
+		console.log(this);
+		return this.get("widgets").getWidget(id);	
+	}	
 });

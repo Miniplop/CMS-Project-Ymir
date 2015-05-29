@@ -7,6 +7,7 @@ App.Views.CategorieListView = Backbone.View.extend({
     	this.collection.fetch({ // call fetch() with the following options
     	       success: this.render // $.ajax 'success' callback
     	});
+
     },
 
     render: function() {
