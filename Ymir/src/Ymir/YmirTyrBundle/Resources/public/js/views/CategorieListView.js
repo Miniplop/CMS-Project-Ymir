@@ -1,6 +1,7 @@
 
 var App = App || {};
 var App.Views.CategorieView = App.Views.CategorieView || {};
+
 App.Views.CategorieListView = Backbone.View.extend({
     el: $('.toolbar-widget-categorie-list'),
     initialize: function() {
