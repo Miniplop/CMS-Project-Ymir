@@ -3,6 +3,7 @@ var app = (function() {
 		window.App = {
 		  defaults: {
 			  categories: null,
+              collecPage: null,
 		  },
 		  Models: {},
 		  Collections: {},
@@ -12,7 +13,7 @@ var app = (function() {
 		  init: function(){
               
             var collecPage = new App.Collections.PageList();
-            var arbreWidget = new App.Views.WidgetListView({collection: collecPage});
+            var arbreWidget = new App.Views.WidgetListView({collection: this.collecPage});
               
               
             var listprojet = new App.Collections.ProjectList();

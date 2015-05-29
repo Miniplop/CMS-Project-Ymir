@@ -1,20 +1,17 @@
 {
-	"pages":
-	[
-		{
-			"id": 1,
-			"title": "Page 1",
-			"widgetSource":		
-            [ 
-				{
+    "pages": [
+        {
+            "id": 1,
+            "title": "Page 1",
+            "widgets": [ 
+                {
                  "id": 1,
                  "class": "",
                  "tag": "p",
                  "content": "Adrien",
                  "children": []
-				}
-			]
-		},
-		
-	]
+                }
+            ]
+        }
+    ]
 }
