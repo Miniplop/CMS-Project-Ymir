@@ -8,7 +8,8 @@
 		"bundles/tyr/css/profil.css"
 		"bundles/tyr/css/creative.css"
 		"bundles/tyr/css/stage.css"
-		"bundles/tyr/css/footer.css" %}
+		"bundles/tyr/css/footer.css"
+		"bundles/tyr/css/mockups/device-mockups.css" %}
 		<link rel="stylesheet" href="{{ asset_url }}"/>
 	{% endstylesheets %}
 {% endblock %}
@@ -18,8 +19,8 @@
     {% javascripts  output='js/ymir.js'
 				"bundles/tyr/js/app.js"
                 "bundles/tyr/js/views/projects/*.js"
-                "bundles/tyr/js/views/CategorieListView.js"
                 "bundles/tyr/js/views/CategorieView.js"
+                "bundles/tyr/js/views/CategorieListView.js"
                 "bundles/tyr/js/views/users/users_index.js"
                 "bundles/tyr/js/models/widget.js"
                 "bundles/tyr/js/collections/widgets.js"
@@ -29,6 +30,7 @@
                 "bundles/tyr/js/models/user.js"
                 "bundles/tyr/js/collections/projects.js"
                 "bundles/tyr/js/collections/users.js"
+				"bundles/tyr/js/DragDropHandler.js"
 		%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -36,6 +38,7 @@
             window.onload = function() {
                 app.init();
                 $(document).foundation();
+                DragDropHandler();
             }
     </script>
 {% endblock %}
