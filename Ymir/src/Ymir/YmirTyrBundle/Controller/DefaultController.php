@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\UserBundle\Event\GetResponseUserEvent;
+use Symfony\Component\HttpFoundation\Response;
 
 use FOS\UserBundle\FOSUserEvents;
 
@@ -68,6 +69,14 @@ class DefaultController extends BaseController
     public function creativeAction()
     {
         return array();
+    }
+    
+    /**
+     * @Route("/widgets")
+     */
+    public function widgetsAction()
+    {
+    	return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/widgets.json'), 200, array('Content-Type' => 'application/json'));
     }
 }
 
