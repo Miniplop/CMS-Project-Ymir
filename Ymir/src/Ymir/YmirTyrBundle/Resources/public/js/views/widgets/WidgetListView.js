@@ -4,6 +4,7 @@ App.Views.WidgetListView = Backbone.View.extend({
     template: _.template($('#widget-template').html()),
     initialize: function () {
         console.log("init view");
+        _.bindAll(this, "render");
         this.collection.fetch({ // call fetch() with the following options
                success: this.render // $.ajax 'success' callback
         });
