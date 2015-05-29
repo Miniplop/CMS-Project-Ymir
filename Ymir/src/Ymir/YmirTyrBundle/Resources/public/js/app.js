@@ -1,19 +1,18 @@
 var app = (function() {
 	
 		window.App = {
+		  defaults: {
+			  categories: null,
+		  },
 		  Models: {},
 		  Collections: {},
 		  Views: {},
 		  Router: {},
 	      todos: null,
-	      content: null,
 		  init: function(){
-	        //this.content = $("#content");
-	        /*this.todos = new App.Collections.Projects();
-	        ViewsFactory.menu();*/
-			var catList = new App.Collections.CategorieList();
-			var catlistview = new App.Views.CategorieListView({collection: catList});
-	        return this;
+			  	this.categories = new App.Collections.CategorieList();
+				var catlistview = new App.Views.CategorieListView({collection: this.categories});
+				return this;
 	      },
 	      changeContent: function(el){
 	        this.content.empty().append(el);

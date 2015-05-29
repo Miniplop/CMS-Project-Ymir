@@ -1,3 +1,4 @@
+var App = App || {};
 App.Collections.Projects = Backbone.Collection.extend({
 
     initialize: function(){

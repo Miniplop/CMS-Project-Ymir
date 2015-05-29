@@ -1,4 +1,4 @@
-
+var App = App || {};
 // view qui rend la liste des projets
   App.Views.ProjectsIndex = Backbone.View.extend({
         
