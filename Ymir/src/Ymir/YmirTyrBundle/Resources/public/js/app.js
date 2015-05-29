@@ -1,22 +1,21 @@
 var app = (function() {
 	
 		window.App = {
+		  defaults: {
+			  categories: null,
+		  },
 		  Models: {},
 		  Collections: {},
 		  Views: {},
 		  Router: {},
 	      todos: null,
-	      content: null,
 		  init: function(){
-	        //this.content = $("#content");
-	        /*this.todos = new App.Collections.Projects();
-	        ViewsFactory.menu();*/
             var listprojet = new App.Collections.Projects();
-              var view = new App.Views.ProjectsIndex({collection : listprojet});
-             view.render();   
-		/*	var catList = new App.Collections.CategorieList();
-			var catlistview = new                App.Views.CategorieListView({collection: catList});*/
-	        return this;
+            var view = new App.Views.ProjectsIndex({collection : listprojet});
+            view.render();   
+            this.categories = new App.Collections.CategorieList();
+            var catlistview = new App.Views.CategorieListView({collection: this.categories});
+            return this;
 	      },
 	      changeContent: function(el){
 	        this.content.empty().append(el);
