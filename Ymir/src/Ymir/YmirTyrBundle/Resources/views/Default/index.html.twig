@@ -1,4 +1,45 @@
 {% extends "TyrBundle::layout.html.twig" %}
 
 {% block body %}
+<section>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") != true %}
+        <div class ="row">
+            <div class="large-8 columns">
+                <article>
+                    {{ include("TyrBundle:Security:register.html.twig") }}
+                </article>
+            </div>
+            <section>
+            <div class="large-4 columns">
+                <div class="panel">
+                    <h1>About Us :</h1>
+                    <p> Tired of sleepless nights to code websites ? watch tons of tutorials on web languages ​​? So Ymir is for you a few clicks to create a beautiful suffisents sites. <br />
+                    <h3>Join Us !  <a>Learn more</a> </h3>
+                    </p>
+                    <hr>
+                    {{ include("TyrBundle:Default:tryit.html.twig") }}
+                </div>
+            </div>
+            </section>
+        </div>
+    {% endif %}
+</section>
+
+<div class="panel">
+    <div id="menu"></div>
+        <h1></h1>
+    <div id="content"></div>
+</div>
+
+<!--Templates-->
+
+<script type="text/template" id="tpl-menu">
+    <ul>
+        <li><a href="#">List</a></li>
+        <li><a href="#archive">Archive</a></li>
+        <li class="right"><a href="#new">+</a></li>
+    </ul>
+</script>
+
+
 {% endblock %}
