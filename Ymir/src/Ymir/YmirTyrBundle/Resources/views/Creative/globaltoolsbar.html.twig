@@ -1,35 +1,40 @@
-<div class="panel">
-    <div class="row">
+<div class="panel global-toolbar">
+	<div class="row">
 
-    	<div class = "large-2 columns ">
-    		<p> Nom de la page </p>
-    	</div>
+		<div class="small-1 columns">
+			<button class="button">
+				<i class="fi-save large"> Save</i></a>
+		
+		</div>
+		
+		<div class="small-1 columns">
+			<div class="switch">
+				<input id="auto-save" type="checkbox"> <label for="auto-save"></label>
+			</div>
+			<label>Auto save </label>
+		</div>
 
-    	<div class="large-1 columns">
-    		<a href="#"><i class="fi-save large"></i></a>
-    	</div>
+		<div class="small-offset-2 small-3 columns">
+			<input type="text" value="Nom de la page" placeholder="Nom de la page">
+		</div>
 
-    	<div class = "large-2 columns">
-    		<!-- <p> Auto save </p> -->
-    		<input id="AutoSave" type="checkbox"><label for="AutoSave">AutoSave</label>
-    	</div>
-    	
+		<div class="small-3 columns">
+			<div class="global-toolbar-responsive small-12 columns">
+				<label class="small-6">Responsive mode </label>
+				<select class="small-6">
+					<option value="large" selected>Large</option>
+					<option value="medium">Medium</option>
+					<option value="small">Small</option>
+					<option value="extra-small">Extra-small</option>
+				</select>
+			</div>
+		</div>
 
-    	<div class = "large-2 columns">
-    		<input id="ShowGrid" type="checkbox"><label for="ShowGrid">ShowGrid</label>
-    	</div>
-
-    	<div class = "large-3 columns">
-    		<p> 
-	    		responsive mode 
-	    		<button href="#" data-dropdown="responsiveMode" aria-controls="responsiveMode" aria-expanded="false" class="tiny button dropdown">Large</button><br>
-				<ul id="responsiveMode" data-dropdown-content class="f-dropdown" aria-hidden="true">
-					<li><a href="#">Large</a></li>
-					<li><a href="#">Medium</a></li>
-					<li><a href="#">Small</a></li>
-				</ul>
-    		</p>
-    	</div>
-
-    </div>
+		<div class="small-1 columns">
+			<label>Show grid </label>
+			<div class="switch">
+				<input id="show-grid" type="checkbox"> <label for="show-grid"></label>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,1 +1,32 @@
 @import "compass/reset";
+@import "mixins";
+
+header {
+	height: $header_height !important;
+	>.top-bar {
+		height: 100% !important;
+		overflow: hidden !important;
+		background-color: $dark_grey_color !important;
+		color: $light_grey_color;
+		padding: 0 !important;
+		margin: 0 !important;
+		border: medium none !important;
+		border-bottom: 1px solid gray !important;
+		.top-bar-section {
+			.has-form {
+				>button {
+					top: inherit !important;
+				}
+			}
+			h1 {
+				color: inherit !important;
+			}
+		}
+	}
+}
+
+.image-profil {
+	.fi-torso {
+		font-size: 1.5rem !important;
+	}
+}

@@ -15,7 +15,20 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    	{% block header %}
+    		{{ include("::header.html.twig") }}
+    	{% endblock %}
+    	
         {% block body %}{% endblock %}
+
+        {% block footer %}
+	        <footer>
+		        <div class="panel">
+				    Ceci est notre footer
+				</div>
+			</footer>
+		{% endblock %}
+
         {% block javascripts %}
 			{% javascripts  output='js/vendor.js'
 						'bundles/tyr/vendor/jquery/dist/jquery.min.js'

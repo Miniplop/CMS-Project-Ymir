@@ -43,3 +43,73 @@ var app = (function() {
     return window.App;	
     
 })();
+
+//View qui rend un projet
+App.Views.ProjectIndex = Backbone.View.extend({
+
+});
+
+// view qui rend la liste des projets
+  App.Views.ProjectsIndex = Backbone.View.extend({
+        
+    template: _.template($("#tpl-menu").html()),
+      
+    initialize: function() {
+        this.render();
+    },
+      
+    render: function(){
+        this.$el.html(this.template({}));
+    }
+      
+});    
+
+  
+
+App.Views.UsersIndex = Backbone.View.extend({
+
+});
+
+App.Models.Project = Backbone.Model.extend({ 
+  defaults: {
+        title: "Projet 1",
+        archived: false,
+        done: false 
+  }
+});
+
+App.Models.Project = Backbone.Model.extend({
+
+});
+
+App.Models.User = Backbone.Model.extend({
+	urlRoot: '/user',
+    defaults: {
+    	id: '',
+        username: '',
+        email: '',
+        password: ''
+    }
+
+});
+
+App.Collections.Projects = Backbone.Collection.extend({
+
+    initialize: function(){
+        this.add({ title: "Learn JavaScript basics" });
+        this.add({ title: "Go to backbonejs.org" });
+        this.add({ title: "Develop a Backbone application" });
+    },
+    model: App.Models.Project,
+    
+    archive: function(archived, index) {
+        this.models[index].set("archived", archived);
+    },
+    changeStatus: function(done, index) {
+        this.models[index].set("done", done);
+    }
+
+});
+
+App.Collections.Users = Backbone.Collection.extend({
+});
