@@ -26,22 +26,29 @@
         {{ include("TyrBundle:Default:footer.html.twig") }}
 </footer>
 
+<script type="text/template" id="list-projet-template">
+    <li class="accordion-navigation">
+		<li><a href="#<%= name %>"><%= name %><i class="fi-arrow-down "></i></a></li>				  
+        <li><a href="#download<%= name%>"><i class="fi-download"></i></a></li>
+        <li><a href="#remove<%= name%>"><i class="fi-x"></i></a></li>
+		<div id="<%= name %>" class="content">
+        
+			<ul class="dropdown">
+			<% _.each(widgets, function(widget) { %>
+                <li>
+                    <ul class="inline-list">
+                        <li><span>"><%= widget.get('name') %></span></li>
+				        <li><a href="#editpage"><i class="fi-page-edit"></i></a></li>
+				        <li><a href="#deletepage"><i class="fi-x"></i></a></li>
+                    </ul>
+                </li>
+			</ul>
+			<% }); %>
+		</div>
+	</li>
+</script>
 
-<div class="panel">
-    <div id="menu"></div>
-        <h1></h1>
-    <div id="content"></div>
-</div>
 
-    <!--Templates-->
-    
-    <script type="text/template" id="tpl-menu">
-        <ul>
-            <li><a href="#">List</a></li>
-            <li><a href="#archive">Archive</a></li>
-            <li class="right"><a href="#new">+</a></li>
-        </ul>
-    </script>
-
+<div id = "menu" class ="menu"></div>
 
 {% endblock %}

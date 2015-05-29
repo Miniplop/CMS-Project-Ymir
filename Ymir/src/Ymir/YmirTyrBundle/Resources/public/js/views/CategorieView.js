@@ -1,4 +1,4 @@
-App.Views.CategorieView = Backbone.View.extend({
+/*App.Views.CategorieView = Backbone.View.extend({
     template: _.template($('#categorie-template').html()),
 
     render: function() {
@@ -7,4 +7,4 @@ App.Views.CategorieView = Backbone.View.extend({
         this.$el.html(html);
         return this;
     }
-});
+});*/

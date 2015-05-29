@@ -6,26 +6,17 @@ var app = (function() {
 	  Views: {},
 	  Router: {},
       todos: null,
-      content: null,
 	  init: function(){
-        //this.content = $("#content");
-        /*this.todos = new App.Collections.Projects();
-        ViewsFactory.menu();*/
-		var catList = new App.Collections.CategorieList().parse();
-		var catlistview = new App.Views.CategorieListView({collection: catList}).render();
-        return this;
-      },
-      changeContent: function(el){
-        this.content.empty().append(el);
-        return this;
-      },
-      title: function(str){
-        $("h1").text(str);
+    //this.content = $("#content");
+          var listprojet = new App.Collections.Projects();
+          var view = new App.Views.ProjectsIndex({collection : listprojet}).render();
+		/*var catList = new App.Collections.CategorieList().parse();
+		var catlistview = new App.Views.CategorieListView({collection: catList}).render();*/
         return this;
       }
 	};
            
-    var ViewsFactory = {
+    /*var ViewsFactory = {
            menu: function(){
             if(!this.menuView){
                 this.menuView = new App.Views.ProjectsIndex({
@@ -35,11 +26,9 @@ var app = (function() {
             return this.menuView;
             }
     };
-
+*/
     var Router = Backbone.Router.extend({
         routes: {},
-        
-    
     });
     App.Router = new Router();
     return window.App;	

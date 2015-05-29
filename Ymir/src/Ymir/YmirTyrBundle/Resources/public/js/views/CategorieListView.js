@@ -1,7 +1,7 @@
-App.Views.CategorieListView = Backbone.View.extend({
+/*App.Views.CategorieListView = Backbone.View.extend({
     el: $('.toolbar-widget-categorie-list'),
     initialize: function() {
-        this.collection.bind("add", this.render, this);
+        //this.collection.bind("add", this.render, this);
     },
 
     render: function() {
@@ -16,4 +16,4 @@ App.Views.CategorieListView = Backbone.View.extend({
             $("#widgets-panel").html(this.$el);
           return this;
     }
-});
+});*/
