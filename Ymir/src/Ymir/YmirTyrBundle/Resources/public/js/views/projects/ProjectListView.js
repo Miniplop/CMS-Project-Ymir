@@ -8,22 +8,20 @@ App.Views.ProjectListView = Backbone.View.extend({
       
   events: {
       
-      
-      'click a#download/:id':'download', // affichage des pages
-      'click a#remove/:id':'removeItem', // Suppression d'un projets
-      'click a#addproject/:id' : 'addItem' // Ajout d'un projet
-      
-      
+      'click .addProject':'addProject'      
   },
       
     initialize: function() {
         // Bind
-        _.bindAll(this,'render','addItem','removeItem','download');
+        //_.bindAll(this,'addProject','render');
         
     },
       
     render: function(){
         var $el = $(this.el), self = this;
+        
+        $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button>");
+		
         this.collection.each(function(project) {
         	var item = new App.Views.ProjectPageView({ collection: project });
             $el.append(item.render().el);
@@ -34,6 +32,12 @@ App.Views.ProjectListView = Backbone.View.extend({
     
     addItem: function(id){
         console.log("Add "+id);
+    },
+    
+    addProject: function(){
+        console.log("AddProject");
+        //App.Models.Project.create();
+        /*this.collection.add();*/
     },
     
     removeItem: function(id){

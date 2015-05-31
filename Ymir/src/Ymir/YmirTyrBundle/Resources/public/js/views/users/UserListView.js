@@ -1,4 +1,4 @@
 var App = App || {};
-App.Views.UserListView = Backbone.View.extend({
+    App.Views.UserListView = Backbone.View.extend({
 
 });

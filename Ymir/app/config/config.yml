@@ -23,6 +23,8 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    serializer:
+        enabled: true
 
 # Twig Configuration
 twig:
@@ -77,3 +79,13 @@ fos_user:
 #    profile:
 #        form:
 #            type: appartoo_user_profile
+
+sensio_framework_extra:
+    view :  { annotations: false }
+    router: { annotations: true }
+fos_rest:
+    format_listener: 
+        rules:
+            - prefer_extension: false
+    view:
+        view_response_listener: true

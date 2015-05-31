@@ -1,7 +1,6 @@
 var DragDropHandler = (function () {
 	'use strict';
 	
-	
 	function handleDropEvent(event, ui) {
 	}
 	
@@ -38,7 +37,8 @@ var DragDropHandler = (function () {
 			});
 			$(".stage").bind("DOMSubtreeModified", function () {
 				$(".droppable").droppable({
-					drop: handleDropEvent
+					drop: handleDropEvent,
+					hoverClass: "drop-hover"
 				});
 			});
 		}

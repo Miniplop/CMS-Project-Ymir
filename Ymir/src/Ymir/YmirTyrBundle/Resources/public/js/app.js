@@ -25,25 +25,12 @@ var app = (function() {
             var catlistview = new App.Views.CategorieListView({collection: this.categories});
               
             
+            new App.Router.MainRouter();
             Backbone.history.start();
-              
             return this;
-	      },
-	      changeContent: function(el){
-	        this.content.empty().append(el);
-	        return this;
-	      },
-	      title: function(str){
-	        $("h1").text(str);
-	        return this;
 	      }
 		};
     
-	    var Router = Backbone.Router.extend({
-	        routes: {},
-	        
-	    
-	    });
 	    
 	    $("#checkbox_mobile").click( function(){
 	    	   if( $(this).is(':checked') ) $("#mockup-mobile").css("display", "inline");
@@ -60,6 +47,6 @@ var app = (function() {
 	    	   else $("#mockup-desktop").css("display", "none");
 		});
 	    
-	    
+	   /* var routeur = new App.Router.ProjectListRouter();*/
 	    return window.App;	
 })();
