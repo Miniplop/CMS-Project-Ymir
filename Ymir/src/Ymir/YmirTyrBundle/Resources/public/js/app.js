@@ -56,6 +56,6 @@ var app = (function() {
 	    	   else $("#mockup-desktop").css("display", "none");
 		});
 	    
-	    var routeur = new App.Router.ProjectListRouter();
+	   /* var routeur = new App.Router.ProjectListRouter();*/
 	    return window.App;	
 })();
