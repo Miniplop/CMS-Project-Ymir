@@ -85,6 +85,7 @@ sensio_framework_extra:
     router: { annotations: true }
 fos_rest:
     format_listener: 
-        prefer_extension: false
+        rules:
+            - prefer_extension: false
     view:
         view_response_listener: true
