@@ -20,6 +20,8 @@ class AppKernel extends Kernel
         	// Added Bundle
         	new Devtime\BackboneBundle\DevtimeBackboneBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         		
         	// My bundles
             new Ymir\YmirTyrBundle\TyrBundle(),

@@ -78,14 +78,6 @@ class DefaultController extends BaseController
     {
     	return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/widgets.json'), 200, array('Content-Type' => 'application/json'));
     }
-    
-    /**
-     * @Route("/pages")
-     */
-    public function pagesAction()
-    {
-    	return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/pages.json'), 200, array('Content-Type' => 'application/json'));
-    }
 }
 
 

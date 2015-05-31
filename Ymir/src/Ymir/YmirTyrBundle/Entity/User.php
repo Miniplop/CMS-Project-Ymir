@@ -4,6 +4,7 @@ namespace Ymir\YmirTyrBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -20,9 +21,40 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(nullable=true)
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Project", mappedBy="user", cascade={"persist"})
+     */
+    private $projects;
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
+         $this->projects = new ArrayCollection();
+    }
+
+    /**
+     * Set projects
+     *
+     * @param string $projects
+     *
+     * @return User
+     */
+    public function setProjects($projects)
+    {
+        $this->projects = $projects;
+
+        return $this;
+    }
+
+    /**
+     * Get projects
+     *
+     * @return string
+     */
+    public function getProjects()
+    {
+        return $this->projects;
     }
 }
