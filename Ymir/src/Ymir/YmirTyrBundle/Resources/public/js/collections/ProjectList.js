@@ -16,6 +16,14 @@ App.Collections.ProjectList = Backbone.Collection.extend({
         pages3.add([page1,page3]);*/
         var p1 = new App.Models.Project().set("nom" , "Projet 1");
         p1.set("id","1");
+        p1.save({},{
+            success: function (model,resp){
+               console.log("succés");
+            },
+            error: function (){
+                 console.log("error");
+            }
+        });
         /*p1.set("pages",pages1);*/
         var p2= new App.Models.Project().set("nom" , "Projet 2");
         p2.set("id","2");

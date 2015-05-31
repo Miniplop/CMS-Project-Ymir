@@ -11,32 +11,9 @@ var app = (function() {
 		  Router: {},
 	      todos: null,
 		  init: function(){
-              
-            
-            this.pages = new App.Collections.PageList();
-            var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
-              
-            
-              
-
-            var listprojet = new App.Collections.ProjectList();
-            var view = new App.Views.ProjectListView({collection : listprojet}).render();
-           
-           /* this.categories = new App.Collections.CategorieList();
-            var catlistview = new App.Views.CategorieListView({collection: this.categories});*/
-              
-            
+            new App.Router.MainRouter();
             Backbone.history.start();
-              
             return this;
-	      },
-	      changeContent: function(el){
-	        this.content.empty().append(el);
-	        return this;
-	      },
-	      title: function(str){
-	        $("h1").text(str);
-	        return this;
 	      }
 		};
     
