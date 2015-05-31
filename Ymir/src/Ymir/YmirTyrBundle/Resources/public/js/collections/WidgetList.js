@@ -1,15 +1,13 @@
 var App = App || {};
 App.Models.Widget = App.Models.Widget || {};
 App.Collections.WidgetList = Backbone.Collection.extend({
-    
     initialize: function () {
-        //collectionWidgetListe.fetch(); // recupération des données
+        console.log("init WidgetList");
     },
     // Une collection de page contient des models de page
     model: App.Models.Widget,
-    
-    archive: function (archived, index) {
-        this.models[index].set("archived", archived);
+    parse: function (res) {
+        return res.widgets;
     },
     
     addWidget : function (idParent, widget) {

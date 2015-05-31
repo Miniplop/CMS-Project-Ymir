@@ -15,14 +15,14 @@ var app = (function() {
             this.pages = new App.Collections.PageList();
             var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
               
-            var routeur = new App.Routers.ProjectListRouter();
+            // var routeur = new App.Routers.ProjectListRouter();
               
 
             var listprojet = new App.Collections.ProjectList();
             var view = new App.Views.ProjectListView({collection : listprojet}).render();
            
-           /* this.categories = new App.Collections.CategorieList();
-            var catlistview = new App.Views.CategorieListView({collection: this.categories});*/
+            this.categories = new App.Collections.CategorieList();
+            var catlistview = new App.Views.CategorieListView({collection: this.categories});
               
             
             Backbone.history.start();
