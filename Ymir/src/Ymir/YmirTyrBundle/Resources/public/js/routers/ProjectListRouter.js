@@ -2,20 +2,20 @@ var App = App || {};
 App.Router.ProjectListRouter = Backbone.Router.extend({
     
     routes: {
-		'/' : 'home',
+		'' : 'home',
         '/creative' : 'creative',
         '/profil' : 'profil',
 	},
     
 	home: function () {
-		alert('you are viewing home page');
+		console.log('you are viewing home page');
 	},
     
     creative: function () {
-		alert('you are viewing creative page');
+		console.log('you are viewing creative page');
 	},
     
     profil: function () {
-		alert('you are viewing profil page');
+		console.log('you are viewing profil page');
 	}
 });

@@ -12,7 +12,7 @@ var app = (function() {
 	      todos: null,
 		  init: function(){
               
-            var routeur = new App.Router.ProjectListRouter();
+            
             this.pages = new App.Collections.PageList();
             var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
               
@@ -40,11 +40,6 @@ var app = (function() {
 	      }
 		};
     
-	    var Router = Backbone.Router.extend({
-	        routes: {},
-	        
-	    
-	    });
 	    
 	    $("#checkbox_mobile").click( function(){
 	    	   if( $(this).is(':checked') ) $("#mockup-mobile").css("display", "inline");
@@ -61,6 +56,6 @@ var app = (function() {
 	    	   else $("#mockup-desktop").css("display", "none");
 		});
 	    
-	    
+	    var routeur = new App.Router.ProjectListRouter();
 	    return window.App;	
 })();
