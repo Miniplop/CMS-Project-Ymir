@@ -39,6 +39,7 @@ var DragDropHandler = (function () {
 			$(".stage").bind("DOMSubtreeModified", function () {
 				$(".droppable").droppable({
 					drop: handleDropEvent
+					hoverClass: "drop-hover"
 				});
 			});
 		}
