@@ -11,6 +11,7 @@ App.Models.Page = Backbone.Model.extend({
         console.log("init page");
         this.widgets = new App.Collections.WidgetList();
     },
+    
     parse: function(result) {
     	result.widgets = new App.Collections.WidgetList(result.widgets);
     	return result;
