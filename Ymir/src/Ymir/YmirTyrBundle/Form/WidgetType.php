@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PageType extends AbstractType
+class WidgetType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,14 +15,8 @@ class PageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            //->add('project')
-            /*->add('pages', 'collection', array(
-                'type' => new WidgetType(),
-                'by_reference' => false,
-                'allow_add' => true,
-                'allow_delete' => true
-            ))*/
+            ->add('name')
+            ->add('parent_element')
         ;
     }
     
@@ -32,7 +26,7 @@ class PageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Ymir\YmirTyrBundle\Entity\Page'
+            'data_class' => 'Ymir\YmirTyrBundle\Entity\Widget'
         ));
     }
 
@@ -41,6 +35,6 @@ class PageType extends AbstractType
      */
     public function getName()
     {
-        return 'ymir_ymirtyrbundle_page';
+        return 'ymir_ymirtyrbundle_widget';
     }
 }
