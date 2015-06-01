@@ -3,7 +3,7 @@ App.Views.ProjectPageView = App.Views.ProjectPageView || {};
 
 App.Views.ProjectListView = Backbone.View.extend({
 
-  el: $('.project-list'),
+  el: $("#project-panel"),
 
       
   events: {
@@ -15,43 +15,37 @@ App.Views.ProjectListView = Backbone.View.extend({
     initialize: function() {
         // Bind
         _.bindAll(this,'render','addProject','removeProject');
-        this.collection.bind('update', this.render); // Bind le remove d'un projet
         this.collection.bind('add', this.render);  // Bind l'ajout d'un project    
         this.render();      
     },
       
     render: function(){
-<<<<<<< HEAD
-        var $el = $(this.el);
-        this.collection.each(function(project) {
-        	var item = new App.Views.ProjectPageView({ collection: project });
-            $el.append(item.render().el);
-        });
-        $("#project-panel").html(this.$el);
-=======
         var $el = $(this.el), self = this;
         
         $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button>");
         
         if (this.collection.length != 0){ // Si liste pas vide 
+            console.log("not empty collec");
             this.collection.each(function(project) {
                 var item = new App.Views.ProjectPageView({ model: project });
                 $el.append(item.render().el);
             });
             $("#project-panel").html(this.$el);
         }else{
+            console.log("empty collec");
            $el.append("<div>Aucun projets :/</div>"); 
         }
->>>>>>> fe56f74979b732e4f73de26cea06f218f78d7bb8
         return this;
     },
     
-    removeProject: function(){
-        var id = $(ev.currentTarget).data('id'); // Récupération de l'id <3 backbone
-        console.log("RemoveProject : "+ id);
-        this.collection.remove({id : id},{
+    removeProject: function(e){
+        var self = this;
+        var id = $(e.currentTarget).data('id'); // Récupération de l'id <3 backbone
+        
+        this.collection.get(id).destroy({id : id},{
             succes : function(){
-                // Je sais pas quoi faire :) => le bind s'occupe de la redirection
+                console.log("RemoveProject : "+ id);
+                this.collection.remove({id : id}); 
             },
             error : function(){
                 new Error({ message : 'Impossible to remove project '});
@@ -61,12 +55,13 @@ App.Views.ProjectListView = Backbone.View.extend({
     },
     
     addProject: function(){
-        console.log("AddProject");
+        var self = this;
         var newProject = new App.Models.Project();
         // TODO : Ajouter une page par défault
         newProject.save({name : "Default Project"},{
             success: function (){
-                this.collection.add(newProject); // rappelle render par le bind d'add
+                console.log("AddProject");
+                this.collection.add(newProject.project); // rappelle render par le bind d'add   
             },
             error: function (){
                  new Error({ message : 'Impossible to save project '});

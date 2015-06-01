@@ -11,9 +11,14 @@ var app = (function() {
 		  Forms: {},
 		  Router: {},
 	      todos: null,
-		  init: function(){
-            new App.Router.MainRouter();
-            Backbone.history.start();
+		  init: function(routeur){
+            if (!routeur){
+                var routeur = new App.Router.ProfileRouter();
+            }else if (routeur) {
+                var routeur = new App.Router.CreativeRouter();
+            }else{
+                 console.log("error init");
+            }
             return this;
 	      }
 		};

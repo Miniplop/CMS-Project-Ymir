@@ -91,4 +91,20 @@
         <<%= widget.get('tag') %> class="<%= widget.get('class') %>"><%= widget.get('content') %></<%= widget.get('tag') %>>
    <% }); %>
 </script>
-{% endblock %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+  
+    <script>
+        window.onload = function() {
+            app.init(true);
+            $(document).foundation();
+            DragDropHandler();
+            ModalHandler();
+        }
+    </script>
+{% endblock javascripts%}
+
+
