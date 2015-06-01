@@ -3,6 +3,8 @@
 namespace Ymir\YmirTyrBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Exclude;
+
 
 /**
  * Project
@@ -29,6 +31,7 @@ class Project
     private $name;
 
     /**
+     * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\User", inversedBy="projects", cascade={"persist"})
      * @ORM\JoinColumn(name="user", referencedColumnName="id", nullable=false)
      */
