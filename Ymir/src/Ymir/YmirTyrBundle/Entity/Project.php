@@ -38,7 +38,6 @@ class Project
     protected $user;
 
     /**
-     * @ORM\Column(nullable=false)
      * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Page", mappedBy="project", cascade={"persist"})
      */
     private $pages;
@@ -128,5 +127,29 @@ class Project
     public function __construct()
     {
          $this->pages = new ArrayCollection();
+    }
+
+    /**
+     * Add page
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Page $page
+     *
+     * @return Project
+     */
+    public function addPage(\Ymir\YmirTyrBundle\Entity\Page $page)
+    {
+        $this->pages[] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Remove page
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Page $page
+     */
+    public function removePage(\Ymir\YmirTyrBundle\Entity\Page $page)
+    {
+        $this->pages->removeElement($page);
     }
 }
