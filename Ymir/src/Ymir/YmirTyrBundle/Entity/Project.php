@@ -127,8 +127,6 @@ class Project
 
     public function __construct()
     {
-        parent::__construct();
-        // your own logic
          $this->pages = new ArrayCollection();
     }
 }
