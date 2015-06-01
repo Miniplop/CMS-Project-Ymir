@@ -18,10 +18,14 @@ class ProjectType extends AbstractType
             ->add('name')
             ->add('user')
             ->add('pages', 'collection', array(
-                'type' => new PageType(),
-                'allow_add' => true,
-                'allow_delete' => true,
+                'type' => 'entity',
+                'options' => array(
+                    'class' => 'TyrBundle:Page',
+                    'property' => 'id'
+                ),
                 'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true
             ));
     }
     
