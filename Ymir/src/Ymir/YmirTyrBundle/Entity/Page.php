@@ -32,7 +32,7 @@ class Page
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Project", inversedBy="pages", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Project", inversedBy="pages")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     protected $project;
