@@ -16,7 +16,6 @@ class PageType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('project')
         ;
     }
     
