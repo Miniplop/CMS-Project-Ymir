@@ -25,8 +25,8 @@ var app = (function() {
             var catlistview = new App.Views.CategorieListView({collection: this.categories, loc : "#stage"});
               
             
-            new App.Router.MainRouter();
-            Backbone.history.start();
+            /*new App.Router.MainRouter();
+            Backbone.history.start();*/
             return this;
 	      }
 		};

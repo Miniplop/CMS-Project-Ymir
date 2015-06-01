@@ -66,7 +66,7 @@
 <script type="text/template" id="widget-template">
     <% widgets.each(function(widget) { %>
         <<%= widget.get('tag') %> 
-        if (widget.get('class') != null) { class="<%= widget.get('class') %>" };
+        if (widget.get('class') !== null) { class="<%= widget.get('class') %>" };
         id="widget<%= widget.get('id') %>> <%= widget.get('content') %></<%= widget.get('tag') %>>
    <% }); %>
 </script>
