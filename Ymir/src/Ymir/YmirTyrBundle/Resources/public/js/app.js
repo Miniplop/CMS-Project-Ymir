@@ -8,12 +8,29 @@ var app = (function() {
 		  Models: {},
 		  Collections: {},
 		  Views: {},
+		  Forms: {},
 		  Router: {},
 	      todos: null,
-		  init: function(){
 
-            new App.Router.MainRouter();
-            Backbone.history.start();
+		  init: function(routeur){
+            if (!routeur){
+                /*var routeur = new App.Router.ProfileRouter();*/
+                var listprojet = new App.Collections.ProjectList();
+        
+                listprojet.fetch({
+                    success : function (){
+                        var view = new App.Views.ProjectListView({collection : listprojet});
+                    },
+                    error : function (){
+                        new Error({ message : 'Impossible to load project list'});      
+                    }
+            });
+            }else if (routeur) {
+                console.log("routeur init");
+                var routeur = new App.Router.CreativeRouter();
+            }else{
+                 console.log("error init");
+            }
             return this;
 	      }
 		};
@@ -33,7 +50,6 @@ var app = (function() {
 	    	   if( $(this).is(':checked') ) $("#mockup-desktop").css("display", "inline");
 	    	   else $("#mockup-desktop").css("display", "none");
 		});
-	    
-	   /* var routeur = new App.Router.ProjectListRouter();*/
+    
 	    return window.App;	
 })();

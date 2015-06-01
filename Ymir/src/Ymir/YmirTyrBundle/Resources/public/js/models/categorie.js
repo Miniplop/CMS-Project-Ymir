@@ -14,7 +14,6 @@ App.Models.Categorie = Backbone.Model.extend({
     	return result;
     },
 	getWidget: function(id) {
-		console.log(this);
 		return this.get("widgets").getWidget(id);	
 	}	
 });

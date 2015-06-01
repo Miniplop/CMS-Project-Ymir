@@ -7,9 +7,10 @@
 			"widgets": 			[ 
 				{"name": "Button", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements":
 											[ {
+											"id": 1,
 											"balise": "button", 
-											"metaParameters": [ {"name": "class", "value": "button"} ], 
-											"children": [ {"balise": "", "metaParameters": [], "value": "Button"} ],
+											"htmlParameters": [ {"name": "class", "value": "button"} ], 
+											"children": [ {"id": 13, "balise": "", "htmlParameters": [], "value": "Button"} ],
 											"value": "",
 											"acceptAllCategorieAsChildren": "false",
 											"possibleCategorieAsChildren": [ {"categorie_id": 2} ]
@@ -24,8 +25,9 @@
 			[ 
 				{"name": "Torso", "htmlPreview": "<i disabled=\"true\" class=\"fi-torso\"></i>", "htmlElements": 
 											[ {
+											"id": 2,
 											"balise": "i", 
-											"metaParameters": [ {"name": "class", "value": "fi-torso"} ], 
+											"htmlParameters": [ {"name": "class", "value": "fi-torso"} ], 
 											"children": [],
 											"value": "",
 											"acceptAllCategorieAsChildren": "false",
@@ -38,132 +40,57 @@
 			"id": 3,
 			"name": "Containers",
 			"widgets": 
-			[ 
-				{"name": "12 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-12 columns"} ], "children": [], "value": ""} ], 
+			[
+				{"name": "section", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+											[ {
+											"id": 3,
+											"balise": "section", 
+											"htmlParameters": [],
+											"children": [ {"id": 8, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
 				},
-				{"name": "1-11 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-1 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-11 columns"} ], "children": [], "value": ""}
-													], 
+				{"name": "article", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+											[ {
+											"id": 4,
+											"balise": "article", 
+											"htmlParameters": [], 
+											"children": [ {"id": 9, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "2-10 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-2 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-10 columns"} ], "children": [], "value": ""}
-													], 
+				{"name": "header", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+											[ {
+											"id": 5,
+											"balise": "header",
+											"htmlParameters": [], 
+											"children": [ {"id": 10, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "3-9 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-3 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-9 columns"} ], "children": [], "value": ""}
-													], 
+				{"name": "footer", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+											[ {
+											"id": 6,
+											"balise": "footer", 
+											"htmlParameters": [],
+											"children": [ {"id": 11, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "4-8 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-4 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-8 columns"} ], "children": [], "value": ""}
-													],
-											"value": "", 
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{"name": "5-7 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-5 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-7 columns"} ], "children": [], "value": ""}
-													], 
-											"value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{"name": "6-6 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-6 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-6 columns"} ], "children": [], "value": ""}
-													], 
-											"value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{"name": "7-5 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-7 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-5 columns"} ], "children": [], "value": ""}
-													], 
-											"value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{"name": "8-4 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-8 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-4 columns"} ], "children": [], "value": ""}
-													], 
-											"value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{"name": "9-3 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-9 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-3 columns"} ], "children": [], "value": ""}
-													], 
-											"value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{"name": "10-2 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-10 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-2 columns"} ], "children": [], "value": ""}
-													], 
-											"value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{"name": "11-1 columns", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements": 
-											[ {"balise": "div", 
-											"metaParameters": [ {"name": "class", "value": "row"} ], 
-											"children": [ {"balise": "div", "metaParameters": [ {"name": "class", "value": "small-11 columns"} ], "children": [], "value": ""},
-														{"balise": "div", "metaParameters": [ {"name": "class", "value": "small-1 columns"} ], "children": [], "value": ""}
-													], 
+				{"name": "aside", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+											[ {
+											"id": 7,
+											"balise": "aside", 
+											"htmlParameters": [], 
+											"children": [ {"id": 12, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []

@@ -18,6 +18,7 @@
     {{ parent() }}
     {% javascripts  output='js/ymir.js'
 				"bundles/tyr/js/app.js"
+				"bundles/tyr/js/DragDropHandler.js"
                 "bundles/tyr/js/routers/*.js"
                 "bundles/tyr/js/views/projects/ProjectPageView.js"
                 "bundles/tyr/js/views/projects/ProjectListView.js"
@@ -27,21 +28,10 @@
                 "bundles/tyr/js/views/widgets/WidgetListView.js"
                 "bundles/tyr/js/views/*.js"
                 "bundles/tyr/js/models/*.js"
+                "bundles/tyr/js/forms/*.js"
                 "bundles/tyr/js/collections/*.js"
-                "bundles/tyr/js/DragDropHandler.js"
-				"bundles/tyr/js/Modal.js"
-				
-                
 		%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-    <script>
-            window.onload = function() {
-                app.init();
-                $(document).foundation();
-                DragDropHandler();
-                ModalHandler();
-            }
-    </script>
+{% endblock javascripts %}
 
-{% endblock %}

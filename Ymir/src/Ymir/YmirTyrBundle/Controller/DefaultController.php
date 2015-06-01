@@ -26,7 +26,7 @@ class DefaultController extends BaseController
     {
         $securityContext = $this->container->get('security.context');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return array();
+            return $this->redirect($this->generateUrl('profile'));
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
         } else {
             /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
@@ -60,6 +60,15 @@ class DefaultController extends BaseController
                 'form' => $form->createView(), 'errors' => $form->getErrors(true, false),
             ));
         }
+    }
+
+    /**
+     * @Route("/profile", name="profile")
+     * @Template("TyrBundle:Profil:index.html.twig")
+     */
+    public function profileAction()
+    {
+        return array();
     }
     
     /**

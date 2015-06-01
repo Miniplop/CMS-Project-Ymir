@@ -2,24 +2,57 @@
 
 {% block body %}
 <section>
-    
-	<div class ="row">
-	    <article>
-	        {{ include("TyrBundle:Profil:listeProjets.html.twig") }}
-	    </article>
-	</div>
-	<div class = "row">
-	    <article>
-	        {{ include("TyrBundle:Profil:listeWidgets.html.twig") }}
-	    </article>
-	</div>
+        <div class="panel">
+            <div class ="row">
+                <h1> Projets </h1>
+                <hr>
+            </div>
+            <div class ="row">
+                <div class ="project-list" id="project-panel" >           
+                            <!-- Backbone template -->
+                </div>
+            </div>
+        </div>
 </section>
 <footer>
         {{ include("TyrBundle:Profil:footer.html.twig") }}
 </footer>
 
 
-    
+
+<script type="text/template" id="list-projet-template">
+        <div class="row ">
+              <div class="small-8 large-8 columns">
+                <a href="#projet-<%= id%>"><%= name %></a>
+              </div>
+              <div class="small-2 large-2 columns">
+                <a class="download-project" data-id="<%= id%>"><i class="fi-download"></i></a>
+              </div>
+              <div class="small-2 large-2 columns">
+                <a class="remove-project" data-id="<%= id%>"><i class="fi-x"></i></a>
+            </div>
+        </div>				  
+        <div id="projet-<%= id%>" class="content">
+			<ul class="dropdown">
+                <a class="add-page"><i class="fi-plus"></i> Add Page</a>
+            </ul>
+		</div>
+        <hr>
+</script>
+{% endblock body %}
 
 
-{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+  
+<script>
+    window.onload = function() {
+        console.log("app init");
+        app.init(false);
+        $(document).foundation();
+    }
+</script>
+{% endblock javascripts %}
+  
+
+
