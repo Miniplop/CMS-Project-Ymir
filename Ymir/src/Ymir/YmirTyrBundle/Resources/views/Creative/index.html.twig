@@ -88,7 +88,7 @@
 
 <script type="text/template" id="widget-template">
     <% widgets.each(function(widget) { %>
-        <<%= widget.get('tag') %>><%= widget.get('content') %></<%= widget.get('tag') %>>
+        <<%= widget.get('tag') %> class="<%= widget.get('class') %>"><%= widget.get('content') %></<%= widget.get('tag') %>>
    <% }); %>
 </script>
 {% endblock %}

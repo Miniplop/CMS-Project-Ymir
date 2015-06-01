@@ -26,7 +26,7 @@ class DefaultController extends BaseController
     {
         $securityContext = $this->container->get('security.context');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return array();
+            return $this->redirect($this->generateUrl('profile'));
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
         } else {
             /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
@@ -61,6 +61,15 @@ class DefaultController extends BaseController
             ));
         }
     }
+
+    /**
+     * @Route("/profile", name="profile")
+     * @Template("TyrBundle:Profil:index.html.twig")
+     */
+    public function profileAction()
+    {
+        return array();
+    }
     
     /**
      * @Route("/creative")
@@ -78,13 +87,13 @@ class DefaultController extends BaseController
     {
     	return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/widgets.json'), 200, array('Content-Type' => 'application/json'));
     }
-    
+
     /**
      * @Route("/pages")
      */
     public function pagesAction()
     {
-    	return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/pages.json'), 200, array('Content-Type' => 'application/json'));
+        return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/pages.json'), 200, array('Content-Type' => 'application/json'));
     }
 }
 
