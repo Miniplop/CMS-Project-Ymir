@@ -38,6 +38,7 @@ App.Views.ProjectListView = Backbone.View.extend({
     },
     
     removeProject: function(){
+        var self = this;
         var id = $(ev.currentTarget).data('id'); // Récupération de l'id <3 backbone
         console.log("RemoveProject : "+ id);
         this.collection.remove({id : id},{
