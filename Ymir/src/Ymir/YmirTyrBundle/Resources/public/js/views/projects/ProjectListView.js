@@ -52,12 +52,13 @@ App.Views.ProjectListView = Backbone.View.extend({
     },
     
     addProject: function(){
+        var self = this;
         console.log("AddProject");
         var newProject = new App.Models.Project();
         // TODO : Ajouter une page par défault
         newProject.save({name : "Default Project"},{
             success: function (){
-                this.collection.add(newProject); // rappelle render par le bind d'add
+                this.collection.add(newProject.project); // rappelle render par le bind d'add
             },
             error: function (){
                  new Error({ message : 'Impossible to save project '});

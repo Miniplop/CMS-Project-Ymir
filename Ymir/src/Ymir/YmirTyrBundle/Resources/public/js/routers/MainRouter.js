@@ -15,7 +15,6 @@ App.Router.MainRouter = Backbone.Router.extend({
         console.log('you are viewing home page');
         
         var listprojet = new App.Collections.ProjectList();
-        console.log("yolo");
         listprojet.fetch({
             success : function (){
                 var view = new App.Views.ProjectListView({collection : listprojet});
