@@ -16,11 +16,12 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 		console.log('you are viewing creative page');
 
         // Nav Bar view 
-        this.categories = new App.Collections.CategorieList();
+       /* this.categories = new App.Collections.CategorieList();
         var catlistview = new App.Views.CategorieListView({collection: this.categories});
 
         // Stage view
-        var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
+        this.pages = new App.Collections.PageList();
+        var arbreWidget = new App.Views.WidgetListView({collection: this.pages});*/
 
 	}
 });
