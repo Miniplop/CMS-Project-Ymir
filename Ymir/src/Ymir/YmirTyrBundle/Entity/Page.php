@@ -4,6 +4,7 @@ namespace Ymir\YmirTyrBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Exclude;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Page
@@ -36,6 +37,10 @@ class Page
      */
     protected $project;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_element", cascade={"persist"})
+     */
+    private $widgets;
 
     /**
      * Get id
@@ -93,5 +98,44 @@ class Page
     public function getProject()
     {
         return $this->project;
+    }
+
+    public function __construct()
+    {
+         $this->widgets = new ArrayCollection();
+    }
+
+    /**
+     * Add widget
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widget
+     *
+     * @return Page
+     */
+    public function addWidget(\Ymir\YmirTyrBundle\Entity\Widget $widget)
+    {
+        $this->widgets[] = $widget;
+
+        return $this;
+    }
+
+    /**
+     * Remove widget
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widget
+     */
+    public function removeWidget(\Ymir\YmirTyrBundle\Entity\Widget $widget)
+    {
+        $this->widgets->removeElement($widget);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
     }
 }
