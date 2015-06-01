@@ -12,8 +12,7 @@ var app = (function() {
 	      todos: null,
 		  init: function(){
             new App.Router.MainRouter();
-            Backbone.history.start();
-            return this;
+            Backbone.history.start(); 
 	      }
 		};
     

@@ -9,6 +9,7 @@ App.Router.MainRouter = Backbone.Router.extend({
 		'' : 'home',
         '/creative' : 'creative',
         '/profil' : 'profil',
+        '/remove' : 'remove'
 	},
     
 	home: function () {		
