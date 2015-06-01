@@ -11,14 +11,19 @@ App.Router.MainRouter = Backbone.Router.extend({
         '/profil' : 'profil',
 	},
     
-	home: function () {
-          /*   this.pages = new App.Collections.PageList();*/		
+	home: function () {		
         console.log('you are viewing home page');
         
         var listprojet = new App.Collections.ProjectList();
-        // Ici fetch a faire 
-        // Prompt pour name
-        var view = new App.Views.ProjectListView({collection : listprojet}).render();
+        console.log("yolo");
+        listprojet.fetch({
+            success : function (){
+                var view = new App.Views.ProjectListView({collection : listprojet});
+            },
+            error : function (){
+                new Error({ message : 'Impossible to load project list'});      
+            }
+        });
 	},
     
     creative: function () {

@@ -8,7 +8,8 @@ App.Models.Project = Backbone.Model.extend({
     },
     
     defaults:{
-        nom: "",
+        name: "",
+        user:"",
         id: null,
         pages: null
     }

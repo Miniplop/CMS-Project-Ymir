@@ -9,38 +9,52 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-/**
- * @Route("/project")
- *
- */
+use FOS\RestBundle\Controller\Annotations\View;
+use Ymir\YmirTyrBundle\Form\ProjectType;
+use Ymir\YmirTyrBundle\Entity\Project;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
+
 class ProjectController extends Controller
-{
+{   
     /**
-     * @Route("/create")
-     * @Method({"POST"})
+     * @return array
+     * @View()
      */
-    public function createAction()
+    public function postProjectsAction(Request $request)
     {
+        //pour tester on prend un user en dur
+        /*$id = 1;
+        $repository = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('TyrBundle:User');
+
+        $user = $repository->findOneById($id);*/
+        $user = $this->getUser();
+        
+        $request->attributes->set('user', $user->getId());
         $form = $this->createForm(new ProjectType(), new Project());
         $form->submit($request->request->all());
 
         if ($form->isValid()) {
             $project = $form->getData();
+            $project->setUser($user);
 
             $om = $this->get('doctrine')->getManager();
             $om->persist($project);
             $om->flush();
 
-            return new JsonResponse($project->toArray(), 200);
+            return array('project' => $project);
         }
-        return new JsonResponse($this->getFormErrorMessage($form), 400);
+        return array('error' => $this->getFormErrorMessage($form));
     }
 
     /**
-     * @Route("/list")
-     * @Method({"GET"})
+     * @return array
+     * @View()
      */
-    public function listAction()
+    public function getProjectsAction()
     {
         $user = $this->getUser();
         $repository = $this
@@ -54,15 +68,29 @@ class ProjectController extends Controller
               5,                              // Limite
               0                               // Offset
             );*/
-        return new JsonResponse($listProjects, 200);
+        //return new JsonResponse($user, 200);
+        //return new JsonResponse($listProjects, 200);
+        return array('projects' => $listProjects);
     }
 
     /**
-     * @Route("/update")
-     * @Method({"PUT"})
-     * @Template()
+     * @param Project $project
+     * @return array
+     * @View()
+     * @ParamConverter("project", class="TyrBundle:Project")
      */
-    public function updateAction()
+    public function getProjectAction(Project $project)
+    {
+        return array('project' => $project);
+    }
+
+    /**
+     * @param Project $project
+     * @return array
+     * @View()
+     * @ParamConverter("project", class="TyrBundle:Project")
+     */
+    public function putProjectAction(Project $project)
     {
         return array(
                 // ...
@@ -70,11 +98,12 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/delete")
-     * @Method({"DELETE"})
-     * @Template()
+     * @param Project $project
+     * @return array
+     * @View()
+     * @ParamConverter("project", class="TyrBundle:Project")
      */
-    public function deleteAction()
+    public function deleteProjectAction(Project $project)
     {
         return array(
                 // ...
