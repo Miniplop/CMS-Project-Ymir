@@ -1,8 +1,6 @@
 var DragDropHandler = function () {
 	'use strict';
 	
-<<<<<<< HEAD
-	
 	function initContainerParameterForm() {
 		
 		$("#container-modal #name").val("Container");
@@ -44,8 +42,6 @@ var DragDropHandler = function () {
 	}
 	
 	
-=======
->>>>>>> fe56f74979b732e4f73de26cea06f218f78d7bb8
 	function handleDropEvent(event, ui) {
 		
 		var recipier_id = $(this).data("widget-id"), categorie_id = $(ui.draggable).data("categorie-id");

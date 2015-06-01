@@ -11,7 +11,6 @@ var app = (function() {
 		  Forms: {},
 		  Router: {},
 	      todos: null,
-
 		  init: function(routeur){
             if (!routeur){
                 var routeur = new App.Router.ProfileRouter();
@@ -20,7 +19,6 @@ var app = (function() {
             }else{
                  console.log("error init");
             }
-
             return this;
 	      }
 		};
