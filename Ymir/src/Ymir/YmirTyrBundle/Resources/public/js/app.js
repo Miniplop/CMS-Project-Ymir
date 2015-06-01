@@ -3,7 +3,7 @@ var app = (function() {
 		window.App = {
 		  defaults: {
 			  categories: null,
-              pages: null
+              pages: null,
 		  },
 		  Models: {},
 		  Collections: {},

@@ -7,14 +7,11 @@ App.Models.Page = Backbone.Model.extend({
         title: "Page 1",
         widgets: null, // contient uniquement le wdget source (body)
     },
-    initialize: function () {
-        console.log("init page");
-        this.widgets = new App.Collections.WidgetList();
-    },
     
-    parse: function(result) {
-    	result.widgets = new App.Collections.WidgetList(result.widgets);
-    	return result;
+    parse: function (result) {
+        result.widgets = new App.Collections.WidgetList(result.widgets);
+        this.widgets = result.widgets;
+        return result;
     },
     
     addWidget : function (idParent, widget) {

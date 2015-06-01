@@ -1,7 +1,5 @@
 var App = App || {};
-App.Models.Project =App.Models.Project || {};
-
-
+App.Models.Project = App.Models.Project || {};
 
 App.Router.MainRouter = Backbone.Router.extend({
     
@@ -11,8 +9,8 @@ App.Router.MainRouter = Backbone.Router.extend({
         '/profil' : 'profil',
 	},
     
-	home: function () {		
-        console.log('you are viewing home page');
+	home: function () {
+       /* console.log('you are viewing home page');
         
         var listprojet = new App.Collections.ProjectList();
         console.log("yolo");
@@ -23,7 +21,16 @@ App.Router.MainRouter = Backbone.Router.extend({
             error : function (){
                 new Error({ message : 'Impossible to load project list'});      
             }
-        });
+        });*/
+        console.log('you are viewing creative page');
+        
+        // Nav Bar view 
+        this.categories = new App.Collections.CategorieList();
+        var catlistview = new App.Views.CategorieListView({collection: this.categories});
+        
+        // Stage view 
+        this.pages = new App.Collections.PageList();
+        var arbreWidget = new App.Views.PageListView({collection: this.pages});
 	},
     
     creative: function () {
@@ -35,7 +42,7 @@ App.Router.MainRouter = Backbone.Router.extend({
         var catlistview = new App.Views.CategorieListView({collection: this.categories});
         
         // Stage view 
-        this.pages = new App.Collections.PageList();
+        this.pages = new App.Collections.PageList();        
         var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
 	},
     
