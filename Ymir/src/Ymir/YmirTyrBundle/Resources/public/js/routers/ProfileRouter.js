@@ -17,6 +17,7 @@ App.Router.ProfileRouter = Backbone.Router.extend({
         console.log('you are viewing profile page');
         listprojet.fetch({
             success : function (){
+                console.log(listprojet);
                 var view = new App.Views.ProjectListView({collection : listprojet});
             },
             error : function (){
