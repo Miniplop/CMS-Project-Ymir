@@ -26,8 +26,14 @@ var app = (function() {
                     }
             });
             }else if (routeur) {
-                console.log("routeur init");
-                var routeur = new App.Router.CreativeRouter();
+                //var routeur = new App.Router.CreativeRouter();  
+        // Nav Bar view 
+        this.categories = new App.Collections.CategorieList();
+        var catlistview = new App.Views.CategorieListView({collection: this.categories});
+        
+        // Stage view 
+        var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
+
             }else{
                  console.log("error init");
             }
