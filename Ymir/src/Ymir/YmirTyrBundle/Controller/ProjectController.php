@@ -41,9 +41,9 @@ class ProjectController extends Controller
             $project = $form->getData();
             $project->setUser($user);
 
-            $om = $this->get('doctrine')->getManager();
-            $om->persist($project);
-            $om->flush();
+            $em = $this->get('doctrine')->getManager();
+            $em->persist($project);
+            $em->flush();
 
             return array('project' => $project);
         }
@@ -106,9 +106,11 @@ class ProjectController extends Controller
      */
     public function deleteProjectAction(Project $project)
     {
-        return array(
-                // ...
-            );    
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($project);
+        $em->flush();
+
+        return $this->view(null, Codes::HTTP_NO_CONTENT);
     }
 
     /**
