@@ -6,9 +6,16 @@
             "widgets": [ 
                 {
                  "id": 1,
-                 "class": "",
+                 "class": "test",
                  "tag": "p",
                  "content": "Adrien",
+                 "children": []
+                },
+                {
+                 "id": 2,
+                 "class": "",
+                 "tag": "p",
+                 "content": "Adrou",
                  "children": []
                 }
             ]

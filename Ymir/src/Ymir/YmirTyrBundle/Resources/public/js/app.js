@@ -12,39 +12,25 @@ var app = (function() {
 	      todos: null,
 		  init: function(){
               
-            var routeur = new App.Router.ProjectListRouter();
             this.pages = new App.Collections.PageList();
             var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
               
-            
+            // var routeur = new App.Routers.ProjectListRouter();
               
 
             var listprojet = new App.Collections.ProjectList();
             var view = new App.Views.ProjectListView({collection : listprojet}).render();
            
-           /* this.categories = new App.Collections.CategorieList();
-            var catlistview = new App.Views.CategorieListView({collection: this.categories});*/
+            this.categories = new App.Collections.CategorieList();
+            var catlistview = new App.Views.CategorieListView({collection: this.categories});
               
             
+            new App.Router.MainRouter();
             Backbone.history.start();
-              
             return this;
-	      },
-	      changeContent: function(el){
-	        this.content.empty().append(el);
-	        return this;
-	      },
-	      title: function(str){
-	        $("h1").text(str);
-	        return this;
 	      }
 		};
     
-	    var Router = Backbone.Router.extend({
-	        routes: {},
-	        
-	    
-	    });
 	    
 	    $("#checkbox_mobile").click( function(){
 	    	   if( $(this).is(':checked') ) $("#mockup-mobile").css("display", "inline");
@@ -61,6 +47,6 @@ var app = (function() {
 	    	   else $("#mockup-desktop").css("display", "none");
 		});
 	    
-	    
+	   /* var routeur = new App.Router.ProjectListRouter();*/
 	    return window.App;	
 })();

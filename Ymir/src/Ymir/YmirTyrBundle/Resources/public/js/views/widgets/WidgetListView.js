@@ -17,8 +17,8 @@ App.Views.WidgetListView = Backbone.View.extend({
         var $el = $(this.el), self = this;
         this.collection.each(function (widget) {
             var item = new App.Views.WidgetView({model : widget});
-            $el.append(item.render().el);
-            return this;
+            $el.append(item.render().el);            
         });
+        return this;
     }
 });
