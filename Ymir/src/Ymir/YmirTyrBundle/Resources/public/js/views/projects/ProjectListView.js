@@ -60,7 +60,6 @@ App.Views.ProjectListView = Backbone.View.extend({
         var newProject = new App.Models.Project();
         newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{});
         this.collection.add(newProject.get("project")); // rappelle render par le bind d'add   
-       
     },
     
     downloadProject: function(){
