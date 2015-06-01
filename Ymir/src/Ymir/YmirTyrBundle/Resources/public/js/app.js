@@ -10,14 +10,13 @@ var app = (function() {
 		  Views: {},
 		  Router: {},
 	      todos: null,
-		  init: function(){
-                console.log("app init");
-            if (this.routeur_selection == "profile"){
+		  init: function(routeur){
+            if (!routeur){
                 var routeur = new App.Router.ProfileRouter();
-            }else if ( this.routeur_selection == "creative" ) {
+            }else if (routeur) {
                 var routeur = new App.Router.CreativeRouter();
             }else{
-                 console.log("error");
+                 console.log("error init");
             }
             Backbone.history.start();
             return this;

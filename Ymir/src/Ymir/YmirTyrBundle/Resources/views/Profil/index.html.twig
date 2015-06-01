@@ -2,19 +2,14 @@
 
 {% block body %}
 <section>
-    
-	<div class ="row">
-	    <article>
-	        {{ include("TyrBundle:Profil:listeProjets.html.twig") }}
-	    </article>
-	</div>
         <div class="panel">
             <div class ="row">
                 <h1> Projets </h1>
+                <hr>
             </div>
             <div class ="row">
                 <div class ="project-list" id="project-panel" >           
-                                    <!-- Backbone template -->
+                            <!-- Backbone template -->
                 </div>
             </div>
         </div>
@@ -43,19 +38,19 @@
             </ul>
 		</div>
 </script>
-{% endblock %}
+{% endblock body %}
 
 
 {% block javascripts %}
     {{ parent() }}
   
 <script>
-            window.onload = function() {
-                app.init({routeur_selection : "profile"});
-                $(document).foundation();
-                DragDropHandler();
-                ModalHandler();
-            }
+    window.onload = function() {
+        app.init(false);
+        $(document).foundation();
+        DragDropHandler();
+        ModalHandler();
+    }
 </script>
 {% endblock javascripts %}
   

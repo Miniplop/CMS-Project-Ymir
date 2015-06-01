@@ -3,7 +3,7 @@ App.Views.ProjectPageView = App.Views.ProjectPageView || {};
 
 App.Views.ProjectListView = Backbone.View.extend({
 
-  /*el: $("#project-panel"),*/
+  el: $("#project-panel"),
 
       
   events: {
