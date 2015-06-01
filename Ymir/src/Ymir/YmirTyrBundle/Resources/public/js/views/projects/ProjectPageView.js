@@ -22,7 +22,8 @@ App.Views.ProjectPageView = Backbone.View.extend({
         return this;
     },
     
-    removePage: function (){
+    removePage: function (e){
+         var id = $(e.currentTarget).data('id'); // Récupération de l'id <3 backbone
     },
     
     

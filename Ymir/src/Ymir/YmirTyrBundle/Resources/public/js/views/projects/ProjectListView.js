@@ -3,7 +3,7 @@ App.Views.ProjectPageView = App.Views.ProjectPageView || {};
 
 App.Views.ProjectListView = Backbone.View.extend({
 
-  el: $("#project-panel"),
+/*  el: $("#project-panel"),*/
 
       
   events: {
@@ -30,11 +30,12 @@ App.Views.ProjectListView = Backbone.View.extend({
                 var item = new App.Views.ProjectPageView({ model: project });
                 $el.append(item.render().el);
             });
-            $("#project-panel").html(this.$el);
+            
         }else{
             console.log("empty collec");
            $el.append("<div>Aucun projets :/</div>"); 
         }
+        $("#project-panel").html(this.$el);
         return this;
     },
     
@@ -58,7 +59,7 @@ App.Views.ProjectListView = Backbone.View.extend({
         var self = this;
         var newProject = new App.Models.Project();
         // TODO : Ajouter une page par défault
-        newProject.save({name : "Default Project"},{
+        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{
             success: function (){
                 console.log("AddProject");
                 this.collection.add(newProject.project); // rappelle render par le bind d'add   

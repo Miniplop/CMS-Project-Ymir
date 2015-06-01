@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ProjectType extends AbstractType
+class PageType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,14 +15,8 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('user')
-            ->add('pages', 'collection', array(
-                'type' => new PageType(),
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-            ));
+            ->add('title')
+        ;
     }
     
     /**
@@ -31,8 +25,7 @@ class ProjectType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Ymir\YmirTyrBundle\Entity\Project',
-            'csrf_protection' => false,
+            'data_class' => 'Ymir\YmirTyrBundle\Entity\Page'
         ));
     }
 
@@ -41,6 +34,6 @@ class ProjectType extends AbstractType
      */
     public function getName()
     {
-        return 'ymir_ymirtyrbundle_project';
+        return 'ymir_ymirtyrbundle_page';
     }
 }
