@@ -118,7 +118,8 @@ class ProjectController extends Controller
         $em->remove($project);
         $em->flush();
 
-        return $this->view(null, Codes::HTTP_NO_CONTENT);
+        //return $this->view(null, Codes::HTTP_NO_CONTENT);
+        return array();
     }
 
     /**
