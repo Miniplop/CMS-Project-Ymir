@@ -20,8 +20,7 @@ class ProjectType extends AbstractType
             ->add('pages', 'collection', array(
                 'type' => 'entity',
                 'options' => array(
-                    'class' => 'TyrBundle:Page',
-                    'property' => 'id'
+                    'class' => 'TyrBundle:Page'
                 ),
                 'by_reference' => false,
                 'allow_add' => true,
