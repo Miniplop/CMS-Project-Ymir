@@ -46,6 +46,29 @@
 	</div>
 </div>
 
+<div id="container-modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	<form>
+        <h1>Container parameters</h1>
+
+        <label>Name <input name="name" id="name" type="text"></label>
+
+		<label>Row <input name="isRow" id="isRow" type="checkbox"></label>
+
+        <label>Choose a number of columns
+			<select name="nbColumns" id="nbColumns"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
+			</select>
+		</label>
+
+        <h2>columns sizing</h2>
+        <div>
+			<select data-column-index="1" name="columnsSize_1" class="columnsSize"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
+			</select>
+		</div>
+		<a class="close-reveal-modal" aria-label="Cancel">&#215;</a>
+		<button class="button" id="container-parameters-add">Add</button>
+    </form>
+</div>
+
 
 <script type="text/template" id="categorie-template">
 		<a href="#categorie_<%= id %>"><%= name %>
@@ -54,7 +77,7 @@
 		<div id="categorie_<%= id %>" class="content">
 			<ul class="dropdown">
 			<% widgets.each(function(widget) { %>
-				<li class="show-widget-preview draggable" data-widget-id="<%= widget.get('id') %>">
+				<li class="show-widget-preview draggable" data-widget-id="<%= widget.get('id') %>" data-categorie-id="<%= id %>">
 					<a href="#<%= widget.get('id') %>"><%= widget.get('name') %></a>
 					<div class="widget-preview" disabled="true"><%= widget.get('htmlPreview') %></div>
 				</li>
@@ -68,5 +91,4 @@
         <<%= widget.get('tag') %>><%= widget.get('content') %></<%= widget.get('tag') %>>
    <% }); %>
 </script>
-
 {% endblock %}

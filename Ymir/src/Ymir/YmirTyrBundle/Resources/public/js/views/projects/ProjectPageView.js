@@ -5,8 +5,8 @@ App.Views.ProjectPageView = Backbone.View.extend({
     template: _.template($('#list-projet-template').html()),
     
     initialize: function (){
-         _.bindAll(this, 'render', 'unrender', 'remove');
-        this.collection.bind('remove', this.unrender);
+		this.collection.bind("add", this.render);
+		this.collection.bind("remove", this.unrender);
     },
     
     render: function() {

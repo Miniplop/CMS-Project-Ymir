@@ -23,7 +23,7 @@ App.Views.ProjectListView = Backbone.View.extend({
     },
       
     render: function(){
-        var $el = $(this.el), self = this;
+        var $el = $(this.el);
         this.collection.each(function(project) {
         	var item = new App.Views.ProjectPageView({ collection: project });
             $el.append(item.render().el);
