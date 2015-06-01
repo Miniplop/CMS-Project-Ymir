@@ -32,7 +32,8 @@ var app = (function() {
         var catlistview = new App.Views.CategorieListView({collection: this.categories});
         
         // Stage view 
-        var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
+        this.pages = new App.Collections.PageList();
+        var arbreWidget = new App.Views.PageListView({collection: this.pages});
 
             }else{
                  console.log("error init");
