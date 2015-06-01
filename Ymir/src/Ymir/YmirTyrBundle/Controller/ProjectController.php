@@ -93,9 +93,17 @@ class ProjectController extends Controller
      */
     public function putProjectAction(Project $project)
     {
-        return array(
-                // ...
-            );    
+        $form = $this->createForm(new ProjectType(), $project);
+        $form->bind($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+
+            return array('project' => $project);
+        }
+        return array('error' => (string) $form->getErrors(true, false));
     }
 
     /**
