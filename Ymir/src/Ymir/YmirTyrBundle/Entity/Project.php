@@ -124,4 +124,11 @@ class Project
     {
         return $this->pages;
     }
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+         $this->pages = new ArrayCollection();
+    }
 }
