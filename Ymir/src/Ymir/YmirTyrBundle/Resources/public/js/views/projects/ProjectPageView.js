@@ -12,8 +12,9 @@ App.Views.ProjectPageView = Backbone.View.extend({
     initialize: function (){
         
          _.bindAll(this, 'render','unrender');
-		this.collection.bind("add", this.render);
-		this.collection.bind("remove", this.unrender);
+		this.model.bind("add", this.render);
+        this.model.bind("change", this.render);
+		this.model.bind("remove", this.unrender);
     },
     
     render: function() {
@@ -27,7 +28,7 @@ App.Views.ProjectPageView = Backbone.View.extend({
          var page = this.model.pages.get(id);
          page.destroy({},{
               success : function(){
-                 this.model.pages.remove(id); // Trigger sur collection
+                 this.model.pages.remove(id); //
              },
               error : function(){
                  
