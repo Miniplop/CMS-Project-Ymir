@@ -47,7 +47,8 @@ class ProjectController extends Controller
 
             return array('project' => $project);
         }
-        return array('error' => $this->getFormErrorMessage($form));
+        return array('error' => (string) $form->getErrors(true, false));
+        //return array('error' => $this->getFormErrorMessage($form));
     }
 
     /**
