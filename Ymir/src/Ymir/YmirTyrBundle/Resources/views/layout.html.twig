@@ -17,7 +17,7 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts  output='js/ymir.js'
-				"bundles/tyr/js/App.js"
+				"bundles/tyr/js/app.js"
 				"bundles/tyr/js/DragDropHandler.js"
                 "bundles/tyr/js/routers/*.js"
                 "bundles/tyr/js/views/projects/ProjectPageView.js"
@@ -36,7 +36,6 @@
                 app.init();
                 $(document).foundation();
                 DragDropHandler();
-                ModalHandler();
             }
     </script>
 
