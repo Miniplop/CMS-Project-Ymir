@@ -5,19 +5,16 @@ App.Models.Project =App.Models.Project || {};
 
 App.Router.ProfileRouter = Backbone.Router.extend({
     
-    routes: {
-        
+    routes: {    
 		'' : 'profile'
-   
 	},
     
-	profile: function () {		
-        
-		var listprojet = new App.Collections.ProjectList();
+	profile: function () {
         console.log('you are viewing profile page');
+		var listprojet = new App.Collections.ProjectList();
+        
         listprojet.fetch({
             success : function (){
-                console.log(listprojet);
                 var view = new App.Views.ProjectListView({collection : listprojet});
             },
             error : function (){

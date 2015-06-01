@@ -59,7 +59,7 @@ App.Views.ProjectListView = Backbone.View.extend({
         var self = this;
         var newProject = new App.Models.Project();
         // TODO : Ajouter une page par défault
-        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList()},{
+        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{
             success: function (){
                 console.log("AddProject");
                 this.collection.add(newProject.project); // rappelle render par le bind d'add   
