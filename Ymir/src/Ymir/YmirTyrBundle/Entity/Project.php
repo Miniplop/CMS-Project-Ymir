@@ -38,6 +38,12 @@ class Project
     protected $user;
 
     /**
+     * @ORM\Column(nullable=false)
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Page", mappedBy="project", cascade={"persist"})
+     */
+    private $pages;
+
+    /**
      * Get id
      *
      * @return integer
@@ -93,5 +99,29 @@ class Project
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set pages
+     *
+     * @param string $pages
+     *
+     * @return Project
+     */
+    public function setPages($pages)
+    {
+        $this->pages = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Get pages
+     *
+     * @return string
+     */
+    public function getPages()
+    {
+        return $this->pages;
     }
 }
