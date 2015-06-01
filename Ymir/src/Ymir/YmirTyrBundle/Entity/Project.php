@@ -104,11 +104,11 @@ class Project
     /**
      * Set pages
      *
-     * @param string $pages
+     * @param ArrayCollection $pages
      *
      * @return Project
      */
-    public function setPages($pages)
+    public function setPages(ArrayCollection $pages)
     {
         $this->pages = $pages;
 
@@ -118,7 +118,7 @@ class Project
     /**
      * Get pages
      *
-     * @return string
+     * @return ArrayCollection
      */
     public function getPages()
     {
