@@ -24,14 +24,14 @@ class ProjectController extends Controller
     public function postProjectsAction(Request $request)
     {
         //pour tester on prend un user en dur
-        $id = 1;
+        /*$id = 1;
         $repository = $this
           ->getDoctrine()
           ->getManager()
           ->getRepository('TyrBundle:User');
 
-        $user = $repository->findOneById($id);
-        //$user = $this->getUser();
+        $user = $repository->findOneById($id);*/
+        $user = $this->getUser();
         
         $request->attributes->set('user', $user->getId());
         $form = $this->createForm(new ProjectType(), new Project());
