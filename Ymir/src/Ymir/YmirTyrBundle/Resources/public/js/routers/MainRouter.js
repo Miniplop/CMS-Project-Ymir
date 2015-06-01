@@ -30,6 +30,7 @@ App.Router.MainRouter = Backbone.Router.extend({
         var catlistview = new App.Views.CategorieListView({collection: this.categories});
         
         // Stage view 
+        this.pages = new App.Collections.PageList();
         var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
 	},
     

@@ -2,7 +2,7 @@ var App = App || {};
 App.Views.WidgetView = App.Views.WidgetView || {};
 
 App.Views.WidgetListView = Backbone.View.extend({
-    el: $("#stage"),    
+    el: $(this.loc),
     initialize: function () {
         console.log("init view");
         _.bindAll(this, "render");

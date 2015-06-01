@@ -3,7 +3,7 @@ var app = (function() {
 		window.App = {
 		  defaults: {
 			  categories: null,
-              pages: null,
+              pages: null
 		  },
 		  Models: {},
 		  Collections: {},
@@ -22,7 +22,7 @@ var app = (function() {
             var view = new App.Views.ProjectListView({collection : listprojet}).render();
            
             this.categories = new App.Collections.CategorieList();
-            var catlistview = new App.Views.CategorieListView({collection: this.categories});
+            var catlistview = new App.Views.CategorieListView({collection: this.categories, loc : "#stage"});
               
             
             new App.Router.MainRouter();

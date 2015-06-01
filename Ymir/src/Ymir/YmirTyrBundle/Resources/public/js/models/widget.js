@@ -10,7 +10,10 @@ App.Models.Widget = Backbone.Model.extend({
         
     },
     initialize: function () {
-        console.log("init widget");
         this.children = new App.Collections.WidgetList();
+    },
+    parse: function (res) {
+        res.children = new App.Collections.WidgetList(res.children);
+        return res;
     }
 });

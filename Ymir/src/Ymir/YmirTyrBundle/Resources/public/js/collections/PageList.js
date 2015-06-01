@@ -6,7 +6,6 @@ App.Collections.PageList = Backbone.Collection.extend({
     model: App.Models.Page,
     initialize: function(){},
     parse: function(res) {
-        console.log("parse");
         return res.pages;
     }
     
