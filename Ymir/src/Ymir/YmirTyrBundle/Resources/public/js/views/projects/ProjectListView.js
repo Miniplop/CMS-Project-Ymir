@@ -22,7 +22,7 @@ App.Views.ProjectListView = Backbone.View.extend({
     render: function(){
         var $el = $(this.el), self = this;
         
-        $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button>");
+        $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button><hr>");
         
         if (this.collection.length != 0){ // Si liste pas vide 
             console.log("not empty collec");
@@ -33,7 +33,7 @@ App.Views.ProjectListView = Backbone.View.extend({
             
         }else{
             console.log("empty collec");
-           $el.append("<div>Aucun projets :/</div>"); 
+            $el.append("<div>Aucun projets :/</div>"); 
         }
         $("#project-panel").html(this.$el);
         return this;
@@ -61,8 +61,8 @@ App.Views.ProjectListView = Backbone.View.extend({
         // TODO : Ajouter une page par défault
         newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{
             success: function (){
-                console.log("AddProject");
-                this.collection.add(newProject.project); // rappelle render par le bind d'add   
+                console.log(newProject);
+                this.collection.add(newProject.get("project")); // rappelle render par le bind d'add   
             },
             error: function (){
                  new Error({ message : 'Impossible to save project '});

@@ -19,6 +19,7 @@ var app = (function() {
         
                 listprojet.fetch({
                     success : function (){
+                        console.log(listprojet);
                         var view = new App.Views.ProjectListView({collection : listprojet});
                     },
                     error : function (){
@@ -34,7 +35,6 @@ var app = (function() {
         // Stage view 
         this.pages = new App.Collections.PageList();
         var arbreWidget = new App.Views.PageListView({collection: this.pages});
-
             }else{
                  console.log("error init");
             }
