@@ -4,5 +4,8 @@ App.Collections.MetaWidgetList = Backbone.Collection.extend({
     model : App.Models.MetaWidget,
     parse: function(res) {
         return res.widgets;
-    }
+    },
+	getWidget: function (id) {
+		return this.get(id);	
+	}
 });

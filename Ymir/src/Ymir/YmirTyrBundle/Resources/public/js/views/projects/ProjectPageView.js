@@ -10,9 +10,10 @@ App.Views.ProjectPageView = Backbone.View.extend({
     },
     
     initialize: function (){
+        
          _.bindAll(this, 'render','unrender');
-        this.model.bind('update', this.render); // Bind l'update
-        this.model.bind('remove', this.unrender);
+		this.collection.bind("add", this.render);
+		this.collection.bind("remove", this.unrender);
     },
     
     render: function() {

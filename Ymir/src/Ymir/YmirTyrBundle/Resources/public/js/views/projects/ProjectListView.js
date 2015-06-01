@@ -20,6 +20,14 @@ App.Views.ProjectListView = Backbone.View.extend({
     },
       
     render: function(){
+<<<<<<< HEAD
+        var $el = $(this.el);
+        this.collection.each(function(project) {
+        	var item = new App.Views.ProjectPageView({ collection: project });
+            $el.append(item.render().el);
+        });
+        $("#project-panel").html(this.$el);
+=======
         var $el = $(this.el), self = this;
         
         $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button>");
@@ -35,6 +43,7 @@ App.Views.ProjectListView = Backbone.View.extend({
             console.log("empty collec");
            $el.append("<div>Aucun projets :/</div>"); 
         }
+>>>>>>> fe56f74979b732e4f73de26cea06f218f78d7bb8
         return this;
     },
     
