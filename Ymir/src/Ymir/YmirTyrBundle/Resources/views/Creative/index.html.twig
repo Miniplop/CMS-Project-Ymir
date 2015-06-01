@@ -68,5 +68,18 @@
         <<%= widget.get('tag') %> class="<%= widget.get('class') %>"><%= widget.get('content') %></<%= widget.get('tag') %>>
    <% }); %>
 </script>
+{% endblock body %}
 
-{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+  
+<script>
+            window.onload = function() {
+                app.init(routeur : "creative");
+                $(document).foundation();
+                DragDropHandler();
+                ModalHandler();
+            }
+</script>
+{% endblock javascripts%}
+

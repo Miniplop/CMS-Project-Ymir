@@ -11,8 +11,16 @@ var app = (function() {
 		  Router: {},
 	      todos: null,
 		  init: function(){
-            new App.Router.MainRouter();
-            Backbone.history.start(); 
+                console.log("app init");
+            if (this.routeur_selection == "profile"){
+                var routeur = new App.Router.ProfileRouter();
+            }else if ( this.routeur_selection == "creative" ) {
+                var routeur = new App.Router.CreativeRouter();
+            }else{
+                 console.log("error");
+            }
+            Backbone.history.start();
+            return this;
 	      }
 		};
     

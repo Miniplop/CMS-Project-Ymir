@@ -33,13 +33,4 @@
 		%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-    <script>
-            window.onload = function() {
-                app.init();
-                $(document).foundation();
-                DragDropHandler();
-                ModalHandler();
-            }
-    </script>
-
-{% endblock %}
+{% endblock javascripts %}
