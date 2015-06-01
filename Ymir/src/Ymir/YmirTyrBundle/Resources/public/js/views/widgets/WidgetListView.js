@@ -16,12 +16,11 @@ App.Views.WidgetListView = Backbone.View.extend({
         console.log("render WidgetListView");
         var $el = $(this.el), self = this;
         this.collection.each(function (widget) {
-            
-            /*if (widget == 0){
+            if (widget.children.length == 0){
                 console.log("children null dans widgetListView");    
             } else {
                 console.log("children non null dans widgetListView");
-            }*/
+            }
             var item = new App.Views.WidgetView({model : widget});
             $el.append(item.render().el);
         });
