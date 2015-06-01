@@ -12,14 +12,7 @@ var app = (function() {
 		  Router: {},
 	      todos: null,
 		  init: function(){
-<<<<<<< HEAD
-            this.categories = new App.Collections.CategorieList();
-            var catlistview = new App.Views.CategorieListView({collection: this.categories});
-              
-            
-=======
             new App.Router.MainRouter();
->>>>>>> fe56f74979b732e4f73de26cea06f218f78d7bb8
             Backbone.history.start();
             return this;
 	      }
