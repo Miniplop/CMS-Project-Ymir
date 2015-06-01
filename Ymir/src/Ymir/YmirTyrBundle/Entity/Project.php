@@ -4,7 +4,7 @@ namespace Ymir\YmirTyrBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Exclude;
-
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Project
