@@ -11,6 +11,7 @@ var app = (function() {
 		  Forms: {},
 		  Router: {},
 	      todos: null,
+
 		  init: function(routeur){
             if (!routeur){
                 /*var routeur = new App.Router.ProfileRouter();*/
