@@ -67,4 +67,28 @@ class Project
     {
         return $this->name;
     }
+
+    /**
+     * Set user
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\User $user
+     *
+     * @return Project
+     */
+    public function setUser(\Ymir\YmirTyrBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Ymir\YmirTyrBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
