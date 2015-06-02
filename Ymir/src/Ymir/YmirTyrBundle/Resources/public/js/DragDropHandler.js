@@ -11,7 +11,6 @@ var App = App || {};
 				$('.droppable').droppable({
 					drop: self.handleDropEvent,
 					hoverClass: 'drop-hover',
-                    greedy: true
                 });
 			})(this);
 
@@ -22,15 +21,15 @@ var App = App || {};
 		refresh: function() {
             (function(self) {
                 $('.stage').find('.droppable').droppable({
+                    greedy: true,
                     drop: self.handleDropEvent,
-                    hoverClass: 'drop-hover',
-                    greedy: true
+                    hoverClass: 'drop-hover'
                 });
             })(this);
 		},
 
 		handleDropEvent: function (event, ui) {
-
+            console.log(this);
 			var recipier_id = $(this).data('meta-widget-id'), categorie_id = $(ui.draggable).data('categorie-id'), meta_widget_id = $(ui.draggable).data('meta-widget-id');
 
 			if (categorie_id == 3) { //containers

@@ -4,22 +4,21 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
 
 App.Models.Widget = Backbone.Model.extend({
     defaults: {
-        ident : 0,
-        metaWidget_id: 0,
-        cl : '',
-        tag : '',
-        content: '',        
-        children : null
+        id : 0,
+        meta_widget_id: 0,   
+        htmlElements : null
         
     },
     initialize: function () {
         this.children = new App.Collections.WidgetList();
 
     },
+<<<<<<< HEAD
     
+=======
+>>>>>>> 59b8ac97e9c85ab52909da727cac8a784c891c4f
     parse: function (res) {
-        console.log(res.children);
-        this.children = new App.Collections.WidgetList(res.children);
+        this.htmlElements = new App.Models.HtmlElements(res.htmlElements);
         console.log(this.get("children"));
         return res;
     },
