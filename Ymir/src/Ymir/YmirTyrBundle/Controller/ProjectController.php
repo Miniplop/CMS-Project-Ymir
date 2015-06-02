@@ -43,6 +43,10 @@ class ProjectController extends Controller
 
             $em = $this->get('doctrine')->getManager();
             $em->persist($project);
+            foreach($project->getPages()->toArray() as $page) {
+                $page->setProject($project);
+                $em->persist($page);
+            }
             $em->flush();
 
             return array('project' => $project);

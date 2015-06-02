@@ -7,7 +7,7 @@ App.Views.ProjectListView = Backbone.View.extend({
 
       
   events: {
-      'click button.addProject': 'addProject',
+      'click .addProject': 'addProject',
       'click .remove-project': 'removeProject',
       'click .download-project' : 'downloadProject'
   },
@@ -58,8 +58,14 @@ App.Views.ProjectListView = Backbone.View.extend({
     addProject: function(){
         var self = this;
         var newProject = new App.Models.Project();
-        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{});
-        this.collection.add(newProject.get("project")); // rappelle render par le bind d'add   
+        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{});        
+        /*var Project = new App.Models.Project().set({
+            id : newProject.get("project").get('id'),
+            pages : new App.Collections.PageList().add(newProject.get("project").get("pages")),
+            name : newProject.get("project").get('name')
+        });*/
+        console.log(newProject.get("project"));
+        this.collection.add(Project); // rappelle render par le bind d'add   
     },
     
     downloadProject: function(){
