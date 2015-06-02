@@ -34,6 +34,21 @@
         </div>				  
         <div id="projet-<%= id%>" class="content">
 			<ul class="dropdown">
+                <% pages.each(function(page) { %>
+                <li>
+                    <div class="row ">
+                        <div class="small-8 large-8 columns">
+                            <%= page.get('title') %>
+                        </div>
+				        <div class="small-2 large-2 columns">
+                            <a class="edit-page" data-id="<%= page.get('id')%>"><i class="fi-page-edit"></i></a>
+                        </div>
+				        <div class="small-2 large-2 columns">
+                            <a class="remove-page" data-id="<%= page.get('id')%>"><i class="fi-x"></i></a>
+                        </div>
+                    </ul>
+                </li>
+                <% }); %>
                 <a class="add-page"><i class="fi-plus"></i> Add Page</a>
             </ul>
 		</div>
@@ -47,10 +62,9 @@
   
 <script>
     window.onload = function() {
+        console.log("app init");
         app.init(false);
         $(document).foundation();
-        DragDropHandler();
-        ModalHandler();
     }
 </script>
 {% endblock javascripts %}

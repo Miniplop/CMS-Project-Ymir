@@ -2,21 +2,41 @@
     "pages": [
         {
             "id": 1,
-            "title": "Page 1",
-            "widgets": [ 
+            "title": "Robert",
+            "widgets":
+            [
                 {
-                 "id": 1,
-                 "class": "test",
-                 "tag": "p",
-                 "content": "Adrien",
-                 "children": []
+                     "ident": 1,
+                     "metaWidget_id": 0,
+                     "cl": "list",
+                     "tag": "ul",
+                     "content": "",
+                     "children":
+                    [
+                         {
+                            "ident": 3,
+                            "metaWidget_id": 0,
+                            "cl": "",
+                            "tag": "li",
+                            "content": "chien",
+                            "children": []
+                         },
+                         {
+                            "ident": 4,
+                            "metaWidget_id": 0,
+                            "cl": "",
+                            "tag": "li",
+                            "content": "chat",
+                            "children": []
+                         }
+                    ]
                 },
                 {
-                 "id": 2,
-                 "class": "",
-                 "tag": "p",
-                 "content": "Adrou",
-                 "children": []
+                     "ident": 2,
+                     "cl": "",
+                     "tag": "p",
+                     "content": "Adrou",
+                     "children": []
                 }
             ]
         }

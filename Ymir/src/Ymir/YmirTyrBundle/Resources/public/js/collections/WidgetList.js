@@ -1,15 +1,13 @@
 var App = App || {};
 App.Models.Widget = App.Models.Widget || {};
 App.Collections.WidgetList = Backbone.Collection.extend({
-    initialize: function () {
-        console.log("init WidgetList");
-    },
+    widgetLocation : "#stage",
     // Une collection de page contient des models de page
     model: App.Models.Widget,
     parse: function (res) {
         return res.widgets;
     },
-    
+
     addWidget : function (idParent, widget) {
         for (var i = 0; i < this.length; i++){
             if (this.at(i).get("id") == idParent){

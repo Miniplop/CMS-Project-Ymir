@@ -2,43 +2,7 @@ var DragDropHandler = function () {
 	'use strict';
 	
 	function initContainerParameterForm() {
-		
-		$("#container-modal #name").val("Container");
-		$("#container-modal #nbColumns").val(1);
-		$("#container-modal #isRow").attr("checked", false);
-		$("#container-modal .columnsSize").val(1);
-		while($("#container-modal .columnsSize:last").data("column-index") > 1)
-			$("#container-modal .columnsSize:last").remove();
-		
-		$("#container-modal #nbColumns").on("change", function() {
-			var nbColumn = $(this).val();
-			while($("#container-modal .columnsSize:last").data("column-index") > nbColumn)
-				$("#container-modal .columnsSize:last").remove();
-			
-			var curr_index = $("#container-modal .columnsSize:last").data("column-index") + 1;
-			while($("#container-modal .columnsSize:last").data("column-index") < nbColumn) {
-				$("#container-modal .columnsSize:last").after('<select data-column-index="'+curr_index+'" name="columnsSize_'+curr_index+'" class="columnsSize"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option> </select>');
-				curr_index++;
-			}
-				
-		});
-		$("#container-parameters-add").on("click", function(event) {
-			$('#container-modal').foundation('reveal', 'close');
-			event.preventDefault();
-			var nb_column = $("#container-modal #nbColumns").val();
-			var columnsSizes = {};
-			$("#container-modal .columnsSize").each(function(index) {
-				columnsSizes[index+1] = $(this).val();
-			});
-			var container = $("<section>");
-			if($("#container-modal #isRow").prop("checked"))
-				container.addClass("row");
-			for(var colSize in columnsSizes)
-				container.append('<div class="large-'+columnsSizes[colSize]+' columns droppable"></div>');
-			container.children().last().addClass("end");
-			$(".stage").append(container);
-		});
-		$("#container-modal").foundation('reveal', 'open');
+		new window.App.Forms.ContainerParametersForm();
 	}
 	
 	

@@ -3,7 +3,7 @@ App.Views.ProjectPageView = App.Views.ProjectPageView || {};
 
 App.Views.ProjectListView = Backbone.View.extend({
 
-  el: $("#project-panel"),
+/*  el: $("#project-panel"),*/
 
       
   events: {
@@ -22,7 +22,7 @@ App.Views.ProjectListView = Backbone.View.extend({
     render: function(){
         var $el = $(this.el), self = this;
         
-        $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button>");
+        $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button><hr>");
         
         if (this.collection.length != 0){ // Si liste pas vide 
             console.log("not empty collec");
@@ -30,11 +30,12 @@ App.Views.ProjectListView = Backbone.View.extend({
                 var item = new App.Views.ProjectPageView({ model: project });
                 $el.append(item.render().el);
             });
-            $("#project-panel").html(this.$el);
+            
         }else{
             console.log("empty collec");
-           $el.append("<div>Aucun projets :/</div>"); 
+            $el.append("<div>Aucun projets :/</div>"); 
         }
+        $("#project-panel").html(this.$el);
         return this;
     },
     
@@ -57,17 +58,8 @@ App.Views.ProjectListView = Backbone.View.extend({
     addProject: function(){
         var self = this;
         var newProject = new App.Models.Project();
-        // TODO : Ajouter une page par défault
-        newProject.save({name : "Default Project"},{
-            success: function (){
-                console.log("AddProject");
-                this.collection.add(newProject.project); // rappelle render par le bind d'add   
-            },
-            error: function (){
-                 new Error({ message : 'Impossible to save project '});
-            }
-            });
-       
+        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{});
+        this.collection.add(newProject.get("project")); // rappelle render par le bind d'add   
     },
     
     downloadProject: function(){

@@ -4,6 +4,7 @@ namespace Ymir\YmirTyrBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Exclude;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Page
@@ -31,11 +32,15 @@ class Page
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Project", inversedBy="pages", cascade={"persist"})
-     * @ORM\JoinColumn(name="project", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Project", inversedBy="pages")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=false)
      */
     protected $project;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_element", cascade={"persist"})
+     */
+    private $widgets;
 
     /**
      * Get id
@@ -95,6 +100,47 @@ class Page
         return $this->project;
     }
 
+
+    public function __construct()
+    {
+         $this->widgets = new ArrayCollection();
+    }
+
+    /**
+     * Add widget
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widget
+     *
+     * @return Page
+     */
+    public function addWidget(\Ymir\YmirTyrBundle\Entity\Widget $widget)
+    {
+        $this->widgets[] = $widget;
+
+        return $this;
+    }
+
+    /**
+     * Remove widget
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widget
+     */
+    public function removeWidget(\Ymir\YmirTyrBundle\Entity\Widget $widget)
+    {
+        $this->widgets->removeElement($widget);
+    }
+
+    /**
+     * Get widgets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
+
+    }
+
     /**
      * Generate Code
      * 
@@ -115,4 +161,5 @@ class Page
         $code .= "</body>\n</html>";
         return $code;
     }
+
 }

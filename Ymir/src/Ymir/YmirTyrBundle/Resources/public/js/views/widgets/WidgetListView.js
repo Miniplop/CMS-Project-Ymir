@@ -2,22 +2,27 @@ var App = App || {};
 App.Views.WidgetView = App.Views.WidgetView || {};
 
 App.Views.WidgetListView = Backbone.View.extend({
-    el: $("#stage"),    
+    defaults: {
+        el: null
+    },
     initialize: function () {
-        console.log("init view");
+        this.el = $(this.collection.widgetLocation);
         _.bindAll(this, "render");
-        this.collection.fetch({ // call fetch() with the following options
-                success: this.render, // $.ajax 'success' callback
-        });
+        this.render(); // $.ajax 'success' callback
     },
     
     
     render : function () {
-        console.log("render view");
+        console.log("render WidgetListView");
         var $el = $(this.el), self = this;
         this.collection.each(function (widget) {
+            if (widget.children.length == 0){
+                console.log("children null dans widgetListView");    
+            } else {
+                console.log("children non null dans widgetListView");
+            }
             var item = new App.Views.WidgetView({model : widget});
-            $el.append(item.render().el);            
+            $el.append(item.render().el);
         });
         return this;
     }

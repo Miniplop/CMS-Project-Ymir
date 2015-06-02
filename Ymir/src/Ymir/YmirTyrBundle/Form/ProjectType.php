@@ -19,9 +19,9 @@ class ProjectType extends AbstractType
             ->add('user')
             ->add('pages', 'collection', array(
                 'type' => new PageType(),
-                'allow_add' => true,
-                'allow_delete' => true,
                 'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true
             ));
     }
     

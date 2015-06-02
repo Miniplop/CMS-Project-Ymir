@@ -87,9 +87,7 @@
 </script>
 
 <script type="text/template" id="widget-template">
-    <% widgets.each(function(widget) { %>
-        <<%= widget.get('tag') %> class="<%= widget.get('class') %>"><%= widget.get('content') %></<%= widget.get('tag') %>>
-   <% }); %>
+        <<%= tag %> class="<%= cl %>" id="widget<%= ident %>"><%= content %> </<%= tag %>>
 </script>
 
 {% endblock body %}
@@ -99,10 +97,11 @@
   
     <script>
         window.onload = function() {
+            console.log("app init");
             app.init(true);
             $(document).foundation();
             DragDropHandler();
-            ModalHandler();
+			
         }
     </script>
 {% endblock javascripts%}
