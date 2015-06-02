@@ -5,7 +5,7 @@ var app = (function() {
 		categories: null,
         DragDropHandler: null,
         PageBuilder: null,
-
+        
         // namespaces & class
 		Models: {},
 		Collections: {},
@@ -31,6 +31,7 @@ var app = (function() {
             });
             }else if (routeur) {
                 //var routeur = new App.Router.CreativeRouter();  
+
                 // Nav Bar view
                 this.categories = new App.Collections.CategorieList();
                 new App.Views.CategorieListView({collection: this.categories});
