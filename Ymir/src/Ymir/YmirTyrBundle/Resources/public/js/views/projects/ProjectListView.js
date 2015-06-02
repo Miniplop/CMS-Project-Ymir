@@ -7,7 +7,7 @@ App.Views.ProjectListView = Backbone.View.extend({
 
       
   events: {
-      'click button.addProject': 'addProject',
+      'click .addProject': 'addProject',
       'click .remove-project': 'removeProject',
       'click .download-project' : 'downloadProject'
   },
@@ -22,7 +22,7 @@ App.Views.ProjectListView = Backbone.View.extend({
     render: function(){
         var $el = $(this.el), self = this;
         
-        $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button>");
+        $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button><hr>");
         
         if (this.collection.length != 0){ // Si liste pas vide 
             console.log("not empty collec");
@@ -33,7 +33,7 @@ App.Views.ProjectListView = Backbone.View.extend({
             
         }else{
             console.log("empty collec");
-           $el.append("<div>Aucun projets :/</div>"); 
+            $el.append("<div>Aucun projets :/</div>"); 
         }
         $("#project-panel").html(this.$el);
         return this;
@@ -58,17 +58,14 @@ App.Views.ProjectListView = Backbone.View.extend({
     addProject: function(){
         var self = this;
         var newProject = new App.Models.Project();
-        // TODO : Ajouter une page par défault
-        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{
-            success: function (){
-                console.log("AddProject");
-                this.collection.add(newProject.project); // rappelle render par le bind d'add   
-            },
-            error: function (){
-                 new Error({ message : 'Impossible to save project '});
-            }
-            });
-       
+        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{});        
+        /*var Project = new App.Models.Project().set({
+            id : newProject.get("project").get('id'),
+            pages : new App.Collections.PageList().add(newProject.get("project").get("pages")),
+            name : newProject.get("project").get('name')
+        });*/
+        console.log(newProject.get("project"));
+        this.collection.add(Project); // rappelle render par le bind d'add   
     },
     
     downloadProject: function(){

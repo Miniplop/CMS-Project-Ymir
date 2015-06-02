@@ -1,46 +1,50 @@
 var app = (function() {
 	
 	window.App = {
-		defaults: {
-			categories: null,
-			pages: null,
-		},
+        // objects
+		categories: null,
+        DragDropHandler: null,
+        PageBuilder: null,
+
+        // namespaces & class
 		Models: {},
 		Collections: {},
 		Views: {},
 		Forms: {},
 		Router: {},
-        DragDropHandler: null,
+        Utils: {},
 		todos: null,
-		init: function(routeur){
+        init: function(routeur){
             $(document).foundation();
-			if (!routeur) {
-				/*var routeur = new App.Router.ProfileRouter();*/
-				var listprojet = new App.Collections.ProjectList();
+            if (!routeur){
+                var routeur = new App.Router.ProfileRouter();
+                var listprojet = new App.Collections.ProjectList();
+        
+                listprojet.fetch({
+                    success : function (){
+                        console.log(listprojet);
+                        var view = new App.Views.ProjectListView({collection : listprojet});
+                    },
+                    error : function (){
+                        new Error({ message : 'Impossible to load project list'});      
+                    }
+            });
+            }else if (routeur) {
+                //var routeur = new App.Router.CreativeRouter();  
+                // Nav Bar view
+                this.categories = new App.Collections.CategorieList();
+                new App.Views.CategorieListView({collection: this.categories});
 
-				listprojet.fetch({
-					success : function (){
-						var view = new App.Views.ProjectListView({collection : listprojet});
-					},
-					error : function (){
-						new Error({ message : 'Impossible to load project list'});      
-					}
-				});
-			} else if (routeur) {
-				//var routeur = new App.Router.CreativeRouter();  
-				// Nav Bar view 
-				this.categories = new App.Collections.CategorieList();
-				var catlistview = new App.Views.CategorieListView({collection: this.categories});
-
-				// Stage view 
-				//var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
-
-			} else {
-				console.log("error init");
-			}
-			return this;
-		}
-	};
+                // Stage view
+                var page = new App.Models.Page();
+                this.PageBuilder = new App.Utils.PageBuilder(page);
+                this.DragDropHandler = new App.Utils.DragDropHandler();
+            }else{
+                 console.log("error init");
+            }
+            return this;
+	      }
+		};
     
 	    
 	$("#checkbox_mobile").click( function(){

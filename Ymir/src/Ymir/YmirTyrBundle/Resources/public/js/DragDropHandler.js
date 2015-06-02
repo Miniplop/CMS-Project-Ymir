@@ -86,5 +86,6 @@ var App = App || {};
             this.DropHandler.refresh();
         }
     });
-    App.DragDropHandler = new DragDropHandler();
+    App.Utils.DragDropHandler = DragDropHandler;
+    return App.Utils.DragDropHandler;
 })();
