@@ -147,18 +147,21 @@ class Page
      */
     public function generateCode()
     {
-        // Generate the begining of the page
-        $code = " <!doctype html> \n<HTML lang=\"fr\"> \n<head> \n\t<meta charset=\"utf-8\">\n";
-        // Generate the title
+        // Begining of the page
+        $code = "<!doctype html>\n<HTML lang=\"fr\">\n<head>\n\t<meta charset=\"utf-8\">\n";
+        // Title
         $code .= "\t<title>".$title."</title>\n";
-        // Generate the style dependancies
+        // Style dependancies
         $code .= "\t<link rel=\"stylesheet\" href=\""."\">\n";
-        $code .= "</head> \n<body>\n";
-        // Generate the different widgets
-        // for (tous nos widgets)
-        // $code .= generateCodeWidget(Widget w);
+        $code .= "</head>\n<body>\n";
+
+        // Generate the different widgets, starting from rows and navigating to the children
+        foreach ($widgets->to_array() as $w) {
+            $code .= $w->generateCodeWidget();
+        }
 
         $code .= "</body>\n</html>";
+
         return $code;
     }
 

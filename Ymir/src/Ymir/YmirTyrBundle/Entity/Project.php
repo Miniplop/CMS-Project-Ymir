@@ -38,7 +38,7 @@ class Project
     protected $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Page", mappedBy="project", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Page", mappedBy="project")
      */
     private $pages;
 
