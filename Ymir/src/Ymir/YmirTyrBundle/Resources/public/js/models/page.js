@@ -1,7 +1,7 @@
 var App = App || {};
 App.Collections.WidgetList = App.Collections.WidgetList || {};
 App.Models.Page = Backbone.Model.extend({
-    url : 'http://127.0.0.1/ymir/Ymir/web/app_dev.php/pages',
+    url : 'http://127.0.0.1/ymir/Ymir/web/app_dev.php/stage',
     defaults: {
         id : 0,
         title: "Page 1",
