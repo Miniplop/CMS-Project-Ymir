@@ -14,7 +14,7 @@ var app = (function() {
 
 		  init: function(routeur){
             if (!routeur){
-                /*var routeur = new App.Router.ProfileRouter();*/
+                var routeur = new App.Router.ProfileRouter();
                 var listprojet = new App.Collections.ProjectList();
         
                 listprojet.fetch({
