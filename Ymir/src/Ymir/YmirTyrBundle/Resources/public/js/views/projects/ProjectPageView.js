@@ -39,13 +39,9 @@ App.Views.ProjectPageView = Backbone.View.extend({
     
     addPage: function(){
         var newPage = new App.Models.ProjectPage();
-        newPage.save({},{
-            success : function (){
-                var listePage = this.model.get("pages");
-                listePage.add(newPage);
-                this.model.set("pages",listePage); // Rappelle l'events "update"
+        newPage.save(null,{
+            success : function (response){
             }, 
-            
             error : function(){
                  new Error({ message : 'Impossible to save page'});      
             },

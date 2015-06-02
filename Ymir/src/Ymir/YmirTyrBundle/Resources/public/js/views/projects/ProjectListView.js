@@ -11,14 +11,14 @@ App.Views.ProjectListView = Backbone.View.extend({
       
     initialize: function() {
         // Bind
-        _.bindAll(this,'render','addProject','removeProject');
-        this.collection.bind('add',);  // Bind l'ajout d'un project    
+        _.bindAll(this,'render','render_base','addProject','removeProject');
+        this.collection.bind('add',this.render_base);  // Bind l'ajout d'un project    
         this.render_base();      
     },
     
     
     render_base : function (){
-        var $el = $(this.el), self = this;        
+        var $el = $(this.el), self = this;
         $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button><hr>");
         this.render();
         $("#project-panel").html(this.$el);
@@ -34,7 +34,7 @@ App.Views.ProjectListView = Backbone.View.extend({
             });
             
         }else{
-            $el.append("<div>Aucun projets :/</div>"); 
+            $el.append("<div>Aucun projets :/</div>");
         }
         return this;
     },
@@ -57,13 +57,18 @@ App.Views.ProjectListView = Backbone.View.extend({
     
     addProject: function(){
         var self = this;
+        console.log('addProject');
         var newProject = new App.Models.Project();
-        this.collection.create({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{
-            sucess : function (model, response){
-                model.set({id : response.get("id")});
+        newProject.set("pages",new App.Collections.ProjectPageList());
+        newProject.save(null,{
+            success : function (collection,response){
+                //this.collection.add(newProject.get("Attributes").get("project"));
+                console.log(newProject);
+                console.log(collection);
+                console.log(this.collection);
+                //collection.at(collection.length -1).set("id",response.get("id"));
             }
         });
-        //console.log(newProject.get("project"));
     },
     
     downloadProject: function(e){

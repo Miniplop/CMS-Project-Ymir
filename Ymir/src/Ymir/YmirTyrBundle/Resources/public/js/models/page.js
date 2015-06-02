@@ -1,7 +1,9 @@
 var App = App || {};
 App.Collections.WidgetList = App.Collections.WidgetList || {};
 App.Models.Page = Backbone.Model.extend({
+    
 
+    
     defaults: {
         id : 0,
         title: "Page 1",

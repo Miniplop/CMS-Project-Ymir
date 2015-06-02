@@ -18,8 +18,7 @@ var app = (function() {
                 var listprojet = new App.Collections.ProjectList();
         
                 listprojet.fetch({
-                    success : function (){
-                        console.log(listprojet);
+                    success : function (collection,response){
                         var view = new App.Views.ProjectListView({collection : listprojet});
                     },
                     error : function (){

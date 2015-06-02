@@ -1,4 +1,6 @@
 var App = App || {};
+App.Collections.ProjectPageList = App.Collections.ProjectPageList || {};
+
 App.Models.Project = Backbone.Model.extend({
     
      url : function() {
@@ -16,6 +18,6 @@ App.Models.Project = Backbone.Model.extend({
     // id : contient l'id du projet
     // user : contient l'utilisateur 
     defaults:{
-        name: ""
+        name: "Default page"
     }
 });
