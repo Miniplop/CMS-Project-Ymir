@@ -36,6 +36,9 @@ class Widget
      */
     protected $parent_element;
 
+
+    protected $children;
+
     /**
      * Get id
      *
@@ -92,5 +95,25 @@ class Widget
     public function getParentElement()
     {
         return $this->parent_element;
+    }
+
+    /**
+     * Generate Code Widget
+     * 
+    */
+    public function generateCodeWidget()
+    {
+        // Openning HTML tag for the widget
+        $code = "<".$name.">";
+
+        // Generate the code for the probable children
+        foreach ($children->toArray() as $c) {
+            $code .= $c->generateCodeWidget();
+        }
+
+        // Closing HTML tag for the widget
+        $code .= "</".$name.">";
+
+        return $code;
     }
 }
