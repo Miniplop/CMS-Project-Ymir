@@ -13,7 +13,6 @@ App.Views.WidgetView = Backbone.View.extend({
                 var children = new App.Views.WidgetView({model :  widget});
                 $el.append(children.render().el);
             });
-            
         }
         return this;
     }

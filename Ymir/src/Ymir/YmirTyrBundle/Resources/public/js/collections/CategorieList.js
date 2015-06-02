@@ -9,12 +9,12 @@ App.Collections.CategorieList = Backbone.Collection.extend({
         console.log("parse CategorieList");
         return res.categories;
     },
-	getWidget: function(id) {
-		var widget = null;
+    getMetaWidget: function(id) {
+		var metaWidget = null;
 		for (var i = 0; i < this.models.length; i++) {
-			if((widget = this.models[i].getWidget(id)) != null)
+			if((metaWidget = this.models[i].getMetaWidget(id)) != null)
 				break;
 		}
-		return widget;
+		return metaWidget;
 	}
 });

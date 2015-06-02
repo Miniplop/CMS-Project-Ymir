@@ -8,7 +8,7 @@
 	color : $light_grey_color;
 	background: none repeat scroll 0% 0% $dark_grey_color;
 }
-.toolbar-widget {
+.toolbar-meta-widget {
 	width: 100% !important;
 	height: 60% !important;
 	overflow-y: scroll;
@@ -36,7 +36,7 @@
 		}
 	}
 }
-.toolbar-widget-categorie-list {
+.toolbar-meta-widget-categorie-list {
 	background: inherit !important;
 	li {
 		background: inherit !important;
@@ -162,16 +162,16 @@
 
 
 
-.show-widget-preview {
-	.widget-preview {
+.show-meta-widget-preview {
+	.meta-widget-preview {
 		display: none;
 		position: fixed;
 		pointer-events: none;
 	}
 }
 
-.show-widget-preview:hover {
-	>.widget-preview {
+.show-meta-widget-preview:hover {
+	>.meta-widget-preview {
 		display: inline;
 	}
 }

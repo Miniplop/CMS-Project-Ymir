@@ -12,14 +12,16 @@ App.Models.Widget = Backbone.Model.extend({
     },
     initialize: function () {
         this.children = new App.Collections.WidgetList();
+
+    },*/
+    parse: function (res) {
+        console.log(res.children);
+        this.children = new App.Collections.WidgetList(res.children);
+        console.log(this.get("children"));
+        return res;
     },
-    parse: function (result) {
-        console.log("parse widget");
-        //result.children = new App.Collections.WidgetList(result.children);
-        /*console.log("children length: " + result.children.length);
-        result.children.each( function(child) {
-            console.log("child content: " + child.content);
-        });*/
-        return result;
+    render: function() {
+        if(this.children.isEmpty())
+            return null;
     }
 });
