@@ -3,7 +3,7 @@ var app = (function() {
 		window.App = {
 		  defaults: {
 			  categories: null,
-              pages: null,
+              page: null,
 		  },
 		  Models: {},
 		  Collections: {},
@@ -28,13 +28,13 @@ var app = (function() {
             });
             }else if (routeur) {
                 //var routeur = new App.Router.CreativeRouter();  
-        // Nav Bar view 
-        this.categories = new App.Collections.CategorieList();
-        var catlistview = new App.Views.CategorieListView({collection: this.categories});
-        
-        // Stage view 
-        this.pages = new App.Collections.PageList();
-        var arbreWidget = new App.Views.PageListView({collection: this.pages});
+                // Nav Bar view 
+                this.categories = new App.Collections.CategorieList();
+                var catlistview = new App.Views.CategorieListView({collection: this.categories});
+
+                // Stage view 
+                this.page = new App.Models.Page();
+                var arbreWidget = new App.Views.PageView({model: this.page});
             }else{
                  console.log("error init");
             }

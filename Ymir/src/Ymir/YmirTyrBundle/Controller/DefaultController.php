@@ -95,6 +95,14 @@ class DefaultController extends BaseController
     {
         return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/pages.json'), 200, array('Content-Type' => 'application/json'));
     }
+    
+    /**
+     * @Route("/arbreWidgets")
+     */
+    public function arbreWidgetsAction()
+    {
+        return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/arbreWidgets.json'), 200, array('Content-Type' => 'application/json'));
+    }
 }
 
 

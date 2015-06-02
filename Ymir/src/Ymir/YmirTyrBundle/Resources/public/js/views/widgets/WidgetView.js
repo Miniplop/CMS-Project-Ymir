@@ -1,14 +1,19 @@
 var App = App || {};
 App.Views.WidgetView = Backbone.View.extend({
     template: _.template($('#widget-template').html()),
-    /*tagName: 'li',
-    className: 'accordion-navigation',*/
     render: function () {
         var html = this.template(this.model.toJSON());
         this.$el.html(html); // on écrit à l'interieur de la balise pointée par el
-        if (this.model.children.length !== 0) {
-            this.model.children.widgetLocation = "widget" + this.model.id;
-            var children = new App.Views.WidgetListView({collection :  this.model.children});
+        var ch = new App.Collections.WidgetList(this.model.get("children"));
+        if (ch.length !== 0) {
+            var el = "widget" + this.model.id;
+            var $el = $(el), self = this;
+            ch.each(function (widget) {
+                console.log("test draw child");
+                var children = new App.Views.WidgetView({model :  widget});
+                $el.append(children.render().el);
+            });
+            
         }
         return this;
     }
