@@ -38,7 +38,7 @@ class Page
     protected $project;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_element", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_element", cascade={"persist, remove"})
      */
     private $widgets;
 
@@ -46,7 +46,7 @@ class Page
     {
          $this->widgets = new ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
