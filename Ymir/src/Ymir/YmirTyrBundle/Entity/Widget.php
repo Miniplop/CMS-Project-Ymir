@@ -31,10 +31,15 @@ class Widget
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Page", inversedBy="widgets", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Page", inversedBy="widgets")
      * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
      */
-    protected $parent_element;
+    private $parent_element;
+
+    /**
+     *  @ORM\Column(name="index", type="integer")
+     */
+    private $index;
 
     /**
      * Get id
