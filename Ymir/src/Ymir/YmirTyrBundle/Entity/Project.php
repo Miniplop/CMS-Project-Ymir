@@ -38,7 +38,7 @@ class Project
     protected $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Page", mappedBy="project", cascade={"delete"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Page", mappedBy="project", cascade={"remove"})
      */
     private $pages;
 
