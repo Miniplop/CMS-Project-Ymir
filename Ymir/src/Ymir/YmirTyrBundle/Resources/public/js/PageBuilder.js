@@ -2,7 +2,7 @@ var App = App || {};
 (function () {
 
     function PageBuilder (page) {
-        if (page != null)
+        if (page !== null)
             this.page = page;
         else
             this.page = new App.Models.Page();
@@ -11,13 +11,16 @@ var App = App || {};
             success: this.initialize,
         });        
     };
-    _.extend(PageBuilder.prototype, {
+    _.extend( PageBuilder.prototype, {
         initialize: function() {
             var container = $("stage");
-            for(var widget in this.page.widgets) {
-                var element = widget.render();
+            var widgets = this.page.get("widgets");
+            widgets.each( function(widget) {
+                var element = null;
+                if (widget.get("htmlElements").length > 0)
+                    element = widget.render(); // TODO: render doit générer un jquerry element (le machin entre $())
                 container.append(element);
-            }
+            });
         },
         addElement: function() {
             //addWidget();...
