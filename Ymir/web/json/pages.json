@@ -1,44 +1,59 @@
 {
-    "pages": [
+    "pages": 
+    [
         {
             "id": 1,
             "title": "Robert",
             "widgets":
             [
                 {
-                     "ident": 1,
-                     "metaWidget_id": 0,
-                     "cl": "list",
-                     "tag": "ul",
-                     "content": "",
-                     "children":
+                    "widgets":
                     [
-                         {
-                            "ident": 3,
+                        {
+                            "id": 1,
                             "metaWidget_id": 0,
-                            "cl": "",
-                            "tag": "li",
-                            "content": "chien",
-                            "children": []
-                         },
-                         {
-                            "ident": 4,
-                            "metaWidget_id": 0,
-                            "cl": "",
-                            "tag": "li",
-                            "content": "chat",
-                            "children": []
-                         }
+                            "htmlElements":
+                            [
+                                 {
+                                    "class": "list",
+                                    "tag": "ul",
+                                    "value": "",
+                                    "children":
+                                     [
+                                         {
+                                            "id": 2,
+                                            "metaWidget_id": 0,
+                                            "htmlElements": 
+                                             [
+                                                 {
+                                                     "class": "",
+                                                     "tag": "li",
+                                                     "value": "1",
+                                                     "children": []
+                                                 }
+                                             ]
+                                         },
+                                         {
+                                            "id": 3,
+                                            "metaWidget_id": 0,
+                                            "htmlElements":
+                                             [
+                                                 {
+                                                     "class": "",
+                                                     "tag": "li",
+                                                     "value": "2",
+                                                     "children": []
+                                                 }
+                                             ]
+                                         }
+                                     ]
+                                 }
+                            ]
+                        }
                     ]
-                },
-                {
-                     "ident": 2,
-                     "cl": "",
-                     "tag": "p",
-                     "content": "Adrou",
-                     "children": []
                 }
+
             ]
-        }
+        }   
     ]
 }
