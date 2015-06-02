@@ -27,7 +27,8 @@ class ExportController extends Controller
         */
 
         //génération du code de la page
-
+        // $code = $page->generateCode();
+        // $write = file_put_contents(filename, $code)
         //retourner le fichier généré
         return array(
                 // ...
