@@ -2,7 +2,7 @@ var App = App || {};
 App.Views.CategorieView = App.Views.CategorieView || {};
 
 App.Views.CategorieListView = Backbone.View.extend({
-    el: $('.toolbar-widget-categorie-list'),
+    el: $('.toolbar-meta-widget-categorie-list'),
     initialize: function() {
     	_.bindAll(this, "render");
     	this.collection.fetch({ // call fetch() with the following options
@@ -18,7 +18,7 @@ App.Views.CategorieListView = Backbone.View.extend({
         	var item = new App.Views.CategorieView({ model: categorie });
             $el.append(item.render().el);
         });
-        $("#widgets-panel").html(this.$el);
+        $("#meta-widgets-panel").html(this.$el);
         return this;
     }
 });

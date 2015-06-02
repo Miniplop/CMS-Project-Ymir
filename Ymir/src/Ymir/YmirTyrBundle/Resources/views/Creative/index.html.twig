@@ -76,10 +76,10 @@
 		</a>
 		<div id="categorie_<%= id %>" class="content">
 			<ul class="dropdown">
-			<% widgets.each(function(widget) { %>
-				<li class="show-widget-preview draggable" data-widget-id="<%= widget.get('id') %>" data-categorie-id="<%= id %>">
-					<a href="#<%= widget.get('id') %>"><%= widget.get('name') %></a>
-					<div class="widget-preview" disabled="true"><%= widget.get('htmlPreview') %></div>
+			<% metaWidgets.each(function(metaWidget) { %>
+				<li class="show-meta-widget-preview draggable" data-meta-widget-id="<%= metaWidget.get('id') %>" data-categorie-id="<%= id %>">
+					<a href="#<%= metaWidget.get('id') %>"><%= metaWidget.get('name') %></a>
+					<div class="meta-widget-preview" disabled="true"><%= metaWidget.get('htmlPreview') %></div>
 				</li>
 			<% }); %>
 			</ul>
@@ -97,11 +97,7 @@
   
     <script>
         window.onload = function() {
-            console.log("app init");
             app.init(true);
-            $(document).foundation();
-            DragDropHandler();
-			
         }
     </script>
 {% endblock javascripts%}

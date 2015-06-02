@@ -4,13 +4,13 @@
 		{
 			"id": 1,
 			"name": "Buttons",
-			"widgets": 			[ 
-				{"name": "Button", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements":
+			"metaWidgets": 			[
+				{ "id": 1, "name": "Button", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "htmlElements":
 											[ {
 											"id": 1,
-											"balise": "button", 
+											"tag": "button", 
 											"htmlParameters": [ {"name": "class", "value": "button"} ], 
-											"children": [ {"id": 13, "balise": "", "htmlParameters": [], "value": "Button"} ],
+											"children": [ {"id": 13, "tag": "", "htmlParameters": [], "value": "Button"} ],
 											"value": "",
 											"acceptAllCategorieAsChildren": "false",
 											"possibleCategorieAsChildren": [ {"categorie_id": 2} ]
@@ -21,12 +21,12 @@
 		{
 			"id": 2,
 			"name": "Icons",
-			"widgets": 
+			"metaWidgets":
 			[ 
-				{"name": "Torso", "htmlPreview": "<i disabled=\"true\" class=\"fi-torso\"></i>", "htmlElements": 
+				{ "id": 2, "name": "Torso", "htmlPreview": "<i disabled=\"true\" class=\"fi-torso\"></i>", "htmlElements":
 											[ {
 											"id": 2,
-											"balise": "i", 
+											"tag": "i",
 											"htmlParameters": [ {"name": "class", "value": "fi-torso"} ], 
 											"children": [],
 											"value": "",
@@ -39,58 +39,58 @@
 		{
 			"id": 3,
 			"name": "Containers",
-			"widgets": 
+			"metaWidgets":
 			[
-				{"name": "section", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+				{ "id": 3, "name": "section", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Section</div>", "htmlElements":
 											[ {
 											"id": 3,
-											"balise": "section", 
+											"tag": "section", 
 											"htmlParameters": [],
-											"children": [ {"id": 8, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
+											"children": [ {"id": 8, "tag": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
 				},
-				{"name": "article", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+				{ "id": 4, "name": "article", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Article</div>", "htmlElements":
 											[ {
 											"id": 4,
-											"balise": "article", 
+											"tag": "article", 
 											"htmlParameters": [], 
-											"children": [ {"id": 9, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
+											"children": [ {"id": 9, "tag": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "header", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+				{ "id": 5, "name": "header", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Header</div>", "htmlElements":
 											[ {
 											"id": 5,
-											"balise": "header",
+											"tag": "header",
 											"htmlParameters": [], 
-											"children": [ {"id": 10, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
+											"children": [ {"id": 10, "tag": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "footer", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+				{ "id": 6, "name": "footer", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Footer</div>", "htmlElements":
 											[ {
 											"id": 6,
-											"balise": "footer", 
+											"tag": "footer", 
 											"htmlParameters": [],
-											"children": [ {"id": 11, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
+											"children": [ {"id": 11, "tag": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
 				}, 
-				{"name": "aside", "htmlPreview": "<div disabled=\"true\"> </div>", "htmlElements": 
+				{ "id": 7, "name": "aside", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Side bar</div>", "htmlElements":
 											[ {
 											"id": 7,
-											"balise": "aside", 
+											"tag": "aside", 
 											"htmlParameters": [], 
-											"children": [ {"id": 12, "balise": "div", "htmlParameters": [], "children": [], "value": ""}], 
+											"children": [ {"id": 12, "tag": "div", "htmlParameters": [], "children": [], "value": ""}], 
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
