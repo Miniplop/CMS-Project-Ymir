@@ -4,7 +4,7 @@
 <section>
         <div class="panel">
             <div class ="row">
-                <h1> Projets </h1>
+                <h1>MES PROJETS </h1>
                 <hr>
             </div>
             <div class ="row">
@@ -35,18 +35,18 @@
         <div id="projet-<%= id%>" class="content">
 			<ul class="dropdown">
                 <% pages.each(function(page) { %>
-                <li>
+                <li class ="list-page">
                     <div class="row ">
                         <div class="small-8 large-8 columns">
                             <%= page.get('title') %>
                         </div>
 				        <div class="small-2 large-2 columns">
-                            <a class="edit-page" data-id="<%= page.get('id')%>"><i class="fi-page-edit"></i></a>
+                            <a class="edit-page" data-pid="<%= id%>" data-id="<%= page.get('id')%>"><i class="fi-page-edit"></i></a>
                         </div>
 				        <div class="small-2 large-2 columns">
                             <a class="remove-page" data-id="<%= page.get('id')%>"><i class="fi-x"></i></a>
                         </div>
-                    </ul>
+                    </div>
                 </li>
                 <% }); %>
                 <a class="add-page"><i class="fi-plus"></i> Add Page</a>

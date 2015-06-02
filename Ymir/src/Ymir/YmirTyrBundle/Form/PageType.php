@@ -16,7 +16,7 @@ class PageType extends AbstractType
     {
         $builder
             ->add('title')
-            //->add('project')
+            ->add('project')
             /*->add('pages', 'collection', array(
                 'type' => new WidgetType(),
                 'by_reference' => false,
