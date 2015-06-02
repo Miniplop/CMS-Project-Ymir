@@ -1,5 +1,6 @@
 App.Forms.ContainerParametersForm = function(options) {
 	this.options = options || {};
+    this.container = null;
     this.initialize();
 };
 _.extend(App.Forms.ContainerParametersForm.prototype, {
@@ -32,6 +33,7 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
 				event.preventDefault();
                 self.buildContainer();
                 App.DragDropHandler.refreshDrop();
+                $("#container-parameters-add").off("click", this);
 			});
 		})(this);
 		$("#container-modal").foundation('reveal', 'open');
@@ -40,6 +42,7 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
 		return this.container;
 	},
     buildContainer: function () {
+        console.log(this);
         var nb_column = $("#container-modal #nbColumns").val();
         var columnsSizes = {};
         $("#container-modal .columnsSize").each(function(index) {
@@ -54,7 +57,6 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
             this.container.append('<' + this.options.metaWidget.get('htmlElements')[0].children[0].tag + ' class="large-' + columnsSizes[colSize] + ' columns droppable"></div>');
         }
         this.container.children().last().addClass("end");
-        console.log($(this.options.parent));
         $(this.options.parent).append(this.container);
     }
 });

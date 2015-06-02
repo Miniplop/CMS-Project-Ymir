@@ -1,25 +1,6 @@
 {% extends "TyrBundle::layout.html.twig" %}
 
 {% block body %}
-<!--
-
-
-
-    <% pages.each(function(page) { %>
-                <li>
-                    <ul class="inline-list">
-                        <li><span>"><%= page.get('title') %></span></li>
-				        <li><a class="edit-page" href="edit"><i class="fi-page-edit"></i></a></li>
-				        <li><a class="remove-page" href="remove"><i class="fi-x"></i></a></li>
-                    </ul>
-                </li>
-    <% }); %>
-    
-
-
-
--->
-
 
 <section>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") != true %}

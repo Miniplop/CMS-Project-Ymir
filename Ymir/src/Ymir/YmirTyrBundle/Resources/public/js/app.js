@@ -21,8 +21,7 @@ var app = (function() {
                 var listprojet = new App.Collections.ProjectList();
         
                 listprojet.fetch({
-                    success : function (){
-                        console.log(listprojet);
+                    success : function (collection,response){
                         var view = new App.Views.ProjectListView({collection : listprojet});
                     },
                     error : function (){
@@ -34,7 +33,7 @@ var app = (function() {
 
                 // Nav Bar view
                 this.categories = new App.Collections.CategorieList();
-                new App.Views.CategorieListView({collection: this.categories});
+                var catView = new App.Views.CategorieListView({collection: this.categories});
 
                 // Stage view
                 var page = new App.Models.Page();
