@@ -31,10 +31,18 @@ class Widget
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Page", inversedBy="widgets", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Page", inversedBy="widgets")
      * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
      */
-    protected $parent_element;
+    private $parent_element;
+
+    /**
+     *  @ORM\Column(name="index", type="integer")
+     */
+    private $index;
+
+
+    protected $children;
 
     /**
      * Get id
@@ -92,5 +100,25 @@ class Widget
     public function getParentElement()
     {
         return $this->parent_element;
+    }
+
+    /**
+     * Generate Code Widget
+     * 
+    */
+    public function generateCodeWidget()
+    {
+        // Openning HTML tag for the widget
+        $code = "<".$name.">";
+
+        // Generate the code for the probable children
+        foreach ($children->toArray() as $c) {
+            $code .= $c->generateCodeWidget();
+        }
+
+        // Closing HTML tag for the widget
+        $code .= "</".$name.">";
+
+        return $code;
     }
 }

@@ -100,6 +100,7 @@ class Page
         return $this->project;
     }
 
+
     public function __construct()
     {
          $this->widgets = new ArrayCollection();
@@ -137,5 +138,31 @@ class Page
     public function getWidgets()
     {
         return $this->widgets;
+
     }
+
+    /**
+     * Generate Code
+     * 
+     */
+    public function generateCode()
+    {
+        // Begining of the page
+        $code = "<!doctype html>\n<HTML lang=\"fr\">\n<head>\n\t<meta charset=\"utf-8\">\n";
+        // Title
+        $code .= "\t<title>".$title."</title>\n";
+        // Style dependancies
+        $code .= "\t<link rel=\"stylesheet\" href=\""."\">\n";
+        $code .= "</head>\n<body>\n";
+
+        // Generate the different widgets, starting from rows and navigating to the children
+        foreach ($widgets->to_array() as $w) {
+            $code .= $w->generateCodeWidget();
+        }
+
+        $code .= "</body>\n</html>";
+
+        return $code;
+    }
+
 }

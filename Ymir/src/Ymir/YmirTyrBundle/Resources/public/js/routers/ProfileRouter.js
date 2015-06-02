@@ -10,7 +10,7 @@ App.Router.ProfileRouter = Backbone.Router.extend({
 	},
     
 	profile: function () {
-        console.log('you are viewing profile page');
+        console.log('you are viewing profile page');/*
 		var listprojet = new App.Collections.ProjectList();
         
         listprojet.fetch({
@@ -21,6 +21,6 @@ App.Router.ProfileRouter = Backbone.Router.extend({
                 new Error({ message : 'Impossible to load project list'});      
             }
         });
-
+*/
 	}
 });

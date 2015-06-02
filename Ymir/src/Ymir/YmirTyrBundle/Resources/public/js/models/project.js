@@ -8,7 +8,7 @@ App.Models.Project = Backbone.Model.extend({
     },
     
     parse: function(result) {
-    	//result.pages = new App.Collections.ProjectPageList(result.pages);
+    	result.pages = new App.Collections.ProjectPageList(result.pages);
     	return result;
     },
     
