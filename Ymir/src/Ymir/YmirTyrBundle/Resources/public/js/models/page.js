@@ -1,7 +1,9 @@
 var App = App || {};
 App.Collections.WidgetList = App.Collections.WidgetList || {};
 App.Models.Page = Backbone.Model.extend({
-    url : 'http://127.0.0.1:8000/stage',
+
+    url : 'http://127.0.0.1:8000/pages',
+
     defaults: {
         id : 0,
         title: "Page 1",
