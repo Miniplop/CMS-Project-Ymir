@@ -13,8 +13,13 @@ App.Models.Widget = Backbone.Model.extend({
         this.children = new App.Collections.WidgetList();
     },*/
     parse: function (res) {
-        res.children = new App.Collections.WidgetList(res.children);
-        this.children = res.children;
+        console.log(res.children);
+        this.children = new App.Collections.WidgetList(res.children);
+        console.log(this.get("children"));
         return res;
+    },
+    render: function() {
+        if(this.children.isEmpty())
+            return null;
     }
 });
