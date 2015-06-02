@@ -60,15 +60,8 @@ App.Views.ProjectListView = Backbone.View.extend({
         console.log('addProject');
         var newProject = new App.Models.Project();
         newProject.set("pages",new App.Collections.ProjectPageList());
-        newProject.save(null,{
-            success : function (collection,response){
-                //this.collection.add(newProject.get("Attributes").get("project"));
-                console.log(newProject);
-                console.log(collection);
-                console.log(this.collection);
-                //collection.at(collection.length -1).set("id",response.get("id"));
-            }
-        });
+        newProject.save();
+        this.collection.add(newProject.get("Attributes").get("project"));
     },
     
     downloadProject: function(e){

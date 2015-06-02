@@ -18,6 +18,6 @@ App.Models.Project = Backbone.Model.extend({
     // id : contient l'id du projet
     // user : contient l'utilisateur 
     defaults:{
-        name: "Default page"
+        name: "Default project name"
     }
 });
