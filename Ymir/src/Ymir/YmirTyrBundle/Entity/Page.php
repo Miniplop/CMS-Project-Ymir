@@ -42,6 +42,11 @@ class Page
      */
     private $widgets;
 
+    public function __construct()
+    {
+         $this->widgets = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -100,12 +105,6 @@ class Page
         return $this->project;
     }
 
-
-    public function __construct()
-    {
-         $this->widgets = new ArrayCollection();
-    }
-
     /**
      * Add widget
      *
@@ -156,7 +155,7 @@ class Page
         $code .= "</head>\n<body>\n";
 
         // Generate the different widgets, starting from rows and navigating to the children
-        foreach ($widgets->to_array() as $w) {
+        foreach ($this->widgets->to_array() as $w) {
             $code .= $w->generateCodeWidget();
         }
 

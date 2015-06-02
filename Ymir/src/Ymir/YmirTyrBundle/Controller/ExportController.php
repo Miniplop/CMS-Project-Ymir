@@ -12,10 +12,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class ExportController extends Controller
 {
     /**
-     * @Route("/{id_project}/{id_page}", requirements={"id_project" = "\d+", "id_page" = "\d+"})
+     * @Route("/page/{id_page}", requirements={"id_page" = "\d+"})
      * @Template()
      */
-    public function exportPageAction($id_project, $id_page)
+    public function exportPageAction($id_page)
     {
         //récupération de la page en BD
         /*$repository = $this
@@ -23,7 +23,7 @@ class ExportController extends Controller
           ->getManager()
           ->getRepository('TyrBundle:Page');
 
-        $page = $repository->findOneBy(array('id_project' => $id_project, 'id' => $id_page));
+        $page = $repository->findOneById($id_page));
         */
 
         //génération du code de la page
@@ -35,7 +35,7 @@ class ExportController extends Controller
     }
 
     /**
-     * @Route("/{id_project}", requirements={"id_project" = "\d+"})
+     * @Route("/project/{id_project}", requirements={"id_project" = "\d+"})
      * @Template()
      */
     public function exportProjectAction($id_project)

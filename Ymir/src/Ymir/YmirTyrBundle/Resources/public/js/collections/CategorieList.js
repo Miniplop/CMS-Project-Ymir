@@ -1,19 +1,20 @@
 var App = App || {};
 App.Models.Categorie = App.Models.Categorie || {};
 App.Collections.CategorieList = Backbone.Collection.extend({
-    url   : "http://127.0.0.1/ymir/Ymir/web/app_dev.php/widgets",
+    url   : "http://127.0.0.1:8000/widgets",
     model : App.Models.Categorie,
 	initialize: function() {
     },
 	parse: function(res) {
+        console.log("parse CategorieList");
         return res.categories;
     },
-	getWidget: function(id) {
-		var widget = null;
+    getMetaWidget: function(id) {
+		var metaWidget = null;
 		for (var i = 0; i < this.models.length; i++) {
-			if((widget = this.models[i].getWidget(id)) != null)
+			if((metaWidget = this.models[i].getMetaWidget(id)) != null)
 				break;
 		}
-		return widget;
+		return metaWidget;
 	}
 });

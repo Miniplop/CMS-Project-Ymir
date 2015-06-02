@@ -18,7 +18,7 @@ Ymir/composer.lock
 .project
 .settings/
 /src/Ymir/YmirTyrBundle/Resources/public/css/*.css
-
+maj.sh
 lancement.sh
 /web/css/*.css
 /web/js/*.js
