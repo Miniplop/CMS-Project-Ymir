@@ -4,55 +4,49 @@
     "widgets":
     [
         {
-            "widgets":
+            "id": 1,
+            "meta_widget_id": 0,
+            "htmlElements":
             [
-                {
-                    "id": 1,
-                    "meta_widget_id": 0,
-                    "htmlElements":
-                    [
+                 {
+                     "class": "list",
+                     "tag": "ul",
+                     "value": "",
+                     "htmlChildren": [],
+                     "widgetChildren":
+                     [
                          {
-                             "class": "list",
-                             "tag": "ul",
-                             "value": "",
-                             "htmlChildren": [],
-                             "widgetChildren":
+                            "id": 2,
+                            "meta_widget_id": 0,
+                            "htmlElements":
                              [
                                  {
-                                    "id": 2,
-                                    "meta_widget_id": 0,
-                                    "htmlElements":
-                                     [
-                                         {
-                                             "class": "",
-                                             "tag": "li",
-                                             "value": "1",
-                                             "htmlChildren": [],
-                                             "widgetChildren": []
-                                         }
-                                     ]
-                                 },
+                                     "class": "",
+                                     "tag": "li",
+                                     "value": "1",
+                                     "htmlChildren": [],
+                                     "widgetChildren": []
+                                 }
+                             ]
+                         },
+                         {
+                            "id": 3,
+                            "metaWidget_id": 0,
+                             "widgetChildren": [],
+                             "htmlChildren":
+                             [
                                  {
-                                    "id": 3,
-                                    "metaWidget_id": 0,
-                                     "widgetChildren": [],
-                                     "htmlChildren":
-                                     [
-                                         {
-                                             "class": "",
-                                             "tag": "li",
-                                             "value": "2",
-                                             "htmlChildren": [],
-                                             "widgetChildren": []
-                                         }
-                                     ]
+                                     "class": "",
+                                     "tag": "li",
+                                     "value": "2",
+                                     "htmlChildren": [],
+                                     "widgetChildren": []
                                  }
                              ]
                          }
-                    ]
-                }
+                     ]
+                 }
             ]
         }
-
     ]
 }

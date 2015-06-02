@@ -6,9 +6,10 @@ var App = App || {};
             this.page = page;
         else
             this.page = new App.Models.Page();
-            this.page.fetch ({
-                success: this.initialize,
-            });        
+        _.bindAll(this, "initialize");
+        this.page.fetch ({
+            success: this.initialize,
+        });        
     };
     _.extend(PageBuilder.prototype, {
         initialize: function() {
