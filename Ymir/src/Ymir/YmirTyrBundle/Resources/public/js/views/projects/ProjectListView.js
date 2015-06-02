@@ -2,10 +2,7 @@ var App = App || {};
 App.Views.ProjectPageView = App.Views.ProjectPageView || {};
 
 App.Views.ProjectListView = Backbone.View.extend({
-
-/*  el: $("#project-panel"),*/
-
-      
+  
   events: {
       'click .addProject': 'addProject',
       'click .remove-project': 'removeProject',
@@ -15,27 +12,30 @@ App.Views.ProjectListView = Backbone.View.extend({
     initialize: function() {
         // Bind
         _.bindAll(this,'render','addProject','removeProject');
-        this.collection.bind('add', this.render);  // Bind l'ajout d'un project    
-        this.render();      
+        this.collection.bind('add',);  // Bind l'ajout d'un project    
+        this.render_base();      
     },
-      
-    render: function(){
-        var $el = $(this.el), self = this;
-        
+    
+    
+    render_base : function (){
+        var $el = $(this.el), self = this;        
         $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button><hr>");
-        
+        this.render();
+        $("#project-panel").html(this.$el);
+        return this;
+    },
+    
+    render: function(){
+        var $el = $(this.el), self = this;        
         if (this.collection.length != 0){ // Si liste pas vide 
-            console.log("not empty collec");
             this.collection.each(function(project) {
                 var item = new App.Views.ProjectPageView({ model: project });
                 $el.append(item.render().el);
             });
             
         }else{
-            console.log("empty collec");
             $el.append("<div>Aucun projets :/</div>"); 
         }
-        $("#project-panel").html(this.$el);
         return this;
     },
     
@@ -58,18 +58,16 @@ App.Views.ProjectListView = Backbone.View.extend({
     addProject: function(){
         var self = this;
         var newProject = new App.Models.Project();
-        newProject.save({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{});        
-        /*var Project = new App.Models.Project().set({
-            id : newProject.get("project").get('id'),
-            pages : new App.Collections.PageList().add(newProject.get("project").get("pages")),
-            name : newProject.get("project").get('name')
-        });*/
-        console.log(newProject.get("project"));
-        this.collection.add(Project); // rappelle render par le bind d'add   
+        this.collection.create({name : "Default Project", pages : new App.Collections.ProjectPageList(new App.Models.ProjectPage())},{
+            sucess : function (model, response){
+                model.set({id : response.get("id")});
+            }
+        });
+        //console.log(newProject.get("project"));
     },
     
-    downloadProject: function(){
-        var id = $(ev.currentTarget).data('id');
+    downloadProject: function(e){
+        var id = $(e.currentTarget).data('id');
         console.log("Download "+id);
     }
         
