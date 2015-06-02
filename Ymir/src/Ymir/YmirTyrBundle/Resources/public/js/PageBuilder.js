@@ -6,12 +6,14 @@ var App = App || {};
             this.page = page;
         else
             this.page = new App.Models.Page();
-        this.initialize();
+            this.page.fetch ({
+                success: this.initialize,
+            });        
     };
     _.extend(PageBuilder.prototype, {
         initialize: function() {
-            var container = $('.stage');
-            for(var widget in this.page.widget) {
+            var container = $("stage");
+            for(var widget in this.page.widgets) {
                 var element = widget.render();
                 container.append(element);
             }

@@ -1,5 +1,5 @@
 var App = App || {};
-App.Collections.WidgetList = App.Collections.WidgetList || {};
+App.Models.HtmlElements = App.Models.HtmlElements || {};
 App.Models.Widget = Backbone.Model.extend({
     defaults: {
         id : 0,
@@ -9,11 +9,10 @@ App.Models.Widget = Backbone.Model.extend({
     },
     parse: function (res) {
         this.htmlElements = new App.Models.HtmlElements(res.htmlElements);
-        console.log(this.get("children"));
         return res;
     },
     render: function() {
-        if(this.children.isEmpty())
+        if(this.htmlElements.isEmpty())
             return null;
     }
 });
