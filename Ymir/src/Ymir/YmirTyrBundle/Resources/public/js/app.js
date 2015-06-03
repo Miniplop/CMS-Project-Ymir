@@ -35,8 +35,7 @@ var app = (function() {
                 this.categories = new App.Collections.CategorieList();
                 var catView = new App.Views.CategorieListView({collection: this.categories});
                 // Stage view
-                var page = new App.Models.Page();
-                this.PageBuilder = new App.Utils.PageBuilder(page);
+                this.PageBuilder = new App.Utils.PageBuilder(null);
                 this.DragDropHandler = new App.Utils.DragDropHandler();
             }else{
                  console.log("error init");
