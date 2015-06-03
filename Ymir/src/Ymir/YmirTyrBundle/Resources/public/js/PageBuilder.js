@@ -180,6 +180,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 receiver.append(jqObject);
                 widget.set('order', receiver.children().length + 1);
             }
+            console.log(this.page.toJSON());
         },
 
         /**
