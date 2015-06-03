@@ -13,7 +13,8 @@ App.Models.Page = Backbone.Model.extend({
     url : 'http://127.0.0.1/ymir/Ymir/web/app_dev.php/stage',
 
     initialize: function() {
-      this.idGenerator = 0;
+        this.idWidgetGenerator = 0;
+        this.idHtmlElementGenerator = 0;
     },
     parse: function (result) {
         result.widgets = new App.Collections.WidgetList(result.widgets, {parse: true});
@@ -22,12 +23,16 @@ App.Models.Page = Backbone.Model.extend({
     
     addWidget : function (container_html_element_id, widget) {
         if(container_html_element_id == null)
-            this.widgets.add(widget);
+            this.get("widgets").add(widget);
         else
-            this.widgets.addWidget(container_html_element_id, widget);
+            this.get("widgets").addWidget(container_html_element_id, widget);
     },
-    getNewId: function() {
-        this.idGenerator++;
-        return this.idGenerator;
+    getNewWidgetId: function() {
+        this.idWidgetGenerator++;
+        return this.idWidgetGenerator;
+    },
+    getNewHtmlElementId: function() {
+        this.idHtmlElementGenerator++;
+        return this.idHtmlElementGenerator;
     }
 });
