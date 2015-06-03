@@ -1,16 +1,19 @@
 var App = App || {};
+App.Models.Widget = App.Models.Widget || function() {};
+App.Collections.WidgetList = App.Collections.WidgetList ||  function() {};
+App.Collections.HtmlElementList = App.Collections.HtmlElementList ||  function() {};
+App.Models.HtmlElement = App.Models.HtmlElement ||  function() {};
 (function () {
 
     function PageBuilder (page) {
-        console.log("constructeur pageBuilder");
-        if (page !== null)
+        if (page !== null) {
             this.page = page;
-        else
+            this.page.fetch({success: this.initialize});
+        } else {
             this.page = new App.Models.Page();
-        _.bindAll(this, "initialize");
-        this.page.fetch ({
-            success: this.initialize,
-        });        
+            this.page.set('widgets', new App.Collections.WidgetList());
+        }
+        this.initialize();
     };
     _.extend( PageBuilder.prototype, {
         initialize: function() {
@@ -18,7 +21,7 @@ var App = App || {};
             console.log ("go init");
             var widgets = this.page.get("widgets");
             widgets.each( function(widget) {
-                console.log("go build ini");
+                console.log(widget);
                 var element = this.buildJqueryWidgetFromWidget(widget);
                 container.append(element);
             });
@@ -26,20 +29,21 @@ var App = App || {};
         /**
          *
          * @param mWidget : App.Models.MetaWidget : object added
-         * @param receiver : Jquery object that receives the widget
+         * @param receiver : {*|jQuery|HTMLElement} that receives the widget
          * @description
          *      Build the JQuery widget from the meta widget structure
          *      Add it to the App.Models.Page tree
          *      add it to the DOM
          */
         addWidgetFromMeta: function(mWidget, receiver) {
-            // build JQuery Objects and add it to the dom
-            var htmlsWidget = this.buildJqueryWidgetFromMeta(mWidget);
-            for(var index in htmlsWidget)
-                this.addToDOM(htmlsWidget[index], receiver);
-
+            var container_html_element_id = receiver.data("html-element-id");
             // build the App.Models.Widget and add it to the page tree
             var widget = this.buildWidgetModelFromMeta(mWidget);
+            this.page.addWidget(container_html_element_id, widget);
+            // build JQuery Objects and add it to the dom
+            var htmlsWidget = this.buildJqueryWidgetFromWidget(widget);
+            for(var index in htmlsWidget)
+                this.addToDOM(htmlsWidget[index], receiver);
         },
 
 
@@ -48,7 +52,7 @@ var App = App || {};
          *          meta_widget: App.Models.MetaWidget
          *          nb_column: int (number of columns)
          *          columnsSizes array (sizes of columns)
-         *          parent: JQuery Object (object where container is dropped)
+         *          parent: {*|jQuery|HTMLElement} (object where container is dropped)
          *          isRow: boolean (specify if the container is a row)
          * @description
          *      Build the JQuery container
@@ -56,7 +60,6 @@ var App = App || {};
          *      add it to the DOM
          */
         addContainer: function(containerParameters) {
-            console.log(containerParameters);
             var htmlContainer = containerParameters.meta_widget.get("metaHtmlElements").models[0];
             var container = $('<' + htmlContainer.get('tag') + '>');
             if(containerParameters.isRow)
@@ -75,6 +78,7 @@ var App = App || {};
         /**
          *
          * @param mWidget : App.Models.MetaWidget : object added
+         * @return {App.Models.Widget}
          */
         buildWidgetModelFromMeta: function(mWidget) {
             var widget = new App.Models.Widget();
@@ -82,34 +86,42 @@ var App = App || {};
             widget.set('id', this.page.getNewId());
 
             widget.set('meta_widget_id', mWidget.get('id'));
+            widget.set('htmlElements', new App.Collections.HtmlElementList());
 
             for(var index in  mWidget.get("metaHtmlElements").models) {
                 var htmlElement = this.buildHtmlElementModelFromMeta(mWidget.get("metaHtmlElements").models[index]);
                 widget.get("htmlElements").add(htmlElement);
             }
+            return widget;
         },
 
         /**
          *
          * @param metaHtmlElement : App.Models.MetaHtmlELement
+         *
          */
         buildHtmlElementModelFromMeta: function(metaHtmlElement) {
             var htmlElement = new App.Models.HtmlElement();
             htmlElement.set('tag', metaHtmlElement.get('tag'));
-            for(var index in metaHtmlElement.get('metaHtmlParameters')) {
+            htmlElement.set('value', metaHtmlElement.get('value'));
+            htmlElement.set('htmlParameters', []);
+            htmlElement.set('widgetChildren', new App.Collections.WidgetList());
+            htmlElement.set('htmlChildren', new App.Collections.HtmlElementList());
+
+            for(var index in metaHtmlElement.get('metaHtmlParameters'))
                 htmlElement.get('htmlParameters').push(metaHtmlElement.get('metaHtmlParameters')[index]);
-            }
 
             for(var index in metaHtmlElement.get('children').models) {
                 var htmlElementChild = this.buildHtmlElementModelFromMeta(metaHtmlElement.get('children').models[index]);
-                metaHtmlElement.get('children').add(htmlElementChild);
+                htmlElement.get('htmlChildren').add(htmlElementChild);
             }
+            return htmlElement;
         },
 
         /**
          *
-         * @param jqObject: JQuery object to add
-         * @param receiver: Jquery object that receives the object
+         * @param jqObject: {*|jQuery|HTMLElement} to add
+         * @param receiver: {*|jQuery|HTMLElement} that receives the object
          *                  if has class stage => append
          *                  else => replaceWith
          */
@@ -124,50 +136,57 @@ var App = App || {};
 
         /**
          *
-         * @param mWidget: App.Models.MetaWidget (we use it to build the JQuery Element
+         * @param mWidget: App.Models.Widget, we use it to build the JQuery Element
          * @return {{*|jQuery|HTMLElement}}
          */
-        buildJqueryWidgetFromWidget: function(Widget) {
-            console.log("buildJqueryWidgetFromWidget");
+        buildJqueryWidgetFromWidget: function(widget) {
             var htmlsWidget = [];
-            for(var index in  Widget.get("htmlElements").models) {
-                console.log("go build html");
-                var jqWidget = this.buildJqueryHtmlFromWidget(Widget.get("htmlElements").models[index], null);
+            var widget_id = widget.get('id');
+            for(var index in  widget.get("htmlElements").models) {
+                var jqWidget = this.buildJqueryFromHtmlElement(widget.get("htmlElements").models[index], widget_id, null);
                 htmlsWidget.push(jqWidget);
             }
+            console.log(htmlsWidget);
             return htmlsWidget;
         },
         /**
          *
-         * @param htmlElement
-         * @param parent, null when it's a widget root element
+         * @param htmlElement : App.Models.HtmlElement
+         * @param parent : {*|jQuery|HTMLElement}, null when it's a widget root element
          * @return {*|jQuery|HTMLElement} or String
          */
-        buildJqueryHtmlFromWidget: function(htmlElement, parent) {
-            console.log("buildJqueryHtmlFromWidget");
+        buildJqueryFromHtmlElement: function(htmlElement, widget_id, parent) {
             var jqWidget = null;
             if(htmlElement.get("tag") != null && htmlElement.get("tag") != "") {
-                jqWidget = $('<'+ htmlElement.get("tag") +'>')
+                jqWidget = $('<'+ htmlElement.get("tag") +'>');
+
                 for(var index in htmlElement.get("htmlParameters")) {
                     jqWidget.attr(htmlElement.get("htmlParameters")[index].name, htmlElement.get("htmlParameters")[index].value);
                 }
 
-                for(var index in htmlElement.get("children").models)
-                    this.buildJqueryHtmlFromWidget(htmlElement.get("children").models[index], jqWidget);
-
-                jqWidget.append(htmlElement.get("value"));
+                if(htmlElement.get("htmlChildren").models.length > 0 || htmlElement.get("widgetChildren").models.length > 0) {
+                    for (var index in htmlElement.get("htmlChildren").models)
+                        this.buildJqueryFromHtmlElement(htmlElement.get("htmlChildren").models[index], widget_id, jqWidget);
+                    for (var index in htmlElement.get("widgetChildren").models)
+                        this.buildJqueryWidgetFromWidget(htmlElement.get("widgetChildren").models[index], jqWidget);
+                } else {
+                    jqWidget.append(htmlElement.get("value"));
+                }
             } else {
                 jqWidget = htmlElement.get("value");
             }
             if(parent != null)
                 parent.append(jqWidget);
+
+            jqWidget.attr('data-widget-id', widget_id);
+            console.log(jqWidget);
             return jqWidget;
         },
 
         /**
          *
-         * @param jqObject
-         * @param classStr
+         * @param jqObject : {*|jQuery|HTMLElement}, object that will receive new class
+         * @param classStr : String, we will search which class we want to keep
          */
         addContainerClass: function(jqObject, classStr) {
             var classes = classStr.split(' ');

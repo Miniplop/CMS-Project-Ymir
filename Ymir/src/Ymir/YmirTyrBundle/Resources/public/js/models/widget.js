@@ -11,8 +11,7 @@ App.Models.Widget = Backbone.Model.extend({
         res.htmlElements = new App.Collections.HtmlElementList(res.htmlElements, {parse: true});
         return res;
     },
-    buildJQueryObject: function() {
-        console.log("render widget");
-        return this.get("htmlElements").buildHtmlElementList();
+    addWidget: function(container_html_element_id, widget) {
+            this.get('htmlElements').addWidget(container_html_element_id, widget);
     }
 });

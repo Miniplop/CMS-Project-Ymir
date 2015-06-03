@@ -10,28 +10,21 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
  * widgets : List of widget contained in the page
  */
 App.Models.Page = Backbone.Model.extend({
-    url : 'http://127.0.0.1:8000/stage',
-    defaults: {
-        idGenerator: 0
+    url : 'http://127.0.0.1/ymir/Ymir/web/app_dev.php/stage',
+
+    initialize: function() {
+      this.idGenerator = 0;
     },
-    
     parse: function (result) {
-        console.log("parse Page");
         result.widgets = new App.Collections.WidgetList(result.widgets, {parse: true});
         return result;
     },
     
-    addWidget : function (idParent, widget) {
-        this.widgets.addWidget(idParent, widget);
-    },
-    
-    removeWidget : function (idWidget) {
-        this.widgets.removeWidget(idWidget);
-    },
-    
-    moveWidget : function (widget, idNewParent) {
-        this.widgets.removeWidget(widget.get("id"));
-        this.widgets.addWidget(idNewParent, Widget);
+    addWidget : function (container_html_element_id, widget) {
+        if(container_html_element_id == null)
+            this.widgets.add(widget);
+        else
+            this.widgets.addWidget(container_html_element_id, widget);
     },
     getNewId: function() {
         this.idGenerator++;
