@@ -24,6 +24,14 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                     this.page.idWidgetGenerator = widgets.models[index].get("id");
                 var element = this.buildJqueryWidgetFromWidget(widgets.models[index], false, null);
                 $('.stage').append(element);
+                var $mobile = $('#mobile');
+                var $tablet = $('#tablet');
+                $tablet.ready(function() {
+                    $tablet.contents().find("body").append(element);
+                });
+                $tablet.ready(function() {
+                    $tablet.contents().find("body").append(element);
+                });
             }
         },
         /**

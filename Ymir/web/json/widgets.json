@@ -1,103 +1,475 @@
 {
-	"categories":
-	[
-		{
-			"id": 1,
-			"name": "Buttons",
-			"metaWidgets": 			[
-				{ "id": 1, "name": "Button", "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>", "metaHtmlElements":
-											[ {
-											"id": 1,
-											"tag": "button", 
-											"metaHtmlParameters": [ {"name": "class", "value": "button droppable"} ],
-											"children": [ {"id": 13, "tag": "", "metaHtmlParameters": [], "value": "Button"} ],
-											"value": "",
-											"acceptAllCategorieAsChildren": "false",
-											"possibleCategorieAsChildren": [ {"categorie_id": 2} ]
-											} ]
-				}
-			]
-		},
-		{
-			"id": 2,
-			"name": "Icons",
-			"metaWidgets":
-			[ 
-				{ "id": 2, "name": "Torso", "htmlPreview": "<i disabled=\"true\" class=\"fi-torso\"></i>", "metaHtmlElements":
-											[ {
-											"id": 2,
-											"tag": "i",
-											"metaHtmlParameters": [ {"name": "class", "value": "fi-torso"} ],
-											"children": [],
-											"value": "",
-											"acceptAllCategorieAsChildren": "false",
-											"possibleCategorieAsChildren": []
-											} ]
-				}
-			]
-		},
-		{
-			"id": 3,
-			"name": "Containers",
-			"metaWidgets":
-			[
-				{ "id": 3, "name": "section", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Section</div>", "metaHtmlElements":
-											[ {
-											"id": 3,
-											"tag": "section", 
-											"metaHtmlParameters": [],
-											"children": [],
-											"value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				},
-				{ "id": 4, "name": "article", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Article</div>", "metaHtmlElements":
-											[ {
-											"id": 4,
-											"tag": "article", 
-											"metaHtmlParameters": [], 
-											"children": [],
-                                              "value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{ "id": 5, "name": "header", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Header</div>", "metaHtmlElements":
-											[ {
-											"id": 5,
-											"tag": "header",
-											"metaHtmlParameters": [], 
-											"children": [],
-                                              "value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{ "id": 6, "name": "footer", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Footer</div>", "metaHtmlElements":
-											[ {
-											"id": 6,
-											"tag": "footer", 
-											"metaHtmlParameters": [],
-											"children": [],
-                                              "value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}, 
-				{ "id": 7, "name": "aside", "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Side bar</div>", "metaHtmlElements":
-											[ {
-											"id": 7,
-											"tag": "aside", 
-											"metaHtmlParameters": [], 
-											"children": [],
-                                              "value": "",
-											"acceptAllCategorieAsChildren": "true",
-											"possibleCategorieAsChildren": []
-											} ]
-				}
-			]
-
-		}
-	]
+  "categories": [
+    {
+      "id": 1,
+      "name": "Buttons",
+      "metaWidgets": [
+        {
+          "id": 1,
+          "name": "Button",
+          "htmlPreview": "<button disabled=\"true\" class=\"button\"> Button</button>",
+          "metaHtmlElements": [
+            {
+              "id": 1,
+              "tag": "button",
+              "metaHtmlParameters": [
+                {
+                  "name": "class",
+                  "value": "button droppable"
+                }
+              ],
+              "children": [
+                {
+                  "id": 13,
+                  "tag": "",
+                  "metaHtmlParameters": [],
+                  "value": "Button"
+                }
+              ],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Icons",
+      "metaWidgets": [
+        {
+          "id": 2,
+          "name": "Torso",
+          "htmlPreview": "<i disabled=\"true\" class=\"fi-torso\"></i>",
+          "metaHtmlElements": [
+            {
+              "id": 2,
+              "tag": "i",
+              "metaHtmlParameters": [
+                {
+                  "name": "class",
+                  "value": "fi-torso"
+                }
+              ],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Containers",
+      "metaWidgets": [
+        {
+          "id": 3,
+          "name": "section",
+          "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Section</div>",
+          "metaHtmlElements": [
+            {
+              "id": 3,
+              "tag": "section",
+              "metaHtmlParameters": [],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "true",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "article",
+          "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Article</div>",
+          "metaHtmlElements": [
+            {
+              "id": 4,
+              "tag": "article",
+              "metaHtmlParameters": [],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "true",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "header",
+          "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Header</div>",
+          "metaHtmlElements": [
+            {
+              "id": 5,
+              "tag": "header",
+              "metaHtmlParameters": [],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "true",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "footer",
+          "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Footer</div>",
+          "metaHtmlElements": [
+            {
+              "id": 6,
+              "tag": "footer",
+              "metaHtmlParameters": [],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "true",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "aside",
+          "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Side bar</div>",
+          "metaHtmlElements": [
+            {
+              "id": 7,
+              "tag": "aside",
+              "metaHtmlParameters": [],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "true",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "TopBar",
+      "metaWidgets": [
+        {
+          "id": 8,
+          "name": "Default top bar",
+          "htmlPreview": "<nav class=\"top-bar\" data-topbar role=\"navigation\"><ul class=\"title-area\"><li class=\"name\"><h1><a href=\"#\">My Site</a></h1></li><li class=\"toggle-topbar menu-icon\"><a href=\"#\"><span>Menu</span></a></li></ul><section class=\"top-bar-section\"><ul class=\"right\"><li class=\"active\"><a href=\"#\">Right Button Active</a></li><li class=\"has-dropdown\"><a href=\"#\">Right Button Dropdown</a><ul class=\"dropdown\"><li><a href=\"#\">First link in dropdown</a></li><li class=\"active\"><a href=\"#\">Active link in dropdown</a></li></ul></li></ul><ul class=\"left\"><li><a href=\"#\">Left Nav Button</a></li></ul></section></nav>",
+          "metaHtmlElements": [
+            {
+              "id": 8,
+              "tag": "nav",
+              "metaHtmlParameters": [
+                {
+                  "name": "class",
+                  "value": "top-bar"
+                },
+                {
+                  "name": "data-topbar",
+                  "value": ""
+                },
+                {
+                  "name": "role",
+                  "value": "navigation"
+                }
+              ],
+              "children": [
+                {
+                  "id": 9,
+                  "tag": "ul",
+                  "metaHtmlParameters": [
+                    {
+                      "name": "class",
+                      "value": "title-area"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": 10,
+                      "tag": "li",
+                      "metaHtmlParameters": [
+                        {
+                          "name": "class",
+                          "value": "name"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "id": 11,
+                          "tag": "h1",
+                          "metaHtmlParameters": [],
+                          "children": [
+                            {
+                              "id": 12,
+                              "tag": "a",
+                              "metaHtmlParameters": [
+                                {
+                                  "name": "href",
+                                  "value": "#"
+                                }
+                              ],
+                              "children": [],
+                              "value": "",
+                              "acceptAllCategorieAsChildren": "false",
+                              "possibleCategorieAsChildren": []
+                            }
+                          ],
+                          "value": "",
+                          "acceptAllCategorieAsChildren": "false",
+                          "possibleCategorieAsChildren": []
+                        }
+                      ],
+                      "value": "",
+                      "acceptAllCategorieAsChildren": "false",
+                      "possibleCategorieAsChildren": []
+                    },
+                    {
+                      "id": 13,
+                      "tag": "li",
+                      "metaHtmlParameters": [
+                        {
+                          "name": "class",
+                          "value": "toggle-topbar menu-icon"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "id": 14,
+                          "tag": "a",
+                          "metaHtmlParameters": [
+                            {
+                              "name": "href",
+                              "value": "#"
+                            }
+                          ],
+                          "children": [
+                            {
+                              "id": 15,
+                              "tag": "span",
+                              "metaHtmlParameters": [],
+                              "children": [],
+                              "value": "Menu",
+                              "acceptAllCategorieAsChildren": "false",
+                              "possibleCategorieAsChildren": []
+                            }
+                          ],
+                          "value": "",
+                          "acceptAllCategorieAsChildren": "false",
+                          "possibleCategorieAsChildren": []
+                        }
+                      ],
+                      "value": "",
+                      "acceptAllCategorieAsChildren": "false",
+                      "possibleCategorieAsChildren": []
+                    }
+                  ],
+                  "value": "",
+                  "acceptAllCategorieAsChildren": "false",
+                  "possibleCategorieAsChildren": []
+                },
+                {
+                  "id": 16,
+                  "tag": "section",
+                  "metaHtmlParameters": [
+                    {
+                      "name": "class",
+                      "value": "top-bar-section"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "id": 17,
+                      "tag": "ul",
+                      "metaHtmlParameters": [
+                        {
+                          "name": "class",
+                          "value": "right"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "id": 18,
+                          "tag": "li",
+                          "metaHtmlParameters": [
+                            {
+                              "name": "class",
+                              "value": "active"
+                            }
+                          ],
+                          "children": [
+                            {
+                              "id": 19,
+                              "tag": "a",
+                              "metaHtmlParameters": [
+                                {
+                                  "name": "href",
+                                  "value": "#"
+                                }
+                              ],
+                              "children": [],
+                              "value": "Right Button Active",
+                              "acceptAllCategorieAsChildren": "false",
+                              "possibleCategorieAsChildren": []
+                            }
+                          ],
+                          "value": "",
+                          "acceptAllCategorieAsChildren": "false",
+                          "possibleCategorieAsChildren": []
+                        },
+                        {
+                          "id": 20,
+                          "tag": "li",
+                          "metaHtmlParameters": [
+                            {
+                              "name": "class",
+                              "value": "has-dropdown"
+                            }
+                          ],
+                          "children": [
+                            {
+                              "id": 21,
+                              "tag": "a",
+                              "metaHtmlParameters": [
+                                {
+                                  "name": "href",
+                                  "value": "#"
+                                }
+                              ],
+                              "children": [],
+                              "value": "Right Button Dropdown",
+                              "acceptAllCategorieAsChildren": "false",
+                              "possibleCategorieAsChildren": []
+                            },
+                            {
+                              "id": 22,
+                              "tag": "ul",
+                              "metaHtmlParameters": [
+                                {
+                                  "name": "class",
+                                  "value": "dropdown"
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "id": 23,
+                                  "tag": "li",
+                                  "metaHtmlParameters": [],
+                                  "children": [
+                                    {
+                                      "id": 24,
+                                      "tag": "a",
+                                      "metaHtmlParameters": [
+                                        {
+                                          "name": "href",
+                                          "value": "#"
+                                        }
+                                      ],
+                                      "children": [],
+                                      "value": "First link in dropdown",
+                                      "acceptAllCategorieAsChildren": "false",
+                                      "possibleCategorieAsChildren": []
+                                    }
+                                  ],
+                                  "value": "",
+                                  "acceptAllCategorieAsChildren": "false",
+                                  "possibleCategorieAsChildren": []
+                                },
+                                {
+                                  "id": 25,
+                                  "tag": "li",
+                                  "metaHtmlParameters": [
+                                    {
+                                      "name": "class",
+                                      "value": "active"
+                                    }
+                                  ],
+                                  "children": [
+                                    {
+                                      "id": 26,
+                                      "tag": "a",
+                                      "metaHtmlParameters": [
+                                        {
+                                          "name": "href",
+                                          "value": "#"
+                                        }
+                                      ],
+                                      "children": [],
+                                      "value": "Active link in dropdown",
+                                      "acceptAllCategorieAsChildren": "false",
+                                      "possibleCategorieAsChildren": []
+                                    }
+                                  ],
+                                  "value": "",
+                                  "acceptAllCategorieAsChildren": "false",
+                                  "possibleCategorieAsChildren": []
+                                }
+                              ],
+                              "value": "",
+                              "acceptAllCategorieAsChildren": "false",
+                              "possibleCategorieAsChildren": []
+                            }
+                          ],
+                          "value": "",
+                          "acceptAllCategorieAsChildren": "false",
+                          "possibleCategorieAsChildren": []
+                        }
+                      ],
+                      "value": "",
+                      "acceptAllCategorieAsChildren": "false",
+                      "possibleCategorieAsChildren": []
+                    },
+                    {
+                      "id": 27,
+                      "tag": "ul ",
+                      "metaHtmlParameters": [
+                        {
+                          "name": "class",
+                          "value": "left"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "id": 28,
+                          "tag": "li ",
+                          "metaHtmlParameters": [],
+                          "children": [
+                            {
+                              "id": 29,
+                              "tag": "a ",
+                              "metaHtmlParameters": [
+                                {
+                                  "name": "href",
+                                  "value": "#"
+                                }
+                              ],
+                              "children": [],
+                              "value": "Left Nav Button",
+                              "acceptAllCategorieAsChildren": "false",
+                              "possibleCategorieAsChildren": []
+                            }
+                          ],
+                          "value": "",
+                          "acceptAllCategorieAsChildren": "false",
+                          "possibleCategorieAsChildren": []
+                        }
+                      ],
+                      "value": "",
+                      "acceptAllCategorieAsChildren": "false",
+                      "possibleCategorieAsChildren": []
+                    }
+                  ],
+                  "value": "",
+                  "acceptAllCategorieAsChildren": "false",
+                  "possibleCategorieAsChildren": []
+                }
+              ],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
