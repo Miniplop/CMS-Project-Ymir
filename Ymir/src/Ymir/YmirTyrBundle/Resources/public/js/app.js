@@ -19,10 +19,8 @@ var app = (function() {
             $(document).foundation();
             var rout;  
           if (!routeur){
-              console.log('you are viewing profile page');
               rout = new App.Router.ProfileRouter();
           }else{
-              console.log('you are viewing creative page');
               rout = new App.Router.CreativeRouter();
           }
             Backbone.history.start();

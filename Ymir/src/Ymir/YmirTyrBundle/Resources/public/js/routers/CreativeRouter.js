@@ -7,7 +7,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 
     routes: {
 
-		'(:id)' : 'creative'
+		'(*:id)' : 'creative'
 
 	},
 
@@ -16,12 +16,12 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 		console.log('you are viewing creative page ' +id);
 
         // Nav Bar view 
-       /* this.categories = new App.Collections.CategorieList();
+        this.categories = new App.Collections.CategorieList();
         var catlistview = new App.Views.CategorieListView({collection: this.categories});
 
         // Stage view
         this.pages = new App.Collections.PageList();
-        var arbreWidget = new App.Views.WidgetListView({collection: this.pages});*/
+        var arbreWidget = new App.Views.WidgetListView({collection: this.pages});
 
 	}
 });
