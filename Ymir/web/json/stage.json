@@ -9,7 +9,7 @@
             "htmlElements":
             [
                  {
-                     "class": "list",
+                     "htmlParameters": [ {name: "class", value: "list"} ],
                      "tag": "ul",
                      "value": "",
                      "htmlChildren": [],
@@ -21,7 +21,7 @@
                             "htmlElements":
                              [
                                  {
-                                     "class": "",
+                                     "htmlParameters": [],
                                      "tag": "li",
                                      "value": "1",
                                      "htmlChildren": [],
@@ -35,7 +35,7 @@
                             "htmlElements":
                              [
                                  {
-                                     "class": "",
+                                     "htmlParameters": [],
                                      "tag": "li",
                                      "value": "2",
                                      "htmlChildren": [],

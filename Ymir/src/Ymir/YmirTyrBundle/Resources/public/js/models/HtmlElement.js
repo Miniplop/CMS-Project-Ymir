@@ -3,15 +3,14 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
 App.Models.HtmlElement = Backbone.Model.extend({
     
     /**
-        class: "",
-        tag: "",
-        value: "",
-        htmlChildren: null,
-        widgetChildren: null
+        htmlParameters : list of html parameter: {name: "class", value: "class_names"}
+        tag : html tag of the html object
+        value : value contained in the html object, ex : <div> value </div>. If is not empty, htmlChildren and widgetChildren are empty
+        htmlChildren : App.Collections.HtmlElementList
+        widgetChildren : App.Collections.WidgetList
     */
     
     parse: function (res) {
-        console.log("parse html elements");
         res.widgetChildren = new App.Collections.WidgetList(res.widgetChildren, {parse: true});
         return res;
     },
