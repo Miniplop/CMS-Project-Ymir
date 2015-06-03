@@ -212,7 +212,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
         },
         /**
          *
-         * @param htmlElement : App.Models.HtmlElement
+         * @param htmlElement : App.Models.
          * @param parent : {*|jQuery|HTMLElement}, null when it's a widget root element
          * @return {*|jQuery|HTMLElement} or String
          */
