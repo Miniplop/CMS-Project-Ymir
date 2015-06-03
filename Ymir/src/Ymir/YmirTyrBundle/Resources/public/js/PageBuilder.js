@@ -17,22 +17,27 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
     };
     _.extend( PageBuilder.prototype, {
         initialize: function() {
-            var container = $('.stage');
             var widgets = this.page.get("widgets");
             for(var index in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[index].get("id"))
                     this.page.idWidgetGenerator = widgets.models[index].get("id");
 
-                var element = this.buildJqueryWidgetFromWidget(widgets.models[index], false, null);
-                $('.stage').append(element);
-                var $mobile = $('#mobile');
-                var $tablet = $('#tablet');
-                $tablet.ready(function() {
-                    $tablet.contents().find("body").append(element);
+                var elements = this.buildJqueryWidgetFromWidget(widgets.models[index], false, null);
+
+
+                for (var index in elements)
+                    this.addToDOM(elements[index], $(".stage"), widgets.models[index]);
+
+              /*  var mobile = $("#mobile");
+                var tablet = $("#tablet");
+                mobile.ready(function() {
+                    for (var index in elements)
+                        this.addToDOM(elements[index], mobile.contents().find("body"), widgets.models[index]);
                 });
-                $tablet.ready(function() {
-                    $tablet.contents().find("body").append(element);
-                });
+                tablet.ready(function() {
+                    for (var index in elements)
+                        this.addToDOM(elements[index], tablet.contents().find("body"), widgets.models[index]);
+                });*/
             }
         },
         /**
@@ -86,10 +91,9 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             var container = $('<' + htmlContainer.models[0].get('tag') + '>');
             if (containerParameters.isRow)
                 container.addClass('row');
-            var htmlElementChild = null;
             for (var i = 1; i <= containerParameters.nb_column; i++) {
                 // build sub div HtmlElement that will be replaced when we put a widget on it
-                htmlElementChild = new App.Models.HtmlElement();
+                var htmlElementChild = new App.Models.HtmlElement();
                 htmlElementChild.set('id', htmlElement.get('id'));
                 htmlElementChild.set('tag', 'div');
                 htmlElementChild.set('value', '');
@@ -97,7 +101,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 htmlElementChild.set('htmlParameters', []);
                 htmlElementChild.get('htmlParameters').push({name: "data-info", value: "replaceable"});
                 htmlElementChild.get('htmlParameters').push({name: "data-order", value: i});
-                if (1 == containerParameters.nb_column)
+                if (i == containerParameters.nb_column)
                     htmlElementChild.get('htmlParameters').push({
                         name: "class",
                         value: "large-" + containerParameters.columnsSizes[i] + " columns end"
@@ -183,6 +187,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
          *                  else => replaceWith
          */
         addToDOM: function (jqObject, receiver, widget) {
+            console.log("addToDOM");
             if (receiver.data("info") == "replaceable") {
                 widget.set('order', receiver.data("order"));
                 this.addContainerClass(jqObject, receiver.attr("class"));
