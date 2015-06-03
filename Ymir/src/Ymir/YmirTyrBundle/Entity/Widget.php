@@ -45,7 +45,8 @@ class Widget
     private $parent_widget;
 
     /**
-     *  @ORM\Column(name="index", type="integer")
+     * Index dans la page ou dans le widget parent 
+     * @ORM\Column(name="index", type="integer")
      */
     private $index;
 
@@ -54,7 +55,7 @@ class Widget
      * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_widget", cascade={"persist"})
      * @ORM\OrderBy({"index" = "ASC"})
      */
-    protected $children;
+    private $children;
 
     /**
      * @Exclude
@@ -65,8 +66,8 @@ class Widget
 
     public function __construct()
     {
-         $this->children = new ArrayCollection();
-    }
+       $this->children = new ArrayCollection();
+   }
 
     /**
      * Get id
@@ -124,26 +125,6 @@ class Widget
     public function getParentElement()
     {
         return $this->parent_element;
-    }
-
-    /**
-     * Generate Code Widget
-     * 
-    */
-    public function generateCodeWidget()
-    {
-        // Openning HTML tag for the widget
-        $code = "<".$name.">";
-
-        // Generate the code for the probable children
-        foreach ($children->toArray() as $c) {
-            $code .= $c->generateCodeWidget();
-        }
-
-        // Closing HTML tag for the widget
-        $code .= "</".$name.">";
-
-        return $code;
     }
 
     /**
@@ -274,5 +255,54 @@ class Widget
     public function getMetaWidget()
     {
         return $this->meta_widget;
+    }
+
+
+
+    private function sortElements() {
+        // merge two sorted table
+        $childrenCount = $children->toArray()->count();
+        $html_elCount = $html_elements->toArray()->count();
+        $childrenIndex = 0;
+        $html_elIndex = 0;
+        // Sorted merging
+        // for ($i = 0, $i < max($childrenCount, $html_elCount) ; $i++) {
+        while ($childrenIndex < $childrenCount && $html_elIndex < $html_elCount){
+                // choosing the minimum
+                if ($children[$i]->index <= $html_elements[$i]->index) {
+                    $table[$i] = $children[i];
+                    $childrenIndex ++;
+                } else {
+                    $table[$i] = $children[i];
+                    $html_elIndex ++;
+                }
+            
+            $i++;
+        }
+            /*elseif ($childrenIndex >= $childrenCount){
+                // we have to copy the remaing part of the table HTML ELement
+                $table[i] = $html_elements[$html_elIndex];
+                $html_elIndex ++;
+            }
+            else {
+                // we have to copy the remaing part of the table Children
+                $table[i] = $children[$childrenIndex];
+                $childrenIndex ++;
+            }*/
+        return $table;
+    }
+
+
+    /**
+     * Generate Code Widget
+     * 
+    */
+    public function  codeGen()
+    {
+        foreach ($elements->toArray() as $e) {
+            $code = $e->codeGen();
+        }
+
+        return $code;
     }
 }

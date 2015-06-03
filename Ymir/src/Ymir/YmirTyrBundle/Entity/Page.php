@@ -145,19 +145,19 @@ class Page
      * Generate Code
      * 
      */
-    public function generateCode()
+    public function codeGen()
     {
         // Begining of the page
         $code = "<!doctype html>\n<HTML lang=\"fr\">\n<head>\n\t<meta charset=\"utf-8\">\n";
         // Title
-        $code .= "\t<title>".$title."</title>\n";
+        // $code .= "\t<title>".$title."</title>\n";
         // Style dependancies
         $code .= "\t<link rel=\"stylesheet\" href=\""."\">\n";
         $code .= "</head>\n<body>\n";
 
         // Generate the different widgets, starting from rows and navigating to the children
-        foreach ($this->widgets->to_array() as $w) {
-            $code .= $w->generateCodeWidget();
+        foreach ($this->widgets->toArray() as $w) {
+            $code .= $w->codeGen();
         }
 
         $code .= "</body>\n</html>";

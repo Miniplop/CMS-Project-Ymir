@@ -22,6 +22,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             for(var index in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[index].get("id"))
                     this.page.idWidgetGenerator = widgets.models[index].get("id");
+                
                 var element = this.buildJqueryWidgetFromWidget(widgets.models[index], false, null);
                 $('.stage').append(element);
                 var $mobile = $('#mobile');
