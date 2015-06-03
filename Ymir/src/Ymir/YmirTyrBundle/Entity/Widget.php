@@ -266,8 +266,8 @@ class Widget
         $childrenIndex = 0;
         $html_elIndex = 0;
         // Sorted merging
-        for ($i = 0, $i <= max($childrenCount, $html_elCount) ; $i++) {
-            if ( $childrenIndex < $childrenCount and $html_elIndex < $html_elCount) { // both indexes are in range
+        // for ($i = 0, $i < max($childrenCount, $html_elCount) ; $i++) {
+        while ($childrenIndex < $childrenCount && $html_elIndex < $html_elCount){
                 // choosing the minimum
                 if ($children[$i]->index <= $html_elements[$i]->index)
                     $table[$i] = $children[i];
@@ -276,7 +276,9 @@ class Widget
                     $table[$i] = $children[i];
                     $html_elIndex ++;
                 }
-            }
+            
+            $i++;
+        }
             elseif ($childrenIndex >= $childrenCount){
                 // we have to copy the remaing part of the table HTML ELement
                 $table[i] = $html_elements[$html_elIndex];
@@ -287,7 +289,6 @@ class Widget
                 $table[i] = $children[$childrenIndex];
                 $childrenIndex ++;
             }
-        }
         return $table;
     }
 
