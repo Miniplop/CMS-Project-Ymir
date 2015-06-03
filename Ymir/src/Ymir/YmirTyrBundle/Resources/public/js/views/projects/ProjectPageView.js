@@ -40,16 +40,16 @@ App.Views.ProjectPageView = Backbone.View.extend({
         //var id = $(e.currentTarget).data('id');
         var newPage = new App.Models.ProjectPage();
         newPage.set("project_id", project_id);
-        //newPage.set("id", id);
-        newPage.save((null),{
+        newPage.save({
             success : function (response){
-                //this.model.fetch();
+                
             }, 
             error : function(){
                  new Error({ message : 'Impossible to save page'});      
             },
             
         });
+        this.model.fetch();
     },
     
     unrender: function(){
