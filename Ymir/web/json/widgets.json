@@ -46,7 +46,7 @@
 											"id": 3,
 											"tag": "section", 
 											"metaHtmlParameters": [],
-											"children": [ {"id": 8, "tag": "div", "metaHtmlParameters": [], "children": [], "value": ""}], 
+											"children": [],
 											"value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
@@ -57,8 +57,8 @@
 											"id": 4,
 											"tag": "article", 
 											"metaHtmlParameters": [], 
-											"children": [ {"id": 9, "tag": "div", "metaHtmlParameters": [], "children": [], "value": ""}], 
-											"value": "",
+											"children": [],
+                                              "value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
@@ -68,8 +68,8 @@
 											"id": 5,
 											"tag": "header",
 											"metaHtmlParameters": [], 
-											"children": [ {"id": 10, "tag": "div", "metaHtmlParameters": [], "children": [], "value": ""}], 
-											"value": "",
+											"children": [],
+                                              "value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
@@ -79,8 +79,8 @@
 											"id": 6,
 											"tag": "footer", 
 											"metaHtmlParameters": [],
-											"children": [ {"id": 11, "tag": "div", "metaHtmlParameters": [], "children": [], "value": ""}], 
-											"value": "",
+											"children": [],
+                                              "value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]
@@ -90,8 +90,8 @@
 											"id": 7,
 											"tag": "aside", 
 											"metaHtmlParameters": [], 
-											"children": [ {"id": 12, "tag": "div", "metaHtmlParameters": [], "children": [], "value": ""}], 
-											"value": "",
+											"children": [],
+                                              "value": "",
 											"acceptAllCategorieAsChildren": "true",
 											"possibleCategorieAsChildren": []
 											} ]

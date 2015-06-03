@@ -13,8 +13,8 @@ App.Models.Page = Backbone.Model.extend({
     url : 'http://127.0.0.1:8000/stage',
 
     initialize: function() {
-        console.log("page init");
-      this.idGenerator = 0;
+        this.idWidgetGenerator = 0;
+        this.idHtmlElementGenerator = 0;
     },
     parse: function (result) {
         console.log ("parse page");
@@ -24,12 +24,16 @@ App.Models.Page = Backbone.Model.extend({
     
     addWidget : function (container_html_element_id, widget) {
         if(container_html_element_id == null)
-            this.widgets.add(widget);
+            this.get("widgets").add(widget);
         else
-            this.widgets.addWidget(container_html_element_id, widget);
+            this.get("widgets").addWidget(container_html_element_id, widget);
     },
-    getNewId: function() {
-        this.idGenerator++;
-        return this.idGenerator;
+    getNewWidgetId: function() {
+        this.idWidgetGenerator++;
+        return this.idWidgetGenerator;
+    },
+    getNewHtmlElementId: function() {
+        this.idHtmlElementGenerator++;
+        return this.idHtmlElementGenerator;
     }
 });

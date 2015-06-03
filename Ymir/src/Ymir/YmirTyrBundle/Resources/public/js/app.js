@@ -17,31 +17,16 @@ var app = (function() {
 		todos: null,
         init: function(routeur) {
             $(document).foundation();
-            if (!routeur) {
-                var routeur = new App.Router.ProfileRouter();
-                var listprojet = new App.Collections.ProjectList();
-        
-                listprojet.fetch({
-                    success : function (collection, response) {
-                        var view = new App.Views.ProjectListView({collection : listprojet});
-                    },
-                    error : function () {
-                        new Error({ message : 'Impossible to load project list'});
-                    }
-            });
-            } else if (routeur) {
-                //var routeur = new App.Router.CreativeRouter();  
 
-                // Nav Bar view
-                this.categories = new App.Collections.CategorieList();
-                var catView = new App.Views.CategorieListView({collection: this.categories});
-                // Stage view
-                this.page = new App.Models.Page();                
-                this.PageBuilder = new App.Utils.PageBuilder(this.page);
-                this.DragDropHandler = new App.Utils.DragDropHandler();
-            } else {
-                 console.log("error init");
-            }
+            
+            this.categories = new App.Collections.CategorieList();
+            var catView = new App.Views.CategorieListView({collection: this.categories});
+            this.PageBuilder = new App.Utils.PageBuilder(null);
+            this.DragDropHandler = new App.Utils.DragDropHandler();
+            
+/*            
+            var routeur = new App.Router.ProfileRouter();
+            Backbone.history.start();*/
             return this;
 	      }
 		};
@@ -61,6 +46,6 @@ var app = (function() {
 		   if( $(this).is(':checked') ) $("#mockup-desktop").css("display", "inline");
 		   else $("#mockup-desktop").css("display", "none");
 	});
-
+    
 	return window.App;	
 })();

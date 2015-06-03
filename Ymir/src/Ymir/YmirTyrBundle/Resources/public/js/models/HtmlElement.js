@@ -17,7 +17,8 @@ App.Models.HtmlElement = Backbone.Model.extend({
         return res;
     },
     addWidget: function(container_html_element_id, widget) {
-        if(this.get("id") == container_html_element_id)
-        this.get("widgetChildren").add(widget);
+        if(this.get("id") == container_html_element_id) {
+            this.get("widgetChildren").add(widget);
+        }
     }
 });
