@@ -17,8 +17,6 @@ App.Views.ProjectListView = Backbone.View.extend({
     },
     
     render_main : function (){
-
-        console.log("render_main");
         var $el = $(this.el), self = this;
         $(this.el).empty();
         $el.append("<button class=\"addProject\" class=\"button small radius\">New Project</button><hr>");
@@ -28,7 +26,6 @@ App.Views.ProjectListView = Backbone.View.extend({
     },
     
     render: function(){
-        console.log("render");
         var $el = $(this.el), self = this;        
         if (this.model.length != 0){ // Si liste pas vide 
             this.model.each(function(project) {

@@ -16,8 +16,15 @@ var app = (function() {
 		todos: null,
         init: function(routeur){
             $(document).foundation();
+            
+            this.categories = new App.Collections.CategorieList();
+            var catView = new App.Views.CategorieListView({collection: this.categories});
+            this.PageBuilder = new App.Utils.PageBuilder(null);
+            this.DragDropHandler = new App.Utils.DragDropHandler();
+            
+/*            
             var routeur = new App.Router.ProfileRouter();
-            Backbone.history.start();
+            Backbone.history.start();*/
             return this;
 	      }
 		};
@@ -37,6 +44,6 @@ var app = (function() {
 		   if( $(this).is(':checked') ) $("#mockup-desktop").css("display", "inline");
 		   else $("#mockup-desktop").css("display", "none");
 	});
-
+    
 	return window.App;	
 })();
