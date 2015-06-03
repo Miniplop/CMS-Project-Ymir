@@ -22,8 +22,8 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             for(var index in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[index].get("id"))
                     this.page.idWidgetGenerator = widgets.models[index].get("id");
-                var element = this.buildJqueryWidgetFromWidget(widgets.models[index], false);
-                console.log(element);
+                
+                var element = this.buildJqueryWidgetFromWidget(widgets.models[index], false, null);
                 $('.stage').append(element);
                 var $mobile = $('#mobile');
                 var $tablet = $('#tablet');
@@ -49,10 +49,13 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             var newOrder = null;
             // build the App.Models.Widget and add it to the page tree
             var widget = this.buildWidgetModelFromMeta(mWidget);
-
+            console.log("====================================================");
+            console.log("adding widget to : " + container_html_element_id);
+            console.log(widget);
+            console.log("====================================================");
             this.page.addWidget(container_html_element_id, widget);
             // build JQuery Objects and add it to the dom
-            var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true);
+            var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
 
             for (var index in htmlsWidget)
                 this.addToDOM(htmlsWidget[index], receiver, widget);
@@ -106,7 +109,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                     });
                 htmlElementChild.set('widgetChildren', new App.Collections.WidgetList());
                 htmlElementChild.set('htmlChildren', new App.Collections.HtmlElementList());
-                htmlContainer.add(htmlElementChild);
+                htmlElement.get("htmlChildren").add(htmlElementChild);
                 // build subs div Jquery objects
                 var column = $('<div>');
                 column.addClass('large-' + containerParameters.columnsSizes[i] + ' droppable columns');
@@ -119,6 +122,8 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             container.attr("data-html-element-id", htmlElement.get('id'));
 
             widget.get("htmlElements").add(htmlElement);
+            var container_html_element_id = containerParameters.parent.data("html-element-id");
+            this.page.addWidget(container_html_element_id, widget)
 
             // add to parent into page
             this.addToDOM(container, $(containerParameters.parent), widget);
@@ -183,10 +188,10 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 this.addContainerClass(jqObject, receiver.attr("class"));
                 receiver.replaceWith(jqObject);
             } else {
-                receiver.append(jqObject);
                 widget.set('order', receiver.children().length + 1);
+                receiver.append(jqObject);
             }
-            console.log(this.page.toJSON());
+            console.log(JSON.stringify(this.page.toJSON()));
         },
 
         /**
@@ -194,11 +199,13 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
          * @param mWidget: App.Models.Widget, we use it to build the JQuery Element
          * @return {{*|jQuery|HTMLElement}}
          */
-        buildJqueryWidgetFromWidget: function (widget, isNew) {
+        buildJqueryWidgetFromWidget: function (widget, isNew, parent) {
             var htmlsWidget = [];
             var widget_id = widget.get('id');
             for (var index in  widget.get("htmlElements").models) {
                 var jqWidget = this.buildJqueryFromHtmlElement(widget.get("htmlElements").models[index], isNew, null);
+                if(parent != null)
+                    parent.append(jqWidget);
                 htmlsWidget.push(jqWidget);
             }
             return htmlsWidget;
@@ -217,14 +224,11 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                     jqWidget.attr(htmlElement.get("htmlParameters")[index].name, htmlElement.get("htmlParameters")[index].value);
                 }
 
-                if (htmlElement.get("htmlChildren").models.length > 0 || htmlElement.get("widgetChildren").models.length > 0) {
-                    for (var index in htmlElement.get("htmlChildren").models)
-                        this.buildJqueryFromHtmlElement(htmlElement.get("htmlChildren").models[index], isNew, jqWidget);
-                    for (var index in htmlElement.get("widgetChildren").models)
-                        this.buildJqueryWidgetFromWidget(htmlElement.get("widgetChildren").models[index], jqWidget);
-                } else {
-                    jqWidget.append(htmlElement.get("value"));
-                }
+                for (var index in htmlElement.get("htmlChildren").models)
+                    this.buildJqueryFromHtmlElement(htmlElement.get("htmlChildren").models[index], isNew, jqWidget);
+                for (var index in htmlElement.get("widgetChildren").models)
+                    this.buildJqueryWidgetFromWidget(htmlElement.get("widgetChildren").models[index], isNew, jqWidget);
+                jqWidget.append(htmlElement.get("value"));
                 jqWidget.attr('data-html-element-id', htmlElement.get('id'));
             } else {
                 jqWidget = htmlElement.get("value");

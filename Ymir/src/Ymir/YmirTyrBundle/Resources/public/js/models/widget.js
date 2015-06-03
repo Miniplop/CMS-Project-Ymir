@@ -13,5 +13,10 @@ App.Models.Widget = Backbone.Model.extend({
     },
     addWidget: function(container_html_element_id, widget) {
             this.get('htmlElements').addWidget(container_html_element_id, widget);
+    },
+    toJSON: function(options) {
+        var json =  _.clone(this.attributes);
+        json.htmlElements = this.get("htmlElements").toJSON(options);
+        return json;
     }
 });
