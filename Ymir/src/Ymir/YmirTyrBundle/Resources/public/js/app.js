@@ -19,7 +19,7 @@ var app = (function() {
             
             this.categories = new App.Collections.CategorieList();
             var catView = new App.Views.CategorieListView({collection: this.categories});
-            this.PageBuilder = new App.Utils.PageBuilder(null);
+            this.PageBuilder = new App.Utils.PageBuilder(new App.Models.Page());
             this.DragDropHandler = new App.Utils.DragDropHandler();
             
 /*            

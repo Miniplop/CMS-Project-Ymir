@@ -8,7 +8,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
     function PageBuilder(page) {
         if (page !== null) {
             this.page = page;
-            this.page.fetch({success: this.initialize});
+            this.page.fetch();
         } else {
             this.page = new App.Models.Page();
             this.page.set('widgets', new App.Collections.WidgetList());
@@ -18,16 +18,13 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
 
     _.extend(PageBuilder.prototype, {
         initialize: function () {
-            var container = $('.stage');
-            console.log("go init");
             var widgets = this.page.get("widgets");
-            widgets.each(function (widget) {
-                console.log(widget);
+            for(var index in widgets.models) {
                 if (this.page.idWidgetGenerator < widget.get("id"))
                     this.page.idWidgetGenerator = widget.get("id");
-                var element = this.buildJqueryWidgetFromWidget(widget, false);
-                container.append(element);
-            });
+                var element = this.buildJqueryWidgetFromWidget(widgets[index], false);
+                $('.stage').append(element);
+            }
         },
         /**
          *
