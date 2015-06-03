@@ -6,6 +6,7 @@ App.Collections.HtmlElementList = App.Collections.HtmlElementList || {};
  * htmlElements : App.Collections.HtmlElementList
  */
 App.Models.Widget = Backbone.Model.extend({
+    
     parse: function (res) {
         console.log("parse widget");
         res.htmlElements = new App.Collections.HtmlElementList(res.htmlElements, {parse: true});

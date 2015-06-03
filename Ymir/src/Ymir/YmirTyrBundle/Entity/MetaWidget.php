@@ -35,11 +35,9 @@ class MetaWidget
     private $widgets;
 
     /**
-     * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="meta_widgets")
-     * @ORM\JoinColumn(name="html_element_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\MetaHtmlElement", mappedBy="meta_widget")
      */
-    private $html_element;
+    private $meta_html_elements;
 
     /**
      * Constructor
@@ -139,5 +137,39 @@ class MetaWidget
     public function getHtmlElement()
     {
         return $this->html_element;
+    }
+
+    /**
+     * Add metaHtmlElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\MetaHtmlElement $metaHtmlElement
+     *
+     * @return MetaWidget
+     */
+    public function addMetaHtmlElement(\Ymir\YmirTyrBundle\Entity\MetaHtmlElement $metaHtmlElement)
+    {
+        $this->meta_html_elements[] = $metaHtmlElement;
+
+        return $this;
+    }
+
+    /**
+     * Remove metaHtmlElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\MetaHtmlElement $metaHtmlElement
+     */
+    public function removeMetaHtmlElement(\Ymir\YmirTyrBundle\Entity\MetaHtmlElement $metaHtmlElement)
+    {
+        $this->meta_html_elements->removeElement($metaHtmlElement);
+    }
+
+    /**
+     * Get metaHtmlElements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMetaHtmlElements()
+    {
+        return $this->meta_html_elements;
     }
 }

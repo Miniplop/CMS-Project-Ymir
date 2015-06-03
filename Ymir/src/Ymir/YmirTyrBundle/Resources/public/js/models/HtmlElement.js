@@ -13,10 +13,12 @@ App.Models.HtmlElement = Backbone.Model.extend({
     parse: function (res) {
         res.widgetChildren = new App.Collections.WidgetList(res.widgetChildren, {parse: true});
         res.htmlChildren = new App.Collections.HtmlElementList(res.htmlChildren, {parse: true});
+        // res.htmlParameters = new App.Collections.HtmlParameterList(res.htmlParameters, {parse: true});
         return res;
     },
     addWidget: function(container_html_element_id, widget) {
-        if(this.get("id") == container_html_element_id)
-        this.get("widgetChildren").add(widget);
+        if(this.get("id") == container_html_element_id) {
+            this.get("widgetChildren").add(widget);
+        }
     }
 });
