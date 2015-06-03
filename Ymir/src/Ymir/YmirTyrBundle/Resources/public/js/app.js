@@ -16,30 +16,8 @@ var app = (function() {
 		todos: null,
         init: function(routeur){
             $(document).foundation();
-            if (!routeur){
-                var routeur = new App.Router.ProfileRouter();
-                var listprojet = new App.Collections.ProjectList();
-        
-                listprojet.fetch({
-                    success : function (collection,response){
-                        var view = new App.Views.ProjectListView({collection : listprojet});
-                    },
-                    error : function (){
-                        new Error({ message : 'Impossible to load project list'});      
-                    }
-            });
-            }else if (routeur) {
-                //var routeur = new App.Router.CreativeRouter();  
-
-                // Nav Bar view
-                this.categories = new App.Collections.CategorieList();
-                var catView = new App.Views.CategorieListView({collection: this.categories});
-                // Stage view
-                this.PageBuilder = new App.Utils.PageBuilder(null);
-                this.DragDropHandler = new App.Utils.DragDropHandler();
-            }else{
-                 console.log("error init");
-            }
+            var routeur = new App.Router.ProfileRouter();
+            Backbone.history.start();
             return this;
 	      }
 		};
