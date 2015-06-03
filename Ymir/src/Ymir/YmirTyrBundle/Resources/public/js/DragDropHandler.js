@@ -48,6 +48,7 @@ var App = App || {};
 				});
 			} else {
                 App.PageBuilder.addWidgetFromMeta(meta_widget_to_add, $(this));
+                App.DragDropHandler.refreshDrop();
             }
 		}
 	});
