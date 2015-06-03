@@ -1,12 +1,11 @@
 var App = App || {};
 App.Views.ProjectPageView = Backbone.View.extend({
-    
-    compteur : null,
+
     template: _.template($('#list-projet-template').html()),
     
     events:{
         'click .add-page' : 'addPage',
-        'click .remove-page' : 'removePage'
+        'click .remove-page' : 'removePage',
     },
     
     initialize: function (){
@@ -28,7 +27,6 @@ App.Views.ProjectPageView = Backbone.View.extend({
          var page = this.model.get("pages").get(id);
          page.destroy({},{
               success : function(){
-                 this.model.get("pages").remove(id); //
              },
               error : function(){
              }
@@ -37,10 +35,15 @@ App.Views.ProjectPageView = Backbone.View.extend({
     
     
     
-    addPage: function(){
+    addPage: function(e){
+        var project_id = $(e.currentTarget).data('pid');
+        //var id = $(e.currentTarget).data('id');
         var newPage = new App.Models.ProjectPage();
-        newPage.save(null,{
+        newPage.set("project_id", project_id);
+        //newPage.set("id", id);
+        newPage.save((null),{
             success : function (response){
+                //this.model.fetch();
             }, 
             error : function(){
                  new Error({ message : 'Impossible to save page'});      

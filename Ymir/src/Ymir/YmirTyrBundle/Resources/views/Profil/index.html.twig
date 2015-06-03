@@ -5,7 +5,7 @@
         <div class="panel">
             <div class ="row">
                 <h1>MES PROJETS </h1>
-                <hr>
+                <hr><hr>
             </div>
             <div class ="row">
                 <div class ="project-list" id="project-panel" >           
@@ -22,8 +22,8 @@
 
 <script type="text/template" id="list-projet-template">
         <div class="row ">
-              <div class="small-8 large-8 columns">
-                <a href="#projet-<%= id%>"><%= name %></a>
+              <div class="small-8 large-8 columns nameholder" data-id="<%= id%>">
+                <h2><a href="#projet-<%= id%>"><%= name%></a></h2>
               </div>
               <div class="small-2 large-2 columns">
                 <a class="download-project" data-id="<%= id%>"><i class="fi-download"></i></a>
@@ -41,10 +41,10 @@
                             <%= page.get('title') %>
                         </div>
 				        <div class="small-2 large-2 columns">
-                            <a class="edit-page" data-pid="<%= id%>" data-id="<%= page.get('id')%>"><i class="fi-page-edit"></i></a>
+                            <a class="edit-page" href ="#edit/<%= page.get('id')%>" data-pid="<%= id%>" data-id="<%= page.get('id')%>"><i class="fi-page-edit"></i></a>
                         </div>
 				        <div class="small-2 large-2 columns">
-                            <a class="remove-page" data-id="<%= page.get('id')%>"><i class="fi-x"></i></a>
+                            <a class="remove-page" data-pid="<%= id%>" data-id="<%= page.get('id')%>"><i class="fi-x"></i></a>
                         </div>
                     </div>
                 </li>
