@@ -6,8 +6,8 @@ App.Collections.WidgetList = Backbone.Collection.extend({
     model: App.Models.Widget,
     
     parse: function (res) {
-        console.log("parse Widgets List");      
-        return res.widgets;
+        console.log("parse Widgets List");
+        return res;
     },
 
     addWidget : function (idParent, widget) {

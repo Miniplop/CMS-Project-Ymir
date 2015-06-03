@@ -1,16 +1,23 @@
 var App = App || {};
 App.Collections.WidgetList = App.Collections.WidgetList || {};
+/**
+ * parameters :
+ * idGenerator: int used to create new ids
+ * ===============
+ * attributes :
+ * id : int
+ * title : String, title of the page
+ * widgets : List of widget contained in the page
+ */
 App.Models.Page = Backbone.Model.extend({
     url : 'http://127.0.0.1:8000/stage',
     defaults: {
-        id : 0,
-        title: "Page 1",
-        widgets: null, // contient uniquement le wdget source (body)
+        idGenerator: 0
     },
     
     parse: function (result) {
         console.log("parse Page");
-        result.widgets = new App.Collections.WidgetList(result.widgets);
+        result.widgets = new App.Collections.WidgetList(result.widgets, {parse: true});
         return result;
     },
     
@@ -25,5 +32,9 @@ App.Models.Page = Backbone.Model.extend({
     moveWidget : function (widget, idNewParent) {
         this.widgets.removeWidget(widget.get("id"));
         this.widgets.addWidget(idNewParent, Widget);
+    },
+    getNewId: function() {
+        this.idGenerator++;
+        return this.idGenerator;
     }
 });

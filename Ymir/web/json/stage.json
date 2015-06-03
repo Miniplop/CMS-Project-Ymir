@@ -9,7 +9,7 @@
             "htmlElements":
             [
                  {
-                     "class": "list",
+                     "htmlParameters": [ {name: "class", value: "list"} ],
                      "tag": "ul",
                      "value": "",
                      "htmlChildren": [],
@@ -21,7 +21,7 @@
                             "htmlElements":
                              [
                                  {
-                                     "class": "",
+                                     "htmlParameters": [],
                                      "tag": "li",
                                      "value": "1",
                                      "htmlChildren": [],
@@ -31,12 +31,11 @@
                          },
                          {
                             "id": 3,
-                            "metaWidget_id": 0,
-                             "widgetChildren": [],
-                             "htmlChildren":
+                            "meta_widget_id": 0,
+                            "htmlElements":
                              [
                                  {
-                                     "class": "",
+                                     "htmlParameters": [],
                                      "tag": "li",
                                      "value": "2",
                                      "htmlChildren": [],

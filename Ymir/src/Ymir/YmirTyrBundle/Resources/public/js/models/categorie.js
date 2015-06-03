@@ -1,16 +1,14 @@
 var App = App || {};
 App.Collections.MetaWidgetList = App.Collections.MetaWidgetList || {};
+
+/**
+ * id: int
+ * name : String : name of the collection,
+ * metaWidgets : App.Collections.MetaWidgetList
+ */
 App.Models.Categorie = Backbone.Model.extend({
-	defaults: {
-		id: 0,
-		name: '',
-		metaWidgets: null
-	},
-	initialize: function() {
-        this.metaWidgets = new App.Collections.MetaWidgetList();
-    },
     parse: function(result) {
-    	result.metaWidgets = new App.Collections.MetaWidgetList(result.metaWidgets);
+    	result.metaWidgets = new App.Collections.MetaWidgetList(result.metaWidgets, {parse: true});
     	return result;
     },
     getMetaWidget: function(id) {
