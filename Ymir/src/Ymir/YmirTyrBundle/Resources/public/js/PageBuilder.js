@@ -1,33 +1,31 @@
 var App = App || {};
-App.Models.Widget = App.Models.Widget || {};
-App.Collections.WidgetList = App.Collections.WidgetList || {};
-App.Collections.HtmlElementList = App.Collections.HtmlElementList || {};
-App.Models.HtmlElement = App.Models.HtmlElement || {};
+App.Models.Widget = App.Models.Widget || function() {};
+App.Collections.WidgetList = App.Collections.WidgetList ||  function () {};
+App.Collections.HtmlElementList = App.Collections.HtmlElementList ||  function () {};
+App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
 (function () {
-
     function PageBuilder(page) {
+        _.bindAll(this, "initialize");
         if (page !== null) {
             this.page = page;
-            this.page.fetch({success: this.initialize});
+            this.page.fetch({ success: this.initialize });
         } else {
             this.page = new App.Models.Page();
             this.page.set('widgets', new App.Collections.WidgetList());
+            this.initialize();
         }
-        this.initialize();
-    }
-
-    _.extend(PageBuilder.prototype, {
-        initialize: function () {
+    };
+    _.extend( PageBuilder.prototype, {
+        initialize: function() {
             var container = $('.stage');
             console.log("go init");
             var widgets = this.page.get("widgets");
-            widgets.each(function (widget) {
-                console.log(widget);
-                if (this.page.idWidgetGenerator < widget.get("id"))
-                    this.page.idWidgetGenerator = widget.get("id");
-                var element = this.buildJqueryWidgetFromWidget(widget, false);
-                container.append(element);
-            });
+            for(var index in widgets.models) {
+                if (this.page.idWidgetGenerator < widgets.models[index].get("id"))
+                    this.page.idWidgetGenerator = widgets.models[index].get("id");
+                var element = this.buildJqueryWidgetFromWidget(widgets.models[index], false);
+                $('.stage').append(element);
+            }
         },
         /**
          *
@@ -180,6 +178,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 receiver.append(jqObject);
                 widget.set('order', receiver.children().length + 1);
             }
+            console.log(this.page.toJSON());
         },
 
         /**
