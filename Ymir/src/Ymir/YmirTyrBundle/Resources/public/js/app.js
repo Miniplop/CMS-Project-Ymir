@@ -16,15 +16,15 @@ var app = (function() {
 		todos: null,
         init: function(routeur){
             $(document).foundation();
-            
-            this.categories = new App.Collections.CategorieList();
-            var catView = new App.Views.CategorieListView({collection: this.categories});
-            this.PageBuilder = new App.Utils.PageBuilder(null);
-            this.DragDropHandler = new App.Utils.DragDropHandler();
-            
-/*            
-            var routeur = new App.Router.ProfileRouter();
-            Backbone.history.start();*/
+            var rout;  
+          if (!routeur){
+              console.log('you are viewing profile page');
+              rout = new App.Router.ProfileRouter();
+          }else{
+              console.log('you are viewing creative page');
+              rout = new App.Router.CreativeRouter();
+          }
+            Backbone.history.start();
             return this;
 	      }
 		};

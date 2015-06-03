@@ -7,13 +7,13 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 
     routes: {
 
-		'' : 'creative'
+		'(:id)' : 'creative'
 
 	},
 
-	creative: function () {
+	creative: function (id) {
 
-		console.log('you are viewing creative page');
+		console.log('you are viewing creative page ' +id);
 
         // Nav Bar view 
        /* this.categories = new App.Collections.CategorieList();
