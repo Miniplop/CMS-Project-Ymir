@@ -7,7 +7,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 
     routes: {
 
-		'(*:id)' : 'creative'
+		'(:id)' : 'creative'
 
 	},
 
