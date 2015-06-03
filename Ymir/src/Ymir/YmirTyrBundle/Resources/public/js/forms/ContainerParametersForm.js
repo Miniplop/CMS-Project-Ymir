@@ -31,9 +31,10 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
 			$("#container-parameters-add").on("click", function(event) {
 				$('#container-modal').foundation('reveal', 'close');
 				event.preventDefault();
-                self.buildContainer();
+                var containerParameters = self.getContainerParameters();
+                App.PageBuilder.addContainer(containerParameters);
                 App.DragDropHandler.refreshDrop();
-                $("#container-parameters-add").off("click", this);
+                $("#container-parameters-add").off();
 			});
 		})(this);
 		$("#container-modal").foundation('reveal', 'open');
@@ -41,22 +42,18 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
 	getContainer: function () {
 		return this.container;
 	},
-    buildContainer: function () {
-        console.log(this);
-        var nb_column = $("#container-modal #nbColumns").val();
+    getContainerParameters: function () {
         var columnsSizes = {};
         $("#container-modal .columnsSize").each(function(index) {
             columnsSizes[index+1] = $(this).val();
         });
-
-        this.container = $('<' + this.options.metaWidget.get('htmlElements')[0].tag + '>');
-        this.container.addClass("droppable");
-        if($("#container-modal #isRow").prop("checked"))
-            this.container.addClass("row");
-        for(var colSize in columnsSizes) {
-            this.container.append('<' + this.options.metaWidget.get('htmlElements')[0].children[0].tag + ' class="large-' + columnsSizes[colSize] + ' columns droppable"></div>');
-        }
-        this.container.children().last().addClass("end");
-        $(this.options.parent).append(this.container);
+        var containerParameters = {
+            meta_widget: this.options.metaWidget,
+            nb_column: $("#container-modal #nbColumns").val(),
+            columnsSizes: columnsSizes,
+            parent: $(this.options.parent),
+            isRow: $("#container-modal #isRow").prop("checked")
+        };
+        return containerParameters;
     }
 });
