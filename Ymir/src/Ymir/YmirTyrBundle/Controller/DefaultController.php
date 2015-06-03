@@ -79,6 +79,15 @@ class DefaultController extends BaseController
     {
         return array();
     }
+
+    /**
+     * @Route("/creative/{id}")
+     * @Template("TyrBundle:Creative:index.html.twig")
+     */
+    public function displayCreativeAction($id)
+    {
+        return array();
+    }
     
     /**
      * @Route("/widgets")
