@@ -279,7 +279,7 @@ class Widget
             
             $i++;
         }
-            elseif ($childrenIndex >= $childrenCount){
+            /*elseif ($childrenIndex >= $childrenCount){
                 // we have to copy the remaing part of the table HTML ELement
                 $table[i] = $html_elements[$html_elIndex];
                 $html_elIndex ++;
@@ -288,7 +288,7 @@ class Widget
                 // we have to copy the remaing part of the table Children
                 $table[i] = $children[$childrenIndex];
                 $childrenIndex ++;
-            }
+            }*/
         return $table;
     }
 
