@@ -4,11 +4,8 @@ namespace Ymir\YmirTyrBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\View;
 use Ymir\YmirTyrBundle\Form\ProjectType;
 use Ymir\YmirTyrBundle\Entity\Project;
@@ -23,14 +20,6 @@ class ProjectController extends Controller
      */
     public function postProjectsAction(Request $request)
     {
-        //pour tester on prend un user en dur
-        /*$id = 1;
-        $repository = $this
-          ->getDoctrine()
-          ->getManager()
-          ->getRepository('TyrBundle:User');
-
-        $user = $repository->findOneById($id);*/
         $user = $this->getUser();
         
         $request->attributes->set('user', $user->getId());

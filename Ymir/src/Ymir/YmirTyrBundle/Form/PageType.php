@@ -16,7 +16,7 @@ class PageType extends AbstractType
     {
         $builder
             ->add('title')
-            //->add('project')
+            ->add('project')
             /*->add('pages', 'collection', array(
                 'type' => new WidgetType(),
                 'by_reference' => false,
@@ -32,7 +32,8 @@ class PageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Ymir\YmirTyrBundle\Entity\Page'
+            'data_class' => 'Ymir\YmirTyrBundle\Entity\Page',
+            'csrf_protection' => false,
         ));
     }
 

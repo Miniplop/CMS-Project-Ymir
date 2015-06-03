@@ -2,19 +2,30 @@ var App = App || {};
 (function () {
 
     function PageBuilder (page) {
-        if (page != null)
+        if (page !== null)
             this.page = page;
         else
             this.page = new App.Models.Page();
-        this.initialize();
+        _.bindAll(this, "initialize");
+        this.page.fetch ({
+            success: this.initialize,
+        });        
     };
-    _.extend(PageBuilder.prototype, {
+    _.extend( PageBuilder.prototype, {
         initialize: function() {
             var container = $('.stage');
-            for(var widget in this.page.widget) {
-                var element = widget.render();
+            console.log ("go init");
+            var widgets = this.page.get("widgets");
+            widgets.each( function(widget) {
+                var element = null;
+                if (widget.get("htmlElements").length > 0){
+                    console.log("ok");
+                    element = widget.buildJQueryObject(); // TODO: render doit générer un jquerry element (le machin entre $())                    
+                } else {
+                    console.log("pb");   
+                }
                 container.append(element);
-            }
+            });
         },
         /**
          *
@@ -77,7 +88,8 @@ var App = App || {};
             widget.set('meta_widget_id', mWidget.get('id'));
 
             for(var index in  mWidget.get("metaHtmlElements").models) {
-                var jqWidget = this.buildHtmlElementModelFromMeta(mWidget.get("metaHtmlElements").models[index]);
+                var htmlElement = this.buildHtmlElementModelFromMeta(mWidget.get("metaHtmlElements").models[index]);
+                widget.get("htmlElements").add(htmlElement);
             }
         },
 
@@ -87,6 +99,13 @@ var App = App || {};
          */
         buildHtmlElementModelFromMeta: function(metaHtmlElement) {
             var htmlElement = new App.Models.HtmlElement();
+            htmlElement.set('tag', metaHtmlElement.get('tag'));
+
+
+            for(var index in metaHtmlElement.get('children').models) {
+                var htmlElementChild = this.buildHtmlElementModelFromMeta(metaHtmlElement.get('children').models[index]);
+                metaHtmlElement.get('children').add(htmlElementChild);
+            }
         },
 
         /**

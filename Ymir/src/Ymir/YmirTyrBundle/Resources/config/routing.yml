@@ -11,3 +11,7 @@ logout:
 projects:
     type: rest
     resource: Ymir\YmirTyrBundle\Controller\ProjectController
+
+pages:
+    type: rest
+    resource: Ymir\YmirTyrBundle\Controller\PageController
