@@ -25,14 +25,39 @@ class HtmlElement
     /**
      * @var string
      *
-     * @ORM\Column(name="balise", type="string", length=255)
+     * @ORM\Column(name="tag", type="string", length=255)
      */
-    private $balise;
+    private $tag;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\MetaWidget", mappedBy="html_element")
+     * Index dans la page ou dans le widget parent 
+     * @ORM\Column(name="index", type="integer")
      */
-    protected $meta_widgets;
+    private $index;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="html_element")
+     */
+    private $parameters; //attributs
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parent_element", cascade={"persist"})
+     * @ORM\OrderBy({"index" = "ASC"})
+     */
+    private $children;
+
+    /**
+     * @Exclude
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
+     */
+    private $parent_element;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaHtmlElement", inversedBy="instances")
+     * @ORM\JoinColumn(name="meta_element_id", referencedColumnName="id")
+     */
+    private $meta_element;
 
     /**
      * Constructor
@@ -108,5 +133,169 @@ class HtmlElement
     public function getMetaWidgets()
     {
         return $this->meta_widgets;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     *
+     * @return HtmlElement
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * Set index
+     *
+     * @param integer $index
+     *
+     * @return HtmlElement
+     */
+    public function setIndex($index)
+    {
+        $this->index = $index;
+
+        return $this;
+    }
+
+    /**
+     * Get index
+     *
+     * @return integer
+     */
+    public function getIndex()
+    {
+        return $this->index;
+    }
+
+    /**
+     * Add parameter
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlParameter $parameter
+     *
+     * @return HtmlElement
+     */
+    public function addParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $parameter)
+    {
+        $this->parameters[] = $parameter;
+
+        return $this;
+    }
+
+    /**
+     * Remove parameter
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlParameter $parameter
+     */
+    public function removeParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $parameter)
+    {
+        $this->parameters->removeElement($parameter);
+    }
+
+    /**
+     * Get parameters
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+
+    /**
+     * Add child
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $child
+     *
+     * @return HtmlElement
+     */
+    public function addChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $child)
+    {
+        $this->children[] = $child;
+
+        return $this;
+    }
+
+    /**
+     * Remove child
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $child
+     */
+    public function removeChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $child)
+    {
+        $this->children->removeElement($child);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parentElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $parentElement
+     *
+     * @return HtmlElement
+     */
+    public function setParentElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $parentElement = null)
+    {
+        $this->parent_element = $parentElement;
+
+        return $this;
+    }
+
+    /**
+     * Get parentElement
+     *
+     * @return \Ymir\YmirTyrBundle\Entity\HtmlElement
+     */
+    public function getParentElement()
+    {
+        return $this->parent_element;
+    }
+
+    /**
+     * Set metaElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\MetaHtmlElement $metaElement
+     *
+     * @return HtmlElement
+     */
+    public function setMetaElement(\Ymir\YmirTyrBundle\Entity\MetaHtmlElement $metaElement = null)
+    {
+        $this->meta_element = $metaElement;
+
+        return $this;
+    }
+
+    /**
+     * Get metaElement
+     *
+     * @return \Ymir\YmirTyrBundle\Entity\MetaHtmlElement
+     */
+    public function getMetaElement()
+    {
+        return $this->meta_element;
     }
 }
