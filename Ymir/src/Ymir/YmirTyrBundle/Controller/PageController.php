@@ -20,12 +20,15 @@ class PageController extends Controller
      */
     public function postPagesAction(Request $request)
     {
+        //$project_id = $request->attributes->get('project_id');
+        //$request->attributes->remove('project_id');
+
         $form = $this->createForm(new PageType(), new Page());
         $form->submit($request->request->all());
 
         if ($form->isValid()) {
             $page = $form->getData();
-
+            $
             $em = $this->get('doctrine')->getManager();
             $em->persist($page);
             $em->flush();

@@ -45,7 +45,8 @@ class Widget
     private $parent_widget;
 
     /**
-     *  @ORM\Column(name="index", type="integer")
+     * Index dans la page ou dans le widget parent 
+     * @ORM\Column(name="index", type="integer")
      */
     private $index;
 
@@ -54,7 +55,7 @@ class Widget
      * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_widget", cascade={"persist"})
      * @ORM\OrderBy({"index" = "ASC"})
      */
-    protected $children;
+    private $children;
 
     /**
      * @Exclude

@@ -86,7 +86,8 @@ class DefaultController extends BaseController
      */
     public function displayCreativeAction($id)
     {
-        return array();
+        //TODO : vérifier si la page existe et que le propriétaire est bien le user courant
+        return array('id' => $id);
     }
     
     /**
