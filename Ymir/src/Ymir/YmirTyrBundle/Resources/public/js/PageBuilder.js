@@ -100,7 +100,9 @@ var App = App || {};
         buildHtmlElementModelFromMeta: function(metaHtmlElement) {
             var htmlElement = new App.Models.HtmlElement();
             htmlElement.set('tag', metaHtmlElement.get('tag'));
-
+            for(var index in metaHtmlElement.get('metaHtmlParameters')) {
+                htmlElement.get('htmlParameters').push(metaHtmlElement.get('metaHtmlParameters')[index]);
+            }
 
             for(var index in metaHtmlElement.get('children').models) {
                 var htmlElementChild = this.buildHtmlElementModelFromMeta(metaHtmlElement.get('children').models[index]);
@@ -132,7 +134,7 @@ var App = App || {};
         buildJqueryWidgetFromMeta: function(mWidget) {
             var htmlsWidget = [];
             for(var index in  mWidget.get("metaHtmlElements").models) {
-                var jqWidget = this.buildObjectFromMeta(mWidget.get("metaHtmlElements").models[index], null);
+                var jqWidget = this.buildJqueryHtmlFromMeta(mWidget.get("metaHtmlElements").models[index], null);
                 htmlsWidget.push(jqWidget);
             }
             return htmlsWidget;
@@ -143,7 +145,7 @@ var App = App || {};
          * @param parent, null when it's a widget root element
          * @return {*|jQuery|HTMLElement} or String
          */
-        buildObjectFromMeta: function(mHtmlElement, parent) {
+        buildJqueryHtmlFromMeta: function(mHtmlElement, parent) {
             console.log(mHtmlElement);
             var jqWidget = null;
             if(mHtmlElement.get("tag") != null && mHtmlElement.get("tag") != "") {
@@ -155,7 +157,7 @@ var App = App || {};
 
 
                 for(var index in mHtmlElement.get("children").models)
-                    this.buildObjectFromMeta(mHtmlElement.get("children").models[index], jqWidget);
+                    this.buildJqueryHtmlFromMeta(mHtmlElement.get("children").models[index], jqWidget);
 
                 jqWidget.append(mHtmlElement.get("value"));
             } else {
