@@ -1,4 +1,8 @@
 var App = App || {};
+App.Collections.WidgetList = App.Collections.WidgetList || {};
+App.Collections.HtmlElementList = App.Collections.HtmlElementList || {};
+App.Models.HtmlElement = App.Models.HtmlElement || {};
+App.Models.Widget = App.Models.Widget || {};
 (function () {
 
     function PageBuilder (page) {
@@ -37,13 +41,14 @@ var App = App || {};
          *      add it to the DOM
          */
         addWidgetFromMeta: function(mWidget, receiver) {
-            // build JQuery Objects and add it to the dom
-            var htmlsWidget = this.buildJqueryWidgetFromMeta(mWidget);
-            for(var index in htmlsWidget)
-                this.addToDOM(htmlsWidget[index], receiver);
 
             // build the App.Models.Widget and add it to the page tree
             var widget = this.buildWidgetModelFromMeta(mWidget);
+            console.log(widget);
+            // build JQuery Objects and add it to the dom
+            var htmlsWidget = this.buildJqueryWidgetFromMeta(widget);
+            for(var index in htmlsWidget)
+                this.addToDOM(htmlsWidget[index], receiver);
         },
 
 
@@ -60,7 +65,6 @@ var App = App || {};
          *      add it to the DOM
          */
         addContainer: function(containerParameters) {
-            console.log(containerParameters);
             var htmlContainer = containerParameters.meta_widget.get("metaHtmlElements").models[0];
             var container = $('<' + htmlContainer.get('tag') + '>');
             if(containerParameters.isRow)
@@ -86,6 +90,7 @@ var App = App || {};
             widget.set('id', this.page.getNewId());
 
             widget.set('meta_widget_id', mWidget.get('id'));
+            widget.set('htmlElements', new App.Collections.HtmlElementList());
 
             for(var index in  mWidget.get("metaHtmlElements").models) {
                 var htmlElement = this.buildHtmlElementModelFromMeta(mWidget.get("metaHtmlElements").models[index]);
@@ -96,17 +101,27 @@ var App = App || {};
         /**
          *
          * @param metaHtmlElement : App.Models.MetaHtmlELement
+         *
+         * htmlParameters : list of html parameter: {name: "class", value: "class_names"}
+         tag : html tag of the html object
+         value : value contained in the html object, ex : <div> value </div>. If is not empty, htmlChildren and widgetChildren are empty
+         htmlChildren : App.Collections.HtmlElementList
+         widgetChildren :
          */
         buildHtmlElementModelFromMeta: function(metaHtmlElement) {
             var htmlElement = new App.Models.HtmlElement();
             htmlElement.set('tag', metaHtmlElement.get('tag'));
+            htmlElement.set('htmlParameters', []);
+            console.log(htmlElement);
             for(var index in metaHtmlElement.get('metaHtmlParameters')) {
                 htmlElement.get('htmlParameters').push(metaHtmlElement.get('metaHtmlParameters')[index]);
             }
-
+            htmlElement.set('value', metaHtmlElement.get('value'));
+            htmlElement.set('widgetChildren', new App.Collections.WidgetList());
+            htmlElement.set('htmlChildren', new App.Collections.HtmlElementList());
             for(var index in metaHtmlElement.get('children').models) {
                 var htmlElementChild = this.buildHtmlElementModelFromMeta(metaHtmlElement.get('children').models[index]);
-                metaHtmlElement.get('children').add(htmlElementChild);
+                htmlElement.get('htmlChildren').add(htmlElementChild);
             }
         },
 

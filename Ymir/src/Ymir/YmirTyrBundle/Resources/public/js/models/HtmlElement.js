@@ -12,6 +12,7 @@ App.Models.HtmlElement = Backbone.Model.extend({
     
     parse: function (res) {
         res.widgetChildren = new App.Collections.WidgetList(res.widgetChildren, {parse: true});
+        res.htmlChildren = new App.Collections.HtmlElementList(res.htmlChildren, {parse: true});
         return res;
     },
     
