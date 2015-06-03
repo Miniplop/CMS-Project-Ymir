@@ -305,3 +305,4 @@ class Widget
 
         return $code;
     }
+}
