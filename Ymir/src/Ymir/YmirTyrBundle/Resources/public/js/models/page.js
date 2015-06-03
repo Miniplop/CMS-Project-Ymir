@@ -17,7 +17,6 @@ App.Models.Page = Backbone.Model.extend({
         this.idHtmlElementGenerator = 0;
     },
     parse: function (result) {
-        console.log ("parse page");
         result.widgets = new App.Collections.WidgetList(result.widgets, {parse: true});
         return result;
     },

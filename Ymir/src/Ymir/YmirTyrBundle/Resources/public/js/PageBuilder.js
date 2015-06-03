@@ -18,7 +18,6 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
     _.extend( PageBuilder.prototype, {
         initialize: function() {
             var container = $('.stage');
-            console.log("go init");
             var widgets = this.page.get("widgets");
             for(var index in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[index].get("id"))
@@ -202,12 +201,11 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 var jqWidget = this.buildJqueryFromHtmlElement(widget.get("htmlElements").models[index], isNew, null);
                 htmlsWidget.push(jqWidget);
             }
-            console.log(htmlsWidget);
             return htmlsWidget;
         },
         /**
          *
-         * @param htmlElement : App.Models.HtmlElement
+         * @param htmlElement : App.Models.
          * @param parent : {*|jQuery|HTMLElement}, null when it's a widget root element
          * @return {*|jQuery|HTMLElement} or String
          */
@@ -236,7 +234,6 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             if (!isNew)
                 if (this.page.idHtmlElementGenerator < htmlElement.get('id'))
                     this.page.idHtmlElementGenerator = htmlElement.get('id');
-            console.log(jqWidget);
             return jqWidget;
         },
 
