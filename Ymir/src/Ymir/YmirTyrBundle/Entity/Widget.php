@@ -269,7 +269,7 @@ class Widget
         // for ($i = 0, $i < max($childrenCount, $html_elCount) ; $i++) {
         while ($childrenIndex < $childrenCount && $html_elIndex < $html_elCount){
                 // choosing the minimum
-                if ($children[$i]->index <= $html_elements[$i]->index)
+                if ($children[$i]->index <= $html_elements[$i]->index) {
                     $table[$i] = $children[i];
                     $childrenIndex ++;
                 } else {
