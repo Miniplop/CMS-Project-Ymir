@@ -9,7 +9,7 @@
 											[ {
 											"id": 1,
 											"tag": "button", 
-											"metaHtmlParameters": [ {"name": "class", "value": "button"} ], 
+											"metaHtmlParameters": [ {"name": "class", "value": "button droppable"} ],
 											"children": [ {"id": 13, "tag": "", "metaHtmlParameters": [], "value": "Button"} ],
 											"value": "",
 											"acceptAllCategorieAsChildren": "false",
