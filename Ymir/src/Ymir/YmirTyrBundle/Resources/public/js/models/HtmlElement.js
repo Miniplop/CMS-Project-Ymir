@@ -28,9 +28,13 @@ App.Models.HtmlElement = Backbone.Model.extend({
         res = res + ">";
         if (value != "")
             res = res + value;
-        if (this.get("widgetChildren").length > 0)
-            res = res + this.get("widgetChildren").buildJQueryObject();
-        res = res + "</" + tag + "<";
+        if (this.get("widgetChildren").length > 0) {
+            this.get("widgetChildren").each(function (child) {
+                console.log("child: " + child.buildJQueryObject());
+                res = res + child.buildJQueryObject();
+            });
+        }
+        res = res + "</" + tag + ">";
         
         return res;
     }
