@@ -13,12 +13,17 @@ var App = App || {};
     };
     _.extend( PageBuilder.prototype, {
         initialize: function() {
-            var container = $("stage");
+            var container = $('.stage');
+            console.log ("go init");
             var widgets = this.page.get("widgets");
             widgets.each( function(widget) {
                 var element = null;
-                if (widget.get("htmlElements").length > 0)
-                    element = widget.render(); // TODO: render doit générer un jquerry element (le machin entre $())
+                if (widget.get("htmlElements").length > 0){
+                    console.log("ok");
+                    element = widget.buildJQueryObject(); // TODO: render doit générer un jquerry element (le machin entre $())                    
+                } else {
+                    console.log("pb");   
+                }
                 container.append(element);
             });
         },
