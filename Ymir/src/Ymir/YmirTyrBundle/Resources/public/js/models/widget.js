@@ -6,13 +6,13 @@ App.Collections.HtmlElementList = App.Collections.HtmlElementList || {};
  * htmlElements : App.Collections.HtmlElementList
  */
 App.Models.Widget = Backbone.Model.extend({
+    
     parse: function (res) {
         console.log("parse widget");
         res.htmlElements = new App.Collections.HtmlElementList(res.htmlElements, {parse: true});
         return res;
     },
-    buildJQueryObject: function() {
-        console.log("render widget");
-        return this.get("htmlElements").buildHtmlElementList();
+    addWidget: function(container_html_element_id, widget) {
+            this.get('htmlElements').addWidget(container_html_element_id, widget);
     }
 });

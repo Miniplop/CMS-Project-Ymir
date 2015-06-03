@@ -12,25 +12,13 @@ App.Models.HtmlElement = Backbone.Model.extend({
     
     parse: function (res) {
         res.widgetChildren = new App.Collections.WidgetList(res.widgetChildren, {parse: true});
+        res.htmlChildren = new App.Collections.HtmlElementList(res.htmlChildren, {parse: true});
+        // res.htmlParameters = new App.Collections.HtmlParameterList(res.htmlParameters, {parse: true});
         return res;
     },
-    
-    buildHtmlElement: function() {
-        /*if(this.widgetChildren.isEmpty())
-            return null;*/
-        var cl = this.get("class");
-        var tag = this.get("tag");
-        var value = this.get("value");
-        var res = "<" + tag ;
-        if (cl !== "")
-            res = res + " class=\"" + cl + "\"";
-        res = res + ">";
-        if (value != "")
-            res = res + value;
-        if (this.get("widgetChildren").length > 0)
-            res = res + this.get("widgetChildren").buildJQueryObject();
-        res = res + "</" + tag + "<";
-        
-        return res;
+    addWidget: function(container_html_element_id, widget) {
+        if(this.get("id") == container_html_element_id) {
+            this.get("widgetChildren").add(widget);
+        }
     }
 });

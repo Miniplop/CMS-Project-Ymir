@@ -3,6 +3,7 @@ var app = (function() {
 	window.App = {
         // objects
 		categories: null,
+        page: null,
         DragDropHandler: null,
         PageBuilder: null,
         
@@ -14,53 +15,37 @@ var app = (function() {
 		Router: {},
         Utils: {},
 		todos: null,
-        init: function(routeur){
+        init: function(routeur) {
             $(document).foundation();
-            if (!routeur){
-                var routeur = new App.Router.ProfileRouter();
-                var listprojet = new App.Collections.ProjectList();
-        
-                listprojet.fetch({
-                    success : function (collection,response){
-                        var view = new App.Views.ProjectListView({collection : listprojet});
-                    },
-                    error : function (){
-                        new Error({ message : 'Impossible to load project list'});      
-                    }
-            });
-            }else if (routeur) {
-                //var routeur = new App.Router.CreativeRouter();  
 
-                // Nav Bar view
-                this.categories = new App.Collections.CategorieList();
-                var catView = new App.Views.CategorieListView({collection: this.categories});
-                console.log(this.categories);
-                // Stage view
-                var page = new App.Models.Page();
-                this.PageBuilder = new App.Utils.PageBuilder(page);
-                this.DragDropHandler = new App.Utils.DragDropHandler();
-            }else{
-                 console.log("error init");
-            }
+            
+            this.categories = new App.Collections.CategorieList();
+            var catView = new App.Views.CategorieListView({collection: this.categories});
+            this.PageBuilder = new App.Utils.PageBuilder(new App.Models.Page());
+            this.DragDropHandler = new App.Utils.DragDropHandler();
+            
+/*            
+            var routeur = new App.Router.ProfileRouter();
+            Backbone.history.start();*/
             return this;
 	      }
 		};
     
 	    
-	$("#checkbox_mobile").click( function(){
+	$("#checkbox_mobile").click(function() {
 		   if( $(this).is(':checked') ) $("#mockup-mobile").css("display", "inline");
 		   else $("#mockup-mobile").css("display", "none");
 	});
 
-	$("#checkbox_tablet").click( function(){
+	$("#checkbox_tablet").click( function() {
 		   if( $(this).is(':checked') ) $("#mockup-tablet").css("display", "inline");
 		   else $("#mockup-tablet").css("display", "none");
 	});
 
-	$("#checkbox_desktop").click( function(){
+	$("#checkbox_desktop").click( function() {
 		   if( $(this).is(':checked') ) $("#mockup-desktop").css("display", "inline");
 		   else $("#mockup-desktop").css("display", "none");
 	});
-
+    
 	return window.App;	
 })();

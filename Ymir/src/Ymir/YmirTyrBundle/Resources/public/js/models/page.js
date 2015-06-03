@@ -11,30 +11,29 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
  */
 App.Models.Page = Backbone.Model.extend({
     url : 'http://127.0.0.1/ymir/Ymir/web/app_dev.php/stage',
-    defaults: {
-        idGenerator: 0
+
+    initialize: function() {
+        this.idWidgetGenerator = 0;
+        this.idHtmlElementGenerator = 0;
     },
-    
     parse: function (result) {
-        console.log("parse Page");
+        console.log ("parse page");
         result.widgets = new App.Collections.WidgetList(result.widgets, {parse: true});
         return result;
     },
     
-    addWidget : function (idParent, widget) {
-        this.widgets.addWidget(idParent, widget);
+    addWidget : function (container_html_element_id, widget) {
+        if(container_html_element_id == null)
+            this.get("widgets").add(widget);
+        else
+            this.get("widgets").addWidget(container_html_element_id, widget);
     },
-    
-    removeWidget : function (idWidget) {
-        this.widgets.removeWidget(idWidget);
+    getNewWidgetId: function() {
+        this.idWidgetGenerator++;
+        return this.idWidgetGenerator;
     },
-    
-    moveWidget : function (widget, idNewParent) {
-        this.widgets.removeWidget(widget.get("id"));
-        this.widgets.addWidget(idNewParent, Widget);
-    },
-    getNewId: function() {
-        this.idGenerator++;
-        return this.idGenerator;
+    getNewHtmlElementId: function() {
+        this.idHtmlElementGenerator++;
+        return this.idHtmlElementGenerator;
     }
 });
