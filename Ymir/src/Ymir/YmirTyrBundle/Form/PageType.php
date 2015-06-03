@@ -33,8 +33,8 @@ class PageType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Ymir\YmirTyrBundle\Entity\Page',
-            'csrf_protection' => false,
-        ));
+            'csrf_protection' => false
+,        ));
     }
 
     /**
