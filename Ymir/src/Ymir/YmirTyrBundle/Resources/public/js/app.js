@@ -16,7 +16,7 @@ var app = (function() {
 		todos: null,
         init: function(routeur){
             $(document).foundation();
-             var routeur = new App.Router.ProfileRouter();
+            var routeur = new App.Router.ProfileRouter();
             Backbone.history.start();
             return this;
 	      }

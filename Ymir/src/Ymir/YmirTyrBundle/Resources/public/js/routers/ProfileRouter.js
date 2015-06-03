@@ -28,5 +28,10 @@ App.Router.ProfileRouter = Backbone.Router.extend({
     edit:function(id){
          this.navigate("edit",{trigger : true});
         console.log("lamamamama");
+       // Nav Bar view
+        this.categories = new App.Collections.CategorieList();
+        var catView = new App.Views.CategorieListView({collection: this.categories});
+        this.PageBuilder = new App.Utils.PageBuilder(null);
+        this.DragDropHandler = new App.Utils.DragDropHandler();
     }
 });
