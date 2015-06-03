@@ -29,8 +29,12 @@ var App = App || {};
 		},
 
 		handleDropEvent: function (event, ui) {
-            console.log(this);
-			var recipier_id = $(this).data('meta-widget-id'), categorie_id = $(ui.draggable).data('categorie-id'), meta_widget_id = $(ui.draggable).data('meta-widget-id');
+			var recipier_id = $(this).data('meta-widget-id'),
+                categorie_id = $(ui.draggable).data('categorie-id'),
+                meta_widget_id = $(ui.draggable).data('meta-widget-id'),
+                meta_widget = null;
+
+            meta_widget_to_add = window.App.categories.getMetaWidget(meta_widget_id);
 
 			if (categorie_id == 3) { //containers
 				var form = new window.App.Forms.ContainerParametersForm({
@@ -38,13 +42,12 @@ var App = App || {};
 					nbColumns: 1,
 					isRow: false,
 					columnsSizes: [12],
-					metaWidget: window.App.categories.getMetaWidget(meta_widget_id),
+					metaWidget: meta_widget_to_add,
 					parent: this,
                     stageIsRecipier: (recipier_id == null)
 				});
-				console.log('this is a container');
 			} else {
-                App.PageBuilder.addElement(meta_widget_id, categorie_id, recipier_id);
+                App.PageBuilder.addWidgetFromMeta(meta_widget_to_add, $(this));
             }
 		}
 	});

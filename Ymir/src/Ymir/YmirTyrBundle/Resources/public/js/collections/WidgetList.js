@@ -3,12 +3,11 @@ App.Models.Widget = App.Models.Widget || {};
 App.Collections.WidgetList = Backbone.Collection.extend({
     widgetLocation : "#stage",
     // Une collection de page contient des models de page
-    url : 'http://127.0.0.1:8000/arbreWidgets',
     model: App.Models.Widget,
     
     parse: function (res) {
-        console.log("parse Widgets List");      
-        return res.widgets;
+        console.log("parse Widgets List");
+        return res;
     },
 
     addWidget : function (idParent, widget) {
