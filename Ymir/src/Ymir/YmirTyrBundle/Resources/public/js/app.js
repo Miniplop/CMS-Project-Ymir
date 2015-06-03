@@ -17,16 +17,13 @@ var app = (function() {
 		todos: null,
         init: function(routeur) {
             $(document).foundation();
-
-            
-            this.categories = new App.Collections.CategorieList();
-            var catView = new App.Views.CategorieListView({collection: this.categories});
-            this.PageBuilder = new App.Utils.PageBuilder(new App.Models.Page());
-            this.DragDropHandler = new App.Utils.DragDropHandler();
-            
-/*            
-            var routeur = new App.Router.ProfileRouter();
-            Backbone.history.start();*/
+            var rout;  
+          if (!routeur){
+              rout = new App.Router.ProfileRouter();
+          }else{
+              rout = new App.Router.CreativeRouter();
+          }
+            Backbone.history.start();
             return this;
 	      }
 		};

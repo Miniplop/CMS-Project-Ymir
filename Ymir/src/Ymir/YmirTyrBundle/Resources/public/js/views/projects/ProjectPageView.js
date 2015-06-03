@@ -39,7 +39,7 @@ App.Views.ProjectPageView = Backbone.View.extend({
         var project_id = $(e.currentTarget).data('pid');
         //var id = $(e.currentTarget).data('id');
         var newPage = new App.Models.ProjectPage();
-        newPage.set("project_id", project_id);
+        newPage.set("project", project_id);
         newPage.save({
             success : function (response){
                 
