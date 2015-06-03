@@ -1,25 +1,27 @@
 var App = App || {};
 App.Models.Widget = App.Models.Widget || function() {};
-App.Collections.WidgetList = App.Collections.WidgetList ||  function() {};
-App.Collections.HtmlElementList = App.Collections.HtmlElementList ||  function() {};
-App.Models.HtmlElement = App.Models.HtmlElement ||  function() {};
+App.Collections.WidgetList = App.Collections.WidgetList ||  function () {};
+App.Collections.HtmlElementList = App.Collections.HtmlElementList ||  function () {};
+App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
 (function () {
-
-    function PageBuilder (page) {
+    function PageBuilder(page) {
+        _.bindAll(this, "initialize");
         if (page !== null) {
             this.page = page;
-            this.page.fetch({success: this.initialize});
+            this.page.fetch({ success: this.initialize });
         } else {
             this.page = new App.Models.Page();
             this.page.set('widgets', new App.Collections.WidgetList());
+            this.initialize();
         }
-        this.initialize();
+    
     };
     _.extend( PageBuilder.prototype, {
         initialize: function() {
             var container = $('.stage');
             console.log ("go init");
             var widgets = this.page.get("widgets");
+            console.log(this.page);
             widgets.each( function(widget) {
                 console.log(widget);
                 var element = this.buildJqueryWidgetFromWidget(widget);

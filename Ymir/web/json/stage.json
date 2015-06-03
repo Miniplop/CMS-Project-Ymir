@@ -9,7 +9,7 @@
             "htmlElements":
             [
                  {
-                     "htmlParameters": [ {name: "class", value: "list"} ],
+                     "htmlParameters": [ {"name": "class", "value": "list"} ],
                      "tag": "ul",
                      "value": "",
                      "htmlChildren": [],
