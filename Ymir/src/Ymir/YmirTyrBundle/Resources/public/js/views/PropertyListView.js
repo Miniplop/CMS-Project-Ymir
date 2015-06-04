@@ -10,13 +10,12 @@ App.Views.PropertyListView = Backbone.View.extend({
 
     render: function() {
         var $el = $(this.el);
-
         this.collection.each(function(property) {
+
             var item = new App.Views.PropertyView({ model: property });
             $el.append(item.render().el);
         });
-        $("#meta-widgets-panel").html(this.$el);
-        console.log(this);
+        $(".toolbar-parameter").append(this.$el);
         return this;
     }
 });

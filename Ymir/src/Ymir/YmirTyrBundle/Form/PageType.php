@@ -17,12 +17,12 @@ class PageType extends AbstractType
         $builder
             ->add('title')
             ->add('project')
-            /*->add('pages', 'collection', array(
+            ->add('widgets', 'collection', array(
                 'type' => new WidgetType(),
                 'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true
-            ))*/
+            ))
         ;
     }
     

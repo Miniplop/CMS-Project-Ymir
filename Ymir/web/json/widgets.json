@@ -16,13 +16,14 @@
                 {
                   "name": "Text color",
                   "type": "text",
-                  "cssName": "color"
+                  "cssName": "color",
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
                   "type": "text",
                   "cssName": "background-color",
-                  "defaultValue": "#007095"
+                  "defaultValue": "007095"
                 }
               ],
               "metaHtmlParameters": [
