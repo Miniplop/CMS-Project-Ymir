@@ -33,10 +33,14 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 var mobile = $("#mobile");
                 var tablet = $("#tablet");
                 mobile.ready(function() {
+                    mobile.contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/vendor_foundation.min_2.css\" />");
+                    mobile.contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/vendor_foundation-icons_3.css\" />");
                     for (var index in mobileElement)
                         thisObject.addToDOM(mobileElement[index], mobile.contents().find("body"), widgets.models[i]);
                 });
                 tablet.ready(function() {
+                    tablet.contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/vendor_foundation.min_2.css\" />");
+                    tablet.contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/vendor_foundation-icons_3.css\" />");
                     for (var index in tabletElement)
                         thisObject.addToDOM(tabletElement[index], tablet.contents().find("body"), widgets.models[i]);
                 });
