@@ -96,7 +96,7 @@
             "metaHtmlElements": [
             {
               "id": 1,
-              "tag": "button round",
+              "tag": "button radius",
               "metaProperties": [
                 {
                   "name": "Text color",
@@ -113,7 +113,7 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "button round"
+                  "value": "button radius"
                 }
               ],
               "children": [
@@ -122,7 +122,7 @@
                   "tag": "",
                   "metaProperties": [],
                   "metaHtmlParameters": [],
-                  "value": "button round"
+                  "value": "button radius"
                 }
               ],
               "value": "",
