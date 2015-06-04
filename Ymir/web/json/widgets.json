@@ -669,6 +669,48 @@
 
         }
       ]
+    },
+    {
+      "id": 6,
+      "name": "Images",
+      "metaWidgets": [
+        {
+          "id": 13,
+          "name": "Image",
+          "htmlPreview": "<i disabled=\"true\" class=\"fi-photo\"></i>",
+          "metaHtmlElements": [
+            {
+              "id": 1,
+              "tag": "img",
+              "metaProperties": [
+                {
+                  "name": "Text color",
+                  "type": "text",
+                  "cssName": "color",
+                  "defaultValue": "black"
+                },
+                {
+                  "name": "Background color",
+                  "type": "text",
+                  "cssName": "background-color",
+                  "defaultValue": "007095"
+                }
+              ],
+              "metaHtmlParameters": [
+                {
+                  "name": "src",
+                  "value": "http://www.sudradio.fr/var/plain_site/storage/images/media/01-photos/logo-fifa/4100922-1-fre-FR/Logo-FIFA.png"
+                }
+              ],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+        }
+      ]
     }
+
   ]
 }
