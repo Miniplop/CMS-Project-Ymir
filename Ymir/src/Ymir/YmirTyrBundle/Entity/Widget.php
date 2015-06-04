@@ -24,63 +24,55 @@ class Widget
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
+     * Index dans la page ou dans le widget parent 
+     * @ORM\Column(name="order", type="integer")
      */
-    private $name;
+    private $order;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentWidget", cascade={"persist"})
+     * @ORM\OrderBy({"order" = "ASC"})
+     */
+    private $htmlElements;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentWidget", cascade={"persist"})
+     * @ORM\OrderBy({"order" = "ASC"})
+     */
+    private $widgetChildren;
 
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Page", inversedBy="widgets")
      * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
      */
-    private $parent_page;
+    private $parentPage;
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id")
-     */
-    private $parent_widget;
-
-    /**
-     * Index dans la page ou dans le widget parent 
-     * @ORM\Column(name="index", type="integer")
-     */
-    
-
-    /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_widget", cascade={"persist"})
-     * @ORM\OrderBy({"index" = "ASC"})
-     */
-    private $children;
-
-    /**
-     * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaWidget", inversedBy="widgets")
-     * @ORM\JoinColumn(name="meta_widget_id", referencedColumnName="id")
-     */
-    private $meta_widget;
-
-    /**
-     * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="widget_children")
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="widgetChildren")
      * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
      */
-    private $parent_element;
-
+    private $parentElement;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parent_widget", cascade={"persist"})
-     * @ORM\OrderBy({"index" = "ASC"})
+     * @Exclude
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="widgetChildren")
+     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id")
      */
-    private $html_elements;
+    private $parentWidget;
+
+    /**
+     * Exclude
+     * ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaWidget", inversedBy="widgets")
+     * ORM\JoinColumn(name="meta_widget_id", referencedColumnName="id")
+     */
+    //private $meta_widget;
 
     public function __construct()
     {
-        $this->html_elements = new ArrayCollection();
-        $this->children = new ArrayCollection();
+        $this->htmlElements = new ArrayCollection();
+        $this->widgetChildren = new ArrayCollection();
     }
 
     /**
@@ -350,5 +342,63 @@ class Widget
     public function getHtmlElements()
     {
         return $this->html_elements;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     *
+     * @return Widget
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * Add widgetChild
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widgetChild
+     *
+     * @return Widget
+     */
+    public function addWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
+    {
+        $this->widgetChildren[] = $widgetChild;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgetChild
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widgetChild
+     */
+    public function removeWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
+    {
+        $this->widgetChildren->removeElement($widgetChild);
+    }
+
+    /**
+     * Get widgetChildren
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWidgetChildren()
+    {
+        return $this->widgetChildren;
     }
 }

@@ -30,54 +30,63 @@ class HtmlElement
     private $tag;
 
     /**
+     *
+     * @ORM\Column(name="value", type="text")
+     */
+    private $value;
+
+    /**
      * Index dans la page ou dans le widget parent 
-     * @ORM\Column(name="index", type="integer")
+     * @ORM\Column(name="order", type="integer")
      */
-    private $index;
+    private $order;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="html_element")
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="htmlElement")
      */
-    private $parameters; //attributs
+    private $htmlParameters; //attributs
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parent_element", cascade={"persist"})
-     * @ORM\OrderBy({"index" = "ASC"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentHtmlElement", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"order" = "ASC"})
      */
-    private $children;
+    private $htmlChildren;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_element", cascade={"persist"})
-     * @ORM\OrderBy({"index" = "ASC"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentElement", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"order" = "ASC"})
      */
-    private $widget_children;
+    private $widgetChildren;
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="htmlChildren")
      * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
      */
-    private $parent_element;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaHtmlElement", inversedBy="instances")
-     * @ORM\JoinColumn(name="meta_element_id", referencedColumnName="id")
-     */
-    private $meta_element;
+    private $parentHtmlElement;
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="html_elements")
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="htmlElements")
      * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id")
      */
-    private $parent_widget;
+    private $parentWidget;
+
+    /**
+     * ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaHtmlElement", inversedBy="instances")
+     * ORM\JoinColumn(name="meta_element_id", referencedColumnName="id")
+     */
+    //private $meta_element;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->meta_widgets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->htmlParameters = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->htmlChildren = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->widgetChildren = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->meta_widgets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -368,5 +377,145 @@ class HtmlElement
     public function getWidgetChildren()
     {
         return $this->widget_children;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return HtmlElement
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     *
+     * @return HtmlElement
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * Add htmlParameter
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter
+     *
+     * @return HtmlElement
+     */
+    public function addHtmlParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter)
+    {
+        $this->htmlParameters[] = $htmlParameter;
+
+        return $this;
+    }
+
+    /**
+     * Remove htmlParameter
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter
+     */
+    public function removeHtmlParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter)
+    {
+        $this->htmlParameters->removeElement($htmlParameter);
+    }
+
+    /**
+     * Get htmlParameters
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHtmlParameters()
+    {
+        return $this->htmlParameters;
+    }
+
+    /**
+     * Add htmlChild
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild
+     *
+     * @return HtmlElement
+     */
+    public function addHtmlChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild)
+    {
+        $this->htmlChildren[] = $htmlChild;
+
+        return $this;
+    }
+
+    /**
+     * Remove htmlChild
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild
+     */
+    public function removeHtmlChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild)
+    {
+        $this->htmlChildren->removeElement($htmlChild);
+    }
+
+    /**
+     * Get htmlChildren
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHtmlChildren()
+    {
+        return $this->htmlChildren;
+    }
+
+    /**
+     * Set parentHtmlElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $parentHtmlElement
+     *
+     * @return HtmlElement
+     */
+    public function setParentHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $parentHtmlElement = null)
+    {
+        $this->parentHtmlElement = $parentHtmlElement;
+
+        return $this;
+    }
+
+    /**
+     * Get parentHtmlElement
+     *
+     * @return \Ymir\YmirTyrBundle\Entity\HtmlElement
+     */
+    public function getParentHtmlElement()
+    {
+        return $this->parentHtmlElement;
     }
 }
