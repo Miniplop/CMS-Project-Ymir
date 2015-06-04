@@ -33,6 +33,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 var mobile = $("#mobile");
                 var tablet = $("#tablet");
                 mobile.ready(function() {
+                    console.log(App.Urls.css);
                     mobile.contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/vendor_foundation.min_2.css\" />");
                     mobile.contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/vendor_foundation-icons_3.css\" />");
                     for (var index in mobileElement)
