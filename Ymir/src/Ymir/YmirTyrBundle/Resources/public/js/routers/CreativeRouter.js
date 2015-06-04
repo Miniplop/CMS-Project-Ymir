@@ -1,13 +1,19 @@
 var App = App || {};
 App.Models.Project =App.Models.Project || {};
 
+/*
+* Creative router
+* 
+*
+*
+*/
 
 
 App.Router.CreativeRouter = Backbone.Router.extend({
 
     routes: {
 
-		'(:id)' : 'creative'
+		'' : 'creative'
 
 	},
 
@@ -26,10 +32,36 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
         
-            
+        
+        // Event
         $("#save_page").click(function(){
-            console.log('save');
+            var test = new App.Models.Page();
+            test.set("id", 14);
+            test.save;
+            
         });
+        
+        $("#checkbox_mobile").click(function() {
+		   if( !($(this).hasClass('active')) ){ // Si le bouton n'est pas activé
+               $("#mockup-mobile").css("display", "inline");
+               $(this).addClass("active");
+           } 
+		   else { // Si le bouton est activé
+               $("#mockup-mobile").css("display", "none");
+               $(this).removeClass("active");
+           }
+	   });
+
+	   $("#checkbox_tablet").click( function() {
+		   if( !($(this).hasClass('active')) ){
+                $("#mockup-tablet").css("display", "inline");
+                $(this).addClass("active");
+           }
+		   else { // Si le bouton est activé
+               $("#mockup-tablet").css("display", "none");
+               $(this).removeClass("active");
+           }
+	   });
 
 	}
 });
