@@ -4,7 +4,7 @@ var App = App || {};
  * type :
  * cssName :
  */
-App.Models.Propetry = Backbone.Model.extend({
+App.Models.Property = Backbone.Model.extend({
     parse: function(result) {
         return result;
     }
