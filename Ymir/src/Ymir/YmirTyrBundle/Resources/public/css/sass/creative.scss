@@ -120,19 +120,22 @@
 			}
 			button {
 			    font-size: 80% !important;
-    			padding: 3px 15px !important;
-			}
-		}
-		.devices {
-			margin-top: 10px;
-			max-height: 20px;
-			padding: 0 !important;
-			label {
-				font-size: 0.8rem;
+    			padding: 7px 15px !important;
 			}
 		}
 		>div:last-child {
+
 			min-width: 150px !important;
+            >ul{
+                text-align: center !important;
+                width: 150px;
+                >li{
+                    >button{
+                        font-size: 90%;
+                        padding: 6px 15px !important;
+                    }
+                }
+            }
 		}
 	}
 }
