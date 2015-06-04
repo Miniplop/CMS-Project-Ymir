@@ -372,7 +372,7 @@ class HtmlElement
 
     // Merge two sorted table
     // /!\ CAREFUL /!\ : duplicated function (see widget.php)
-    public function sortElements() {
+   /* public function sortElements() {
         $childrenCount = count($this->children);
         $html_elCount = count($this->html_elements);
         $childrenIndex = 0;
@@ -405,12 +405,20 @@ class HtmlElement
     }
 
     public function codeGen(){
-        $code = "<".$tag.">";
+        // Opening the HTML element
+        $code = "<".$tag ;
+        // Add the parameters
+        foreach ($parameters->toArray() as $p) {
+            // est-ce qu'il faut rajouter le type de l'attribut ?
+            $code .= $p;
+        }
+
         $elements = sortElements();
         foreach ($elements->toArray() as $e) {
             $code .= $e->codeGen();
         }
+        // Closing the HTML element
         $code .= "</".$tag.">";
         return $code;
-    }
+    } */
 }
