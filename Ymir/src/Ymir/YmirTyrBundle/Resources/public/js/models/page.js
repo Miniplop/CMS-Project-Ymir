@@ -10,9 +10,10 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
  * widgets : List of widget contained in the page
  */
 App.Models.Page = Backbone.Model.extend({
-    url : 'http://127.0.0.1:8000/stage',
-
+    url :  "",
+    
     initialize: function() {
+        this.url = App.Urls.page;
         this.idWidgetGenerator = 0;
         this.idHtmlElementGenerator = 0;
     },

@@ -1,9 +1,10 @@
 var App = App || {};
 App.Models.Categorie = App.Models.Categorie || {};
 App.Collections.CategorieList = Backbone.Collection.extend({
-    url   : "widgets",
+    url : "",
     model : App.Models.Categorie,
 	initialize: function() {
+        this.url = App.Urls.categories;
     },
 	parse: function(res) {
         return res.categories;
