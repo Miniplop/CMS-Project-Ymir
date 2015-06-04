@@ -27,8 +27,8 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 $('.stage').append(element);
                 var $mobile = $('#mobile');
                 var $tablet = $('#tablet');
-                $tablet.ready(function() {
-                    $tablet.contents().find("body").append(element);
+                $mobile.ready(function() {
+                    $mobile.contents().find("body").append(element);
                 });
                 $tablet.ready(function() {
                     $tablet.contents().find("body").append(element);
