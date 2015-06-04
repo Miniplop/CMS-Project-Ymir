@@ -32,8 +32,8 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
         initialize: function() {
             var thisObject = this;
             var widgets = this.page.get("widgets");
-            var mobile = $("#mobile");            
-            var tablet = $("#tablet");            
+            var mobile = $("#mobile");
+            var tablet = $("#tablet");
             for(var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
@@ -46,12 +46,10 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                     this.addToDOM(elements[index], $(".stage"), widgets.models[i]);
                 
                 mobile.ready(function() {
-                    mobile.contents().find("head").append("<link rel=\"stylesheet\" href= " + app.Urls.css.foundation + " />");
                     for (var index in mobileElement)
                         thisObject.addToDOM(mobileElement[index], mobile.contents().find("body"), widgets.models[i]);
                 });
                 tablet.ready(function() {
-                    tablet.contents().find("head").append("<link rel=\"stylesheet\" href=\"app.Urls.css.foundation\" />");
                     for (var index in tabletElement)
                         thisObject.addToDOM(tabletElement[index], tablet.contents().find("body"), widgets.models[i]);
                 });
@@ -86,6 +84,8 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
 
             for (var index in htmlsWidget)
                 this.addToDOM(htmlsWidget[index], receiver, widget);
+            
+            this.updateIframe();
         },
 
 
@@ -153,6 +153,9 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
 
             // add to parent into page
             this.addToDOM(container, $(containerParameters.parent), widget);
+            
+            var cpyContainer = jQuery.extend({}, container);
+            this.updateIframe(cpyContainer, widget);
         },
 
         /**
@@ -306,10 +309,24 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                     jqObject.addClass(classes[i]);
 
             }
-
+        },
+        
+        updateIframe: function (mobileElement, widget) {
+            var mobile = $("#mobile");
+            var tablet = $("#tablet");
+            mobile.ready(function() {
+                mobile.contents().find("head").append("<link rel=\"stylesheet\" href= " + app.Urls.css.foundation + " />");
+                for (var index in mobileElement)
+                    thisObject.addToDOM(mobileElement[index], mobile.contents().find("body"), widgets.models[i]);
+            });
+            tablet.ready(function() {
+                tablet.contents().find("head").append("<link rel=\"stylesheet\" href=\"app.Urls.css.foundation\" />");
+                for (var index in tabletElement)
+                    thisObject.addToDOM(tabletElement[index], tablet.contents().find("body"), widgets.models[i]);
+            });            
         }
-
     });
+    
     App.Utils.PageBuilder = PageBuilder;
     return App.Utils.PageBuilder;
 })();

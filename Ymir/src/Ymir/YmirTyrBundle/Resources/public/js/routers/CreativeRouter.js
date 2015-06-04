@@ -8,7 +8,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
     routes: {
 
 		'(:id)' : 'creative'
-
 	},
 
     /**
@@ -22,9 +21,9 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         // Faut chercher l'id ...
 
         // Nav Bar view
-      /*  App.categories = new App.Collections.CategorieList();
-        var catlistview = new App.Views.CategorieListView({collection: App.categories});*/
-         App.creativeView = new App.Views.CreativeView();
+        App.categories = new App.Collections.CategorieList();
+        var catlistview = new App.Views.CategorieListView({collection: App.categories});
+        // App.creativeView = new App.Views.CreativeView();
         // Stage view
         App.PageBuilder = new App.Utils.PageBuilder(new App.Models.Page());
         App.DragDropHandler = new App.Utils.DragDropHandler();

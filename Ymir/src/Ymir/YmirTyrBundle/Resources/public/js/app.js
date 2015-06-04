@@ -54,7 +54,8 @@ var app = (function() {
 	$("#checkbox_tablet").click( function() {
 		   if( $(this).is(':checked') ) $("#mockup-tablet").css("display", "inline");
 		   else $("#mockup-tablet").css("display", "none");
-	});
+	});   
+    
     
 	return window.App;	
 })();
