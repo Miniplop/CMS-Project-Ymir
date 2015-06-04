@@ -1,31 +1,41 @@
 var App = App || {};
-
-
+/**
+ *
+ */
 (function () {
     
     function PageSelector (){
         this.initialize();
-        
     };
-    
     _.extend(PageSelector.prototype, {
-        
+        /**
+         *
+         */
          initialize : function() {
-             this.refresh();
-        },
-        refresh: function() {
             (function(self) {
-				$('.stage').selectable({
-                   selected : function(event,ui){
-                      /* $(this).css("border-width",'2px');
-                       $(this).css("border-style",'dotted');
-                       $(this).css("border-color",'red');*/
-                        console.log(this);
+                $( ".stage" ).on( "click", "*", function( event ) {
+                    $( ".stage" ).find('.ui-selected').removeClass('ui-selected');
+                    if ($( this).data("html-element-id")) {
+                        $( this).addClass("ui-selected");
+                        self.elementSelected($( this).data("html-element-id"), this);
                     }
+                    event.stopPropagation();
+                    event.preventDefault();
                 });
             })(this);
+        },
+        /**
+         *
+         * @param htmlElementId
+         * @param jqObject
+         */
+        elementSelected: function(htmlElementId, jqObject) {
+            var htmlElement = App.page.getHtmlElement(htmlElementId);
+            $('.toolbar-parameter').css('bottom', 0);
+            App.creativeView.propertiesView(htmlElement.get("properties"));
+
+
         }
- 
     });
 
     App.Utils.PageSelector = PageSelector;

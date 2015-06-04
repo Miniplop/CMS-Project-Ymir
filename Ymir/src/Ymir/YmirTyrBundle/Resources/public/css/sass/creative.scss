@@ -10,8 +10,6 @@
 }
 .toolbar-meta-widget {
 	width: 100% !important;
-	height: 60% !important;
-	overflow-y: scroll;
 	>div {
 		>ul {
 			border-bottom: 1px solid #565656 !important;
@@ -62,7 +60,11 @@
 
 
 .toolbar-parameter {
-	width: 100% !important;
+  width: 100% !important;
+  height: 40% !important;
+  position: absolute !important;
+  bottom: -40%;
+  transition: bottom 300ms;
 	div {
 		margin-bottom: 0.8em !important;
 		h2 {

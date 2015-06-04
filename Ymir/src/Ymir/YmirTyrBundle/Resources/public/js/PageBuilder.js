@@ -1,10 +1,17 @@
 var App = App || {};
-App.Models.Widget = App.Models.Widget || function() {};
+App.Models.Page = App.Models.Page || function() {};
 App.Collections.WidgetList = App.Collections.WidgetList ||  function () {};
 App.Collections.HtmlElementList = App.Collections.HtmlElementList ||  function () {};
 App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
-
+/**
+ *
+ */
 (function () {
+    /**
+     *
+     * @param page App.Models.Page
+     * @constructor
+     */
     function PageBuilder(page) {
         _.bindAll(this, "initialize");
         if (page !== null) {
@@ -15,11 +22,15 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             this.page.set('widgets', new App.Collections.WidgetList());
             this.initialize();
         }
+        App.page = this.page;
     };
     
     _.extend( PageBuilder.prototype, {
+        /**
+         *
+         */
         initialize: function() {
-            var thisObject = this; // closure MAGGLE
+            var thisObject = this;
             var widgets = this.page.get("widgets");
             var mobile = $("#mobile");            
             var tablet = $("#tablet");            

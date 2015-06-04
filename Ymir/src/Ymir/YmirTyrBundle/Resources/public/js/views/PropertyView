@@ -1,12 +1,20 @@
-/**
- */
 var App = App || {};
+/**
+ *
+ */
 App.Views.PropertyView = Backbone.View.extend({
     template: null,
     tagName: 'li',
+    /**
+     *
+     */
     initialize: function() {
         this.template = _.template($('#property-template').html());
     },
+    /**
+     *
+     * @return {App.Views.PropertyView}
+     */
     render: function() {
         var html = this.template(this.model.toJSON());
         this.$el.html(html);
