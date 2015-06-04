@@ -1,14 +1,21 @@
 var app = (function() {
-	
+    /**
+     *
+     * @type {{categories: null, page: null, DragDropHandler: null, PageBuilder: null, PageSelector: null, Models: {}, Collections: {}, Views: {}, Forms: {}, Router: {}, Utils: {}, Urls: {css: {}, js: {}}, todos: null, init: Function}}
+     */
 	window.App = {
-        // objects
+        /**
+         * objects
+         */
 		categories: null,
         page: null,
         DragDropHandler: null,
         PageBuilder: null,
         PageSelector: null,
-        
-        // namespaces & class
+
+        /**
+         * namespaces & class
+         */
 		Models: {},
 		Collections: {},
 		Views: {},
@@ -20,6 +27,11 @@ var app = (function() {
             js: {}
         },
 		todos: null,
+        /**
+         *
+         * @param routeur
+         * @return {App}
+         */
         init: function(routeur) {
             $(document).foundation();
             var rout;  
@@ -42,11 +54,6 @@ var app = (function() {
 	$("#checkbox_tablet").click( function() {
 		   if( $(this).is(':checked') ) $("#mockup-tablet").css("display", "inline");
 		   else $("#mockup-tablet").css("display", "none");
-	});
-
-	$("#checkbox_desktop").click( function() {
-		   if( $(this).is(':checked') ) $("#mockup-desktop").css("display", "inline");
-		   else $("#mockup-desktop").css("display", "none");
 	});
     
 	return window.App;	

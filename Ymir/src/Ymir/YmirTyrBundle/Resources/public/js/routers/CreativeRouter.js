@@ -1,8 +1,8 @@
 var App = App || {};
-App.Models.Project =App.Models.Project || {};
-
-
-
+App.Utils.PageBuilder = App.Utils.PageBuilder ||  {};
+/**
+ *
+ */
 App.Router.CreativeRouter = Backbone.Router.extend({
 
     routes: {
@@ -11,19 +11,24 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 
 	},
 
+    /**
+     *
+     * @param id
+     */
 	creative: function (id) {
 
 		console.log('you are viewing creative page ' +id);
         
         // Faut chercher l'id ...
 
-        // Nav Bar view 
-        App.categories = new App.Collections.CategorieList();
-        var catlistview = new App.Views.CategorieListView({collection: App.categories});
-
+        // Nav Bar view
+      /*  App.categories = new App.Collections.CategorieList();
+        var catlistview = new App.Views.CategorieListView({collection: App.categories});*/
+         App.creativeView = new App.Views.CreativeView();
         // Stage view
-        App.PageBuilder = new App.Utils.PageBuilder(null);
+        console.log(App.Utils.PageBuilder);
         App.DragDropHandler = new App.Utils.DragDropHandler();
+        App.PageBuilder = new App.Utils.PageBuilder(null);
         App.PageSelector = new App.Utils.PageSelector();
 
 	}
