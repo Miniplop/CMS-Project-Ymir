@@ -279,16 +279,15 @@ class Widget
             
             $i++;
         }
-            /*elseif ($childrenIndex >= $childrenCount){
-                // we have to copy the remaing part of the table HTML ELement
-                $table[i] = $html_elements[$html_elIndex];
-                $html_elIndex ++;
-            }
-            else {
-                // we have to copy the remaing part of the table Children
-                $table[i] = $children[$childrenIndex];
-                $childrenIndex ++;
-            }*/
+        if ($childrenIndex >= $childrenCount){
+            // we have to copy the remaing part of the table HTML ELement
+            $table[i] = $html_elements[$html_elIndex];
+            $html_elIndex ++;
+        } elseif ($html_elIndex >= $html_elCount) {
+            // we have to copy the remaing part of the table Children
+            $table[i] = $children[$childrenIndex];
+            $childrenIndex ++;
+        }
         return $table;
     }
 
