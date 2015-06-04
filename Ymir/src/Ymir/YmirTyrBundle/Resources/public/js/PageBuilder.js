@@ -81,11 +81,13 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             this.page.addWidget(container_html_element_id, widget);
             // build JQuery Objects and add it to the dom
             var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
+            var cpyWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
+            var cpyCpyWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
 
-            for (var index in htmlsWidget)
+            for (var index in htmlsWidget){
                 this.addToDOM(htmlsWidget[index], receiver, widget);
-            
-            this.updateIframe();
+                this.updateIframe(cpyWidget[index],cpyCpyWidget[index],widget);
+            }
         },
 
 
@@ -111,8 +113,14 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
 
 
             var container = $('<' + htmlContainer.models[0].get('tag') + '>');
-            if (containerParameters.isRow)
+            var cpyContainer = $('<' + htmlContainer.models[0].get('tag') + '>');
+            var cpyCpyContainer = $('<' + htmlContainer.models[0].get('tag') + '>');
+            if (containerParameters.isRow){
                 container.addClass('row');
+                cpyContainer.addClass('row');
+                cpyCpyContainer.addClass('row');
+            }
+                
             for (var i = 1; i <= containerParameters.nb_column; i++) {
                 // build sub div HtmlElement that will be replaced when we put a widget on it
                 var htmlElementChild = new App.Models.HtmlElement();
@@ -143,9 +151,17 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 column.attr("data-order", i); // we need to keep order in the DOM. When this div will be replaced by a widget, widget.order will have this value
                 column.attr("data-html-element-id", htmlElement.get('id'));
                 container.append(column);
+                cpyContainer.append(column);
+                cpyCpyContainer.append(column);
             }
             container.children().last().addClass('end');
             container.attr("data-html-element-id", htmlElement.get('id'));
+            
+            cpyContainer.children().last().addClass('end');
+            cpyContainer.attr("data-html-element-id", htmlElement.get('id'));
+            
+            cpyCpyContainer.children().last().addClass('end');
+            cpyCpyContainer.attr("data-html-element-id", htmlElement.get('id'));
 
             widget.get("htmlElements").add(htmlElement);
             var container_html_element_id = containerParameters.parent.data("html-element-id");
@@ -154,8 +170,8 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             // add to parent into page
             this.addToDOM(container, $(containerParameters.parent), widget);
             
-            var cpyContainer = jQuery.extend({}, container);
-            this.updateIframe(cpyContainer, widget);
+                       
+            this.updateIframe(cpyContainer,cpyCpyContainer, widget);
         },
 
         /**
@@ -217,6 +233,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
          *                  else => replaceWith
          */
         addToDOM: function (jqObject, receiver, widget) {
+            console.log("AddDom");
             if (receiver.data("info") == "replaceable") {
                 widget.set('order', receiver.data("order"));
                 this.addContainerClass(jqObject, receiver.attr("class"));
@@ -311,19 +328,16 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             }
         },
         
-        updateIframe: function (mobileElement, widget) {
+        updateIframe: function (mobileElement, tabletElement, widget) {
             var mobile = $("#mobile");
             var tablet = $("#tablet");
+            var thisObject = this;
             mobile.ready(function() {
-                mobile.contents().find("head").append("<link rel=\"stylesheet\" href= " + app.Urls.css.foundation + " />");
-                for (var index in mobileElement)
-                    thisObject.addToDOM(mobileElement[index], mobile.contents().find("body"), widgets.models[i]);
+                thisObject.addToDOM(mobileElement, mobile.contents().find("body"), widget);
             });
             tablet.ready(function() {
-                tablet.contents().find("head").append("<link rel=\"stylesheet\" href=\"app.Urls.css.foundation\" />");
-                for (var index in tabletElement)
-                    thisObject.addToDOM(tabletElement[index], tablet.contents().find("body"), widgets.models[i]);
-            });            
+                thisObject.addToDOM(tabletElement, tablet.contents().find("body"), widget);
+            });
         }
     });
     

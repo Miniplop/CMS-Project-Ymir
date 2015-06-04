@@ -16,6 +16,7 @@ var App = App || {};
 		initialize: function() {
 			(function(self) {
 				$('.droppable').droppable({
+                    accept: ':not(.mobile)',
 					drop: self.handleDropEvent,
 					hoverClass: 'drop-hover',
                 });
@@ -30,6 +31,7 @@ var App = App || {};
 		refresh: function() {
             (function(self) {
                 $('.stage').find('.droppable').droppable({
+                    accept: ':not(.mobile)',
                     greedy: true,
                     drop: self.handleDropEvent,
                     hoverClass: 'drop-hover'

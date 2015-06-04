@@ -43,19 +43,6 @@ var app = (function() {
             Backbone.history.start();
             return this;
 	      }
-		};
-    
-	    
-	$("#checkbox_mobile").click(function() {
-		   if( $(this).is(':checked') ) $("#mockup-mobile").css("display", "inline");
-		   else $("#mockup-mobile").css("display", "none");
-	});
-
-	$("#checkbox_tablet").click( function() {
-		   if( $(this).is(':checked') ) $("#mockup-tablet").css("display", "inline");
-		   else $("#mockup-tablet").css("display", "none");
-	});   
-    
-    
+		};    
 	return window.App;	
 })();

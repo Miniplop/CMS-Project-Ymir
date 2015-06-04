@@ -48,7 +48,7 @@ class Widget
      * Index dans la page ou dans le widget parent 
      * @ORM\Column(name="index", type="integer")
      */
-    
+    private $index;
 
     /**
      * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_widget", cascade={"persist"})
@@ -272,6 +272,40 @@ class Widget
     }
 
 
+    /**
+     * Add htmlElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement
+     *
+     * @return Widget
+     */
+    public function addHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement)
+    {
+        $this->html_elements[] = $htmlElement;
+
+        return $this;
+    }
+
+    /**
+     * Remove htmlElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement
+     */
+    public function removeHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement)
+    {
+        $this->html_elements->removeElement($htmlElement);
+    }
+
+    /**
+     * Get htmlElements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHtmlElements()
+    {
+        return $this->html_elements;
+    }
+
     // Merge two sorted table
     public function sortElements() {
         $childrenCount = count($this->children);
@@ -320,37 +354,4 @@ class Widget
         return $code;
     }
 
-    /**
-     * Add htmlElement
-     *
-     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement
-     *
-     * @return Widget
-     */
-    public function addHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement)
-    {
-        $this->html_elements[] = $htmlElement;
-
-        return $this;
-    }
-
-    /**
-     * Remove htmlElement
-     *
-     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement
-     */
-    public function removeHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement)
-    {
-        $this->html_elements->removeElement($htmlElement);
-    }
-
-    /**
-     * Get htmlElements
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getHtmlElements()
-    {
-        return $this->html_elements;
-    }
 }

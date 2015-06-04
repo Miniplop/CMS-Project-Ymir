@@ -372,31 +372,31 @@ class HtmlElement
 
     // Merge two sorted table
     // /!\ CAREFUL /!\ : duplicated function (see widget.php)
-   /* public function sortElements() {
+   public function sortElements() {
         $childrenCount = count($this->children);
-        $html_elCount = count($this->html_elements);
+        $widgetCount = count($this->widget_children);
         $childrenIndex = 0;
-        $html_elIndex = 0;
+        $widgetIndex = 0;
         $table = array();
         $i = 0;
         // Both table are not empty
-        while ($childrenIndex < $childrenCount && $html_elIndex < $html_elCount){
+        while ($childrenIndex < $childrenCount && $widgetIndex < $widgetCount){
                 // choosing the minimum
-            if ($this->children[$childrenIndex]->index <= $this->html_elements[$html_elIndex]->index) {
+            if ($this->children[$childrenIndex]->index <= $this->widget_children[$widgetIndex]->index) {
                     $table[$i] = $this->children[$childrenIndex];
                     $childrenIndex ++;
             } else {
-                    $table[$i] = $this->html_elements[$html_elIndex];
-                    $html_elIndex ++;
+                    $table[$i] = $this->widget_children[$widgetIndex];
+                    $widgetIndex ++;
             }
             $i++;
         }
         // At least one of the table is empty
         if ($childrenIndex >= $childrenCount){
             // we have to copy the remaing part of the table HTML ELement
-            $table[$i] = $this->html_elements[$html_elIndex];
-            $html_elIndex ++;
-        } elseif ($html_elIndex >= $html_elCount) {
+            $table[$i] = $this->widget_children[$widgetIndex];
+            $widgetIndex ++;
+        } elseif ($widgetIndex >= $widgetCount) {
             // we have to copy the remaing part of the table Children
             $table[$i] = $this->children[$childrenIndex];
             $childrenIndex ++;
@@ -412,13 +412,14 @@ class HtmlElement
             // est-ce qu'il faut rajouter le type de l'attribut ?
             $code .= $p;
         }
+        $code .= ">\n\t"
 
         $elements = sortElements();
         foreach ($elements->toArray() as $e) {
             $code .= $e->codeGen();
         }
         // Closing the HTML element
-        $code .= "</".$tag.">";
+        $code .= "</".$tag.">\n";
         return $code;
-    } */
+    } 
 }
