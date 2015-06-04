@@ -33,6 +33,7 @@ var app = (function() {
 	      }
 		};
     
+    
 	    
 	$("#checkbox_mobile").click(function() {
 		   if( $(this).is(':checked') ) $("#mockup-mobile").css("display", "inline");
@@ -44,10 +45,5 @@ var app = (function() {
 		   else $("#mockup-tablet").css("display", "none");
 	});
 
-	$("#checkbox_desktop").click( function() {
-		   if( $(this).is(':checked') ) $("#mockup-desktop").css("display", "inline");
-		   else $("#mockup-desktop").css("display", "none");
-	});
-    
 	return window.App;	
 })();
