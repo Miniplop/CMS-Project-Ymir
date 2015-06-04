@@ -38,8 +38,8 @@ class Page
     protected $project;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_page", cascade={"persist", "remove"})
-     * @ORM\OrderBy({"index" = "ASC"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentPage", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"order" = "ASC"})
      */
     private $widgets;
 

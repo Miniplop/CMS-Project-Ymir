@@ -1,8 +1,12 @@
 var App = App || {};
-App.Models.Page = App.Models.Page || function() {};
-App.Collections.WidgetList = App.Collections.WidgetList ||  function () {};
-App.Collections.HtmlElementList = App.Collections.HtmlElementList ||  function () {};
-App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
+App.Models.Page = App.Models.Page || function () {
+};
+App.Collections.WidgetList = App.Collections.WidgetList || function () {
+};
+App.Collections.HtmlElementList = App.Collections.HtmlElementList || function () {
+};
+App.Models.HtmlElement = App.Models.HtmlElement || function () {
+};
 /**
  *
  */
@@ -16,7 +20,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
         _.bindAll(this, "initialize");
         if (page !== null) {
             this.page = page;
-            this.page.fetch({ success: this.initialize });
+            this.page.fetch({success: this.initialize});
         } else {
             this.page = new App.Models.Page();
             this.page.set('widgets', new App.Collections.WidgetList());
@@ -24,12 +28,12 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
         }
         App.page = this.page;
     };
-    
-    _.extend( PageBuilder.prototype, {
+
+    _.extend(PageBuilder.prototype, {
         /**
          *
          */
-        initialize: function() {
+        initialize: function () {
             var thisObject = this;
             var widgets = this.page.get("widgets");
             var mobile = $("#mobile");
@@ -37,31 +41,24 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             for(var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
-                
+
                 var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
                 var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
                 var mobileElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
-                
-                for (var index in elements)
+
+                for (var index in elements){
                     this.addToDOM(elements[index], $(".stage"), widgets.models[i]);
-                
-                mobile.ready(function() {
-                    for (var index in mobileElement)
-                        thisObject.addToDOM(mobileElement[index], mobile.contents().find("body"), widgets.models[i]);
-                });
-                tablet.ready(function() {
-                    for (var index in tabletElement)
-                        thisObject.addToDOM(tabletElement[index], tablet.contents().find("body"), widgets.models[i]);
-                });
+                    this.updateIframe(mobileElement[index], tabletElement[index], widgets.models[i]);
+                }
             }
-            mobile.ready(function() {
-                mobile.contents().find("head").append("<link rel=\"stylesheet\" href= " + app.Urls.css.foundation + ">");
-                mobile.contents().find("body").append("<script type=\"text/javascript\" src=" + app.Urls.js.foundation + ">");
+            mobile.ready(function () {
+                mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
+                mobile.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
-            
-            tablet.ready(function() {
-                tablet.contents().find("head").append("<link rel=\"stylesheet\" href= " + app.Urls.css.foundation + ">");
-                tablet.contents().find("body").append("<script type=\"text/javascript\" src=" + app.Urls.js.foundation + ">");
+
+            tablet.ready(function () {
+                tablet.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
+                tablet.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
         },
         /**
@@ -131,16 +128,10 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 htmlElementChild.set('htmlParameters', []);
                 htmlElementChild.get('htmlParameters').push({name: "data-info", value: "replaceable"});
                 htmlElementChild.get('htmlParameters').push({name: "data-order", value: i});
-                if (i == containerParameters.nb_column)
-                    htmlElementChild.get('htmlParameters').push({
-                        name: "class",
-                        value: "large-" + containerParameters.columnsSizes[i] + " columns end"
-                    });
-                else
-                    htmlElementChild.get('htmlParameters').push({
-                        name: "class",
-                        value: "large-" + containerParameters.columnsSizes[i] + " columns"
-                    });
+                htmlElementChild.get('htmlParameters').push({
+                    name: "class",
+                    value: "large-" + containerParameters.columnsSizes[i] + " columns" + (i == containerParameters.nb_column ? " end" : "")
+                });
                 htmlElementChild.set('widgetChildren', new App.Collections.WidgetList());
                 htmlElementChild.set('htmlChildren', new App.Collections.HtmlElementList());
                 htmlElement.get("htmlChildren").add(htmlElementChild);
@@ -210,9 +201,12 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             htmlElement.set('htmlChildren', new App.Collections.HtmlElementList());
             htmlElement.set('properties', new App.Collections.PropertyList());
 
-            var metaProperties = metaHtmlElement.get('metaHtmlParameters');
-            for (var index in metaProperties)
-                htmlElement.get('htmlParameters').push( { name: metaProperties[index].name, cssName: metaProperties[index].cssName, value: metaProperties[index].defaultValue } );
+            console.log(metaHtmlElement);
+            var metaProperties = metaHtmlElement.get("metaProperties");
+            for (var index in metaProperties) {
+                console.log(metaProperties[index]);
+                htmlElement.get('properties').add(this.buildHtmlProperty(metaProperties[index]));
+            }
 
             for (var index in metaHtmlElement.get('metaHtmlParameters'))
                 htmlElement.get('htmlParameters').push(metaHtmlElement.get('metaHtmlParameters')[index]);
@@ -223,6 +217,15 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 htmlElement.get('htmlChildren').add(htmlElementChild);
             }
             return htmlElement;
+        },
+
+        buildHtmlProperty: function (metaProp) {
+            var prop = new App.Models.Property();
+            prop.set('name', metaProp.name);
+            prop.set('type', metaProp.type);
+            prop.set('cssName', metaProp.cssName);
+            prop.set('value', metaProp.defaultValue);
+            return prop;
         },
 
         /**
@@ -254,7 +257,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             var widget_id = widget.get('id');
             for (var index in  widget.get("htmlElements").models) {
                 var jqWidget = this.buildJqueryFromHtmlElement(widget.get("htmlElements").models[index], isNew, null);
-                if(parent != null)
+                if (parent != null)
                     parent.append(jqWidget);
                 htmlsWidget.push(jqWidget);
             }
@@ -290,10 +293,19 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             }
             if (parent != null)
                 parent.append(jqWidget);
+
             if (!isNew)
-                if (this.page.idHtmlElementGenerator < htmlElement.get('id'))
-                    this.page.idHtmlElementGenerator = htmlElement.get('id');
+                this.updateHtmlIds(htmlElement.get('id'));
             return jqWidget;
+        },
+
+        /**
+         *
+         * @param id
+         */
+        updateHtmlIds: function (id) {
+            if (this.page.idHtmlElementGenerator < id)
+                this.page.idHtmlElementGenerator = id;
         },
 
         /**

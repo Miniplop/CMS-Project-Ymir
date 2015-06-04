@@ -14,6 +14,10 @@
         </section>
 </section>
 
+{% if id_page is defined %}
+    <input type="hidden" id="page_id" value="{{id_page}}">
+{% endif %}
+
 
 <div id="mockup-mobile" class="mobile device-draggable">
 	<div class="device-mockup lumia920">

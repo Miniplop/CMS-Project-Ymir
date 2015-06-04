@@ -30,9 +30,9 @@ class MetaHtmlElement
     private $tag;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="meta_element")
+     * ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="meta_element")
      */
-    private $instances;
+    //private $instances;
 
     /**
      * @Exclude
@@ -55,7 +55,7 @@ class MetaHtmlElement
      */
     public function __construct()
     {
-        $this->instances = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->instances = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

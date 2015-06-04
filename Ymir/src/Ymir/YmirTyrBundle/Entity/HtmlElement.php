@@ -30,55 +30,116 @@ class HtmlElement
     private $tag;
 
     /**
+     *
+     * @ORM\Column(name="value", type="text")
+     */
+    private $value;
+
+    /**
      * Index dans la page ou dans le widget parent 
-     * @ORM\Column(name="index", type="integer")
+     * @ORM\Column(name="order", type="integer")
      */
-    private $index;
+    private $order;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="html_element")
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="htmlElement")
      */
-    private $parameters; //attributs
+    private $htmlParameters; //attributs
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parent_element", cascade={"persist"})
-     * @ORM\OrderBy({"index" = "ASC"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentHtmlElement", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"order" = "ASC"})
      */
-    private $children;
+    private $htmlChildren;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_element", cascade={"persist"})
-     * @ORM\OrderBy({"index" = "ASC"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentElement", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"order" = "ASC"})
      */
-    private $widget_children;
+    private $widgetChildren;
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="htmlChildren")
      * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
      */
-    private $parent_element;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaHtmlElement", inversedBy="instances")
-     * @ORM\JoinColumn(name="meta_element_id", referencedColumnName="id")
-     */
-    private $meta_element;
+    private $parentHtmlElement;
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="html_elements")
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="htmlElements")
      * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id")
      */
-    private $parent_widget;
+    private $parentWidget;
+
+    /**
+     * ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaHtmlElement", inversedBy="instances")
+     * ORM\JoinColumn(name="meta_element_id", referencedColumnName="id")
+     */
+    //private $meta_element;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->meta_widgets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->htmlParameters = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->htmlChildren = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->widgetChildren = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->meta_widgets = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+   public function sortElements() {
+        $childrenCount = count($this->htmlChildren);
+        $widgetCount = count($this->widgetChildren);
+        $childrenIndex = 0;
+        $widgetIndex = 0;
+        $table = array();
+        $i = 0;
+        // Both table are not empty
+        while ($childrenIndex < $childrenCount && $widgetIndex < $widgetCount){
+                // choosing the minimum
+            if ($this->htmlChildren[$childrenIndex]->index <= $this->widgetChildren[$widgetIndex]->index) {
+                    $table[$i] = $this->htmlChildren[$childrenIndex];
+                    $childrenIndex ++;
+            } else {
+                    $table[$i] = $this->widgetChildren[$widgetIndex];
+                    $widgetIndex ++;
+            }
+            $i++;
+        }
+        // At least one of the table is empty
+        if ($childrenIndex >= $childrenCount){
+            // we have to copy the remaing part of the table HTML ELement
+            $table[$i] = $this->widgetChildren[$widgetIndex];
+            $widgetIndex ++;
+        } elseif ($widgetIndex >= $widgetCount) {
+            // we have to copy the remaing part of the table Children
+            $table[$i] = $this->htmlChildren[$childrenIndex];
+            $childrenIndex ++;
+        }
+        return $table;
+    }
+
+    public function codeGen(){
+        // Opening the HTML element
+        $code = "<".$tag ;
+        // Add the parameters
+        foreach ($parameters->toArray() as $p) {
+            // est-ce qu'il faut rajouter le type de l'attribut ?
+            $code .= $p;
+        }
+        $code .= ">\n\t";
+
+        $elements = sortElements();
+        foreach ($elements->toArray() as $e) {
+            $code .= $e->codeGen();
+        }
+        // Closing the HTML element
+        $code .= "</".$tag.">\n";
+        return $code;
+    } 
+
 
     /**
      * Get id
@@ -88,64 +149,6 @@ class HtmlElement
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set balise
-     *
-     * @param string $balise
-     *
-     * @return HtmlElement
-     */
-    public function setBalise($balise)
-    {
-        $this->balise = $balise;
-
-        return $this;
-    }
-
-    /**
-     * Get balise
-     *
-     * @return string
-     */
-    public function getBalise()
-    {
-        return $this->balise;
-    }
-
-    /**
-     * Add metaWidget
-     *
-     * @param \Ymir\YmirTyrBundle\Entity\MetaWidget $metaWidget
-     *
-     * @return HtmlElement
-     */
-    public function addMetaWidget(\Ymir\YmirTyrBundle\Entity\MetaWidget $metaWidget)
-    {
-        $this->meta_widgets[] = $metaWidget;
-
-        return $this;
-    }
-
-    /**
-     * Remove metaWidget
-     *
-     * @param \Ymir\YmirTyrBundle\Entity\MetaWidget $metaWidget
-     */
-    public function removeMetaWidget(\Ymir\YmirTyrBundle\Entity\MetaWidget $metaWidget)
-    {
-        $this->meta_widgets->removeElement($metaWidget);
-    }
-
-    /**
-     * Get metaWidgets
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMetaWidgets()
-    {
-        return $this->meta_widgets;
     }
 
     /**
@@ -173,167 +176,119 @@ class HtmlElement
     }
 
     /**
-     * Set index
+     * Set value
      *
-     * @param integer $index
+     * @param string $value
      *
      * @return HtmlElement
      */
-    public function setIndex($index)
+    public function setValue($value)
     {
-        $this->index = $index;
+        $this->value = $value;
 
         return $this;
     }
 
     /**
-     * Get index
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     *
+     * @return HtmlElement
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
      *
      * @return integer
      */
-    public function getIndex()
+    public function getOrder()
     {
-        return $this->index;
+        return $this->order;
     }
 
     /**
-     * Add parameter
+     * Add htmlParameter
      *
-     * @param \Ymir\YmirTyrBundle\Entity\HtmlParameter $parameter
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter
      *
      * @return HtmlElement
      */
-    public function addParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $parameter)
+    public function addHtmlParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter)
     {
-        $this->parameters[] = $parameter;
+        $this->htmlParameters[] = $htmlParameter;
 
         return $this;
     }
 
     /**
-     * Remove parameter
+     * Remove htmlParameter
      *
-     * @param \Ymir\YmirTyrBundle\Entity\HtmlParameter $parameter
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter
      */
-    public function removeParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $parameter)
+    public function removeHtmlParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter)
     {
-        $this->parameters->removeElement($parameter);
+        $this->htmlParameters->removeElement($htmlParameter);
     }
 
     /**
-     * Get parameters
+     * Get htmlParameters
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getParameters()
+    public function getHtmlParameters()
     {
-        return $this->parameters;
+        return $this->htmlParameters;
     }
 
     /**
-     * Add child
+     * Add htmlChild
      *
-     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $child
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild
      *
      * @return HtmlElement
      */
-    public function addChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $child)
+    public function addHtmlChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild)
     {
-        $this->children[] = $child;
+        $this->htmlChildren[] = $htmlChild;
 
         return $this;
     }
 
     /**
-     * Remove child
+     * Remove htmlChild
      *
-     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $child
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild
      */
-    public function removeChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $child)
+    public function removeHtmlChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild)
     {
-        $this->children->removeElement($child);
+        $this->htmlChildren->removeElement($htmlChild);
     }
 
     /**
-     * Get children
+     * Get htmlChildren
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getChildren()
+    public function getHtmlChildren()
     {
-        return $this->children;
-    }
-
-    /**
-     * Set parentElement
-     *
-     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $parentElement
-     *
-     * @return HtmlElement
-     */
-    public function setParentElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $parentElement = null)
-    {
-        $this->parent_element = $parentElement;
-
-        return $this;
-    }
-
-    /**
-     * Get parentElement
-     *
-     * @return \Ymir\YmirTyrBundle\Entity\HtmlElement
-     */
-    public function getParentElement()
-    {
-        return $this->parent_element;
-    }
-
-    /**
-     * Set metaElement
-     *
-     * @param \Ymir\YmirTyrBundle\Entity\MetaHtmlElement $metaElement
-     *
-     * @return HtmlElement
-     */
-    public function setMetaElement(\Ymir\YmirTyrBundle\Entity\MetaHtmlElement $metaElement = null)
-    {
-        $this->meta_element = $metaElement;
-
-        return $this;
-    }
-
-    /**
-     * Get metaElement
-     *
-     * @return \Ymir\YmirTyrBundle\Entity\MetaHtmlElement
-     */
-    public function getMetaElement()
-    {
-        return $this->meta_element;
-    }
-
-    /**
-     * Set parentWidget
-     *
-     * @param \Ymir\YmirTyrBundle\Entity\Widget $parentWidget
-     *
-     * @return HtmlElement
-     */
-    public function setParentWidget(\Ymir\YmirTyrBundle\Entity\Widget $parentWidget = null)
-    {
-        $this->parent_widget = $parentWidget;
-
-        return $this;
-    }
-
-    /**
-     * Get parentWidget
-     *
-     * @return \Ymir\YmirTyrBundle\Entity\Widget
-     */
-    public function getParentWidget()
-    {
-        return $this->parent_widget;
+        return $this->htmlChildren;
     }
 
     /**
@@ -345,7 +300,7 @@ class HtmlElement
      */
     public function addWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
     {
-        $this->widget_children[] = $widgetChild;
+        $this->widgetChildren[] = $widgetChild;
 
         return $this;
     }
@@ -357,7 +312,7 @@ class HtmlElement
      */
     public function removeWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
     {
-        $this->widget_children->removeElement($widgetChild);
+        $this->widgetChildren->removeElement($widgetChild);
     }
 
     /**
@@ -367,59 +322,54 @@ class HtmlElement
      */
     public function getWidgetChildren()
     {
-        return $this->widget_children;
+        return $this->widgetChildren;
     }
 
-    // Merge two sorted table
-    // /!\ CAREFUL /!\ : duplicated function (see widget.php)
-   public function sortElements() {
-        $childrenCount = count($this->children);
-        $widgetCount = count($this->widget_children);
-        $childrenIndex = 0;
-        $widgetIndex = 0;
-        $table = array();
-        $i = 0;
-        // Both table are not empty
-        while ($childrenIndex < $childrenCount && $widgetIndex < $widgetCount){
-                // choosing the minimum
-            if ($this->children[$childrenIndex]->index <= $this->widget_children[$widgetIndex]->index) {
-                    $table[$i] = $this->children[$childrenIndex];
-                    $childrenIndex ++;
-            } else {
-                    $table[$i] = $this->widget_children[$widgetIndex];
-                    $widgetIndex ++;
-            }
-            $i++;
-        }
-        // At least one of the table is empty
-        if ($childrenIndex >= $childrenCount){
-            // we have to copy the remaing part of the table HTML ELement
-            $table[$i] = $this->widget_children[$widgetIndex];
-            $widgetIndex ++;
-        } elseif ($widgetIndex >= $widgetCount) {
-            // we have to copy the remaing part of the table Children
-            $table[$i] = $this->children[$childrenIndex];
-            $childrenIndex ++;
-        }
-        return $table;
+    /**
+     * Set parentHtmlElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $parentHtmlElement
+     *
+     * @return HtmlElement
+     */
+    public function setParentHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $parentHtmlElement = null)
+    {
+        $this->parentHtmlElement = $parentHtmlElement;
+
+        return $this;
     }
 
-    public function codeGen(){
-        // Opening the HTML element
-        $code = "<".$tag ;
-        // Add the parameters
-        foreach ($parameters->toArray() as $p) {
-            // est-ce qu'il faut rajouter le type de l'attribut ?
-            $code .= $p;
-        }
-        $code .= ">\n\t"
+    /**
+     * Get parentHtmlElement
+     *
+     * @return \Ymir\YmirTyrBundle\Entity\HtmlElement
+     */
+    public function getParentHtmlElement()
+    {
+        return $this->parentHtmlElement;
+    }
 
-        $elements = sortElements();
-        foreach ($elements->toArray() as $e) {
-            $code .= $e->codeGen();
-        }
-        // Closing the HTML element
-        $code .= "</".$tag.">\n";
-        return $code;
-    } 
+    /**
+     * Set parentWidget
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $parentWidget
+     *
+     * @return HtmlElement
+     */
+    public function setParentWidget(\Ymir\YmirTyrBundle\Entity\Widget $parentWidget = null)
+    {
+        $this->parentWidget = $parentWidget;
+
+        return $this;
+    }
+
+    /**
+     * Get parentWidget
+     *
+     * @return \Ymir\YmirTyrBundle\Entity\Widget
+     */
+    public function getParentWidget()
+    {
+        return $this->parentWidget;
+    }
 }
