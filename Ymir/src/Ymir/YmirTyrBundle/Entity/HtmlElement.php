@@ -60,6 +60,13 @@ class HtmlElement
     private $meta_element;
 
     /**
+     * @Exclude
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="html_elements")
+     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id")
+     */
+    private $parent_widget;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -297,5 +304,29 @@ class HtmlElement
     public function getMetaElement()
     {
         return $this->meta_element;
+    }
+
+    /**
+     * Set parentWidget
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $parentWidget
+     *
+     * @return HtmlElement
+     */
+    public function setParentWidget(\Ymir\YmirTyrBundle\Entity\Widget $parentWidget = null)
+    {
+        $this->parent_widget = $parentWidget;
+
+        return $this;
+    }
+
+    /**
+     * Get parentWidget
+     *
+     * @return \Ymir\YmirTyrBundle\Entity\Widget
+     */
+    public function getParentWidget()
+    {
+        return $this->parent_widget;
     }
 }
