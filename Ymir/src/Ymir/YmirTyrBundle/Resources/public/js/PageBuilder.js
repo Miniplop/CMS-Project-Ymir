@@ -3,6 +3,7 @@ App.Models.Widget = App.Models.Widget || function() {};
 App.Collections.WidgetList = App.Collections.WidgetList ||  function () {};
 App.Collections.HtmlElementList = App.Collections.HtmlElementList ||  function () {};
 App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
+
 (function () {
     function PageBuilder(page) {
         _.bindAll(this, "initialize");
@@ -15,6 +16,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             this.initialize();
         }
     };
+    
     _.extend( PageBuilder.prototype, {
         initialize: function() {
             var thisObject = this; // closure MAGGLE
@@ -165,6 +167,11 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             htmlElement.set('htmlParameters', []);
             htmlElement.set('widgetChildren', new App.Collections.WidgetList());
             htmlElement.set('htmlChildren', new App.Collections.HtmlElementList());
+            htmlElement.set('properties', new App.Collections.PropertyList());
+
+            var metaProperties = metaHtmlElement.get('metaHtmlParameters');
+            for (var index in metaProperties)
+                htmlElement.get('htmlParameters').push( { name: metaProperties[index].name, cssName: metaProperties[index].cssName, value: metaProperties[index].defaultValue } );
 
             for (var index in metaHtmlElement.get('metaHtmlParameters'))
                 htmlElement.get('htmlParameters').push(metaHtmlElement.get('metaHtmlParameters')[index]);
@@ -222,6 +229,11 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             var jqWidget = null;
             if (htmlElement.get("tag") != null && htmlElement.get("tag") != "") {
                 jqWidget = $('<' + htmlElement.get("tag") + '>');
+
+                var properties = htmlElement.get('properties');
+                for (var index in properties)
+                    jqWidget.css(properties[index].cssName, properties[index].value);
+
                 for (var index in htmlElement.get("htmlParameters")) {
                     jqWidget.attr(htmlElement.get("htmlParameters")[index].name, htmlElement.get("htmlParameters")[index].value);
                 }

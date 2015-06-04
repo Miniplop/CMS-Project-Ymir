@@ -63,6 +63,13 @@ class Widget
      */
     private $meta_widget;
 
+    /**
+     * @Exclude
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="widget_children")
+     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
+     */
+    private $parent_element;
+
 
     /**
      * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parent_widget", cascade={"persist"})
