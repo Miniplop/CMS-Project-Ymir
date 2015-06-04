@@ -23,7 +23,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 		console.log('you are viewing creative page ' +id);
         
         // Faut chercher l'id ...
-
+        
         // Nav Bar view
         App.categories = new App.Collections.CategorieList();
         var catlistview = new App.Views.CategorieListView({collection: App.categories});
@@ -34,11 +34,23 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.PageSelector = new App.Utils.PageSelector();
         
         
-        // Event
+        //******************************************
+        //
+        //                    Events
+        //
+        //******************************************
+        
         $("#save_page").click(function(){
-            var test = new App.Models.Page();
-            test.set("id", 14);
-            test.save;
+            if (App.page){
+                App.page.save({},{
+                    success:function(){
+                        
+                    },
+                    error:function(){
+                        
+                    }
+                });
+            }
             
         });
         
