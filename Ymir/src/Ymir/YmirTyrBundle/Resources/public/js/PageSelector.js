@@ -10,15 +10,18 @@ var App = App || {};
     
     _.extend(PageSelector.prototype, {
         
-         initialize : function(){
+         initialize : function() {
+             this.refresh();
+        },
+        refresh: function() {
             (function(self) {
-				$('.stage').selectable({
-                   selected : function(event,ui){
-                       $(this).css("background-color",'#23ff00');
+                $('.stage').selectable({
+                    selected : function(event,ui){
+                        $(this).css("background-color",'#23ff00');
                         console.log(this);
-                    } 
+                    }
                 });
-			})(this);
+            })(this);
         }
  
     });
