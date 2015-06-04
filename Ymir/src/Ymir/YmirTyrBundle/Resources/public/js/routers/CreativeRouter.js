@@ -26,7 +26,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         var catlistview = new App.Views.CategorieListView({collection: App.categories});*/
          App.creativeView = new App.Views.CreativeView();
         // Stage view
-        App.PageBuilder = new App.Utils.PageBuilder(new App.Models.Page());
+        App.PageBuilder = new App.Utils.PageBuilder(null);
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
 
