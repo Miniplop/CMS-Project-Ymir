@@ -329,4 +329,48 @@ class HtmlElement
     {
         return $this->parent_widget;
     }
+
+    // Merge two sorted table
+    // /!\ CAREFUL /!\ : duplicated function (see widget.php)
+    public function sortElements() {
+        $childrenCount = count($this->children);
+        $html_elCount = count($this->html_elements);
+        $childrenIndex = 0;
+        $html_elIndex = 0;
+        $table = array();
+        $i = 0;
+        // Both table are not empty
+        while ($childrenIndex < $childrenCount && $html_elIndex < $html_elCount){
+                // choosing the minimum
+            if ($this->children[$childrenIndex]->index <= $this->html_elements[$html_elIndex]->index) {
+                    $table[$i] = $this->children[$childrenIndex];
+                    $childrenIndex ++;
+            } else {
+                    $table[$i] = $this->html_elements[$html_elIndex];
+                    $html_elIndex ++;
+            }
+            $i++;
+        }
+        // At least one of the table is empty
+        if ($childrenIndex >= $childrenCount){
+            // we have to copy the remaing part of the table HTML ELement
+            $table[$i] = $this->html_elements[$html_elIndex];
+            $html_elIndex ++;
+        } elseif ($html_elIndex >= $html_elCount) {
+            // we have to copy the remaing part of the table Children
+            $table[$i] = $this->children[$childrenIndex];
+            $childrenIndex ++;
+        }
+        return $table;
+    }
+
+    public function codeGen(){
+        $code = "<".$tag.">";
+        $elements = sortElements();
+        foreach ($elements->toArray() as $e) {
+            $code .= $e->codeGen();
+        }
+        $code .= "</".$tag.">";
+        return $code;
+    }
 }
