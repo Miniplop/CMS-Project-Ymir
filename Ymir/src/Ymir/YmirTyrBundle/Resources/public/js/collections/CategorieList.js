@@ -1,7 +1,7 @@
 var App = App || {};
 App.Models.Categorie = App.Models.Categorie || {};
 App.Collections.CategorieList = Backbone.Collection.extend({
-    url   : "http://127.0.0.1/ymir/Ymir/web/app_dev.php/widgets",
+    url   : "widgets",
     model : App.Models.Categorie,
 	initialize: function() {
     },

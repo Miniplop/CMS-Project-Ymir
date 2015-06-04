@@ -14,6 +14,8 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 	creative: function (id) {
 
 		console.log('you are viewing creative page ' +id);
+        
+        // Faut chercher l'id ...
 
         // Nav Bar view 
         App.categories = new App.Collections.CategorieList();
@@ -22,6 +24,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         // Stage view
         App.PageBuilder = new App.Utils.PageBuilder(null);
         App.DragDropHandler = new App.Utils.DragDropHandler();
+        App.PageSelector = new App.Utils.PageSelector();
 
 	}
 });

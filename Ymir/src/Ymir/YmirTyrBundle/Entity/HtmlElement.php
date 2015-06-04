@@ -47,6 +47,12 @@ class HtmlElement
     private $children;
 
     /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_element", cascade={"persist"})
+     * @ORM\OrderBy({"index" = "ASC"})
+     */
+    private $widget_children;
+
+    /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="children")
      * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
@@ -328,5 +334,83 @@ class HtmlElement
     public function getParentWidget()
     {
         return $this->parent_widget;
+    }
+
+    /**
+     * Add widgetChild
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widgetChild
+     *
+     * @return HtmlElement
+     */
+    public function addWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
+    {
+        $this->widget_children[] = $widgetChild;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgetChild
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widgetChild
+     */
+    public function removeWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
+    {
+        $this->widget_children->removeElement($widgetChild);
+    }
+
+    /**
+     * Get widgetChildren
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWidgetChildren()
+    {
+        return $this->widget_children;
+    }
+
+    // Merge two sorted table
+    // /!\ CAREFUL /!\ : duplicated function (see widget.php)
+    public function sortElements() {
+        $childrenCount = count($this->children);
+        $html_elCount = count($this->html_elements);
+        $childrenIndex = 0;
+        $html_elIndex = 0;
+        $table = array();
+        $i = 0;
+        // Both table are not empty
+        while ($childrenIndex < $childrenCount && $html_elIndex < $html_elCount){
+                // choosing the minimum
+            if ($this->children[$childrenIndex]->index <= $this->html_elements[$html_elIndex]->index) {
+                    $table[$i] = $this->children[$childrenIndex];
+                    $childrenIndex ++;
+            } else {
+                    $table[$i] = $this->html_elements[$html_elIndex];
+                    $html_elIndex ++;
+            }
+            $i++;
+        }
+        // At least one of the table is empty
+        if ($childrenIndex >= $childrenCount){
+            // we have to copy the remaing part of the table HTML ELement
+            $table[$i] = $this->html_elements[$html_elIndex];
+            $html_elIndex ++;
+        } elseif ($html_elIndex >= $html_elCount) {
+            // we have to copy the remaing part of the table Children
+            $table[$i] = $this->children[$childrenIndex];
+            $childrenIndex ++;
+        }
+        return $table;
+    }
+
+    public function codeGen(){
+        $code = "<".$tag.">";
+        $elements = sortElements();
+        foreach ($elements->toArray() as $e) {
+            $code .= $e->codeGen();
+        }
+        $code .= "</".$tag.">";
+        return $code;
     }
 }
