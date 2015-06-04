@@ -25,6 +25,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.page = new App.Models.Page();
         App.PageBuilder = new App.Utils.PageBuilder(App.page);
         App.DragDropHandler = new App.Utils.DragDropHandler();
+        App.PageSelector = new App.Utils.PageSelector();
 
 	}
 });

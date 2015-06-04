@@ -10,7 +10,7 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
  * widgets : List of widget contained in the page
  */
 App.Models.Page = Backbone.Model.extend({
-    url : 'http://127.0.0.1/ymir/Ymir/web/app_dev.php/stage',
+    url : 'stage',
 
     initialize: function() {
         this.idWidgetGenerator = 0;

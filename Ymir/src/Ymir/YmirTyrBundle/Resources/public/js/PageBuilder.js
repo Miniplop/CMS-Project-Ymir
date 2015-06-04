@@ -3,6 +3,7 @@ App.Models.Widget = App.Models.Widget || function() {};
 App.Collections.WidgetList = App.Collections.WidgetList ||  function () {};
 App.Collections.HtmlElementList = App.Collections.HtmlElementList ||  function () {};
 App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
+
 (function () {
     function PageBuilder(page) {
         _.bindAll(this, "initialize");
@@ -15,6 +16,7 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             this.initialize();
         }
     };
+    
     _.extend( PageBuilder.prototype, {
         initialize: function() {
             var widgets = this.page.get("widgets");
