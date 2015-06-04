@@ -18,11 +18,17 @@ App.Router.CreativeRouter = Backbone.Router.extend({
      *
      * @param id
      */
-	creative: function (id) {
+	creative: function () {
 
-		console.log('you are viewing creative page ' +id);
+		
+        
         
         // Faut chercher l'id ...
+        var CheminComplet = document.location.href;
+        const id_page = CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 );
+        
+        console.log('you are viewing creative page ' +id_page);
+        
         
         // Nav Bar view
         App.categories = new App.Collections.CategorieList();
