@@ -15,9 +15,11 @@ var App = App || {};
         },
         refresh: function() {
             (function(self) {
-                $('.stage').selectable({
-                    selected : function(event,ui){
-                        $(this).css("background-color",'#23ff00');
+				$('.stage').selectable({
+                   selected : function(event,ui){
+                      /* $(this).css("border-width",'2px');
+                       $(this).css("border-style",'dotted');
+                       $(this).css("border-color",'red');*/
                         console.log(this);
                     }
                 });
