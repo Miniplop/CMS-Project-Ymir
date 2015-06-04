@@ -15,7 +15,7 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "button droppable"
+                  "value": "button"
                 }
               ],
               "children": [
