@@ -48,7 +48,7 @@
           ]
         }, 
         {
-            "id": 2,
+            "id": 200,
             "name": "button radius",
             "htmlPreview": "<button disabled=\"true\" class=\"button radius\"> button radius</button>",
             "metaHtmlElements": [
@@ -90,7 +90,7 @@
           ]
         },
         {
-            "id": 3,
+            "id": 300,
             "name": "button round",
             "htmlPreview": "<button disabled=\"true\" class=\"button round\"> button round</button>",
             "metaHtmlElements": [
@@ -128,8 +128,7 @@
               "value": "",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
-            }
-            ]
+            }]
         }
       ]
     },
