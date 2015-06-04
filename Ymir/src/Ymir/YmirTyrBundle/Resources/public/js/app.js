@@ -44,10 +44,36 @@ var app = (function() {
 		   else $("#mockup-tablet").css("display", "none");
 	});
 
-	$("#checkbox_desktop").click( function() {
-		   if( $(this).is(':checked') ) $("#mockup-desktop").css("display", "inline");
-		   else $("#mockup-desktop").css("display", "none");
-	});
+	$("#checkbox_rotate").click(function () {
+		if ($(this).is(':checked')){
+			if ($("#checkbox_tablet").is(':checked')){
+				$("#mockup-tablet").addClass("mockup-rotate");
+				$("#tablet").css('width', '420');
+				$("#tablet").addClass("iframe-rotate");
+			}
+			if ($("#checkbox_mobile").is(':checked')){
+				$("#mockup-mobile").addClass("mockup-rotate");
+				// top: 12.2641509%; bottom: 12.2641509%; left: 10.5403012%; right: 18.6005314%;
+				// $("#mobile").css('top', '12.2641509%');
+				// $("#mobile").css('bottom', '12.2641509%');
+				// $("#mobile").css('left', '10.5403012%');
+				// $("#mobile").css('right', '18.6005314%');
+				$("#mobile").css('width', '334');
+
+				$("#mobile").addClass("iframe-rotate");
+
+			}
+
+		} else {
+			$("#mobile").css('width', '201');
+			$("#tablet").css('width', '671');
+			$("#mockup-tablet").removeClass("mockup-rotate");
+			$("#mockup-mobile").removeClass("mockup-rotate");
+			$("#tablet").removeClass("iframe-rotate");
+			$("#mobile").removeClass("iframe-rotate");
+			$("#mockup-rotate").css("display", "none");
+		}
+	})
     
 	return window.App;	
 })();
