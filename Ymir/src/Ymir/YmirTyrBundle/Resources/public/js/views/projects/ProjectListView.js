@@ -6,7 +6,7 @@ App.Views.ProjectListView = Backbone.View.extend({
   events: {
       'click .addProject': 'addProject',
       'click .remove-project': 'removeProject',
-      'click .download-project' : 'downloadProject',
+      'click .download-project' : 'downloadProject'
   },
       
     initialize: function() {

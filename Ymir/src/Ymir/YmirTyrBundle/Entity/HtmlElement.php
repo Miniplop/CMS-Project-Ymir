@@ -47,6 +47,12 @@ class HtmlElement
     private $children;
 
     /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_element", cascade={"persist"})
+     * @ORM\OrderBy({"index" = "ASC"})
+     */
+    private $widget_children;
+
+    /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="children")
      * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
@@ -328,5 +334,39 @@ class HtmlElement
     public function getParentWidget()
     {
         return $this->parent_widget;
+    }
+
+    /**
+     * Add widgetChild
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widgetChild
+     *
+     * @return HtmlElement
+     */
+    public function addWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
+    {
+        $this->widget_children[] = $widgetChild;
+
+        return $this;
+    }
+
+    /**
+     * Remove widgetChild
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Widget $widgetChild
+     */
+    public function removeWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
+    {
+        $this->widget_children->removeElement($widgetChild);
+    }
+
+    /**
+     * Get widgetChildren
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWidgetChildren()
+    {
+        return $this->widget_children;
     }
 }
