@@ -26,6 +26,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         // Faut chercher l'id ...
         var CheminComplet = document.location.href;
         const id_page = CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 );
+        var page = new  App.Models.Page().fetch({id : id_page});
         
         console.log('you are viewing creative page ' +id_page);
         
