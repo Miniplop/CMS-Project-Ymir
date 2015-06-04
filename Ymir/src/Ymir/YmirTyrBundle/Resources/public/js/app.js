@@ -14,6 +14,10 @@ var app = (function() {
 		Forms: {},
 		Router: {},
         Utils: {},
+        Urls: {
+            css: {},
+            js: {}
+        },
 		todos: null,
         init: function(routeur) {
             $(document).foundation();

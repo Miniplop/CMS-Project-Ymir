@@ -48,8 +48,7 @@ class Widget
      * Index dans la page ou dans le widget parent 
      * @ORM\Column(name="index", type="integer")
      */
-    private $index;
-
+    
 
     /**
      * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parent_widget", cascade={"persist"})
@@ -266,37 +265,35 @@ class Widget
     }
 
 
-
-    private function sortElements() {
+    public function sortElements() {
         // merge two sorted table
-        $childrenCount = $children->toArray()->count();
-        $html_elCount = $html_elements->toArray()->count();
+        $childrenCount = count($this->children);
+        $html_elCount = count($this->html_elements);
         $childrenIndex = 0;
         $html_elIndex = 0;
+        $table = array();
+        $i = 0;
         // Sorted merging
-        // for ($i = 0, $i < max($childrenCount, $html_elCount) ; $i++) {
         while ($childrenIndex < $childrenCount && $html_elIndex < $html_elCount){
                 // choosing the minimum
-                if ($children[$i]->index <= $html_elements[$i]->index) {
-                    $table[$i] = $children[i];
+            if ($this->children[$childrenIndex]->index <= $this->html_elements[$html_elIndex]->index) {
+                    $table[$i] = $this->children[$childrenIndex];
                     $childrenIndex ++;
-                } else {
-                    $table[$i] = $children[i];
+            } else {
+                    $table[$i] = $this->html_elements[$html_elIndex];
                     $html_elIndex ++;
-                }
-            
+            }
             $i++;
         }
-            /*elseif ($childrenIndex >= $childrenCount){
-                // we have to copy the remaing part of the table HTML ELement
-                $table[i] = $html_elements[$html_elIndex];
-                $html_elIndex ++;
-            }
-            else {
-                // we have to copy the remaing part of the table Children
-                $table[i] = $children[$childrenIndex];
-                $childrenIndex ++;
-            }*/
+        if ($childrenIndex >= $childrenCount){
+            // we have to copy the remaing part of the table HTML ELement
+            $table[$i] = $this->html_elements[$html_elIndex];
+            $html_elIndex ++;
+        } elseif ($html_elIndex >= $html_elCount) {
+            // we have to copy the remaing part of the table Children
+            $table[$i] = $this->children[$childrenIndex];
+            $childrenIndex ++;
+        }
         return $table;
     }
 
@@ -307,10 +304,10 @@ class Widget
     */
     public function  codeGen()
     {
+        $elements = sortElements();
         foreach ($elements->toArray() as $e) {
             $code = $e->codeGen();
         }
-
         return $code;
     }
 
