@@ -329,6 +329,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
         }
 
     });
+    
+    
     App.Utils.PageBuilder = PageBuilder;
     return App.Utils.PageBuilder;
 })();

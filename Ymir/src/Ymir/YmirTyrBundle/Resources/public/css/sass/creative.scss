@@ -136,6 +136,10 @@
                         font-size: 90%;
                         padding: 6px 15px !important;
                     }
+                    
+                    #checkbox_rotate{
+                        display: none;
+                    }
                 }
             }
 		}
@@ -167,6 +171,19 @@
 	width: 275px;
 }
 
+.mockup-rotate {
+	-webkit-transform : rotate(90deg);
+    -moz-transform : rotate(90deg);
+    -ms-transform : rotate(90deg);
+    transform : rotate(90deg);
+}
+
+.iframe-rotate {
+	-webkit-transform : rotate(90deg);
+    -moz-transform : rotate(90deg);
+    -ms-transform : rotate(90deg);
+    transform : rotate(-90deg);
+}
 
 
 .show-meta-widget-preview {
