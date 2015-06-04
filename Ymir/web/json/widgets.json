@@ -595,6 +595,79 @@
             }
           ]
         }
+
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Typography",
+      "metaWidgets": [
+        {
+          "id": 40,
+          "name": "Title 1",
+          "htmlPreview": "<h1 class=\"subheader\"> </h1>",
+          "metaHtmlElements": [
+            {
+              "id": 41,
+              "tag": "h1",
+              "metaProperties": [
+                {
+                  "name": "Text color",
+                  "type": "text",
+                  "cssName": "color",
+                  "defaultValue": "black"
+                },
+                {
+                  "name": "Background color",
+                  "type": "text",
+                  "cssName": "background-color",
+                  "defaultValue": "007095"
+                }
+              ],
+              "metaHtmlParameters": [
+                {
+                  "name": "class",
+                  "value": "subheader"
+                }
+              ],
+              "children": [],
+              "value": "Title 1",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+
+        },
+        {
+          "id": 50,
+          "name": "Paragraph",
+          "htmlPreview": "<p> </p>",
+          "metaHtmlElements": [
+            {
+              "id": 51,
+              "tag": "p",
+              "metaProperties": [
+                {
+                  "name": "Text color",
+                  "type": "text",
+                  "cssName": "color",
+                  "defaultValue": "black"
+                },
+                {
+                  "name": "Background color",
+                  "type": "text",
+                  "cssName": "background-color",
+                  "defaultValue": "007095"
+                }
+              ],
+              "children": [],
+              "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+
+        }
       ]
     }
   ]
