@@ -11,6 +11,7 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
  */
 App.Models.Page = Backbone.Model.extend({
     url :  "",
+
     /**
      *
      */

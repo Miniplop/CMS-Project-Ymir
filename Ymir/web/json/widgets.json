@@ -45,6 +45,90 @@
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }
           ]
+        }, 
+        {
+            "id": 2,
+            "name": "button radius",
+            "htmlPreview": "<button disabled=\"true\" class=\"button radius\"> button radius</button>",
+            "metaHtmlElements": [
+            {
+              "id": 1,
+              "tag": "button radius",
+              "metaProperties": [
+                {
+                  "name": "Text color",
+                  "type": "text",
+                  "cssName": "color"
+                },
+                {
+                  "name": "Background color",
+                  "type": "text",
+                  "cssName": "background-color",
+                  "defaultValue": "#007095"
+                }
+              ],
+              "metaHtmlParameters": [
+                {
+                  "name": "class",
+                  "value": "button radius"
+                }
+              ],
+              "children": [
+                {
+                  "id": 13,
+                  "tag": "",
+                  "metaProperties": [],
+                  "metaHtmlParameters": [],
+                  "value": "button radius"
+                }
+              ],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+        },
+        {
+            "id": 3,
+            "name": "button round",
+            "htmlPreview": "<button disabled=\"true\" class=\"button round\"> button round</button>",
+            "metaHtmlElements": [
+            {
+              "id": 1,
+              "tag": "button round",
+              "metaProperties": [
+                {
+                  "name": "Text color",
+                  "type": "text",
+                  "cssName": "color"
+                },
+                {
+                  "name": "Background color",
+                  "type": "text",
+                  "cssName": "background-color",
+                  "defaultValue": "#007095"
+                }
+              ],
+              "metaHtmlParameters": [
+                {
+                  "name": "class",
+                  "value": "button round"
+                }
+              ],
+              "children": [
+                {
+                  "id": 13,
+                  "tag": "",
+                  "metaProperties": [],
+                  "metaHtmlParameters": [],
+                  "value": "button round"
+                }
+              ],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+            ]
         }
       ]
     },

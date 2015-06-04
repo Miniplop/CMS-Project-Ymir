@@ -13,7 +13,6 @@ var App = App || {};
          */
          initialize : function() {
             (function(self) {
-
                 $( ".stage" ).on( "click", "*", function( event ) {
                     $( ".stage" ).find('.ui-selected').removeClass('ui-selected');
                     if ($( this).data("html-element-id")) {
