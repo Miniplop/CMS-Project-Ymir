@@ -21,7 +21,9 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
         initialize: function() {
             var thisObject = this; // closure MAGGLE
             var widgets = this.page.get("widgets");
+            console.log("1");
             for(var i in widgets.models) {
+                console.log("2");
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
                 
