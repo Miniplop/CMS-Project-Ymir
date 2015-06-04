@@ -17,27 +17,29 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
     };
     _.extend( PageBuilder.prototype, {
         initialize: function() {
+            var thisObject = this; // closure MAGGLE
             var widgets = this.page.get("widgets");
-            for(var index in widgets.models) {
-                if (this.page.idWidgetGenerator < widgets.models[index].get("id"))
-                    this.page.idWidgetGenerator = widgets.models[index].get("id");
-
-                var elements = this.buildJqueryWidgetFromWidget(widgets.models[index], false, null);
-
-
+            for(var i in widgets.models) {
+                if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
+                    this.page.idWidgetGenerator = widgets.models[i].get("id");
+                
+                var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
+                var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
+                var mobileElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
+                
                 for (var index in elements)
-                    this.addToDOM(elements[index], $(".stage"), widgets.models[index]);
+                    this.addToDOM(elements[index], $(".stage"), widgets.models[i]);
 
-              /*  var mobile = $("#mobile");
+                var mobile = $("#mobile");
                 var tablet = $("#tablet");
                 mobile.ready(function() {
-                    for (var index in elements)
-                        this.addToDOM(elements[index], mobile.contents().find("body"), widgets.models[index]);
+                    for (var index in mobileElement)
+                        thisObject.addToDOM(mobileElement[index], mobile.contents().find("body"), widgets.models[i]);
                 });
                 tablet.ready(function() {
-                    for (var index in elements)
-                        this.addToDOM(elements[index], tablet.contents().find("body"), widgets.models[index]);
-                });*/
+                    for (var index in tabletElement)
+                        thisObject.addToDOM(tabletElement[index], tablet.contents().find("body"), widgets.models[i]);
+                });
             }
         },
         /**
@@ -54,10 +56,6 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
             var newOrder = null;
             // build the App.Models.Widget and add it to the page tree
             var widget = this.buildWidgetModelFromMeta(mWidget);
-            console.log("====================================================");
-            console.log("adding widget to : " + container_html_element_id);
-            console.log(widget);
-            console.log("====================================================");
             this.page.addWidget(container_html_element_id, widget);
             // build JQuery Objects and add it to the dom
             var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
@@ -201,7 +199,6 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 widget.set('order', receiver.children().length + 1);
                 receiver.append(jqObject);
             }
-            console.log(JSON.stringify(this.page.toJSON()));
         },
 
         /**
