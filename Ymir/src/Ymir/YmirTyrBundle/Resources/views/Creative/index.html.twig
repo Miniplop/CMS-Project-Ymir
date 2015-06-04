@@ -19,7 +19,7 @@
 {% endif %}
 
 
-<div id="mockup-mobile" class="device-draggable">
+<div id="mockup-mobile" class="mobile device-draggable">
 	<div class="device-mockup lumia920">
 		<div class="device">
 			<div class="screen">
@@ -28,7 +28,7 @@
 		</div>
 	</div>
 </div>
-<div id="mockup-tablet" class="device-draggable">
+<div id="mockup-tablet" class="mobile device-draggable">
 	<div class="device-mockup galaxy_tab4 landscape black">
 		<div class="device">
 			<div class="screen">
@@ -96,7 +96,10 @@
 
     <script>
         window.onload = function() {
-            app.Urls.css.foundation = {{ asset('bundles/tyr/vendor/foundation/css/foundation.min.css') }};
+            app.Urls.css.foundation = "{{ asset('bundles/tyr/vendor/foundation/css/foundation.min.css') }}";
+            app.Urls.js.foundation = "{{ asset('bundles/tyr/vendor/foundation/js/foundation.min.js') }}";
+            app.Urls.page = "{{ path('stage') }}";
+            app.Urls.categories = "{{ path('widgets') }}";
             app.init(true);
         }
     </script>

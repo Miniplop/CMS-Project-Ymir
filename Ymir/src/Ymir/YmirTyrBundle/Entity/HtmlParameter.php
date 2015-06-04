@@ -32,16 +32,16 @@ class HtmlParameter
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string", length=255)
+     * @ORM\Column(name="value", type="text")
      */
     private $value;
 
     /**
      * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="parameters")
+     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="htmlParameters")
      * @ORM\JoinColumn(name="html_element_id", referencedColumnName="id")
      */
-    private $html_element;
+    private $htmlElement;
 
     /**
      * Get id

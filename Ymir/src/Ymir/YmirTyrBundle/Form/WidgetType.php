@@ -15,8 +15,19 @@ class WidgetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('parent_element')
+            ->add('order')
+            ->add('htmlElements', 'collection', array(
+                'type' => new HtmlElementType(),
+                'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true
+            ))
+            /*->add('widgetChildren', 'collection', array(
+                'type' => new WidgetType(),
+                'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true
+            ))*/
         ;
     }
     
@@ -26,7 +37,8 @@ class WidgetType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Ymir\YmirTyrBundle\Entity\Widget'
+            'data_class' => 'Ymir\YmirTyrBundle\Entity\Widget',
+            'csrf_protection' => false
         ));
     }
 

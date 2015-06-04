@@ -30,9 +30,9 @@ class MetaWidget
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="meta_widget")
+     * ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="meta_widget")
      */
-    private $widgets;
+    //private $widgets;
 
     /**
      * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\MetaHtmlElement", mappedBy="meta_widget")
@@ -44,7 +44,8 @@ class MetaWidget
      */
     public function __construct()
     {
-        $this->widgets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->meta_html_elements = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->widgets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

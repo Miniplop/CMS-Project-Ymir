@@ -28,7 +28,7 @@ class PageController extends Controller
 
         if ($form->isValid()) {
             $page = $form->getData();
-            $
+            
             $em = $this->get('doctrine')->getManager();
             $em->persist($page);
             $em->flush();
@@ -55,19 +55,20 @@ class PageController extends Controller
      * @View()
      * @ParamConverter("page", class="TyrBundle:Page")
      */
-    public function putPageAction(Page $page)
+    public function putPageAction(Page $page, Request $request)
     {
-        $form = $this->createForm(new ProjectType(), $page);
-        $form->bind($request);
+        
+        $form = $this->createForm(new PageType(), $page);
+        return array('test' => $page);
+        /*$form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($page);
             $em->flush();
 
             return array('page' => $page);
         }
-        return array('error' => (string) $form->getErrors(true, false));
+        return array('error' => (string) $form->getErrors(true, false));*/
     }
 
     /**

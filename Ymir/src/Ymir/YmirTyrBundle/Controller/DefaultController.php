@@ -91,7 +91,7 @@ class DefaultController extends BaseController
     }
     
     /**
-     * @Route("/widgets")
+     * @Route("/widgets", name="widgets")
      */
     public function widgetsAction()
     {
@@ -99,7 +99,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/stage")
+     * @Route("/stage", name="stage")
      */
     public function pagesAction()
     {

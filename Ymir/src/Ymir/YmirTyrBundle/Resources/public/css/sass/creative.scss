@@ -10,8 +10,6 @@
 }
 .toolbar-meta-widget {
 	width: 100% !important;
-	height: 60% !important;
-	overflow-y: scroll;
 	>div {
 		>ul {
 			border-bottom: 1px solid #565656 !important;
@@ -62,7 +60,11 @@
 
 
 .toolbar-parameter {
-	width: 100% !important;
+  width: 100% !important;
+  height: 40% !important;
+  position: absolute !important;
+  bottom: -40%;
+  transition: bottom 300ms;
 	div {
 		margin-bottom: 0.8em !important;
 		h2 {
@@ -120,19 +122,26 @@
 			}
 			button {
 			    font-size: 80% !important;
-    			padding: 3px 15px !important;
-			}
-		}
-		.devices {
-			margin-top: 10px;
-			max-height: 20px;
-			padding: 0 !important;
-			label {
-				font-size: 0.8rem;
+    			padding: 7px 15px !important;
 			}
 		}
 		>div:last-child {
+
 			min-width: 150px !important;
+            >ul{
+                text-align: center !important;
+                width: 150px;
+                >li{
+                    >button{
+                        font-size: 90%;
+                        padding: 6px 15px !important;
+                    }
+                    
+                    #checkbox_rotate{
+                        display: none;
+                    }
+                }
+            }
 		}
 	}
 }
@@ -162,6 +171,19 @@
 	width: 275px;
 }
 
+.mockup-rotate {
+	-webkit-transform : rotate(90deg);
+    -moz-transform : rotate(90deg);
+    -ms-transform : rotate(90deg);
+    transform : rotate(90deg);
+}
+
+.iframe-rotate {
+	-webkit-transform : rotate(90deg);
+    -moz-transform : rotate(90deg);
+    -ms-transform : rotate(90deg);
+    transform : rotate(-90deg);
+}
 
 
 .show-meta-widget-preview {
