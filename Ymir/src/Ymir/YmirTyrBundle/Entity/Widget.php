@@ -272,15 +272,15 @@ class Widget
     }
 
 
+    // Merge two sorted table
     public function sortElements() {
-        // merge two sorted table
         $childrenCount = count($this->children);
         $html_elCount = count($this->html_elements);
         $childrenIndex = 0;
         $html_elIndex = 0;
         $table = array();
         $i = 0;
-        // Sorted merging
+        // Both table are not empty
         while ($childrenIndex < $childrenCount && $html_elIndex < $html_elCount){
                 // choosing the minimum
             if ($this->children[$childrenIndex]->index <= $this->html_elements[$html_elIndex]->index) {
@@ -292,6 +292,7 @@ class Widget
             }
             $i++;
         }
+        // At least one of the table is empty
         if ($childrenIndex >= $childrenCount){
             // we have to copy the remaing part of the table HTML ELement
             $table[$i] = $this->html_elements[$html_elIndex];
@@ -312,8 +313,9 @@ class Widget
     public function  codeGen()
     {
         $elements = sortElements();
+        $code = "";
         foreach ($elements->toArray() as $e) {
-            $code = $e->codeGen();
+            $code .= $e->codeGen();
         }
         return $code;
     }

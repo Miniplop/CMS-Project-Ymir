@@ -6,6 +6,7 @@ var app = (function() {
         page: null,
         DragDropHandler: null,
         PageBuilder: null,
+        PageSelector: null,
         
         // namespaces & class
 		Models: {},
