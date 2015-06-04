@@ -99,7 +99,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/pages/49", name="stage")
+     * @Route("/stage", name="stage")
      */
     public function pagesAction()
     {
