@@ -21,6 +21,8 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
         initialize: function() {
             var thisObject = this; // closure MAGGLE
             var widgets = this.page.get("widgets");
+            var mobile = $("#mobile");            
+            var tablet = $("#tablet");            
             for(var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
@@ -31,18 +33,27 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
                 
                 for (var index in elements)
                     this.addToDOM(elements[index], $(".stage"), widgets.models[i]);
-
-                var mobile = $("#mobile");
-                var tablet = $("#tablet");
+                
                 mobile.ready(function() {
+                    mobile.contents().find("head").append("<link rel=\"stylesheet\" href= " + app.Urls.css.foundation + " />");
                     for (var index in mobileElement)
                         thisObject.addToDOM(mobileElement[index], mobile.contents().find("body"), widgets.models[i]);
                 });
                 tablet.ready(function() {
+                    tablet.contents().find("head").append("<link rel=\"stylesheet\" href=\"app.Urls.css.foundation\" />");
                     for (var index in tabletElement)
                         thisObject.addToDOM(tabletElement[index], tablet.contents().find("body"), widgets.models[i]);
                 });
             }
+            mobile.ready(function() {
+                mobile.contents().find("head").append("<link rel=\"stylesheet\" href= " + app.Urls.css.foundation + ">");
+                mobile.contents().find("body").append("<script type=\"text/javascript\" src=" + app.Urls.js.foundation + ">");
+            });
+            
+            tablet.ready(function() {
+                tablet.contents().find("head").append("<link rel=\"stylesheet\" href= " + app.Urls.css.foundation + ">");
+                tablet.contents().find("body").append("<script type=\"text/javascript\" src=" + app.Urls.js.foundation + ">");
+            });
         },
         /**
          *
@@ -192,7 +203,6 @@ App.Models.HtmlElement = App.Models.HtmlElement ||  function () {};
          *                  else => replaceWith
          */
         addToDOM: function (jqObject, receiver, widget) {
-            console.log("addToDOM");
             if (receiver.data("info") == "replaceable") {
                 widget.set('order', receiver.data("order"));
                 this.addContainerClass(jqObject, receiver.attr("class"));
