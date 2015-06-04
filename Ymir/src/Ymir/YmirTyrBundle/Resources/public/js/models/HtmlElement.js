@@ -12,18 +12,51 @@ App.Collections.PropertyList = App.Collections.PropertyList || {};
  * properties : App.Collections.PropertyList
  */
 App.Models.HtmlElement = Backbone.Model.extend({
-    
+    /**
+     *
+     * @param res
+     * @return {*}
+     */
     parse: function (res) {
         res.widgetChildren = new App.Collections.WidgetList(res.widgetChildren, {parse: true});
         res.htmlChildren = new App.Collections.HtmlElementList(res.htmlChildren, {parse: true});
         res.properties = new App.Collections.PropertyList(res.properties, {parse: true});
         return res;
     },
+    /**
+     *
+     * @param container_html_element_id
+     * @param widget
+     */
     addWidget: function(container_html_element_id, widget) {
         if(this.get("id") == container_html_element_id) {
             this.get("widgetChildren").add(widget);
         }
     },
+    /**
+     *
+     * @param id
+     * @return {*}
+     */
+    getHtmlElement: function(id) {
+        if(this.get("id") == id)
+            return this;
+        var result = null;
+        for(var index in this.get("widgetChildren"))
+            if((result = this.get("widgetChildren")[index].getHtmlElement(id)) != null)
+                break;
+        if(result == null) {
+            for(var index in this.get("htmlChildren"))
+                if((result = this.get("htmlChildren")[index].getHtmlElement(id)) != null)
+                    break;
+        }
+        return result;
+    },
+    /**
+     *
+     * @param options
+     * @return {*}
+     */
     toJSON: function(options) {
         var json =  _.clone(this.attributes);
         json.htmlChildren = this.get("htmlChildren").toJSON(options);

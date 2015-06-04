@@ -1,5 +1,12 @@
 var App = App || {};
+/**
+ *
+ */
 (function () {
+    /**
+     *
+     * @constructor
+     */
 	var DropHandler = function() {
 		this.initialize();
 	};
@@ -9,6 +16,7 @@ var App = App || {};
 		initialize: function() {
 			(function(self) {
 				$('.droppable').droppable({
+                    accept: ':not(.mobile)',
 					drop: self.handleDropEvent,
 					hoverClass: 'drop-hover',
                 });
@@ -17,10 +25,13 @@ var App = App || {};
 		},
 
 
-
+        /**
+         *
+         */
 		refresh: function() {
             (function(self) {
                 $('.stage').find('.droppable').droppable({
+                    accept: ':not(.mobile)',
                     greedy: true,
                     drop: self.handleDropEvent,
                     hoverClass: 'drop-hover'
@@ -28,6 +39,11 @@ var App = App || {};
             })(this);
 		},
 
+        /**
+         *
+         * @param event
+         * @param ui
+         */
 		handleDropEvent: function (event, ui) {
 			var recipier_id = $(this).data('meta-widget-id'),
                 categorie_id = $(ui.draggable).data('categorie-id'),
@@ -53,10 +69,18 @@ var App = App || {};
 		}
 	});
 
+
+    /**
+     *
+     * @constructor
+     */
 	var DragHandler =  function () {
 		this.initialize();
 	};
 	_.extend(DragHandler.prototype, {
+        /**
+         *
+         */
 		initialize: function() {
 			$('.toolbar-meta-widget').bind('DOMSubtreeModified', function () {
 				$('.draggable').draggable({
@@ -80,11 +104,18 @@ var App = App || {};
 		}
 	});
 
+    /**
+     *
+     * @constructor
+     */
 	function DragDropHandler () {
 		this.DragHandler = new DragHandler();
 		this.DropHandler = new DropHandler();
 	};
     _.extend(DragDropHandler.prototype, {
+        /**
+         *
+         */
         refreshDrop: function() {
             this.DropHandler.refresh();
         }

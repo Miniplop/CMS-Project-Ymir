@@ -1,14 +1,21 @@
 var app = (function() {
-	
+    /**
+     *
+     * @type {{categories: null, page: null, DragDropHandler: null, PageBuilder: null, PageSelector: null, Models: {}, Collections: {}, Views: {}, Forms: {}, Router: {}, Utils: {}, Urls: {css: {}, js: {}}, todos: null, init: Function}}
+     */
 	window.App = {
-        // objects
+        /**
+         * objects
+         */
 		categories: null,
         page: null,
         DragDropHandler: null,
         PageBuilder: null,
         PageSelector: null,
-        
-        // namespaces & class
+
+        /**
+         * namespaces & class
+         */
 		Models: {},
 		Collections: {},
 		Views: {},
@@ -20,6 +27,11 @@ var app = (function() {
             js: {}
         },
 		todos: null,
+        /**
+         *
+         * @param routeur
+         * @return {App}
+         */
         init: function(routeur) {
             $(document).foundation();
             var rout;  
@@ -34,5 +46,6 @@ var app = (function() {
 		};
     
 
+    
 	return window.App;	
 })();
