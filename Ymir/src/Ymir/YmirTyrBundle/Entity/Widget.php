@@ -64,10 +64,18 @@ class Widget
      */
     private $meta_widget;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parent_widget", cascade={"persist"})
+     * @ORM\OrderBy({"index" = "ASC"})
+     */
+    private $html_elements;
+
     public function __construct()
     {
-       $this->children = new ArrayCollection();
-   }
+        $this->html_elements = new ArrayCollection();
+        $this->children = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -304,5 +312,39 @@ class Widget
         }
 
         return $code;
+    }
+
+    /**
+     * Add htmlElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement
+     *
+     * @return Widget
+     */
+    public function addHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement)
+    {
+        $this->html_elements[] = $htmlElement;
+
+        return $this;
+    }
+
+    /**
+     * Remove htmlElement
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement
+     */
+    public function removeHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement)
+    {
+        $this->html_elements->removeElement($htmlElement);
+    }
+
+    /**
+     * Get htmlElements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHtmlElements()
+    {
+        return $this->html_elements;
     }
 }
