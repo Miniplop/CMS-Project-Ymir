@@ -128,8 +128,7 @@
               "value": "",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
-            }
-            ]
+            }]
         }
       ]
     },
@@ -138,7 +137,7 @@
       "name": "Icons",
       "metaWidgets": [
         {
-          "id": 2,
+          "id": 4,
           "name": "Torso",
           "htmlPreview": "<i disabled=\"true\" class=\"fi-torso\"></i>",
           "metaHtmlElements": [
@@ -166,7 +165,7 @@
       "name": "Containers",
       "metaWidgets": [
         {
-          "id": 3,
+          "id": 5,
           "name": "section",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Section</div>",
           "metaHtmlElements": [
@@ -183,7 +182,7 @@
           ]
         },
         {
-          "id": 4,
+          "id": 6,
           "name": "article",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Article</div>",
           "metaHtmlElements": [
@@ -200,7 +199,7 @@
           ]
         },
         {
-          "id": 5,
+          "id": 7,
           "name": "header",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Header</div>",
           "metaHtmlElements": [
@@ -217,7 +216,7 @@
           ]
         },
         {
-          "id": 6,
+          "id": 8,
           "name": "footer",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Footer</div>",
           "metaHtmlElements": [
@@ -234,7 +233,7 @@
           ]
         },
         {
-          "id": 7,
+          "id": 9,
           "name": "aside",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Side bar</div>",
           "metaHtmlElements": [
@@ -257,7 +256,7 @@
       "name": "TopBar",
       "metaWidgets": [
         {
-          "id": 8,
+          "id": 10,
           "name": "Default top bar",
           "htmlPreview": "<nav class=\"top-bar\" data-topbar role=\"navigation\"><ul class=\"title-area\"><li class=\"name\"><h1><a href=\"#\">My Site</a></h1></li><li class=\"toggle-topbar menu-icon\"><a href=\"#\"><span>Menu</span></a></li></ul><section class=\"top-bar-section\"><ul class=\"right\"><li class=\"active\"><a href=\"#\">Right Button Active</a></li><li class=\"has-dropdown\"><a href=\"#\">Right Button Dropdown</a><ul class=\"dropdown\"><li><a href=\"#\">First link in dropdown</a></li><li class=\"active\"><a href=\"#\">Active link in dropdown</a></li></ul></li></ul><ul class=\"left\"><li><a href=\"#\">Left Nav Button</a></li></ul></section></nav>",
           "metaHtmlElements": [
@@ -604,7 +603,7 @@
       "name": "Typography",
       "metaWidgets": [
         {
-          "id": 40,
+          "id": 11,
           "name": "Title 1",
           "htmlPreview": "<h1 class=\"subheader\"> </h1>",
           "metaHtmlElements": [
@@ -640,7 +639,7 @@
 
         },
         {
-          "id": 50,
+          "id": 12,
           "name": "Paragraph",
           "htmlPreview": "<p> </p>",
           "metaHtmlElements": [

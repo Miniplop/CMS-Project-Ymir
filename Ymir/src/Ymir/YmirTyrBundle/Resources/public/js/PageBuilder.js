@@ -236,7 +236,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
          *                  else => replaceWith
          */
         addToDOM: function (jqObject, receiver, widget) {
-            console.log("AddDom");
             if (receiver.data("info") == "replaceable") {
                 widget.set('order', receiver.data("order"));
                 this.addContainerClass(jqObject, receiver.attr("class"));
