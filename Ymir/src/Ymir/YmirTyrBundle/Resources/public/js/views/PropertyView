@@ -1,10 +1,11 @@
+/**
+ */
 var App = App || {};
-App.Views.CategorieView = Backbone.View.extend({
+App.Views.PropertyView = Backbone.View.extend({
     template: null,
     tagName: 'li',
-    className: 'accordion-navigation',
     initialize: function() {
-        this.template = _.template($('#categorie-template').html());
+        this.template = _.template($('#property-template').html());
     },
     render: function() {
         var html = this.template(this.model.toJSON());

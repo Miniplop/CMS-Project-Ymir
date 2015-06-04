@@ -1,7 +1,7 @@
 var App = App || {};
 App.Views.ProjectPageView = Backbone.View.extend({
 
-    template: _.template($('#list-projet-template').html()),
+    template: null,
     
     events:{
         'click .add-page' : 'addPage',
@@ -9,7 +9,7 @@ App.Views.ProjectPageView = Backbone.View.extend({
     },
     
     initialize: function (){
-        
+       this.template = _.template($('#list-projet-template').html());
          _.bindAll(this, 'render','unrender');
 		this.model.bind("add", this.render);
         this.model.bind("change", this.render);
