@@ -1,0 +1,78 @@
+@import "mixins";
+
+
+// Panel home
+.panel-home{
+    
+    font-family: "font-text", arial, sans-serif;
+    background: url(../images/background/home-background.png) no-repeat scroll 0% 0%;
+    background-size: cover;
+    text-align: left;
+    padding : 100px 20px 0px;
+    
+     >div{
+            
+        >div{
+                 // Panel register
+            >.register-panel{
+                margin-top: 20%;
+                background: $light_bleu_color;
+                padding : 50px 20px 0px;
+                border-radius: 3px;
+                box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.2) inset;
+
+                label{
+                    
+                    margin-bottom: 5px !important;
+                }
+
+                .button{ // Try it
+                    font-weight: bold !important;
+                    text-align: center;
+                    background: #343658;
+                    width: 100%;
+                    margin-bottom: 1rem;
+                    >a{
+                        font-size : 2em;
+                    }
+        }
+    } 
+        }
+    }
+    
+  
+    .panel-try-it{
+         text-align:center;
+            .try-it{
+                color:#4D4D4D;
+                width:100%;
+                text-align: center;
+                padding : 5% 5% 5% !important;
+                border-radius: 3px;
+                margin-top: 2%;
+                margin-bottom: 20%;
+                background: $light_bleu_color !important;
+                font-weight: bold !important;
+            }   
+    }
+}
+
+>.panel_info{
+    
+    background: $light_grey_color !important;
+
+        .info{
+            color: white;
+            padding: 20px 0px;  
+        }
+
+
+        button{
+            border-radius: 3px;
+            font-weight: bold;
+            box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.2) inset;
+        }
+
+    }
+
+

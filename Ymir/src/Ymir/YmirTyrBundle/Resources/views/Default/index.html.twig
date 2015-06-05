@@ -2,30 +2,48 @@
 
 {% block body %}
 
-<section>
+<section class ="panel-home">
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") != true %}
         <div class ="row">
             <div class="large-8 columns">
-                <article>
+                <article class ="register-panel">
                     {{ include("TyrBundle:Security:register.html.twig") }}
                 </article>
             </div>
-            <section>
-            <div class="large-4 columns">
-                <div class="panel">
-                    <h1>About Us :</h1>
-                    <p> Tired of sleepless nights to code websites ? watch tons of tutorials on web languages ​​? So Ymir is for you a few clicks to create a beautiful suffisents sites. <br />
-                    <h3>Join Us !  <a>Learn more</a> </h3>
-                    </p>
-                    <hr>
-                    {{ include("TyrBundle:Default:tryit.html.twig") }}
-                </div>
-            </div>
-            </section>
         </div>
+     <div class ="row ">
+        <div class="large-8 columns panel-try-it">
+                {{ include("TyrBundle:Default:tryit.html.twig")}}
+        </div>
+    </div>
+           
     {% endif %}
 </section>
-
+<section class="panel-info">
+            <div class="row">
+                <div >
+                    <div class = " medium 4 columns" >
+<!--                        <img src ="../../public/images/background/icon.png">-->
+                    </div>
+                    <div class = " medium 8 columns" >
+                        <div class = " medium 6 columns info">
+                         <h2>About Us :</h2>
+                            <p> Tired of sleepless nights to code websites ? watch tons of tutorials on web languages ​​? So Ymir is for you a few clicks to create a beautiful suffisents sites. </p>
+                            
+                        </div>
+                        <div class = " medium 6 columns">
+                            <h2>Join Us : </h2>
+                            <p></p>
+                        </div>
+                       <a class ="button">Learn more</a>
+                    
+                    <hr>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+</section>
 
 
 
