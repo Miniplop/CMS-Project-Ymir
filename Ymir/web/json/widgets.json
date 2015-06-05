@@ -15,15 +15,17 @@
               "metaProperties": [
                 {
                   "name": "Text color",
-                  "type": "text",
-                  "cssName": "color",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
                   "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
-                  "defaultValue": "007095"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
+                  "defaultValue": "#007095"
                 }
               ],
               "metaHtmlParameters": [
@@ -32,16 +34,8 @@
                   "value": "button"
                 }
               ],
-              "children": [
-                {
-                  "id": 13,
-                  "tag": "",
-                  "metaProperties": [],
-                  "metaHtmlParameters": [],
-                  "value": "Button"
-                }
-              ],
-              "value": "",
+              "children": [ ],
+              "value": "Button",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }
@@ -53,18 +47,21 @@
             "htmlPreview": "<button disabled=\"true\" class=\"button radius\"> button radius</button>",
             "metaHtmlElements": [
             {
-              "id": 1,
-              "tag": "button radius",
+              "id": 30,
+              "tag": "button",
               "metaProperties": [
                 {
                   "name": "Text color",
-                  "type": "text",
-                  "cssName": "color"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
                   "defaultValue": "#007095"
                 }
               ],
@@ -74,16 +71,8 @@
                   "value": "button radius"
                 }
               ],
-              "children": [
-                {
-                  "id": 13,
-                  "tag": "",
-                  "metaProperties": [],
-                  "metaHtmlParameters": [],
-                  "value": "button radius"
-                }
-              ],
-              "value": "",
+              "children": [ ],
+              "value": "Button radius",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }
@@ -91,22 +80,25 @@
         },
         {
             "id": 3,
-            "name": "button round",
+            "name": "Button round",
             "htmlPreview": "<button disabled=\"true\" class=\"button round\"> button round</button>",
             "metaHtmlElements": [
             {
-              "id": 1,
-              "tag": "button radius",
+              "id": 31,
+              "tag": "button",
               "metaProperties": [
                 {
                   "name": "Text color",
-                  "type": "text",
-                  "cssName": "color"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
                   "defaultValue": "#007095"
                 }
               ],
@@ -116,16 +108,8 @@
                   "value": "button radius"
                 }
               ],
-              "children": [
-                {
-                  "id": 13,
-                  "tag": "",
-                  "metaProperties": [],
-                  "metaHtmlParameters": [],
-                  "value": "button radius"
-                }
-              ],
-              "value": "",
+              "children": [ ],
+              "value": "Button round",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }]
@@ -608,20 +592,22 @@
           "htmlPreview": "<h1 class=\"subheader\"> </h1>",
           "metaHtmlElements": [
             {
-              "id": 41,
+              "id": 32,
               "tag": "h1",
               "metaProperties": [
                 {
                   "name": "Text color",
-                  "type": "text",
-                  "cssName": "color",
-                  "defaultValue": "black"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
+                  "defaultValue": "white"
                 },
                 {
                   "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
-                  "defaultValue": "007095"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
+                  "defaultValue": "#007095"
                 }
               ],
               "metaHtmlParameters": [
@@ -644,20 +630,22 @@
           "htmlPreview": "<p> </p>",
           "metaHtmlElements": [
             {
-              "id": 51,
+              "id": 33,
               "tag": "p",
               "metaProperties": [
                 {
                   "name": "Text color",
-                  "type": "text",
-                  "cssName": "color",
-                  "defaultValue": "black"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
+                  "defaultValue": "white"
                 },
                 {
                   "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
-                  "defaultValue": "007095"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
+                  "defaultValue": "#007095"
                 }
               ],
               "children": [],
@@ -680,28 +668,32 @@
           "htmlPreview": "<i disabled=\"true\" class=\"fi-photo\"></i>",
           "metaHtmlElements": [
             {
-              "id": 1,
+              "id": 34,
               "tag": "img",
               "metaProperties": [
                 {
-                  "name": "Text color",
-                  "type": "text",
-                  "cssName": "color",
-                  "defaultValue": "black"
+                  "name": "image url",
+                  "inputType": "text",
+                  "type": "html",
+                  "identifier": "src",
+                  "defaultValue": "https://c1.staticflickr.com/9/8830/18263689529_c2513153ba_h.jpg"
                 },
                 {
-                  "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
-                  "defaultValue": "007095"
-                }
-              ],
-              "metaHtmlParameters": [
+                  "name": "Height",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "height",
+                  "defaultValue": "auto"
+                },
                 {
-                  "name": "src",
-                  "value": "http://www.sudradio.fr/var/plain_site/storage/images/media/01-photos/logo-fifa/4100922-1-fre-FR/Logo-FIFA.png"
+                  "name": "Width",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "width",
+                  "defaultValue": "auto"
                 }
               ],
+              "metaHtmlParameters": [],
               "children": [],
               "value": "",
               "acceptAllCategorieAsChildren": "false",

@@ -12,6 +12,7 @@ var app = (function() {
         DragDropHandler: null,
         PageBuilder: null,
         PageSelector: null,
+        creativeView: null,
 
         /**
          * namespaces & class

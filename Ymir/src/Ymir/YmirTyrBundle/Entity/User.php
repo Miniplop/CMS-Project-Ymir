@@ -22,7 +22,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(nullable=true)
      * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Project", mappedBy="user", cascade={"persist"})
      */
     private $projects;

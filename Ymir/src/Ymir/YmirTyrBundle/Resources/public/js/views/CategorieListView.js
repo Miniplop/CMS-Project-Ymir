@@ -21,7 +21,7 @@ App.Views.CategorieListView = Backbone.View.extend({
      */
     render: function() {
         var $el = $(this.el);
-
+        $el.empty();
         this.collection.each(function(categorie) {
         	var item = new App.Views.CategorieView({ model: categorie });
             $el.append(item.render().el);

@@ -39,9 +39,18 @@ class HtmlParameter
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="htmlParameters")
-     * @ORM\JoinColumn(name="html_element_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="html_element_id", referencedColumnName="id", nullable=false)
      */
     private $htmlElement;
+
+
+    public static function deserializeJson($params) 
+    {
+        $htmlParameter = new HtmlParameter();
+        $htmlParameter->setName($params["name"]);
+        $htmlParameter->setValue($params["value"]);
+        return $htmlParameter;
+    }
 
     /**
      * Get id
@@ -110,7 +119,7 @@ class HtmlParameter
      */
     public function setHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement = null)
     {
-        $this->html_element = $htmlElement;
+        $this->htmlElement = $htmlElement;
 
         return $this;
     }
@@ -122,6 +131,6 @@ class HtmlParameter
      */
     public function getHtmlElement()
     {
-        return $this->html_element;
+        return $this->htmlElement;
     }
 }

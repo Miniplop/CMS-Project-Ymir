@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class WidgetType extends AbstractType
+class HtmlParameterType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,19 +15,8 @@ class WidgetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('order')
-            ->add('htmlElements', 'collection', array(
-                'type' => new HtmlElementType(),
-                'by_reference' => false,
-                'allow_add' => true,
-                'allow_delete' => true
-            ))
-            ->add('widgetChildren', 'collection', array(
-                'type' => new WidgetType(),
-                'by_reference' => false,
-                'allow_add' => true,
-                'allow_delete' => true
-            ))
+            ->add('name')
+            ->add('value')
         ;
     }
     
@@ -37,7 +26,7 @@ class WidgetType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Ymir\YmirTyrBundle\Entity\Widget',
+            'data_class' => 'Ymir\YmirTyrBundle\Entity\HtmlParameter',
             'csrf_protection' => false
         ));
     }
@@ -47,6 +36,6 @@ class WidgetType extends AbstractType
      */
     public function getName()
     {
-        return 'ymir_ymirtyrbundle_widget';
+        return 'ymir_ymirtyrbundle_htmlparameter';
     }
 }
