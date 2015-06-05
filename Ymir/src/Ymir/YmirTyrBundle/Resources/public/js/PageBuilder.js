@@ -41,7 +41,14 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             for(var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
-
+                
+                /**
+                *   Nous avons besoin de deux clones de elements pour mettre à jour les iframe.
+                *   Or, la dupplication de données en javascript est compliquée, surtout lorsqu'il s'agit d'objets imbriqués.
+                *   La plupart des methodes clones existantes font de la duplication par référence, ce qui ne nous convient pas.
+                *   C'est pourquoi nous avons opté pour une methode un peu plus archaique, on fait trois fois la même chose.
+                *   Ce n'est pas extremement couteux . 
+                */
                 var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
                 var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
                 var mobileElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
@@ -76,7 +83,12 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             // build the App.Models.Widget and add it to the page tree
             var widget = this.buildWidgetModelFromMeta(mWidget);
             this.page.addWidget(container_html_element_id, widget);
+            
             // build JQuery Objects and add it to the dom
+            /**
+            * On effectue les mêmes opérations sur les trois variables suivntes, pour 
+            * les raisons indiquées dans la methode initialize.
+            */
             var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
             var cpyWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
             var cpyCpyWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
@@ -108,7 +120,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             var htmlContainer = containerParameters.meta_widget.get("metaHtmlElements");
             var htmlElement = this.buildHtmlElementModelFromMeta(htmlContainer.models[0]);
 
-
+            /**
+            * On effectue les mêmes opérations sur les trois variables suivntes, pour 
+            * les raisons indiquées dans la methode initialize.
+            */
             var container = $('<' + htmlContainer.models[0].get('tag') + '>');
             var cpyContainer = $('<' + htmlContainer.models[0].get('tag') + '>');
             var cpyCpyContainer = $('<' + htmlContainer.models[0].get('tag') + '>');
@@ -201,7 +216,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             htmlElement.set('htmlChildren', new App.Collections.HtmlElementList());
             htmlElement.set('properties', new App.Collections.PropertyList());
 
-            console.log(metaHtmlElement);
             var metaProperties = metaHtmlElement.get("metaProperties");
             for (var index in metaProperties) {
                 console.log(metaProperties[index]);
@@ -344,7 +358,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             var tablet = $("#tablet");
             var thisObject = this;
             mobile.ready(function() {
-                thisObject.addToDOM(mobileElement, mobile.contents().find("body"), widget);
+                thisObject.addToDOM(mobileElement, mobile.contents().find("body"), widget);                
             });
             tablet.ready(function() {
                 thisObject.addToDOM(tabletElement, tablet.contents().find("body"), widget);
