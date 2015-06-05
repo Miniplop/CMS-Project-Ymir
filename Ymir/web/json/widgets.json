@@ -15,15 +15,17 @@
               "metaProperties": [
                 {
                   "name": "Text color",
-                  "type": "text",
-                  "cssName": "color",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
                   "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
-                  "defaultValue": "007095"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
+                  "defaultValue": "#007095"
                 }
               ],
               "metaHtmlParameters": [
@@ -32,39 +34,34 @@
                   "value": "button"
                 }
               ],
-              "children": [
-                {
-                  "id": 13,
-                  "tag": "",
-                  "metaProperties": [],
-                  "metaHtmlParameters": [],
-                  "value": "Button"
-                }
-              ],
-              "value": "",
+              "children": [ ],
+              "value": "Button",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }
           ]
         }, 
         {
-            "id": 2,
+            "id": 9,
             "name": "button radius",
             "htmlPreview": "<button disabled=\"true\" class=\"button radius\"> button radius</button>",
             "metaHtmlElements": [
             {
-              "id": 1,
-              "tag": "button radius",
+              "id": 29,
+              "tag": "button",
               "metaProperties": [
                 {
                   "name": "Text color",
-                  "type": "text",
-                  "cssName": "color"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
                   "defaultValue": "#007095"
                 }
               ],
@@ -74,39 +71,34 @@
                   "value": "button radius"
                 }
               ],
-              "children": [
-                {
-                  "id": 13,
-                  "tag": "",
-                  "metaProperties": [],
-                  "metaHtmlParameters": [],
-                  "value": "button radius"
-                }
-              ],
-              "value": "",
+              "children": [ ],
+              "value": "Button radius",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }
           ]
         },
         {
-            "id": 3,
-            "name": "button round",
+            "id": 10,
+            "name": "Button round",
             "htmlPreview": "<button disabled=\"true\" class=\"button round\"> button round</button>",
             "metaHtmlElements": [
             {
-              "id": 1,
-              "tag": "button round",
+              "id": 30,
+              "tag": "button",
               "metaProperties": [
                 {
                   "name": "Text color",
-                  "type": "text",
-                  "cssName": "color"
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
-                  "type": "text",
-                  "cssName": "background-color",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
                   "defaultValue": "#007095"
                 }
               ],
@@ -116,16 +108,8 @@
                   "value": "button round"
                 }
               ],
-              "children": [
-                {
-                  "id": 13,
-                  "tag": "",
-                  "metaProperties": [],
-                  "metaHtmlParameters": [],
-                  "value": "button round"
-                }
-              ],
-              "value": "",
+              "children": [ ],
+              "value": "Button round",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }

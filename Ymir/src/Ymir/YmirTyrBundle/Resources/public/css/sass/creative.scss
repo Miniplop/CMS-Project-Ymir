@@ -2,6 +2,7 @@
 
 .creative-page {
 	@include calc(height, "100% - #{$header_height}");
+    overflow: hidden;
 }
 
 .toolbar {
@@ -10,7 +11,9 @@
 }
 .toolbar-meta-widget {
 	width: 100% !important;
+    height: 60% !important;
 	>div {
+      height: 100% !important;
 		>ul {
 			border-bottom: 1px solid #565656 !important;
 			li {
@@ -32,6 +35,10 @@
 				background: none repeat scroll 0% 0% $widget_toolbar_title_hover_color !important;
 			}
 		}
+        >#meta-widgets-panel {
+          max-height: 95% !important;
+          overflow-y: scroll;
+        }
 	}
 }
 .toolbar-meta-widget-categorie-list {
@@ -202,4 +209,10 @@
 
 .draggable {
 	cursor: move;
+}
+
+.ui-selected {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px 5px #FF956B;
+  transition: transform 100ms, box-shadow 110ms;
 }

@@ -25,8 +25,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         // Faut chercher l'id ...
 
         // Nav Bar view
-        App.categories = new App.Collections.CategorieList();
-        var catlistview = new App.Views.CategorieListView({collection: App.categories});
+        App.creativeView = new App.Views.CreativeView();
         
         // Stage view
         App.PageBuilder = new App.Utils.PageBuilder(null);

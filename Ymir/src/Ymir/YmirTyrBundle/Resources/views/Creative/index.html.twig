@@ -64,10 +64,10 @@
 
 
 <script type="text/template" id="property-template">
-    <div class="row toolbar-parameter-edition">
+    <div class="row toolbar-parameter-edition not-disable-selection">
         <div>
-            <label for="" class="left inline"><%= name %> : </label>
-            <input class="toolbar-parameter-input-<%= type %>" type="<%= type %>" placeholder="<%= value %> ">
+            <label for="" class="left inline not-disable-selection"><%= name %> : </label>
+            <input class="not-disable-selection toolbar-parameter-input-<%= type %>" type="<%= inputType %>" placeholder="<%= value %> ">
         </div>
     </div>
 </script>
