@@ -105,15 +105,14 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "button round"
+                  "value": "button radius"
                 }
               ],
               "children": [ ],
               "value": "Button round",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
-            }
-            ]
+            }]
         }
       ]
     },
@@ -122,7 +121,7 @@
       "name": "Icons",
       "metaWidgets": [
         {
-          "id": 2,
+          "id": 4,
           "name": "Torso",
           "htmlPreview": "<i disabled=\"true\" class=\"fi-torso\"></i>",
           "metaHtmlElements": [
@@ -150,7 +149,7 @@
       "name": "Containers",
       "metaWidgets": [
         {
-          "id": 3,
+          "id": 5,
           "name": "section",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Section</div>",
           "metaHtmlElements": [
@@ -167,7 +166,7 @@
           ]
         },
         {
-          "id": 4,
+          "id": 6,
           "name": "article",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Article</div>",
           "metaHtmlElements": [
@@ -184,7 +183,7 @@
           ]
         },
         {
-          "id": 5,
+          "id": 7,
           "name": "header",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Header</div>",
           "metaHtmlElements": [
@@ -201,7 +200,7 @@
           ]
         },
         {
-          "id": 6,
+          "id": 8,
           "name": "footer",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Footer</div>",
           "metaHtmlElements": [
@@ -218,7 +217,7 @@
           ]
         },
         {
-          "id": 7,
+          "id": 9,
           "name": "aside",
           "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Side bar</div>",
           "metaHtmlElements": [
@@ -241,7 +240,7 @@
       "name": "TopBar",
       "metaWidgets": [
         {
-          "id": 8,
+          "id": 10,
           "name": "Default top bar",
           "htmlPreview": "<nav class=\"top-bar\" data-topbar role=\"navigation\"><ul class=\"title-area\"><li class=\"name\"><h1><a href=\"#\">My Site</a></h1></li><li class=\"toggle-topbar menu-icon\"><a href=\"#\"><span>Menu</span></a></li></ul><section class=\"top-bar-section\"><ul class=\"right\"><li class=\"active\"><a href=\"#\">Right Button Active</a></li><li class=\"has-dropdown\"><a href=\"#\">Right Button Dropdown</a><ul class=\"dropdown\"><li><a href=\"#\">First link in dropdown</a></li><li class=\"active\"><a href=\"#\">Active link in dropdown</a></li></ul></li></ul><ul class=\"left\"><li><a href=\"#\">Left Nav Button</a></li></ul></section></nav>",
           "metaHtmlElements": [
@@ -580,7 +579,122 @@
             }
           ]
         }
+
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Typography",
+      "metaWidgets": [
+        {
+          "id": 11,
+          "name": "Title 1",
+          "htmlPreview": "<h1 class=\"subheader\"> </h1>",
+          "metaHtmlElements": [
+            {
+              "id": 41,
+              "tag": "h1",
+              "metaProperties": [
+                {
+                  "name": "Text color",
+                  "type": "text",
+                  "cssName": "color",
+                  "defaultValue": "black"
+                },
+                {
+                  "name": "Background color",
+                  "type": "text",
+                  "cssName": "background-color",
+                  "defaultValue": "007095"
+                }
+              ],
+              "metaHtmlParameters": [
+                {
+                  "name": "class",
+                  "value": "subheader"
+                }
+              ],
+              "children": [],
+              "value": "Title 1",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+
+        },
+        {
+          "id": 12,
+          "name": "Paragraph",
+          "htmlPreview": "<p> </p>",
+          "metaHtmlElements": [
+            {
+              "id": 51,
+              "tag": "p",
+              "metaProperties": [
+                {
+                  "name": "Text color",
+                  "type": "text",
+                  "cssName": "color",
+                  "defaultValue": "black"
+                },
+                {
+                  "name": "Background color",
+                  "type": "text",
+                  "cssName": "background-color",
+                  "defaultValue": "007095"
+                }
+              ],
+              "children": [],
+              "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Images",
+      "metaWidgets": [
+        {
+          "id": 13,
+          "name": "Image",
+          "htmlPreview": "<i disabled=\"true\" class=\"fi-photo\"></i>",
+          "metaHtmlElements": [
+            {
+              "id": 1,
+              "tag": "img",
+              "metaProperties": [
+                {
+                  "name": "Text color",
+                  "type": "text",
+                  "cssName": "color",
+                  "defaultValue": "black"
+                },
+                {
+                  "name": "Background color",
+                  "type": "text",
+                  "cssName": "background-color",
+                  "defaultValue": "007095"
+                }
+              ],
+              "metaHtmlParameters": [
+                {
+                  "name": "src",
+                  "value": "http://www.sudradio.fr/var/plain_site/storage/images/media/01-photos/logo-fifa/4100922-1-fre-FR/Logo-FIFA.png"
+                }
+              ],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+        }
       ]
     }
+
   ]
 }

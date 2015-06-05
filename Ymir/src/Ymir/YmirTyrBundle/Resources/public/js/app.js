@@ -44,9 +44,6 @@ var app = (function() {
             Backbone.history.start();
             return this;
 	      }
-		};
-    
-
-    
+		};    
 	return window.App;	
 })();
