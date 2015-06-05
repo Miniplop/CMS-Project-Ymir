@@ -18,27 +18,45 @@ App.Router.CreativeRouter = Backbone.Router.extend({
      *
      * @param id
      */
-	creative: function (id) {
+	creative: function () {
 
-		console.log('you are viewing creative page ' +id);
+		
+        
         
         // Faut chercher l'id ...
-
+        var CheminComplet = document.location.href;
+        const id_page = CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 );
+        
+        console.log('you are viewing creative page ' +id_page);
+        
+        
         // Nav Bar view
         App.categories = new App.Collections.CategorieList();
         var catlistview = new App.Views.CategorieListView({collection: App.categories});
         
         // Stage view
-        App.PageBuilder = new App.Utils.PageBuilder(null);
+        App.PageBuilder = new App.Utils.PageBuilder(new App.Models.Page());
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
         
         
-        // Event
+        //******************************************
+        //
+        //                    Events
+        //
+        //******************************************
+        
         $("#save_page").click(function(){
-            var test = new App.Models.Page();
-            test.set("id", 14);
-            test.save;
+            if (App.page){
+                App.page.save({},{
+                    success:function(){
+                        
+                    },
+                    error:function(){
+                        
+                    }
+                });
+            }
             
         });
         
