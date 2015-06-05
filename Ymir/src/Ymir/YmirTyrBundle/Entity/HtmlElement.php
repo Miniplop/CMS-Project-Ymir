@@ -37,12 +37,12 @@ class HtmlElement
 
     /**
      * Index dans la page ou dans le widget parent 
-     * @ORM\Column(name="order", type="integer")
+     * @ORM\Column(name="ordre", type="integer")
      */
     private $order;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="htmlElement")
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="htmlElement", cascade={"persist", "remove"})
      */
     private $htmlParameters; //attributs
 
@@ -89,9 +89,36 @@ class HtmlElement
         //$this->meta_widgets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public static function deserializeJson($params) 
+    {
+        $htmlElement = new HtmlElement();
+        $htmlElement->setTag($params["tag"]);
+        $htmlElement->setOrder($params["order"]);
+        $htmlElement->setValue($params["value"]);
+        
+        foreach($params["htmlParameters"] as $param)
+        {
+            $htmlParameter = HtmlParameter::deserializeJson($param);
+            $htmlElement->addHtmlParameter($htmlParameter);
+        }
+        foreach($params["widgetChildren"] as $param)
+        {
+            $widgetChild = Widget::deserializeJson($param);
+            //$widgetChild->setParentElement($htmlElement);
+            $htmlElement->addWidgetChild($widgetChild);
+        }
+        foreach($params["htmlChildren"] as $param)
+        {
+            $htmlChild = HtmlElement::deserializeJson($param);
+            //$htmlChild->setParentHtmlElement($htmlElement);
+            $htmlElement->addHtmlChild($htmlChild);
+        }
+        return $htmlElement;
+    }
+
    public function sortElements() {
-        $childrenCount = count($this->htmlChildren);
-        $widgetCount = count($this->widgetChildren);
+        $childrenCount = $this->htmlChildren->count();//count($this->htmlChildren);
+        $widgetCount = $this->widgetChildren->count();//count($this->widgetChildren);
         $childrenIndex = 0;
         $widgetIndex = 0;
         $table = array();
@@ -99,44 +126,51 @@ class HtmlElement
         // Both table are not empty
         while ($childrenIndex < $childrenCount && $widgetIndex < $widgetCount){
                 // choosing the minimum
-            if ($this->htmlChildren[$childrenIndex]->index <= $this->widgetChildren[$widgetIndex]->index) {
-                    $table[$i] = $this->htmlChildren[$childrenIndex];
+            if ($this->htmlChildren->get($childrenIndex)->index <= $this->widgetChildren->get($widgetIndex)->index) {
+                    $table[$i] = $this->htmlChildren->get($childrenIndex);
                     $childrenIndex ++;
             } else {
-                    $table[$i] = $this->widgetChildren[$widgetIndex];
+                    $table[$i] = $this->widgetChildren->get($widgetIndex);
                     $widgetIndex ++;
             }
             $i++;
         }
-        // At least one of the table is empty
-        if ($childrenIndex >= $childrenCount){
-            // we have to copy the remaing part of the table HTML ELement
-            $table[$i] = $this->widgetChildren[$widgetIndex];
-            $widgetIndex ++;
-        } elseif ($widgetIndex >= $widgetCount) {
-            // we have to copy the remaing part of the table Children
-            $table[$i] = $this->htmlChildren[$childrenIndex];
-            $childrenIndex ++;
+
+        if ($childrenIndex < $childrenCount){
+            for ($p = $childrenIndex; $p < $childrenCount; $p++) {
+                $table[$i] = $this->htmlChildren->get($p);
+                $i ++;
+            }
+ 
+        } elseif ($widgetIndex < $widgetCount) {
+            for ($p = $widgetIndex; $p < $widgetCount; $p++) {
+                $table[$i] = $this->widgetChildren->get($p);
+                $i ++;
+            }
         }
         return $table;
     }
 
     public function codeGen(){
         // Opening the HTML element
-        $code = "<".$tag ;
+        $code = "<".$this->tag ;
         // Add the parameters
-        foreach ($parameters->toArray() as $p) {
+        foreach ($this->htmlParameters->toArray() as $p) {
             // est-ce qu'il faut rajouter le type de l'attribut ?
-            $code .= $p;
+            $code .= " ".$p->getName()."=\"".$p->getValue()."\"";
         }
         $code .= ">\n\t";
 
-        $elements = sortElements();
-        foreach ($elements->toArray() as $e) {
+        //value
+        $code .= $this->getValue();
+
+        //children
+        $elements = $this->sortElements();
+        foreach ($elements as $e) {
             $code .= $e->codeGen();
         }
         // Closing the HTML element
-        $code .= "</".$tag.">\n";
+        $code .= "</".$this->tag.">\n";
         return $code;
     } 
 
@@ -232,6 +266,7 @@ class HtmlElement
      */
     public function addHtmlParameter(\Ymir\YmirTyrBundle\Entity\HtmlParameter $htmlParameter)
     {
+        $htmlParameter->setHtmlElement($this);
         $this->htmlParameters[] = $htmlParameter;
 
         return $this;
@@ -266,6 +301,7 @@ class HtmlElement
      */
     public function addHtmlChild(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlChild)
     {
+        $htmlChild->setParentHtmlElement($this);
         $this->htmlChildren[] = $htmlChild;
 
         return $this;
@@ -300,6 +336,7 @@ class HtmlElement
      */
     public function addWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
     {
+        $widgetChild->setParentElement($this);
         $this->widgetChildren[] = $widgetChild;
 
         return $this;
