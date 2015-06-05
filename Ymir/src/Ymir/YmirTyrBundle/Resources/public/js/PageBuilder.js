@@ -217,10 +217,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             htmlElement.set('properties', new App.Collections.PropertyList());
 
             var metaProperties = metaHtmlElement.get("metaProperties");
-            for (var index in metaProperties) {
-                console.log(metaProperties[index]);
+            for (var index in metaProperties)
                 htmlElement.get('properties').add(this.buildHtmlProperty(metaProperties[index]));
-            }
 
             for (var index in metaHtmlElement.get('metaHtmlParameters'))
                 htmlElement.get('htmlParameters').push(metaHtmlElement.get('metaHtmlParameters')[index]);
@@ -237,7 +235,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             var prop = new App.Models.Property();
             prop.set('name', metaProp.name);
             prop.set('type', metaProp.type);
-            prop.set('cssName', metaProp.cssName);
+            prop.set('inputType', metaProp.inputType);
+            prop.set('identifier', metaProp.identifier);
             prop.set('value', metaProp.defaultValue);
             return prop;
         },
@@ -287,9 +286,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             if (htmlElement.get("tag") != null && htmlElement.get("tag") != "") {
                 jqWidget = $('<' + htmlElement.get("tag") + '>');
 
-                var properties = htmlElement.get('properties');
-                for (var index in properties)
-                    jqWidget.css(properties[index].cssName, properties[index].value);
+                this.addProperties(jqWidget, htmlElement.get('properties').models);
 
                 for (var index in htmlElement.get("htmlParameters")) {
                     jqWidget.attr(htmlElement.get("htmlParameters")[index].name, htmlElement.get("htmlParameters")[index].value);
@@ -311,7 +308,21 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
                 this.updateHtmlIds(htmlElement.get('id'));
             return jqWidget;
         },
-
+        /**
+         *
+         * @param jqWidget
+         * @param properties
+         */
+        addProperties: function(jqWidget, properties) {
+            for (var index in properties) {
+                if(properties[index].get("type") == "css")
+                    jqWidget.css(properties[index].get("identifier"), properties[index].get("value"));
+                else if(properties[index].get("type") == "html")
+                    jqWidget.attr(properties[index].get("identifier"), properties[index].get("value"));
+                else
+                    console.error("unknown html element property type : " + properties[index].get("type"));
+            }
+        },
         /**
          *
          * @param id

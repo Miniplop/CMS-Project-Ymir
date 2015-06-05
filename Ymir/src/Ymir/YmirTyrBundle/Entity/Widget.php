@@ -5,10 +5,11 @@ namespace Ymir\YmirTyrBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Exclude;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Widget
- *
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Ymir\YmirTyrBundle\Entity\WidgetRepository")
  */
@@ -17,6 +18,7 @@ class Widget
     /**
      * @var integer
      *
+     * @JMS\Type("integer")
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -24,19 +26,22 @@ class Widget
     private $id;
 
     /**
-     * Index dans la page ou dans le widget parent 
-     * @ORM\Column(name="order", type="integer")
+     * Index dans la page ou dans le widget parent
+     * @JMS\Type("integer")
+     * @ORM\Column(name="ordre", type="integer")
      */
     private $order;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentWidget", cascade={"persist"})
+     * @JMS\Type("ArrayCollection<Ymir\YmirTyrBundle\Entity\HtmlElement>")
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentWidget", cascade={"persist", "remove"})
      * @ORM\OrderBy({"order" = "ASC"})
      */
     private $htmlElements;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentWidget", cascade={"persist"})
+     * @JMS\Type("ArrayCollection<Ymir\YmirTyrBundle\Entity\Widget>")
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentWidget", cascade={"persist", "remove"})
      * @ORM\OrderBy({"order" = "ASC"})
      */
     private $widgetChildren;
@@ -51,14 +56,14 @@ class Widget
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="widgetChildren")
-     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id", nullable=true)
      */
     private $parentElement;
 
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="widgetChildren")
-     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id", nullable=true)
      */
     private $parentWidget;
 
@@ -74,6 +79,30 @@ class Widget
         $this->htmlElements = new ArrayCollection();
         $this->widgetChildren = new ArrayCollection();
     }
+
+    public static function deserializeJson($params) 
+    {
+        $widget = new Widget();
+        $widget->setOrder($params["order"]);
+        foreach($params["htmlElements"] as $param)
+        {
+            $htmlElement = HtmlElement::deserializeJson($param);
+            //$htmlElement->setParentWidget($widget);
+            $widget->addHtmlElement($htmlElement);
+        }
+        return $widget;
+    }
+
+    /**
+     * ORM\PreFlush
+     */
+    /*public function setCreatedValue()
+    {
+        $em = $this->get('doctrine')->getManager();
+        foreach($this->htmlElements as $htmlElement) {
+            $em->persist($htmlElement);
+        }
+    }*/
 
     // Merge two sorted table
     public function sortElements() {
@@ -96,7 +125,7 @@ class Widget
             $i++;
         }
         // At least one of the table is empty
-        if ($childrenIndex >= $childrenCount){
+        /*if ($childrenIndex >= $childrenCount){
             // we have to copy the remaing part of the table HTML ELement
             $table[$i] = $this->htmlElements[$html_elIndex];
             $html_elIndex ++;
@@ -104,6 +133,18 @@ class Widget
             // we have to copy the remaing part of the table Children
             $table[$i] = $this->widgetChildren[$childrenIndex];
             $childrenIndex ++;
+        }*/
+        if ($html_elIndex < $html_elCount){
+            for ($p = $html_elIndex; $p < $html_elCount; $p++) {
+                $table[$i] = $this->htmlElements->get($p);
+                $i ++;
+            }
+ 
+        } elseif ($childrenIndex < $childrenCount) {
+            for ($p = $childrenIndex; $p < $childrenCount; $p++) {
+                $table[$i] = $this->widgetChildren->get($p);
+                $i ++;
+            }
         }
         return $table;
     }
@@ -115,9 +156,9 @@ class Widget
     */
     public function  codeGen()
     {
-        $elements = sortElements();
+        $elements = $this->sortElements();
         $code = "";
-        foreach ($elements->toArray() as $e) {
+        foreach ($elements as $e) {
             $code .= $e->codeGen();
         }
         return $code;
@@ -166,6 +207,7 @@ class Widget
      */
     public function addHtmlElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $htmlElement)
     {
+        $htmlElement->setParentWidget($this);
         $this->htmlElements[] = $htmlElement;
 
         return $this;
@@ -200,6 +242,7 @@ class Widget
      */
     public function addWidgetChild(\Ymir\YmirTyrBundle\Entity\Widget $widgetChild)
     {
+        $widgetChild->setParentWidget($this);
         $this->widgetChildren[] = $widgetChild;
 
         return $this;

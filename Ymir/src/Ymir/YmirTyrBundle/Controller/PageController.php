@@ -10,6 +10,12 @@ use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Component\HttpFoundation\Request;
 use Ymir\YmirTyrBundle\Form\PageType;
 use Ymir\YmirTyrBundle\Entity\Page;
+use JMS\Serializer\SerializerBuilder as SerializerBuilder;
+
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 
 class PageController extends Controller
@@ -57,18 +63,25 @@ class PageController extends Controller
      */
     public function putPageAction(Page $page, Request $request)
     {
-        
-        $form = $this->createForm(new PageType(), $page);
-        return array('test' => $page);
-        /*$form->bind($request);
+        //suppression des elements de la page 
+        $widgets = $this->getDoctrine()
+            ->getRepository('TyrBundle:Widget')
+            ->findByParentPage($page->getId());
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->flush();
+        $em = $this->get('doctrine')->getManager();
+        foreach($widgets as $widget) {
+            $em->remove($widget);
+        } 
 
-            return array('page' => $page);
-        }
-        return array('error' => (string) $form->getErrors(true, false));*/
+        //instanciation des nouveaux elements
+        $content = $request->getContent();
+        $params = json_decode($content, true);
+        $page = Page::deserializeJson($page, $params);
+
+        //sauvegarde en BD
+        $em->flush();
+
+        return $page->getWidgets()[0]->getHtmlElements()[0]->getHtmlParameters()[0]->getHtmlElement()->getId();
     }
 
     /**

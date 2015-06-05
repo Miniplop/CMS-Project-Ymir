@@ -34,7 +34,7 @@ class ExportController extends Controller
         $response = new Response();
         $response->setContent($code);
         $response->headers->set('Content-Type', 'text/plain');
-        $response->headers->set('Content-disposition', 'attachment; filename="'.$pageName.'"');
+        $response->headers->set('Content-disposition', 'attachment; filename="'.$pageName.'.html"');
         return $response;  
     }
 
