@@ -57,22 +57,45 @@
     }
 }
 
->.panel_info{
+.panel-info{
     
     background: $light_grey_color !important;
-
-        .info{
-            color: white;
-            padding: 20px 0px;  
+    padding: 3%;
+    font-family: "font-text", arial, sans-serif;
+    
+        .img-info{
+            margin-left: 5%;
+            margin-top: 3%;
+            width: 20%;
         }
-
-
-        button{
-            border-radius: 3px;
-            font-weight: bold;
-            box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.2) inset;
+    
+        .text-info{
+             padding: 10px 40px;
+            >div{
+                div{
+                    border-left: 1px solid #343658;
+                     h2{
+                        margin-bottom: 5%;
+                         text-align: center;
+                        font-weight: bold !important;
+                        }
+            
+                    .button{
+                        margin-top: 10%;
+                        font-weight: bold !important;
+                        border-radius: 3px;
+                        background: #343658;
+                        font-weight: bold;
+                        box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.2) inset;
+                    }
+                }
+                div:last-child{
+                    border-right: 1px solid #343658;
+                }
+            }
+            
+           
         }
-
-    }
+}
 
 
