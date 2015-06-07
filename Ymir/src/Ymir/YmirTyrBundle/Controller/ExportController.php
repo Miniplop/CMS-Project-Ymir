@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class ExportController extends Controller
 {
     /**
-     * @Route("/page/{id_page}", requirements={"id_page" = "\d+"})
+     * @Route("/page/{id_page}", requirements={"id_page" = "\d+"}, name="exportPage")
      * @Template()
      */
     public function exportPageAction($id_page)
@@ -52,7 +52,7 @@ class ExportController extends Controller
             );    
     }
 
-    /** @Route("/preview/{id_page}", requirements={"id_page" = "\d+"})
+    /** @Route("/preview/{id_page}", requirements={"id_page" = "\d+"}, name="preview")
      * @Template()
      */
     public function previewPageAction($id_page)
@@ -67,13 +67,6 @@ class ExportController extends Controller
 
         //génération du code de la page
         $code = $page->codeGen();
-
-        //return generated file
-        // $response = new Response();
-        // $response->setContent($code);
-        // $response->headers->set('Content-Type', 'text/plain');
-        // $response->headers->set('Content-disposition', 'filename="'.$pageName.'"');
-        // $url = "http://127.0.0.1:8000/export/previewpage"; // We have to write $code into thus url
         return $this->render('TyrBundle::preview.html.twig', array(
               'code' => $code
             ));  
