@@ -13,28 +13,48 @@ var App = App || {};
          */
          initialize : function() {
             (function(self) {
-                $( ".stage" ).on( "click", "*", function( event ) {
-                    $( ".stage" ).find('.ui-selected').removeClass('ui-selected');
-                    if ($( this).data("html-element-id")) {
-                        $( this).addClass("ui-selected");
-                        self.elementSelected($( this).data("html-element-id"), this);
+                $( "body" ).on( "click", "*", function( event ) {
+                    if($(this).hasClass("not-disable-selection")) {
+                        event.stopPropagation();
+                    } else {
+                        self.resetSelectUi();
+                    }
+                });
+                $( ".stage" ).on( "dblclick", "*", function( event ) {
+                    if ($(this).data("html-element-id")) {
+                        self.initSelectUi($(this));
                     }
                     event.stopPropagation();
                     event.preventDefault();
                 });
             })(this);
         },
+        initSelectUi: function(selected) {
+            $( ".stage" ).addClass("selected");
+            selected.addClass("ui-selected");
+            this.initializeView(selected.data("html-element-id"), selected);
+            this.showPropertiesToolbar();
+        },
+        showPropertiesToolbar: function() {
+            $('.toolbar-parameter').css('bottom', '0');
+        },
+        resetSelectUi: function() {
+            this.resetClass();
+            App.creativeView.cancelPropertiesView();
+            $('.toolbar-parameter').css('bottom', '-40%');
+        },
+        resetClass: function() {
+            $( ".stage" ).find("*").removeClass('ui-selected');
+            $( ".stage" ).removeClass("selected");
+        },
         /**
          *
          * @param htmlElementId
          * @param jqObject
          */
-        elementSelected: function(htmlElementId, jqObject) {
+        initializeView: function(htmlElementId, jqObject) {
             var htmlElement = App.page.getHtmlElement(htmlElementId);
-            $('.toolbar-parameter').css('bottom', 0);
             App.creativeView.propertiesView(htmlElement.get("properties"));
-
-
         }
     });
 

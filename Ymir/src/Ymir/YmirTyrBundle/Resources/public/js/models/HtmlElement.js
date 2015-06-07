@@ -41,15 +41,9 @@ App.Models.HtmlElement = Backbone.Model.extend({
     getHtmlElement: function(id) {
         if(this.get("id") == id)
             return this;
-        var result = null;
-        for(var index in this.get("widgetChildren"))
-            if((result = this.get("widgetChildren")[index].getHtmlElement(id)) != null)
-                break;
-        if(result == null) {
-            for(var index in this.get("htmlChildren"))
-                if((result = this.get("htmlChildren")[index].getHtmlElement(id)) != null)
-                    break;
-        }
+        var result = this.get("widgetChildren").getHtmlElement(id);
+        if(result == null)
+            result = this.get("htmlChildren").getHtmlElement(id);
         return result;
     },
     /**
