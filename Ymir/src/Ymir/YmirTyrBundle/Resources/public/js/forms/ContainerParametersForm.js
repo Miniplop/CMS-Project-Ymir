@@ -16,9 +16,6 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
         // remove previous added column (modal is not reinitialized after add so we do it on loading)
         resetUI(this.options.nbColumns);
 
-        // reset default column size (there is only one field on the default setting and value is 12)
-
-
         // when i change number of column, i add or remove their size.
 		$("#container-modal #nbColumns").on("change", function() {
 			var nbColumn = $(this).val();
