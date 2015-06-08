@@ -1,12 +1,8 @@
 var App = App || {};
-App.Models.Page = App.Models.Page || function () {
-};
-App.Collections.WidgetList = App.Collections.WidgetList || function () {
-};
-App.Collections.HtmlElementList = App.Collections.HtmlElementList || function () {
-};
-App.Models.HtmlElement = App.Models.HtmlElement || function () {
-};
+App.Models.Page = App.Models.Page || {};
+App.Collections.WidgetList = App.Collections.WidgetList || {};
+App.Collections.HtmlElementList = App.Collections.HtmlElementList || {};
+App.Models.HtmlElement = App.Models.HtmlElement || {};
 /**
  *
  */
@@ -26,7 +22,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             this.page.set('widgets', new App.Collections.WidgetList());
             this.initialize();
         }
-        App.page = this.page;
     };
 
     _.extend(PageBuilder.prototype, {
@@ -38,17 +33,15 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             var widgets = this.page.get("widgets");
             var mobile = $("#mobile");
             var tablet = $("#tablet");
-            for(var i in widgets.models) {
+            for (var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
 
                 var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
-                var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
-                var mobileElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
 
-                for (var index in elements){
-                    this.addToDOM(elements[index], $(".stage"), widgets.models[i]);
-                    this.updateIframe(mobileElement[index], tabletElement[index], widgets.models[i]);
+                for (var index in elements) {
+                    this.addWidget(elements[index], $(".stage"), widgets.models[i]);
+                    this.updateIframe(elements[index].clone(), elements[index].clone(), widgets.models[i]);
                 }
             }
             mobile.ready(function () {
@@ -75,15 +68,12 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             var newOrder = null;
             // build the App.Models.Widget and add it to the page tree
             var widget = this.buildWidgetModelFromMeta(mWidget);
-            this.page.addWidget(container_html_element_id, widget);
             // build JQuery Objects and add it to the dom
             var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
-            var cpyWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
-            var cpyCpyWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
 
-            for (var index in htmlsWidget){
-                this.addToDOM(htmlsWidget[index], receiver, widget);
-                this.updateIframe(cpyWidget[index],cpyCpyWidget[index],widget);
+            for (var index in htmlsWidget) {
+                this.addWidget(htmlsWidget[index], receiver, widget);
+                this.updateIframe(htmlsWidget[index].clone(), htmlsWidget[index].clone(), widget);
             }
         },
 
@@ -105,23 +95,18 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             widget.set('id', this.page.getNewWidgetId());
             widget.set('meta_widget_id', containerParameters.meta_widget.get('id'));
             widget.set('htmlElements', new App.Collections.HtmlElementList());
+
             var htmlContainer = containerParameters.meta_widget.get("metaHtmlElements");
             var htmlElement = this.buildHtmlElementModelFromMeta(htmlContainer.models[0]);
 
-
             var container = $('<' + htmlContainer.models[0].get('tag') + '>');
-            var cpyContainer = $('<' + htmlContainer.models[0].get('tag') + '>');
-            var cpyCpyContainer = $('<' + htmlContainer.models[0].get('tag') + '>');
-            if (containerParameters.isRow){
+            if (containerParameters.isRow)
                 container.addClass('row');
-                cpyContainer.addClass('row');
-                cpyCpyContainer.addClass('row');
-            }
-                
+
             for (var i = 1; i <= containerParameters.nb_column; i++) {
                 // build sub div HtmlElement that will be replaced when we put a widget on it
                 var htmlElementChild = new App.Models.HtmlElement();
-                htmlElementChild.set('id', htmlElement.get('id'));
+                htmlElementChild.set('id', this.page.getNewHtmlElementId());
                 htmlElementChild.set('tag', 'div');
                 htmlElementChild.set('value', '');
                 htmlElementChild.set('order', i);
@@ -134,35 +119,29 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
                 });
                 htmlElementChild.set('widgetChildren', new App.Collections.WidgetList());
                 htmlElementChild.set('htmlChildren', new App.Collections.HtmlElementList());
+                htmlElementChild.set('properties', new App.Collections.PropertyList());
                 htmlElement.get("htmlChildren").add(htmlElementChild);
                 // build subs div Jquery objects
                 var column = $('<div>');
                 column.addClass('large-' + containerParameters.columnsSizes[i] + ' droppable columns');
                 column.attr("data-info", "replaceable");
                 column.attr("data-order", i); // we need to keep order in the DOM. When this div will be replaced by a widget, widget.order will have this value
-                column.attr("data-html-element-id", htmlElement.get('id'));
+                column.attr("data-html-element-id", htmlElementChild.get('id'));
                 container.append(column);
-                cpyContainer.append(column);
-                cpyCpyContainer.append(column);
             }
             container.children().last().addClass('end');
             container.attr("data-html-element-id", htmlElement.get('id'));
-            
-            cpyContainer.children().last().addClass('end');
-            cpyContainer.attr("data-html-element-id", htmlElement.get('id'));
-            
-            cpyCpyContainer.children().last().addClass('end');
-            cpyCpyContainer.attr("data-html-element-id", htmlElement.get('id'));
+            container.attr("data-widget-id", widget.get("id"));
+            container.attr("data-container", "true");
 
             widget.get("htmlElements").add(htmlElement);
             var container_html_element_id = containerParameters.parent.data("html-element-id");
-            this.page.addWidget(container_html_element_id, widget)
 
             // add to parent into page
-            this.addToDOM(container, $(containerParameters.parent), widget);
-            
-                       
-            this.updateIframe(cpyContainer,cpyCpyContainer, widget);
+            this.addWidget(container, $(containerParameters.parent), widget);
+
+
+            this.updateIframe(container.clone(), container.clone(), widget);
         },
 
         /**
@@ -233,15 +212,24 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
          *                  if has class stage => append
          *                  else => replaceWith
          */
-        addToDOM: function (jqObject, receiver, widget) {
+        addWidget: function (jqObject, receiver, widget, parent) {
+            var receiver_id = receiver.data("html-element-id");
             if (receiver.data("info") == "replaceable") {
                 widget.set('order', receiver.data("order"));
                 this.addContainerClass(jqObject, receiver.attr("class"));
+                this.page.removeHtmlElement(receiver_id);
+                if (receiver.parent().attr("data-container") == "true")
+                    receiver_id = receiver.parent().data("html-element-id");
+                else
+                    console.error("replaceable html element must have a container has parent");
+
                 receiver.replaceWith(jqObject);
             } else {
                 widget.set('order', receiver.children().length + 1);
                 receiver.append(jqObject);
+                console.log("add widget in : " + receiver_id);
             }
+            this.page.addWidget(receiver_id, widget)
         },
 
         /**
@@ -254,6 +242,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             var widget_id = widget.get('id');
             for (var index in  widget.get("htmlElements").models) {
                 var jqWidget = this.buildJqueryFromHtmlElement(widget.get("htmlElements").models[index], isNew, null);
+                jqWidget.attr('data-widget-id', widget_id);
                 if (parent != null)
                     parent.append(jqWidget);
                 htmlsWidget.push(jqWidget);
@@ -281,6 +270,9 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
                     this.buildJqueryFromHtmlElement(htmlElement.get("htmlChildren").models[index], isNew, jqWidget);
                 for (var index in htmlElement.get("widgetChildren").models)
                     this.buildJqueryWidgetFromWidget(htmlElement.get("widgetChildren").models[index], isNew, jqWidget);
+
+                if (parent != null && parent.data("container"))
+                    jqWidget.attr("data-info", "replaceable");
                 jqWidget.append(htmlElement.get("value"));
                 jqWidget.attr('data-html-element-id', htmlElement.get('id'));
             } else {
@@ -298,11 +290,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
          * @param jqWidget
          * @param properties
          */
-        addProperties: function(jqWidget, properties) {
+        addProperties: function (jqWidget, properties) {
             for (var index in properties) {
-                if(properties[index].get("type") == "css")
+                if (properties[index].get("type") == "css")
                     jqWidget.css(properties[index].get("identifier"), properties[index].get("value"));
-                else if(properties[index].get("type") == "html")
+                else if (properties[index].get("type") == "html")
                     jqWidget.attr(properties[index].get("identifier"), properties[index].get("value"));
                 else
                     console.error("unknown html element property type : " + properties[index].get("type"));
@@ -348,20 +340,23 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
 
             }
         },
-        
+        getPage: function () {
+            return this.page;
+        },
+
         updateIframe: function (mobileElement, tabletElement, widget) {
             var mobile = $("#mobile");
             var tablet = $("#tablet");
             var thisObject = this;
-            mobile.ready(function() {
-                thisObject.addToDOM(mobileElement, mobile.contents().find("body"), widget);
+            mobile.ready(function () {
+                thisObject.addWidget(mobileElement, mobile.contents().find("body"), widget);
             });
-            tablet.ready(function() {
-                thisObject.addToDOM(tabletElement, tablet.contents().find("body"), widget);
+            tablet.ready(function () {
+                thisObject.addWidget(tabletElement, tablet.contents().find("body"), widget);
             });
         }
     });
-    
+
     App.Utils.PageBuilder = PageBuilder;
     return App.Utils.PageBuilder;
 })();

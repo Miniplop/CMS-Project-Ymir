@@ -1,98 +1,719 @@
 {
-  "id": 1,
-  "title": "Robert",
   "widgets": [
     {
-      "id": 20,
-      "order": 1,
-      "meta_widget_id": 0,
+      "id": 1,
+      "meta_widget_id": 10,
       "htmlElements": [
         {
           "id": 1,
-          "order": 1,
+          "tag": "nav",
+          "value": "",
           "htmlParameters": [
             {
               "name": "class",
-              "value": "list"
-            }
-          ],
-          "tag": "ul",
-          "value": "",
-          "htmlChildren": [],
-          "widgetChildren": [
-            {
-              "id": 2,
-              "order": 1,
-              "meta_widget_id": 0,
-              "htmlElements": [
-                {
-                  "id": 2,
-                  "order": 1,
-                  "htmlParameters": [],
-                  "tag": "li",
-                  "value": "1",
-                  "htmlChildren": [],
-                  "widgetChildren": []
-                }
-              ]
+              "value": "top-bar",
+              "mapped": "true"
             },
             {
-              "id": 3,
-              "order": 2,
-              "meta_widget_id": 0,
-              "htmlElements": [
-                {
-                  "id": 3,
-                  "order": 1,
-                  "htmlParameters": [],
-                  "tag": "li",
-                  "value": "2",
-                  "htmlChildren": [],
-                  "widgetChildren": []
-                }
-              ]
+              "name": "data-topbar",
+              "value": "",
+              "mapped": "true"
+            },
+            {
+              "name": "role",
+              "value": "navigation",
+              "mapped": "true"
             }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 21,
-      "meta_widget_id": 3,
-      "htmlElements": [
-        {
-          "id": 4,
-          "tag": "section",
-          "value": "",
-          "htmlParameters": [],
+          ],
           "widgetChildren": [],
           "htmlChildren": [
             {
-              "id": 4,
-              "tag": "div",
+              "id": 2,
+              "tag": "ul",
               "value": "",
-              "order": 1,
               "htmlParameters": [
                 {
-                  "name": "data-info",
-                  "value": "replaceable"
-                },
-                {
-                  "name": "data-order",
-                  "value": 1
-                },
-                {
                   "name": "class",
-                  "value": "large-12 columns end"
+                  "value": "title-area",
+                  "mapped": "true"
                 }
               ],
               "widgetChildren": [],
-              "htmlChildren": []
+              "htmlChildren": [
+                {
+                  "id": 3,
+                  "tag": "li",
+                  "value": "",
+                  "htmlParameters": [
+                    {
+                      "name": "class",
+                      "value": "name",
+                      "mapped": "true"
+                    }
+                  ],
+                  "widgetChildren": [],
+                  "htmlChildren": [
+                    {
+                      "id": 4,
+                      "tag": "h1",
+                      "value": "",
+                      "htmlParameters": [],
+                      "widgetChildren": [],
+                      "htmlChildren": [
+                        {
+                          "id": 5,
+                          "tag": "a",
+                          "value": "",
+                          "htmlParameters": [
+                            {
+                              "name": "href",
+                              "value": "#",
+                              "mapped": "true"
+                            }
+                          ],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [],
+                          "order": "0"
+                        }
+                      ],
+                      "properties": [],
+                      "order": "0"
+                    }
+                  ],
+                  "properties": [],
+                  "order": "0"
+                },
+                {
+                  "id": 6,
+                  "tag": "li",
+                  "value": "",
+                  "htmlParameters": [
+                    {
+                      "name": "class",
+                      "value": "toggle-topbar menu-icon",
+                      "mapped": "true"
+                    }
+                  ],
+                  "widgetChildren": [],
+                  "htmlChildren": [
+                    {
+                      "id": 7,
+                      "tag": "a",
+                      "value": "",
+                      "htmlParameters": [
+                        {
+                          "name": "href",
+                          "value": "#",
+                          "mapped": "true"
+                        }
+                      ],
+                      "widgetChildren": [],
+                      "htmlChildren": [
+                        {
+                          "id": 8,
+                          "tag": "span",
+                          "value": "Menu",
+                          "htmlParameters": [],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [],
+                          "order": "0"
+                        }
+                      ],
+                      "properties": [],
+                      "order": "0"
+                    }
+                  ],
+                  "properties": [],
+                  "order": "1"
+                }
+              ],
+              "properties": [],
+              "order": "0"
+            },
+            {
+              "id": 9,
+              "tag": "section",
+              "value": "",
+              "htmlParameters": [
+                {
+                  "name": "class",
+                  "value": "top-bar-section",
+                  "mapped": "true"
+                }
+              ],
+              "widgetChildren": [],
+              "htmlChildren": [
+                {
+                  "id": 10,
+                  "tag": "ul",
+                  "value": "",
+                  "htmlParameters": [
+                    {
+                      "name": "class",
+                      "value": "right",
+                      "mapped": "true"
+                    }
+                  ],
+                  "widgetChildren": [],
+                  "htmlChildren": [
+                    {
+                      "id": 11,
+                      "tag": "li",
+                      "value": "",
+                      "htmlParameters": [
+                        {
+                          "name": "class",
+                          "value": "active",
+                          "mapped": "true"
+                        }
+                      ],
+                      "widgetChildren": [],
+                      "htmlChildren": [
+                        {
+                          "id": 12,
+                          "tag": "a",
+                          "value": "Right Button Active",
+                          "htmlParameters": [
+                            {
+                              "name": "href",
+                              "value": "#",
+                              "mapped": "true"
+                            }
+                          ],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [],
+                          "order": "0"
+                        }
+                      ],
+                      "properties": [],
+                      "order": "0"
+                    },
+                    {
+                      "id": 13,
+                      "tag": "li",
+                      "value": "",
+                      "htmlParameters": [
+                        {
+                          "name": "class",
+                          "value": "has-dropdown",
+                          "mapped": "true"
+                        }
+                      ],
+                      "widgetChildren": [],
+                      "htmlChildren": [
+                        {
+                          "id": 14,
+                          "tag": "a",
+                          "value": "Right Button Dropdown",
+                          "htmlParameters": [
+                            {
+                              "name": "href",
+                              "value": "#",
+                              "mapped": "true"
+                            }
+                          ],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [],
+                          "order": "0"
+                        },
+                        {
+                          "id": 15,
+                          "tag": "ul",
+                          "value": "",
+                          "htmlParameters": [
+                            {
+                              "name": "class",
+                              "value": "dropdown",
+                              "mapped": "true"
+                            }
+                          ],
+                          "widgetChildren": [],
+                          "htmlChildren": [
+                            {
+                              "id": 16,
+                              "tag": "li",
+                              "value": "",
+                              "htmlParameters": [],
+                              "widgetChildren": [],
+                              "htmlChildren": [
+                                {
+                                  "id": 17,
+                                  "tag": "a",
+                                  "value": "First link in dropdown",
+                                  "htmlParameters": [
+                                    {
+                                      "name": "href",
+                                      "value": "#",
+                                      "mapped": "true"
+                                    }
+                                  ],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "properties": [],
+                                  "order": "0"
+                                }
+                              ],
+                              "properties": [],
+                              "order": "0"
+                            },
+                            {
+                              "id": 18,
+                              "tag": "li",
+                              "value": "",
+                              "htmlParameters": [
+                                {
+                                  "name": "class",
+                                  "value": "active",
+                                  "mapped": "true"
+                                }
+                              ],
+                              "widgetChildren": [],
+                              "htmlChildren": [
+                                {
+                                  "id": 19,
+                                  "tag": "a",
+                                  "value": "Active link in dropdown",
+                                  "htmlParameters": [
+                                    {
+                                      "name": "href",
+                                      "value": "#",
+                                      "mapped": "true"
+                                    }
+                                  ],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "properties": [],
+                                  "order": "0"
+                                }
+                              ],
+                              "properties": [],
+                              "order": "1"
+                            }
+                          ],
+                          "properties": [],
+                          "order": "1"
+                        }
+                      ],
+                      "properties": [],
+                      "order": "1"
+                    }
+                  ],
+                  "properties": [],
+                  "order": "0"
+                },
+                {
+                  "id": 20,
+                  "tag": "ul ",
+                  "value": "",
+                  "htmlParameters": [
+                    {
+                      "name": "class",
+                      "value": "left",
+                      "mapped": "true"
+                    }
+                  ],
+                  "widgetChildren": [],
+                  "htmlChildren": [
+                    {
+                      "id": 21,
+                      "tag": "li ",
+                      "value": "",
+                      "htmlParameters": [],
+                      "widgetChildren": [],
+                      "htmlChildren": [
+                        {
+                          "id": 22,
+                          "tag": "a ",
+                          "value": "Left Nav Button",
+                          "htmlParameters": [
+                            {
+                              "name": "href",
+                              "value": "#",
+                              "mapped": "true"
+                            }
+                          ],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [],
+                          "order": "0"
+                        }
+                      ],
+                      "properties": [],
+                      "order": "0"
+                    }
+                  ],
+                  "properties": [],
+                  "order": "1"
+                }
+              ],
+              "properties": [],
+              "order": "1"
             }
-          ]
+          ],
+          "properties": [],
+          "order": "0"
         }
       ],
       "order": 2
+    },
+    {
+      "id": 2,
+      "meta_widget_id": 5,
+      "htmlElements": [
+        {
+          "id": 23,
+          "tag": "section",
+          "value": "",
+          "htmlParameters": [
+            {
+              "name": "data-container",
+              "value": "true",
+              "mapped": "false"
+            }
+          ],
+          "widgetChildren": [
+            {
+              "id": 3,
+              "meta_widget_id": 6,
+              "htmlElements": [
+                {
+                  "id": 26,
+                  "tag": "article",
+                  "value": "",
+                  "htmlParameters": [
+                    {
+                      "name": "data-container",
+                      "value": "true",
+                      "mapped": "false"
+                    }
+                  ],
+                  "widgetChildren": [
+                    {
+                      "id": 4,
+                      "meta_widget_id": 11,
+                      "htmlElements": [
+                        {
+                          "id": 29,
+                          "tag": "h1",
+                          "value": "Title 1",
+                          "htmlParameters": [
+                            {
+                              "name": "class",
+                              "value": "subheader",
+                              "mapped": "true"
+                            }
+                          ],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [
+                            {
+                              "name": "Text color",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "color",
+                              "value": "black"
+                            },
+                            {
+                              "name": "Background color",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "background-color",
+                              "value": "white"
+                            }
+                          ],
+                          "order": "0"
+                        }
+                      ],
+                      "order": 5
+                    },
+                    {
+                      "id": 5,
+                      "meta_widget_id": 12,
+                      "htmlElements": [
+                        {
+                          "id": 30,
+                          "tag": "p",
+                          "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+                          "htmlParameters": [],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [
+                            {
+                              "name": "Text color",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "color",
+                              "value": "black"
+                            },
+                            {
+                              "name": "Background color",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "background-color",
+                              "value": "white"
+                            }
+                          ],
+                          "order": "0"
+                        }
+                      ],
+                      "order": 6
+                    }
+                  ],
+                  "htmlChildren": [],
+                  "properties": []
+                }
+              ],
+              "order": 4
+            },
+            {
+              "id": 6,
+              "meta_widget_id": 3,
+              "htmlElements": [
+                {
+                  "id": 31,
+                  "tag": "button",
+                  "value": "Button round",
+                  "htmlParameters": [
+                    {
+                      "name": "class",
+                      "value": "button round",
+                      "mapped": "true"
+                    }
+                  ],
+                  "widgetChildren": [],
+                  "htmlChildren": [],
+                  "properties": [
+                    {
+                      "name": "Text color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "color",
+                      "value": "black"
+                    },
+                    {
+                      "name": "Background color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "background-color",
+                      "value": "#007095"
+                    }
+                  ],
+                  "order": "0"
+                }
+              ],
+              "order": 7
+            }
+          ],
+          "htmlChildren": [],
+          "properties": []
+        }
+      ],
+      "order": 3
+    },
+    {
+      "id": 3,
+      "meta_widget_id": 6,
+      "htmlElements": [
+        {
+          "id": 26,
+          "tag": "article",
+          "value": "",
+          "htmlParameters": [
+            {
+              "name": "data-container",
+              "value": "true",
+              "mapped": "false"
+            }
+          ],
+          "widgetChildren": [
+            {
+              "id": 4,
+              "meta_widget_id": 11,
+              "htmlElements": [
+                {
+                  "id": 29,
+                  "tag": "h1",
+                  "value": "Title 1",
+                  "htmlParameters": [
+                    {
+                      "name": "class",
+                      "value": "subheader",
+                      "mapped": "true"
+                    }
+                  ],
+                  "widgetChildren": [],
+                  "htmlChildren": [],
+                  "properties": [
+                    {
+                      "name": "Text color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "color",
+                      "value": "black"
+                    },
+                    {
+                      "name": "Background color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "background-color",
+                      "value": "white"
+                    }
+                  ],
+                  "order": "0"
+                }
+              ],
+              "order": 5
+            },
+            {
+              "id": 5,
+              "meta_widget_id": 12,
+              "htmlElements": [
+                {
+                  "id": 30,
+                  "tag": "p",
+                  "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+                  "htmlParameters": [],
+                  "widgetChildren": [],
+                  "htmlChildren": [],
+                  "properties": [
+                    {
+                      "name": "Text color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "color",
+                      "value": "black"
+                    },
+                    {
+                      "name": "Background color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "background-color",
+                      "value": "white"
+                    }
+                  ],
+                  "order": "0"
+                }
+              ],
+              "order": 6
+            }
+          ],
+          "htmlChildren": [],
+          "properties": []
+        }
+      ],
+      "order": 4
+    },
+    {
+      "id": 4,
+      "meta_widget_id": 11,
+      "htmlElements": [
+        {
+          "id": 29,
+          "tag": "h1",
+          "value": "Title 1",
+          "htmlParameters": [
+            {
+              "name": "class",
+              "value": "subheader",
+              "mapped": "true"
+            }
+          ],
+          "widgetChildren": [],
+          "htmlChildren": [],
+          "properties": [
+            {
+              "name": "Text color",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "color",
+              "value": "black"
+            },
+            {
+              "name": "Background color",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "background-color",
+              "value": "white"
+            }
+          ],
+          "order": "0"
+        }
+      ],
+      "order": 5
+    },
+    {
+      "id": 5,
+      "meta_widget_id": 12,
+      "htmlElements": [
+        {
+          "id": 30,
+          "tag": "p",
+          "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+          "htmlParameters": [],
+          "widgetChildren": [],
+          "htmlChildren": [],
+          "properties": [
+            {
+              "name": "Text color",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "color",
+              "value": "black"
+            },
+            {
+              "name": "Background color",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "background-color",
+              "value": "white"
+            }
+          ],
+          "order": "0"
+        }
+      ],
+      "order": 6
+    },
+    {
+      "id": 6,
+      "meta_widget_id": 3,
+      "htmlElements": [
+        {
+          "id": 31,
+          "tag": "button",
+          "value": "Button round",
+          "htmlParameters": [
+            {
+              "name": "class",
+              "value": "button round",
+              "mapped": "true"
+            }
+          ],
+          "widgetChildren": [],
+          "htmlChildren": [],
+          "properties": [
+            {
+              "name": "Text color",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "color",
+              "value": "black"
+            },
+            {
+              "name": "Background color",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "background-color",
+              "value": "#007095"
+            }
+          ],
+          "order": "0"
+        }
+      ],
+      "order": 7
     }
   ]
 }

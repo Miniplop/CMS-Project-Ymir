@@ -57,5 +57,20 @@ App.Models.HtmlElement = Backbone.Model.extend({
         json.widgetChildren = this.get("widgetChildren").toJSON(options);
         json.properties = this.get("properties").toJSON(options);
         return json;
+    },
+    /**
+     *
+     * @param elementId
+     */
+    removeHtmlElement: function(elementId) {
+        if(elementId == this.get("id")) {
+            console.log("removing : ");
+            console.log(this);
+            this.collection.remove(this);
+        }
+        else {
+            this.get("htmlChildren").removeHtmlElement(elementId);
+            this.get("widgetChildren").removeHtmlElement(elementId);
+        }
     }
 });

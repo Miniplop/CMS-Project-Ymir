@@ -211,8 +211,6 @@
 	cursor: move;
 }
 
-.ui-selected {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 15px 5px #FF956B;
-  transition: transform 100ms, box-shadow 110ms;
+.stage-selected *:not(.ui-selected) {
+  background-color: rgba(0, 0, 0, 0.1) !important;
 }

@@ -73,5 +73,12 @@ App.Models.Page = Backbone.Model.extend({
     getNewHtmlElementId: function() {
         this.idHtmlElementGenerator++;
         return this.idHtmlElementGenerator;
+    },
+    /**
+     *
+     * @param elementId
+     */
+    removeHtmlElement: function(elementId) {
+        this.get("widgets").removeHtmlElement(elementId);
     }
 });

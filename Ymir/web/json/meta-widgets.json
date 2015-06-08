@@ -31,21 +31,22 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "button"
+                  "value": "button",
+                  "mapped": "true"
                 }
               ],
-              "children": [ ],
+              "children": [],
               "value": "Button",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }
           ]
-        }, 
+        },
         {
-            "id": 2,
-            "name": "button radius",
-            "htmlPreview": "<button disabled=\"true\" class=\"button radius\"> button radius</button>",
-            "metaHtmlElements": [
+          "id": 2,
+          "name": "button radius",
+          "htmlPreview": "<button disabled=\"true\" class=\"button radius\"> button radius</button>",
+          "metaHtmlElements": [
             {
               "id": 30,
               "tag": "button",
@@ -68,10 +69,11 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "button radius"
+                  "value": "button radius",
+                  "mapped": "true"
                 }
               ],
-              "children": [ ],
+              "children": [],
               "value": "Button radius",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
@@ -79,10 +81,10 @@
           ]
         },
         {
-            "id": 3,
-            "name": "Button round",
-            "htmlPreview": "<button disabled=\"true\" class=\"button round\"> button round</button>",
-            "metaHtmlElements": [
+          "id": 3,
+          "name": "Button round",
+          "htmlPreview": "<button disabled=\"true\" class=\"button round\"> button round</button>",
+          "metaHtmlElements": [
             {
               "id": 31,
               "tag": "button",
@@ -105,14 +107,16 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "button radius"
+                  "value": "button round",
+                  "mapped": "true"
                 }
               ],
-              "children": [ ],
+              "children": [],
               "value": "Button round",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
-            }]
+            }
+          ]
         }
       ]
     },
@@ -132,7 +136,8 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "fi-torso"
+                  "value": "fi-torso",
+                  "mapped": "true"
                 }
               ],
               "children": [],
@@ -157,7 +162,13 @@
               "id": 3,
               "tag": "section",
               "metaProperties": [],
-              "metaHtmlParameters": [],
+              "metaHtmlParameters": [
+                {
+                  "name": "data-container",
+                  "value": "true",
+                  "mapped": "false"
+                }
+              ],
               "children": [],
               "value": "",
               "acceptAllCategorieAsChildren": "true",
@@ -174,7 +185,13 @@
               "id": 4,
               "tag": "article",
               "metaProperties": [],
-              "metaHtmlParameters": [],
+              "metaHtmlParameters": [
+                {
+                  "name": "data-container",
+                  "value": "true",
+                  "mapped": "false"
+                }
+              ],
               "children": [],
               "value": "",
               "acceptAllCategorieAsChildren": "true",
@@ -191,7 +208,13 @@
               "id": 5,
               "tag": "header",
               "metaProperties": [],
-              "metaHtmlParameters": [],
+              "metaHtmlParameters": [
+                {
+                  "name": "data-container",
+                  "value": "true",
+                  "mapped": "false"
+                }
+              ],
               "children": [],
               "value": "",
               "acceptAllCategorieAsChildren": "true",
@@ -208,7 +231,13 @@
               "id": 6,
               "tag": "footer",
               "metaProperties": [],
-              "metaHtmlParameters": [],
+              "metaHtmlParameters": [
+                {
+                  "name": "data-container",
+                  "value": "true",
+                  "mapped": "false"
+                }
+              ],
               "children": [],
               "value": "",
               "acceptAllCategorieAsChildren": "true",
@@ -225,7 +254,59 @@
               "id": 7,
               "tag": "aside",
               "metaProperties": [],
-              "metaHtmlParameters": [],
+              "metaHtmlParameters": [
+                {
+                  "name": "data-container",
+                  "value": "true",
+                  "mapped": "false"
+                }
+              ],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "true",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "nav",
+          "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Side bar</div>",
+          "metaHtmlElements": [
+            {
+              "id": 35,
+              "tag": "nav",
+              "metaProperties": [],
+              "metaHtmlParameters": [
+                {
+                  "name": "data-container",
+                  "value": "true",
+                  "mapped": "false"
+                }
+              ],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "true",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "div",
+          "htmlPreview": "<div disabled=\"true\" class=\"fi-folder\">Side bar</div>",
+          "metaHtmlElements": [
+            {
+              "id": 36,
+              "tag": "div",
+              "metaProperties": [],
+              "metaHtmlParameters": [
+                {
+                  "name": "data-container",
+                  "value": "true",
+                  "mapped": "false"
+                }
+              ],
               "children": [],
               "value": "",
               "acceptAllCategorieAsChildren": "true",
@@ -251,15 +332,18 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "top-bar"
+                  "value": "top-bar",
+                  "mapped": "true"
                 },
                 {
                   "name": "data-topbar",
-                  "value": ""
+                  "value": "",
+                  "mapped": "true"
                 },
                 {
                   "name": "role",
-                  "value": "navigation"
+                  "value": "navigation",
+                  "mapped": "true"
                 }
               ],
               "children": [
@@ -270,7 +354,8 @@
                   "metaHtmlParameters": [
                     {
                       "name": "class",
-                      "value": "title-area"
+                      "value": "title-area",
+                      "mapped": "true"
                     }
                   ],
                   "children": [
@@ -281,7 +366,8 @@
                       "metaHtmlParameters": [
                         {
                           "name": "class",
-                          "value": "name"
+                          "value": "name",
+                          "mapped": "true"
                         }
                       ],
                       "children": [
@@ -298,7 +384,8 @@
                               "metaHtmlParameters": [
                                 {
                                   "name": "href",
-                                  "value": "#"
+                                  "value": "#",
+                                  "mapped": "true"
                                 }
                               ],
                               "children": [],
@@ -323,7 +410,8 @@
                       "metaHtmlParameters": [
                         {
                           "name": "class",
-                          "value": "toggle-topbar menu-icon"
+                          "value": "toggle-topbar menu-icon",
+                          "mapped": "true"
                         }
                       ],
                       "children": [
@@ -334,7 +422,8 @@
                           "metaHtmlParameters": [
                             {
                               "name": "href",
-                              "value": "#"
+                              "value": "#",
+                              "mapped": "true"
                             }
                           ],
                           "children": [
@@ -370,7 +459,8 @@
                   "metaHtmlParameters": [
                     {
                       "name": "class",
-                      "value": "top-bar-section"
+                      "value": "top-bar-section",
+                      "mapped": "true"
                     }
                   ],
                   "children": [
@@ -381,7 +471,8 @@
                       "metaHtmlParameters": [
                         {
                           "name": "class",
-                          "value": "right"
+                          "value": "right",
+                          "mapped": "true"
                         }
                       ],
                       "children": [
@@ -392,7 +483,8 @@
                           "metaHtmlParameters": [
                             {
                               "name": "class",
-                              "value": "active"
+                              "value": "active",
+                              "mapped": "true"
                             }
                           ],
                           "children": [
@@ -403,7 +495,8 @@
                               "metaHtmlParameters": [
                                 {
                                   "name": "href",
-                                  "value": "#"
+                                  "value": "#",
+                                  "mapped": "true"
                                 }
                               ],
                               "children": [],
@@ -423,7 +516,8 @@
                           "metaHtmlParameters": [
                             {
                               "name": "class",
-                              "value": "has-dropdown"
+                              "value": "has-dropdown",
+                              "mapped": "true"
                             }
                           ],
                           "children": [
@@ -434,7 +528,8 @@
                               "metaHtmlParameters": [
                                 {
                                   "name": "href",
-                                  "value": "#"
+                                  "value": "#",
+                                  "mapped": "true"
                                 }
                               ],
                               "children": [],
@@ -449,7 +544,8 @@
                               "metaHtmlParameters": [
                                 {
                                   "name": "class",
-                                  "value": "dropdown"
+                                  "value": "dropdown",
+                                  "mapped": "true"
                                 }
                               ],
                               "children": [
@@ -466,7 +562,8 @@
                                       "metaHtmlParameters": [
                                         {
                                           "name": "href",
-                                          "value": "#"
+                                          "value": "#",
+                                          "mapped": "true"
                                         }
                                       ],
                                       "children": [],
@@ -486,7 +583,8 @@
                                   "metaHtmlParameters": [
                                     {
                                       "name": "class",
-                                      "value": "active"
+                                      "value": "active",
+                                      "mapped": "true"
                                     }
                                   ],
                                   "children": [
@@ -497,7 +595,8 @@
                                       "metaHtmlParameters": [
                                         {
                                           "name": "href",
-                                          "value": "#"
+                                          "value": "#",
+                                          "mapped": "true"
                                         }
                                       ],
                                       "children": [],
@@ -532,7 +631,8 @@
                       "metaHtmlParameters": [
                         {
                           "name": "class",
-                          "value": "left"
+                          "value": "left",
+                          "mapped": "true"
                         }
                       ],
                       "children": [
@@ -549,7 +649,8 @@
                               "metaHtmlParameters": [
                                 {
                                   "name": "href",
-                                  "value": "#"
+                                  "value": "#",
+                                  "mapped": "true"
                                 }
                               ],
                               "children": [],
@@ -579,7 +680,6 @@
             }
           ]
         }
-
       ]
     },
     {
@@ -613,7 +713,8 @@
               "metaHtmlParameters": [
                 {
                   "name": "class",
-                  "value": "subheader"
+                  "value": "subheader",
+                  "mapped": "true"
                 }
               ],
               "children": [],
@@ -622,7 +723,6 @@
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }
           ]
-
         },
         {
           "id": 12,
@@ -648,13 +748,13 @@
                   "defaultValue": "#007095"
                 }
               ],
+              "metaHtmlParameters": [],
               "children": [],
               "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
             }
           ]
-
         }
       ]
     },
@@ -703,6 +803,5 @@
         }
       ]
     }
-
   ]
 }

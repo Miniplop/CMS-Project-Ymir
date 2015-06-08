@@ -34,7 +34,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.creativeView = new App.Views.CreativeView();
         
         // Stage view
-        App.PageBuilder = new App.Utils.PageBuilder(new App.Models.Page());
+        App.PageBuilder = new App.Utils.PageBuilder(null);
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
         
