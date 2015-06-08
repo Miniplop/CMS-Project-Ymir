@@ -33,7 +33,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             
             var widgets = this.page.get("widgets");
             var title = this.page.get("title");
-                        console.log(widgets);
+            console.log(widgets);
             console.log(title);
             var mobile = $("#mobile");
             var tablet = $("#tablet");
