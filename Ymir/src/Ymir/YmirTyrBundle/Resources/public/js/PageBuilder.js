@@ -56,12 +56,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             
             mobile.ready(function () {
                 mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-                mobile.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
 
             tablet.ready(function () {
                 tablet.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-                tablet.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
         },
         
@@ -387,12 +385,13 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     this.updateIframe(elements[index], elements[index].clone(), widgets.models[i]);
                 }
             }
+            var includeFoundationJs = '<script type="text/javascript" src="' + app.Urls.js.foundation + '">' ;
             mobile.ready(function () {
-                mobile.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+                mobile.contents().find("body").append(includeFoundationJs);
             });
 
             tablet.ready(function () {
-                tablet.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+                tablet.contents().find("body").append(includeFoundationJs);
             });
         }
     });
