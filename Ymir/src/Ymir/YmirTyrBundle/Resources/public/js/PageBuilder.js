@@ -38,7 +38,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             var widgets = this.page.get("widgets");
             var mobile = $("#mobile");
             var tablet = $("#tablet");
-            for(var i in widgets.models) {
+            for (var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
                 
@@ -47,7 +47,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
                 *   Or, la dupplication de données en javascript est compliquée, surtout lorsqu'il s'agit d'objets imbriqués.
                 *   La plupart des methodes clones existantes font de la duplication par référence, ce qui ne nous convient pas.
                 *   C'est pourquoi nous avons opté pour une methode un peu plus archaique, on fait trois fois la même chose.
-                *   Ce n'est pas extremement couteux . 
+                *   Ce n'est pas extremement couteux .
                 */
                 var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
                 var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
