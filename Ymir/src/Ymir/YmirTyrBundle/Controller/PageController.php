@@ -52,7 +52,7 @@ class PageController extends Controller
      */
     public function getPageAction(Page $page)
     {
-        return array('page' => $page);
+        return $page;
     }
 
     /**
