@@ -32,6 +32,7 @@ App.Views.ProjectPageView = Backbone.View.extend({
               error : function(){
              }
          });
+        this.model.fetch();
     },
     
     
