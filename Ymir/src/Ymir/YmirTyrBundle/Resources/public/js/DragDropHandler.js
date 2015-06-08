@@ -49,7 +49,7 @@ var App = App || {};
                 categorie_id = $(ui.draggable).data('categorie-id'),
                 meta_widget_id = $(ui.draggable).data('meta-widget-id'),
                 meta_widget = null;
-
+            console.log(this);
             meta_widget_to_add = window.App.categories.getMetaWidget(meta_widget_id);
 
 			if (categorie_id == 3) { //containers
