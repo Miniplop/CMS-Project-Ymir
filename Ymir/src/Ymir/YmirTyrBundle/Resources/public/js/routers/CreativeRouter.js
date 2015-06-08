@@ -135,7 +135,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
                 $("#mockup-rotate").css("display", "none");
             }
         });
-<<<<<<< HEAD
         
         
 	   $("#checkbox_rotate").click(function () {
