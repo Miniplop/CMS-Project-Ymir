@@ -26,6 +26,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         // Faut chercher l'id ...
         var CheminComplet = document.location.href;
         const id_page = CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 );
+        var page = new  App.Models.Page().fetch({id : id_page});
         
         console.log('you are viewing creative page ' +id_page);
         
@@ -44,6 +45,10 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         //                    Events
         //
         //******************************************
+        
+        $(".project-name-input").change(function(){
+            console.log("change name");
+        });
         
         $("#save_page").click(function(){
             if (App.page){
@@ -86,6 +91,9 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 			$("#mockup-rotate").css("display", "none");
 		}
 	})
+       $( "." ).change(function() {
+            alert( "Handler for .change() called." );
+       });
         
         $("#checkbox_mobile").click(function() {
 		   if( !($(this).hasClass('active')) ){ // Si le bouton n'est pas activé

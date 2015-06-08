@@ -4,13 +4,13 @@
         <div class ="small-3 columns devices">
             <ul class="button-group">
 				<li><button class="button" id="save_page"><i class="fi-save"></i></button></li>
-				<li><button class="button" id="preview_page"><i class="fi-play-video"></i></button></li>
-				<li><button class="button" id="download_page"><i class="fi-upload"></i></button></li>
+				<li><a href="{{ path('preview', { 'id_page': id_page}) }}" target="_blank"> <button class="button" id="preview_page"><i class="fi-play-video"></i></button></a></li>
+				<li><a href="{{ path('exportPage', { 'id_page': id_page}) }}"><button class="button" id="download_page"><i class="fi-upload"></i></button></a></li>
 			</ul>
 		</div>
 
 		<div class="small-offset-2 small-3 columns">
-			<input type="text" value="Nom de la page" placeholder="Nom de la page">
+			<input class="project-name-input" type="text" value="Nom de la page" placeholder="Nom de la page">
 		</div>
         
         <div class ="small-2 columns devices">
