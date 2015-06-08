@@ -30,9 +30,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          */
         initialize: function () {
             var thisObject = this;
-            console.log(this.page);
+            
             var widgets = this.page.get("widgets");
             var title = this.page.get("title");
+                        console.log(widgets);
+            console.log(title);
             var mobile = $("#mobile");
             var tablet = $("#tablet");
             var title_target = $(".project-name-input");
