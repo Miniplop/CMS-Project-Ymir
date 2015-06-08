@@ -1,4 +1,5 @@
 {
+  "id": "1",
   "widgets": [
     {
       "id": 1,
@@ -389,21 +390,31 @@
                       "name": "data-container",
                       "value": "true",
                       "mapped": "false"
+                    },
+                    {
+                      "name": "class",
+                      "value": "large-6 columns",
+                      "mapped": "true"
                     }
                   ],
                   "widgetChildren": [
                     {
-                      "id": 6,
+                      "id": 5,
                       "meta_widget_id": 11,
                       "htmlElements": [
                         {
-                          "id": 32,
+                          "id": 31,
                           "tag": "h1",
                           "value": "Title 1",
                           "htmlParameters": [
                             {
                               "name": "class",
                               "value": "subheader",
+                              "mapped": "true"
+                            },
+                            {
+                              "name": "class",
+                              "value": "subheader large-12 columns",
                               "mapped": "true"
                             }
                           ],
@@ -431,11 +442,11 @@
                       "order": 1
                     },
                     {
-                      "id": 7,
+                      "id": 6,
                       "meta_widget_id": 12,
                       "htmlElements": [
                         {
-                          "id": 33,
+                          "id": 32,
                           "tag": "p",
                           "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
                           "htmlParameters": [],
@@ -482,21 +493,31 @@
                       "name": "data-container",
                       "value": "true",
                       "mapped": "false"
+                    },
+                    {
+                      "name": "class",
+                      "value": "large-6 columns end",
+                      "mapped": "true"
                     }
                   ],
                   "widgetChildren": [
                     {
-                      "id": 5,
-                      "meta_widget_id": 1,
+                      "id": 7,
+                      "meta_widget_id": 3,
                       "htmlElements": [
                         {
-                          "id": 31,
+                          "id": 33,
                           "tag": "button",
-                          "value": "Button",
+                          "value": "Button round",
                           "htmlParameters": [
                             {
                               "name": "class",
-                              "value": "button",
+                              "value": "button round",
+                              "mapped": "true"
+                            },
+                            {
+                              "name": "class",
+                              "value": "button round large-12 columns end",
                               "mapped": "true"
                             }
                           ],
@@ -508,7 +529,7 @@
                               "type": "css",
                               "inputType": "text",
                               "identifier": "color",
-                              "value": "white"
+                              "value": "black"
                             },
                             {
                               "name": "Background color",
@@ -536,6 +557,68 @@
         }
       ],
       "order": 2
+    },
+    {
+      "id": 8,
+      "meta_widget_id": 5,
+      "htmlElements": [
+        {
+          "id": 34,
+          "tag": "section",
+          "value": "",
+          "htmlParameters": [
+            {
+              "name": "data-container",
+              "value": "true",
+              "mapped": "false"
+            }
+          ],
+          "widgetChildren": [
+            {
+              "id": 9,
+              "meta_widget_id": 13,
+              "htmlElements": [
+                {
+                  "id": 36,
+                  "tag": "img",
+                  "value": "",
+                  "htmlParameters": [],
+                  "widgetChildren": [],
+                  "htmlChildren": [],
+                  "properties": [
+                    {
+                      "name": "image url",
+                      "type": "html",
+                      "inputType": "text",
+                      "identifier": "src",
+                      "value": "https://c1.staticflickr.com/9/8830/18263689529_c2513153ba_h.jpg"
+                    },
+                    {
+                      "name": "Height",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "height",
+                      "value": "auto"
+                    },
+                    {
+                      "name": "Width",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "width",
+                      "value": "auto"
+                    }
+                  ],
+                  "order": "0"
+                }
+              ],
+              "order": 1
+            }
+          ],
+          "htmlChildren": [],
+          "properties": []
+        }
+      ],
+      "order": 3
     }
   ]
 }

@@ -49,6 +49,7 @@ class PageController extends Controller
      * @return array
      * @View()
      * @ParamConverter("page", class="TyrBundle:Page")
+     * @Route(name="page")
      */
     public function getPageAction(Page $page)
     {

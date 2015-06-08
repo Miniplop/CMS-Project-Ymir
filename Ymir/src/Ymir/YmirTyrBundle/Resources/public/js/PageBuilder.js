@@ -28,16 +28,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
      * @param page App.Models.Page
      * @constructor
      */
-    function PageBuilder(page) {
+    function PageBuilder(page_id) {
         _.bindAll(this, "initialize");
-        if (page !== null) {
-            this.page = page;
-            this.page.fetch({success : this.initialize()});
-        } else {
-            this.page = new App.Models.Page();
-            this.page.set('widgets', new App.Collections.WidgetList());
-            this.initialize();
-        }
+        this.page = new App.Models.Page({id : page_id});
+        this.page.fetch({success : this.initialize});
     };
 
     _.extend(PageBuilder.prototype, {
@@ -45,26 +39,21 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          *
          */
         initialize: function () {
-            var thisObject = this;
-            var widgets = this.page.get("widgets");
             var title = this.page.get("title");
-            console.log(widgets);
-            console.log(title);
             var mobile = $("#mobile");
             var tablet = $("#tablet");
             var title_target = $(".project-name-input");
+            var widgets = this.page.get("widgets");
 
             for (var i in widgets.models) {
-                // initialize widget ids
-                if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
-                    this.page.idWidgetGenerator = widgets.models[i].get("id");
 
                 // build {*|jQuery|HTMLElement} using the widget object
                 var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
-
+                console.log(elements);
                 // add widget to the page tree and to the dom (stage & iframes)
                 for (var index in elements) {
-                    this.addWidget(elements[index], $(".stage"), widgets.models[i]);                    
+                    console.log(elements[index]);
+                    this.addWidget(elements[index], $(".stage"), widgets.models[i]);
                 }                
             }
             this.reloadIframe();
@@ -324,6 +313,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     parent.append(jqWidget);
                 htmlsWidget.push(jqWidget);
             }
+            if(!isNew)
+                this.updateWidgetIds(widget.get("id"));
             return htmlsWidget;
         },
         /**
@@ -392,6 +383,16 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 else
                     console.error("unknown html element property type : " + properties[index].get("type"));
             }
+        },
+        /**
+         *
+         * @param id
+         * @description
+         *      Update the page HtmlElement Ids generator.
+         */
+        updateWidgetIds: function (id) {
+            if (this.page.idWidgetGenerator < id)
+                this.page.idWidgetGenerator = id;
         },
         /**
          *
