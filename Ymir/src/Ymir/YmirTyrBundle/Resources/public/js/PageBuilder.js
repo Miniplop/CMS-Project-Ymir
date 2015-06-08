@@ -16,7 +16,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         _.bindAll(this, "initialize");
         if (page !== null) {
             this.page = page;
-            this.page.fetch({success: this.initialize});
+            this.initialize();
         } else {
             this.page = new App.Models.Page();
             this.page.set('widgets', new App.Collections.WidgetList());
@@ -36,7 +36,14 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             for (var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
-
+                
+                /**
+                *   Nous avons besoin de deux clones de elements pour mettre à jour les iframe.
+                *   Or, la dupplication de données en javascript est compliquée, surtout lorsqu'il s'agit d'objets imbriqués.
+                *   La plupart des methodes clones existantes font de la duplication par référence, ce qui ne nous convient pas.
+                *   C'est pourquoi nous avons opté pour une methode un peu plus archaique, on fait trois fois la même chose.
+                *   Ce n'est pas extremement couteux .
+                */
                 var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
 
                 for (var index in elements) {
@@ -46,14 +53,15 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             }
             mobile.ready(function () {
                 mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-                mobile.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+                mobile.contents().find("body").html('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
 
             tablet.ready(function () {
                 tablet.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-                tablet.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+                tablet.contents().find("body").html('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
         },
+        
         /**
          *
          * @param mWidget : App.Models.MetaWidget : object added
@@ -69,6 +77,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             // build the App.Models.Widget and add it to the page tree
             var widget = this.buildWidgetModelFromMeta(mWidget);
             // build JQuery Objects and add it to the dom
+            /**
+            * On effectue les mêmes opérations sur les trois variables suivntes, pour 
+            * les raisons indiquées dans la methode initialize.
+            */
             var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
 
             for (var index in htmlsWidget) {
@@ -259,7 +271,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var jqWidget = null;
             if (htmlElement.get("tag") != null && htmlElement.get("tag") != "") {
                 jqWidget = $('<' + htmlElement.get("tag") + '>');
-
                 this.addProperties(jqWidget, htmlElement.get('properties').models);
 
                 for (var index in htmlElement.get("htmlParameters")) {
@@ -294,8 +305,9 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             for (var index in properties) {
                 if (properties[index].get("type") == "css")
                     jqWidget.css(properties[index].get("identifier"), properties[index].get("value"));
-                else if (properties[index].get("type") == "html")
+                else if (properties[index].get("type") == "html") {
                     jqWidget.attr(properties[index].get("identifier"), properties[index].get("value"));
+                }
                 else
                     console.error("unknown html element property type : " + properties[index].get("type"));
             }
@@ -354,6 +366,41 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             tablet.ready(function () {
                 thisObject.addWidget(tabletElement, tablet.contents().find("body"), widget);
             });
+        },
+        
+        clearIframe: function() {
+            var mobile = $("#mobile");
+            var tablet = $("#tablet");
+            mobile.ready(function() {
+                mobile.contents().find("body").empty();
+            });
+            tablet.ready(function() {
+                tablet.contents().find("body").empty();
+            });
+        },
+        
+        reloadIframe: function () {
+            console.log("reload Iframe");
+            var widgets = this.page.get("widgets");
+            this.clearIframe();
+            for (var i in widgets.models) {
+                if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
+                    this.page.idWidgetGenerator = widgets.models[i].get("id");
+                
+                /**
+                *   Nous avons besoin de deux clones de elements pour mettre à jour les iframe.
+                *   Or, la dupplication de données en javascript est compliquée, surtout lorsqu'il s'agit d'objets imbriqués.
+                *   La plupart des methodes clones existantes font de la duplication par référence, ce qui ne nous convient pas.
+                *   C'est pourquoi nous avons opté pour une methode un peu plus archaique, on fait trois fois la même chose.
+                *   Ce n'est pas extremement couteux .
+                */
+                var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
+                var mobileElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
+
+                for (var index in tabletElement){
+                    this.updateIframe(mobileElement[index], tabletElement[index], widgets.models[i]);
+                }
+            }
         }
     });
 

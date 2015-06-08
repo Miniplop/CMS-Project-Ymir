@@ -39,7 +39,7 @@ class PageController extends Controller
             $em->persist($page);
             $em->flush();
 
-            return array('page' => $page);
+            return $page;
         }
         return array('error' => (string) $form->getErrors(true, false));
     }
@@ -52,7 +52,7 @@ class PageController extends Controller
      */
     public function getPageAction(Page $page)
     {
-        return array('page' => $page);
+        return $page;
     }
 
     /**
@@ -81,7 +81,7 @@ class PageController extends Controller
         //sauvegarde en BD
         $em->flush();
 
-        return $page->getWidgets()[0]->getHtmlElements()[0]->getHtmlParameters()[0]->getHtmlElement()->getId();
+        return $page;
     }
 
     /**

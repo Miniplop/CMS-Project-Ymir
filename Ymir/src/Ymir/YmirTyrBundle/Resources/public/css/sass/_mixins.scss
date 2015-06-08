@@ -1,11 +1,30 @@
 $dark_grey_color: #2A2B30;
 $light_grey_color: #CECECE;
+$dark_bleu_color: #085A78;
+$light_bleu_color : #DADADA;
 $widget_toolbar_title_color: #43444A;
 $widget_toolbar_title_active_color: #42444F;
 $widget_toolbar_title_hover_color: #37383E;
 
 $header_height: 60px;
 $global_toolbar_height: 40px;
+
+@font-face{
+  font-family: 'font-ymir';
+    src: url(../font/MAEL____.ttf);
+
+    font-stretch : normal;
+    font-weight : normal;
+    font-style : normal;
+}
+
+@font-face{
+  font-family: 'font-text';
+    src: url(../font/OpenSans-Regular.ttf);
+    font-stretch : normal;
+    font-weight : normal;
+    font-style : normal;
+}
 
 
 @mixin pad-marg($pad-marg) {

@@ -10,13 +10,13 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
  * widgets : List of widget contained in the page
  */
 App.Models.Page = Backbone.Model.extend({
-    url :  "",
-
+        
     /**
      *
      */
     initialize: function() {
-        this.url = App.Urls.page;
+        var base = "http://127.0.0.1:8000/pages" 
+        this.url = base + (base.charAt(base.length - 1) == '/' ? '' : '/')+ this.id;
         this.idWidgetGenerator = 0;
         this.idHtmlElementGenerator = 0;
     },

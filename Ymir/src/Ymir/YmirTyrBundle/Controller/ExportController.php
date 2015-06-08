@@ -2,10 +2,13 @@
 
 namespace Ymir\YmirTyrBundle\Controller;
 
+use FOS\UserBundle\Event\FormEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 
 /**
  * @Route("/export")
@@ -13,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ExportController extends Controller
 {
     /**
-     * @Route("/page/{id_page}", requirements={"id_page" = "\d+"})
+     * @Route("/page/{id_page}", requirements={"id_page" = "\d+"}, name="exportPage")
      * @Template()
      */
     public function exportPageAction($id_page)
@@ -47,6 +50,26 @@ class ExportController extends Controller
         return array(
                 // ...
             );    
+    }
+
+    /** @Route("/preview/{id_page}", requirements={"id_page" = "\d+"}, name="preview")
+     * @Template()
+     */
+    public function previewPageAction($id_page)
+    {
+      $repository = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('TyrBundle:Page');
+
+        $page = $repository->findOneById($id_page);
+        $pageName = $page->getTitle();
+
+        //génération du code de la page
+        $code = $page->codeGen();
+        return $this->render('TyrBundle::preview.html.twig', array(
+              'code' => $code
+            ));  
     }
 
 }

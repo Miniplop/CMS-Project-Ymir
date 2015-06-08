@@ -38,7 +38,7 @@ class ProjectController extends Controller
             }
             $em->flush();
 
-            return array('project' => $project);
+            return $project;
         }
         return array('error' => (string) $form->getErrors(true, false));
         //return array('error' => $this->getFormErrorMessage($form));
@@ -64,7 +64,7 @@ class ProjectController extends Controller
             );*/
         //return new JsonResponse($user, 200);
         //return new JsonResponse($listProjects, 200);
-        return array('projects' => $listProjects);
+        return $listProjects;
     }
 
     /**
@@ -75,7 +75,7 @@ class ProjectController extends Controller
      */
     public function getProjectAction(Project $project)
     {
-        return array('project' => $project);
+        return $project;
     }
 
     /**
@@ -94,7 +94,7 @@ class ProjectController extends Controller
             $em->persist($project);
             $em->flush();
 
-            return array('project' => $project);
+            return $project;
         }
         return array('error' => (string) $form->getErrors(true, false));
     }
