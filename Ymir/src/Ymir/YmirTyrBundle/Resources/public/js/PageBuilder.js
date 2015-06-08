@@ -60,12 +60,12 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             }
             mobile.ready(function () {
                 mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-                mobile.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+                mobile.contents().find("body").html('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
 
             tablet.ready(function () {
                 tablet.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-                tablet.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+                tablet.contents().find("body").html('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
         },
         /**
@@ -285,7 +285,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             var jqWidget = null;
             if (htmlElement.get("tag") != null && htmlElement.get("tag") != "") {
                 jqWidget = $('<' + htmlElement.get("tag") + '>');
-
                 this.addProperties(jqWidget, htmlElement.get('properties').models);
 
                 for (var index in htmlElement.get("htmlParameters")) {
@@ -315,10 +314,13 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
          */
         addProperties: function(jqWidget, properties) {
             for (var index in properties) {
-                if(properties[index].get("type") == "css")
+                if(properties[index].get("type") == "css"){
                     jqWidget.css(properties[index].get("identifier"), properties[index].get("value"));
-                else if(properties[index].get("type") == "html")
+                }
+                else if(properties[index].get("type") == "html"){
+                    console.log("html");
                     jqWidget.attr(properties[index].get("identifier"), properties[index].get("value"));
+                }
                 else
                     console.error("unknown html element property type : " + properties[index].get("type"));
             }
@@ -374,6 +376,41 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
             tablet.ready(function() {
                 thisObject.addToDOM(tabletElement, tablet.contents().find("body"), widget);
             });
+        },
+        
+        clearIframe: function() {
+            var mobile = $("#mobile");
+            var tablet = $("#tablet");
+            mobile.ready(function() {
+                mobile.contents().find("body").empty();
+            });
+            tablet.ready(function() {
+                tablet.contents().find("body").empty();
+            });
+        },
+        
+        reloadIframe: function () {
+            console.log("reload Iframe");
+            var widgets = this.page.get("widgets");
+            this.clearIframe();
+            for (var i in widgets.models) {
+                if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
+                    this.page.idWidgetGenerator = widgets.models[i].get("id");
+                
+                /**
+                *   Nous avons besoin de deux clones de elements pour mettre à jour les iframe.
+                *   Or, la dupplication de données en javascript est compliquée, surtout lorsqu'il s'agit d'objets imbriqués.
+                *   La plupart des methodes clones existantes font de la duplication par référence, ce qui ne nous convient pas.
+                *   C'est pourquoi nous avons opté pour une methode un peu plus archaique, on fait trois fois la même chose.
+                *   Ce n'est pas extremement couteux .
+                */
+                var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
+                var mobileElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
+
+                for (var index in tabletElement){
+                    this.updateIframe(mobileElement[index], tabletElement[index], widgets.models[i]);
+                }
+            }
         }
     });
     

@@ -38,7 +38,7 @@ var App = App || {};
         showPropertiesToolbar: function() {
             $('.toolbar-parameter').css('bottom', '0');
         },
-        resetSelectUi: function() {
+        resetSelectUi: function() {            
             this.resetClass();
             App.creativeView.cancelPropertiesView();
             $('.toolbar-parameter').css('bottom', '-40%');
@@ -54,7 +54,7 @@ var App = App || {};
          */
         initializeView: function(htmlElementId, jqObject) {
             var htmlElement = App.page.getHtmlElement(htmlElementId);
-            App.creativeView.propertiesView(htmlElement.get("properties"));
+            App.creativeView.propertiesView(htmlElement.get("properties"));            
         }
     });
 
