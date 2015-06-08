@@ -299,6 +299,10 @@
                                 {
                                   "name": "href",
                                   "value": "#"
+                                },
+                                {
+                                    "name": "class",
+                                    "value": "link"
                                 }
                               ],
                               "children": [],
@@ -335,6 +339,10 @@
                             {
                               "name": "href",
                               "value": "#"
+                            },
+                            {
+                                "name": "class",
+                                "value": "link"
                             }
                           ],
                           "children": [
@@ -404,6 +412,10 @@
                                 {
                                   "name": "href",
                                   "value": "#"
+                                },
+                                {
+                                    "name": "class",
+                                    "value": "link"
                                 }
                               ],
                               "children": [],
@@ -433,8 +445,12 @@
                               "metaProperties": [],
                               "metaHtmlParameters": [
                                 {
-                                  "name": "href",
-                                  "value": "#"
+                                    "name": "href",
+                                    "value": "#"
+                                },
+                                {
+                                    "name": "class",
+                                    "value": "link"
                                 }
                               ],
                               "children": [],
@@ -465,8 +481,12 @@
                                       "metaProperties": [],
                                       "metaHtmlParameters": [
                                         {
-                                          "name": "href",
-                                          "value": "#"
+                                            "name": "href",
+                                            "value": "#"
+                                        },
+                                        {
+                                            "name": "class",
+                                            "value": "link"
                                         }
                                       ],
                                       "children": [],
@@ -496,8 +516,12 @@
                                       "metaProperties": [],
                                       "metaHtmlParameters": [
                                         {
-                                          "name": "href",
-                                          "value": "#"
+                                            "name": "href",
+                                            "value": "#"
+                                        },
+                                        {
+                                            "name": "class",
+                                            "value": "link"
                                         }
                                       ],
                                       "children": [],
@@ -548,8 +572,12 @@
                               "metaProperties": [],
                               "metaHtmlParameters": [
                                 {
-                                  "name": "href",
-                                  "value": "#"
+                                    "name": "href",
+                                    "value": "#"
+                                },
+                                {
+                                    "name": "class",
+                                    "value": "link"
                                 }
                               ],
                               "children": [],
