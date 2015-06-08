@@ -16,7 +16,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         _.bindAll(this, "initialize");
         if (page !== null) {
             this.page = page;
-            this.initialize();
+            this.page.fetch({success : this.initialize()});
         } else {
             this.page = new App.Models.Page();
             this.page.set('widgets', new App.Collections.WidgetList());
@@ -30,9 +30,12 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          */
         initialize: function () {
             var thisObject = this;
+            console.log(this.page);
             var widgets = this.page.get("widgets");
+            var title = this.page.get("title");
             var mobile = $("#mobile");
             var tablet = $("#tablet");
+            var title_target = $(".project-name-input");
             for (var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
@@ -51,6 +54,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     this.updateIframe(elements[index].clone(), elements[index].clone(), widgets.models[i]);
                 }
             }
+            title_target.ready(function(){
+                console.log("titre de la page :" +title);
+               $(title_target).val(title);
+            });
+            
             mobile.ready(function () {
                 mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
                 mobile.contents().find("body").html('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
