@@ -59,6 +59,23 @@ class HtmlElement
     private $widgetChildren;
 
     /**
+     * ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Property", mappedBy="parentElement", cascade={"persist", "remove"})
+     */
+    private $properties;
+
+    /**
+     * @Exclude
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\CssProperty", mappedBy="parentElement", cascade={"persist", "remove"})
+     */
+    private $cssProperties;
+
+    /**
+     * @Exclude
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlProperty", mappedBy="parentElement", cascade={"persist", "remove"})
+     */
+    private $htmlProperties;
+
+    /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="htmlChildren")
      * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
@@ -86,6 +103,9 @@ class HtmlElement
         $this->htmlParameters = new \Doctrine\Common\Collections\ArrayCollection();
         $this->htmlChildren = new \Doctrine\Common\Collections\ArrayCollection();
         $this->widgetChildren = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->properties = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->htmlProperties = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cssProperties = new \Doctrine\Common\Collections\ArrayCollection();
         //$this->meta_widgets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -112,6 +132,20 @@ class HtmlElement
             $htmlChild = HtmlElement::deserializeJson($param);
             //$htmlChild->setParentHtmlElement($htmlElement);
             $htmlElement->addHtmlChild($htmlChild);
+        }
+        foreach($params["properties"] as $param)
+        {
+            $property;
+            if($param["type"] === "html") {
+                $property = HtmlProperty::deserializeJson($param);
+                $htmlElement->addHtmlProperty($property);
+            } else {
+                $property = CssProperty::deserializeJson($param);
+                $htmlElement->addCssProperty($property);
+            }
+            //$property = Property::deserializeJson($param);
+            //$htmlChild->setParentHtmlElement($htmlElement);
+            $htmlElement->addProperty($property);
         }
         return $htmlElement;
     }
@@ -151,17 +185,56 @@ class HtmlElement
         return $table;
     }
 
-    public function codeGen(){
+    /*
+     *  Returns style attribut of the html element (inline css) if any property,
+     *  Returns an empty string otherwise
+     */
+    public function codeGenCssInline()
+    {   
+        $has_css = false;
+        $css_attr .= " style=\"";
+        foreach($this->cssProperties->toArray() as $p)
+        {
+            $has_css = true;
+            $css_attr .= $p->getName().":".$p->getValue().";";
+        }
+        
+        if($has_css)
+            $css_attr .= "\"";
+        else 
+            $css_attr = "";
+
+        return $css_attr;
+    }
+
+    public function codeGen()
+    {
+        //create html parameters list from html properties
+        $editedParams = array();
+        foreach($this->htmlProperties->toArray() as $p) {
+            $editedParams[$p->getName()] = $p->getValue();
+        } // ATTENTION : BESOIN DE LA VALEUR PAR DEFAUT POUR REMPLACER LE BON CHAMP AU CAS OU IL Y EN A PLUSIEURS PAR ATTRIBUT
+
         // Opening the HTML element
         $code = "<".$this->tag ;
+
         // Add the parameters
         foreach ($this->htmlParameters->toArray() as $p) {
-            // est-ce qu'il faut rajouter le type de l'attribut ?
-            $code .= " ".$p->getName()."=\"".$p->getValue()."\"";
+            $code .= " ".$p->getName()."=\"";
+            if($editedParams[$p->getName()]) { //override par les properties
+                $code .= $editedParams[$p->getName()]."\"";
+            } else {
+                $code .= $p->getValue()."\""; //valeur par defaut
+            }
+            
         }
+
+        //add the css attributs inline, if any (ex : style="color:red;background:black;")
+        $css_attr = $this->codeGenCssInline();
+        $code .= $css_attr;
         $code .= ">\n\t";
 
-        //value
+        //value : avant ou après children ? 
         $code .= $this->getValue();
 
         //children
@@ -408,5 +481,110 @@ class HtmlElement
     public function getParentWidget()
     {
         return $this->parentWidget;
+    }
+
+    /**
+     * Add property
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Property $property
+     *
+     * @return HtmlElement
+     */
+    public function addProperty(\Ymir\YmirTyrBundle\Entity\Property $property)
+    {
+        $property->setParentHtmlElement($this);
+        $this->properties[] = $property;
+
+        return $this;
+    }
+
+    /**
+     * Remove property
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Property $property
+     */
+    public function removeProperty(\Ymir\YmirTyrBundle\Entity\Property $property)
+    {
+        $this->properties->removeElement($property);
+    }
+
+    /**
+     * Get properties
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    /**
+     * Add cssProperty
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\CssProperty $cssProperty
+     *
+     * @return HtmlElement
+     */
+    public function addCssProperty(\Ymir\YmirTyrBundle\Entity\CssProperty $cssProperty)
+    {
+        $cssProperty->setParentElement($this);
+        $this->cssProperties[] = $cssProperty;
+
+        return $this;
+    }
+
+    /**
+     * Remove cssProperty
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\CssProperty $cssProperty
+     */
+    public function removeCssProperty(\Ymir\YmirTyrBundle\Entity\CssProperty $cssProperty)
+    {
+        $this->cssProperties->removeElement($cssProperty);
+    }
+
+    /**
+     * Get cssProperties
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCssProperties()
+    {
+        return $this->cssProperties;
+    }
+
+    /**
+     * Add htmlProperty
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlProperty $htmlProperty
+     *
+     * @return HtmlElement
+     */
+    public function addHtmlProperty(\Ymir\YmirTyrBundle\Entity\HtmlProperty $htmlProperty)
+    {
+        $htmlProperty->setParentElement($this);
+        $this->htmlProperties[] = $htmlProperty;
+
+        return $this;
+    }
+
+    /**
+     * Remove htmlProperty
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\HtmlProperty $htmlProperty
+     */
+    public function removeHtmlProperty(\Ymir\YmirTyrBundle\Entity\HtmlProperty $htmlProperty)
+    {
+        $this->htmlProperties->removeElement($htmlProperty);
+    }
+
+    /**
+     * Get htmlProperties
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHtmlProperties()
+    {
+        return $this->htmlProperties;
     }
 }
