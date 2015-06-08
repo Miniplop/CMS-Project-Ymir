@@ -32,5 +32,6 @@ App.Views.PropertyView = Backbone.View.extend({
             $('.ui-selected').css(this.model.get("identifier"), this.model.get("value"));
         else if(this.model.get("type") == "html")
             $('.ui-selected').attr(this.model.get("identifier"), this.model.get("value"));
+        App.PageBuilder.reloadIframe();
     }
 });
