@@ -47,7 +47,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             //                    Events
             //
             //******************************************
-        
+
             $(".project-name-input").change(function(){
                 console.log("change name");
                 console.log($(this).val);
