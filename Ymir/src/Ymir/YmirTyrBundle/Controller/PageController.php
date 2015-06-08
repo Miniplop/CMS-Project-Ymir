@@ -39,7 +39,7 @@ class PageController extends Controller
             $em->persist($page);
             $em->flush();
 
-            return array('page' => $page);
+            return $page;
         }
         return array('error' => (string) $form->getErrors(true, false));
     }
