@@ -43,9 +43,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             //
             //******************************************
 
-            $(".project-name-input").change(function(){
-                console.log("change name");
-            });
 
             $("#save_page").click(function(){
                 console.log("save");

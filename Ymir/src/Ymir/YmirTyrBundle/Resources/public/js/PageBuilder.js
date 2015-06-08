@@ -224,14 +224,14 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          *                  if has class stage => append
          *                  else => replaceWith
          */
-        addWidget: function (jqObject, receiver, widget, parent) {
+        addWidget: function (jqObject, receiver, widget) {
             var receiver_id = receiver.data("html-element-id");
             if (receiver.data("info") == "replaceable") {
                 widget.set('order', receiver.data("order"));
                 this.addContainerClass(jqObject, receiver.attr("class"));
                 this.page.removeHtmlElement(receiver_id);
                 if (receiver.parent().attr("data-container") == "true")
-                    receiver_id = receiver.parent().data("html-element-id");
+                    receiver_id = receiver.parent().attr("data-html-element-id");
                 else
                     console.error("replaceable html element must have a container has parent");
 
@@ -239,7 +239,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             } else {
                 widget.set('order', receiver.children().length + 1);
                 receiver.append(jqObject);
-                console.log("add widget in : " + receiver_id);
             }
             this.page.addWidget(receiver_id, widget)
         },
@@ -357,7 +356,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         },
 
         updateIframe: function (mobileElement, tabletElement, widget) {
-            var mobile = $("#mobile");
+           /* var mobile = $("#mobile");
             var tablet = $("#tablet");
             var thisObject = this;
             mobile.ready(function () {
@@ -365,9 +364,9 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             });
             tablet.ready(function () {
                 thisObject.addWidget(tabletElement, tablet.contents().find("body"), widget);
-            });
+            });*/
         },
-        
+
         clearIframe: function() {
             var mobile = $("#mobile");
             var tablet = $("#tablet");
@@ -380,8 +379,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         },
         
         reloadIframe: function () {
-            console.log("reload Iframe");
-            var widgets = this.page.get("widgets");
+           /* var widgets = this.page.get("widgets");
             this.clearIframe();
             for (var i in widgets.models) {
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
@@ -393,14 +391,14 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 *   La plupart des methodes clones existantes font de la duplication par référence, ce qui ne nous convient pas.
                 *   C'est pourquoi nous avons opté pour une methode un peu plus archaique, on fait trois fois la même chose.
                 *   Ce n'est pas extremement couteux .
-                */
+                /
                 var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
                 var mobileElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
 
                 for (var index in tabletElement){
                     this.updateIframe(mobileElement[index], tabletElement[index], widgets.models[i]);
                 }
-            }
+            }*/
         }
     });
 

@@ -31,6 +31,9 @@ App.Models.HtmlElement = Backbone.Model.extend({
     addWidget: function(container_html_element_id, widget) {
         if(this.get("id") == container_html_element_id) {
             this.get("widgetChildren").add(widget);
+        } else {
+            this.get("widgetChildren").addWidget(container_html_element_id, widget);
+            this.get("htmlChildren").addWidget(container_html_element_id, widget);
         }
     },
     /**
@@ -64,8 +67,6 @@ App.Models.HtmlElement = Backbone.Model.extend({
      */
     removeHtmlElement: function(elementId) {
         if(elementId == this.get("id")) {
-            console.log("removing : ");
-            console.log(this);
             this.collection.remove(this);
         }
         else {
