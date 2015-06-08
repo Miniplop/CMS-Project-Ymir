@@ -14,22 +14,24 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
 		$('#container-modal #isRow').attr('checked', this.options.isRow);
 
         // remove previous added column (modal is not reinitialized after add so we do it on loading)
-        resetUI(this.options.nbColumns);
+        this.resetUI(this.options.nbColumns);
 
         // when i change number of column, i add or remove their size.
-		$("#container-modal #nbColumns").on("change", function() {
-			var nbColumn = $(this).val();
-            // remove column if there i
-            resetUI(nbColumn);
+        (function(self) {
+            $("#container-modal #nbColumns").on("change", function() {
+                var nbColumn = $(this).val();
+                // remove column if there i
+                self.resetUI(nbColumn);
 
-            // add missing column size choice
-			var curr_index = $("#container-modal .columnsSize:last").data("column-index") + 1;
-			while($("#container-modal .columnsSize:last").data("column-index") < nbColumn) {
-                addColumnChoice(curr_index);
-				curr_index++;
-			}
-				
-		});
+                // add missing column size choice
+                var curr_index = $("#container-modal .columnsSize:last").data("column-index") + 1;
+                while($("#container-modal .columnsSize:last").data("column-index") < nbColumn) {
+                    self.addColumnChoice(curr_index);
+                    curr_index++;
+                }
+
+            });
+        })(this);
 		(function(self) {
             // when add is clicked, i get the settings and i add container to the stage.
             // I refresh drop zones after that because i can drop into a container.

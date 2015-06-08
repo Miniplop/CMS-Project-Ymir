@@ -4,7 +4,7 @@ App.Collections.HtmlElementList = App.Collections.HtmlElementList || {};
 App.Collections.PropertyList = App.Collections.PropertyList || {};
 
 /**
- * htmlParameters : list of html parameter: {name: "class", value: "class_names"}
+ * htmlParameters : list of html parameter: {name: "class", value: "class_names", mapped: "put it in generated html"}
  * tag : html tag of the html object
  * value : value contained in the html object, ex : <div> value </div>. If is not empty, htmlChildren and widgetChildren are empty
  * htmlChildren : App.Collections.HtmlElementList
