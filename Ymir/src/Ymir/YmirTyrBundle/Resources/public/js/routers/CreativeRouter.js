@@ -19,22 +19,27 @@ App.Router.CreativeRouter = Backbone.Router.extend({
      * @param id
      */
 	creative: function () {
+
+        // Nav Bar view
+        App.creativeView = new App.Views.CreativeView();
         
-            // Faut chercher l'id ...
-            var CheminComplet = document.location.href;
-            const id_page = CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 );
-            var page = new  App.Models.Page().fetch({id : id_page});
+        // Stage view
+        
+            // Récupération id
+        var CheminComplet = document.location.href;
+        const id_page = CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 );
+        
+            // Création d'un objet page 
+        var page = new  App.Models.Page({id : id_page});
+        page.set('widgets', new App.Collections.WidgetList());
+        
+            // Création du DOM et de ces utilisatires
+        App.PageBuilder = new App.Utils.PageBuilder(page);
+        App.DragDropHandler = new App.Utils.DragDropHandler();
+        App.PageSelector = new App.Utils.PageSelector();
+        
+        console.log('you are viewing creative page ' +id_page);
 
-            console.log('you are viewing creative page ' +id_page);
-
-
-            // Nav Bar view
-            App.creativeView = new App.Views.CreativeView();
-
-            // Stage view
-            App.PageBuilder = new App.Utils.PageBuilder(null);
-            App.DragDropHandler = new App.Utils.DragDropHandler();
-            App.PageSelector = new App.Utils.PageSelector();
 
 
             //******************************************
@@ -42,7 +47,12 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             //                    Events
             //
             //******************************************
-
+        
+            $(".project-name-input").change(function(){
+                console.log("change name");
+                console.log($(this).val);
+                App.page.set("title",this.val());
+            });
 
             $("#save_page").click(function(){
                 console.log("save");
