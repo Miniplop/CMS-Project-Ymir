@@ -11,16 +11,12 @@ App.Collections.WidgetList = App.Collections.WidgetList || {};
  */
 App.Models.Page = Backbone.Model.extend({
         
-    set_url : function() {
-      var base = 'pages';
-      if (this.isNew()) this.url = base; // Url pour CREATE
-      this.url = base + (base.charAt(base.length - 1) == '/' ? '' : '/')+ this.id; // Url pour UPDATE or DELETE
-    },
     /**
      *
      */
     initialize: function() {
-        this.url = App.Urls.page;
+        var base = "http://127.0.0.1:8000/pages" 
+        this.url = base + (base.charAt(base.length - 1) == '/' ? '' : '/')+ this.id;
         this.idWidgetGenerator = 0;
         this.idHtmlElementGenerator = 0;
     },

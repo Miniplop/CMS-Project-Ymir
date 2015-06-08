@@ -59,7 +59,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
                         }
                     });
                 }
-
             });
 
             $("#checkbox_mobile").click(function() {
@@ -67,7 +66,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
                    $("#mockup-mobile").css("display", "inline");
                     $("#checkbox_rotate").css("display","inline");
                    $(this).addClass("active");
-               } 
+               }
                else { // Si le bouton est activé
                    $("#mockup-mobile").css("display", "none");
                     $("#checkbox_rotate").css("display","none");
@@ -112,16 +111,5 @@ App.Router.CreativeRouter = Backbone.Router.extend({
                     $("#mockup-rotate").css("display", "none");
                 }
             });
-        
-            
-            /*$('.stage').change(function () {
-                console.log("Event change stage detected");
-                App.PageBuilder.reloadIframe();
-            });*/
-
-        /*$( "." ).change(function() {
-            alert( "Handler for .change() called." );
-        });*/
-
 	}
 });
