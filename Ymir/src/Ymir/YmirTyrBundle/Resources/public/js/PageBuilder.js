@@ -20,7 +20,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
         _.bindAll(this, "initialize");
         if (page !== null) {
             this.page = page;
-            this.page.fetch({success: this.initialize});
+            this.initialize();
         } else {
             this.page = new App.Models.Page();
             this.page.set('widgets', new App.Collections.WidgetList());
@@ -61,6 +61,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
                 tablet.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
         },
+        
         /**
          *
          * @param mWidget : App.Models.MetaWidget : object added
