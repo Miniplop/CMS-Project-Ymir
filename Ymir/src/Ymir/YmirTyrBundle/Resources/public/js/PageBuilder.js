@@ -48,6 +48,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var thisObject = this;
             var widgets = this.page.get("widgets");
             var title = this.page.get("title");
+            console.log(widgets);
+            console.log(title);
             var mobile = $("#mobile");
             var tablet = $("#tablet");
             var title_target = $(".project-name-input");
@@ -56,16 +58,16 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 // initialize widget ids
                 if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
                     this.page.idWidgetGenerator = widgets.models[i].get("id");
-                
+
                 // build {*|jQuery|HTMLElement} using the widget object
                 var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
 
                 // add widget to the page tree and to the dom (stage & iframes)
                 for (var index in elements) {
-                    this.addWidget(elements[index], $(".stage"), widgets.models[i]);
-                    this.updateIframe(elements[index].clone(), elements[index].clone(), widgets.models[i]);
-                }
+                    this.addWidget(elements[index], $(".stage"), widgets.models[i]);                    
+                }                
             }
+            this.reloadIframe();
             title_target.ready(function(){
                 console.log("titre de la page :" +title);
                $(title_target).val(title);
@@ -74,11 +76,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             // add css and js for iframes
             mobile.ready(function () {
                 mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-                mobile.contents().find("body").html('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+                mobile.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
             tablet.ready(function () {
                 tablet.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-                tablet.contents().find("body").html('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+                tablet.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
             });
         },
         
@@ -96,13 +98,14 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var newOrder = null;
             // build the App.Models.Widget
             var widget = this.buildWidgetModelFromMeta(mWidget);
+
             // build {*|jQuery|HTMLElement}
             var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
 
             // add widget to the page tree and add {*|jQuery|HTMLElement} to the stage and iframes
             for (var index in htmlsWidget) {
                 this.addWidget(htmlsWidget[index], receiver, widget);
-                this.updateIframe(htmlsWidget[index].clone(), htmlsWidget[index].clone(), widget);
+                this.reloadIframe();
             }
         },
 
@@ -181,7 +184,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
 
             // Add container to the page tree and to the DOM (stage & iframes)
             this.addWidget(container, $(containerParameters.parent), widget);
-            this.updateIframe(container.clone(), container.clone(), widget);
+
+            this.reloadIframe();
         },
 
         /**
@@ -469,15 +473,16 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         },
 
         updateIframe: function (mobileElement, tabletElement, widget) {
-           /* var mobile = $("#mobile");
+            var mobile = $("#mobile");
             var tablet = $("#tablet");
             var thisObject = this;
             mobile.ready(function () {
-                thisObject.addWidget(mobileElement, mobile.contents().find("body"), widget);
+                mobile.contents().find("body").append(mobileElement);
+                
             });
             tablet.ready(function () {
-                thisObject.addWidget(tabletElement, tablet.contents().find("body"), widget);
-            });*/
+                tablet.contents().find("body").append(tabletElement);
+            });
         },
 
         clearIframe: function() {
@@ -492,26 +497,23 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         },
         
         reloadIframe: function () {
-           /* var widgets = this.page.get("widgets");
+            var widgets = this.page.get("widgets");
             this.clearIframe();
+            var mobile = $("#mobile");
+            var tablet = $("#tablet");
             for (var i in widgets.models) {
-                if (this.page.idWidgetGenerator < widgets.models[i].get("id"))
-                    this.page.idWidgetGenerator = widgets.models[i].get("id");
-                
-                /**
-                *   Nous avons besoin de deux clones de elements pour mettre à jour les iframe.
-                *   Or, la dupplication de données en javascript est compliquée, surtout lorsqu'il s'agit d'objets imbriqués.
-                *   La plupart des methodes clones existantes font de la duplication par référence, ce qui ne nous convient pas.
-                *   C'est pourquoi nous avons opté pour une methode un peu plus archaique, on fait trois fois la même chose.
-                *   Ce n'est pas extremement couteux .
-                /
-                var tabletElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
-                var mobileElement = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
-
-                for (var index in tabletElement){
-                    this.updateIframe(mobileElement[index], tabletElement[index], widgets.models[i]);
+                var elements = this.buildJqueryWidgetFromWidget(widgets.models[i], false, null);
+                for (var index in elements){
+                    this.updateIframe(elements[index], elements[index].clone(), widgets.models[i]);
                 }
-            }*/
+            }
+            mobile.ready(function () {
+                mobile.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+            });
+
+            tablet.ready(function () {
+                tablet.contents().find("body").append('<script type="text/javascript" src="' + app.Urls.js.foundation + '">');
+            });
         }
     });
 
