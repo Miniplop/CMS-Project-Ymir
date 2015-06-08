@@ -10,7 +10,7 @@ App.Views.ProjectPageView = Backbone.View.extend({
     
     initialize: function (){
        this.template = _.template($('#list-projet-template').html());
-         _.bindAll(this, 'render','unrender');
+         _.bindAll(this, 'render','unrender','removePage');
 		this.model.bind("add", this.render);
         this.model.bind("change", this.render);
 		this.model.bind("remove", this.unrender);
@@ -24,7 +24,8 @@ App.Views.ProjectPageView = Backbone.View.extend({
     
     removePage: function (e){
          var id = $(e.currentTarget).data('id'); // Récupération de l'id <3 backbone
-         var page = this.get("pages").get(id);
+        console.log(this.model);
+         var page = this.model.get("pages").get(id);
          page.destroy({},{
               success : function(){
              },
