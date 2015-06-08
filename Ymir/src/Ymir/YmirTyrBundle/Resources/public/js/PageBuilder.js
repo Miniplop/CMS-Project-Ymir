@@ -35,6 +35,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || function () {
          */
         initialize: function () {
             var thisObject = this;
+            console.log(this.page);
             var widgets = this.page.get("widgets");
             var title = this.page.get("title");
             var mobile = $("#mobile");
