@@ -95,7 +95,7 @@ class DefaultController extends BaseController
      */
     public function widgetsAction()
     {
-    	return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/widgets.json'), 200, array('Content-Type' => 'application/json'));
+    	return new Response(file_get_contents($this->get('kernel')->getRootDir().'/../web/json/meta-widgets.json'), 200, array('Content-Type' => 'application/json'));
     }
 
     /**

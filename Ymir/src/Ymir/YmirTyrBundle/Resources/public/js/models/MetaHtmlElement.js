@@ -3,7 +3,7 @@ App.Collections.MetaHtmlElementList = App.Collections.MetaHtmlElementList || {};
 /**
  * id : int
  * tag : String that represente the HTML tag (div, li, ul, h1...)
- * metaHtmlParameters : List of HTML parameter :  {"name": "class", "value": "button"}
+ * metaHtmlParameters : List of HTML parameter :  {"name": "class", "value": "button", mapped: "true"}
  * children : App.Collections.MetaHtmlElementList
  * metaProperties: App.Collections.MetaPropertyList
  * value : Value of the htmlElement. If value is not empty, children is empty

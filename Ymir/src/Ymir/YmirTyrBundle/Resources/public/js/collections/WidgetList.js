@@ -33,5 +33,13 @@ App.Collections.WidgetList = Backbone.Collection.extend({
             if((result = this.models[index].getHtmlElement(id)) != null)
                 break;
         return result;
+    },
+    /**
+     *
+     * @param elementId
+     */
+    removeHtmlElement: function(elementId) {
+        for(var index in this.models)
+            this.models[index].removeHtmlElement(elementId);
     }
 });

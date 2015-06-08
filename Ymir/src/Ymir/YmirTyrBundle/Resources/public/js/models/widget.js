@@ -42,5 +42,12 @@ App.Models.Widget = Backbone.Model.extend({
         var json =  _.clone(this.attributes);
         json.htmlElements = this.get("htmlElements").toJSON(options);
         return json;
+    },
+    /**
+     *
+     * @param elementId
+     */
+    removeHtmlElement: function(elementId) {
+        this.get("htmlElements").removeHtmlElement(elementId);
     }
 });
