@@ -30,9 +30,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          */
         initialize: function () {
             var thisObject = this;
-            console.log(this.page);
+            
             var widgets = this.page.get("widgets");
             var title = this.page.get("title");
+            console.log(widgets);
+            console.log(title);
             var mobile = $("#mobile");
             var tablet = $("#tablet");
             var title_target = $(".project-name-input");
@@ -219,14 +221,14 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          *                  if has class stage => append
          *                  else => replaceWith
          */
-        addWidget: function (jqObject, receiver, widget, parent) {
+        addWidget: function (jqObject, receiver, widget) {
             var receiver_id = receiver.data("html-element-id");
             if (receiver.data("info") == "replaceable") {
                 widget.set('order', receiver.data("order"));
                 this.addContainerClass(jqObject, receiver.attr("class"));
                 this.page.removeHtmlElement(receiver_id);
                 if (receiver.parent().attr("data-container") == "true")
-                    receiver_id = receiver.parent().data("html-element-id");
+                    receiver_id = receiver.parent().attr("data-html-element-id");
                 else
                     console.error("replaceable html element must have a container has parent");
 
@@ -234,7 +236,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             } else {
                 widget.set('order', receiver.children().length + 1);
                 receiver.append(jqObject);
-                console.log("add widget in : " + receiver_id);
             }
             this.page.addWidget(receiver_id, widget)
         },
@@ -363,7 +364,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 tablet.contents().find("body").append(tabletElement);
             });
         },
-        
+
         clearIframe: function() {
             var mobile = $("#mobile");
             var tablet = $("#tablet");

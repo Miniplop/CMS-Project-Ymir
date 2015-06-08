@@ -4,30 +4,35 @@ App.Forms.ContainerParametersForm = function(options) {
     this.initialize();
 };
 _.extend(App.Forms.ContainerParametersForm.prototype, {
+    /**
+     * @description
+     *      initializes modal to the settings from the container
+     */
 	initialize: function () {
-		
 		$('#container-modal #name').val(this.options.name);
 		$('#container-modal #nbColumns').val(this.options.nbColumns);
 		$('#container-modal #isRow').attr('checked', this.options.isRow);
-		for(var i = 1; i <= this.options.nbColumns; i++)
-			$('#container-modal .columnsSize[name=columnsSize_'+this.options.nbColumns+']').val(this.options.columnsSizes[i-1]);
-		
-		while($("#container-modal .columnsSize:last").data("column-index") > this.options.nbColumns)
-			$("#container-modal .columnsSize:last").remove();
-		
+
+        // remove previous added column (modal is not reinitialized after add so we do it on loading)
+        resetUI(this.options.nbColumns);
+
+        // when i change number of column, i add or remove their size.
 		$("#container-modal #nbColumns").on("change", function() {
 			var nbColumn = $(this).val();
-			while($("#container-modal .columnsSize:last").data("column-index") > nbColumn)
-				$("#container-modal .columnsSize:last").remove();
-			
+            // remove column if there i
+            resetUI(nbColumn);
+
+            // add missing column size choice
 			var curr_index = $("#container-modal .columnsSize:last").data("column-index") + 1;
 			while($("#container-modal .columnsSize:last").data("column-index") < nbColumn) {
-				$("#container-modal .columnsSize:last").after('<select data-column-index="'+curr_index+'" name="columnsSize_'+curr_index+'" class="columnsSize"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option> </select>');
+                addColumnChoice(curr_index);
 				curr_index++;
 			}
 				
 		});
 		(function(self) {
+            // when add is clicked, i get the settings and i add container to the stage.
+            // I refresh drop zones after that because i can drop into a container.
 			$("#container-parameters-add").on("click", function(event) {
 				$('#container-modal').foundation('reveal', 'close');
 				event.preventDefault();
@@ -39,11 +44,42 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
 		})(this);
 		$("#container-modal").foundation('reveal', 'open');
 	},
+    /**
+     * @param index
+     * @description
+     *      Create a new Column choice
+     */
+    addColumnChoice: function(index) {
+        $("#container-modal .columnsSize:last").after('<select data-column-index="'+index+'" name="columnsSize_'+index
+        +'" class="columnsSize"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>' +
+        '<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option>' +
+        '<option>12</option> </select>');
+    },
+    /**
+     * @param nbColumn
+     * @description
+     *      remove column if their data-column-index is greater than nbColumn
+     */
+    resetUI: function(nbColumn) {
+        while($("#container-modal .columnsSize:last").data("column-index") > nbColumn)
+            $("#container-modal .columnsSize:last").remove();
+
+        for(var i = 1; i <= nbColumn; i++)
+            $('#container-modal .columnsSize[name=columnsSize_'+this.options.nbColumns+']').val(12);
+    },
+
 	getContainer: function () {
 		return this.container;
 	},
+    /**
+     *
+     * @return {{meta_widget: (form.metaWidget|*), nb_column: (*|jQuery), columnsSizes: {}, parent: (*|jQuery|HTMLElement), isRow: (*|jQuery)}}
+     * @description
+     *      build the structure that describe a container.
+     */
     getContainerParameters: function () {
         var columnsSizes = {};
+        // get column size and add them to the structure.
         $("#container-modal .columnsSize").each(function(index) {
             columnsSizes[index+1] = $(this).val();
         });

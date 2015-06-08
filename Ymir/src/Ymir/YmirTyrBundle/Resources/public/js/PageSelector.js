@@ -18,7 +18,6 @@ var App = App || {};
          initialize : function() {
             (function(self) {
                 $( "body" ).on( "click", "*", function( event ) {
-                    console.log(JSON.stringify(App.PageBuilder.getPage().toJSON()));
                     if($(this).hasClass("not-disable-selection")) {
                         event.stopPropagation();
                     } else {
@@ -26,6 +25,7 @@ var App = App || {};
                     }
                 });
                 $( ".stage" ).on( "dblclick", "*", function( event ) {
+                    this.resetClass();
                     if ($(this).data("html-element-id")) {
                         self.initSelectHtmlElementUi($(this));
                     }
