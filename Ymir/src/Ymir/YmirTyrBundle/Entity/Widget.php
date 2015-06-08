@@ -158,8 +158,12 @@ class Widget
     {
         $elements = $this->sortElements();
         $code = "";
+        $offsetSmall = 0;
+        $offsetMedium = 0;
+        $offsetLarge = 0;
+        
         foreach ($elements as $e) {
-            $code .= $e->codeGen();
+            $code .= $e->codeGen($offsetSmall, $offsetMedium, $offsetLarge);
         }
         return $code;
     }

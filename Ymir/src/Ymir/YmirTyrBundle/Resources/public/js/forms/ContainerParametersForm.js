@@ -19,13 +19,15 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
         // when i change number of column, i add or remove their size.
         (function(self) {
             $("#container-modal #nbColumns").on("change", function() {
+                console.log("GO CHANGE");
                 var nbColumn = $(this).val();
                 // remove column if there i
                 self.resetUI(nbColumn);
 
                 // add missing column size choice
-                var curr_index = $("#container-modal .columnsSize:last").data("column-index") + 1;
-                while($("#container-modal .columnsSize:last").data("column-index") < nbColumn) {
+                var curr_index = $("#container-modal .row:last .columns:first").data("column-index") + 1;
+                while($("#container-modal .row:last .columns:first").data("column-index") < nbColumn) {
+                    console.log("WHILE");
                     self.addColumnChoice(curr_index);
                     curr_index++;
                 }
@@ -52,10 +54,7 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
      *      Create a new Column choice
      */
     addColumnChoice: function(index) {
-        $("#container-modal .columnsSize:last").after('<select data-column-index="'+index+'" name="columnsSize_'+index
-        +'" class="columnsSize"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>' +
-        '<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option>' +
-        '<option>12</option> </select>');
+        $("#container-modal .row:last").after('<div class="row"><select data-column-index="'+index+'" name="columnsSize_'+index+'" class="columnsSize-Large large-4 columns"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select><select data-column-index="'+index+'" name="columnsSize_'+index+'" class="columnsSize-Medium large-4 columns"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select><select data-column-index="'+index+'" name="columnsSize_'+index+'" class="columnsSize-Small large-4 columns" ><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div>');
     },
     /**
      * @param nbColumn
