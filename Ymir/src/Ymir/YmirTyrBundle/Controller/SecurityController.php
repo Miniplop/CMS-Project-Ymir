@@ -38,6 +38,13 @@ class SecurityController extends Controller
     	));
 	}
 
+	/**
+     * @Route("/register/confirmed")
+     * @Template()
+     */
+    public function confirmRegistrationAction(Request $request) {
+    	return $this->render('TyrBundle:Profil:confirm.html.twig', array());
+    }
 }
 
 

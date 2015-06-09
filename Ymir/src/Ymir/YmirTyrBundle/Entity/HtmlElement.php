@@ -209,14 +209,14 @@ class HtmlElement
                 //check if we need to add the offset in the class
                 if ($p->getName() === "class") {
                     //get the offset for the next column, if any
-                    if(preg_match($patternSmall, $p->getValue(), $offsetSmall)){
-                        $offsetSmall = $offsetSmall[1];
+                    if(preg_match($patternSmall, $p->getValue(), $offsetSmallStr)){
+                        $offsetSmall += intval($offsetSmallStr[1]);
                     }
-                    if(preg_match($patternMedium, $p->getValue(), $offsetMedium)){
-                        $offsetMedium = $offsetMedium[1];
+                    if(preg_match($patternMedium, $p->getValue(), $offsetMediumStr)){
+                        $offsetMedium += intval($offsetMediumStr[1]);
                     }
-                    if(preg_match($patternLarge, $p->getValue(), $offsetLarge)){
-                        $offsetLarge = $offsetLarge[1];
+                    if(preg_match($patternLarge, $p->getValue(), $offsetLargeStr)){
+                        $offsetLarge += intval($offsetLargeStr[1]);
                     }
                     //set the offset from the previous column, if any
                     $code .= " ".$p->getName()."=\"".$p->getValue();
@@ -264,7 +264,7 @@ class HtmlElement
         $code .= "</".$this->tag.">\n";
 
         if ($emptyContainer){
-            $code = "";
+            $code = ""."yolo".$offsetLarge;
             //pour plus tard : somme des offset
         } else {
             $offsetSmall = 0;
