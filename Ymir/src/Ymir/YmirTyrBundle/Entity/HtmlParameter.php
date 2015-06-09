@@ -56,7 +56,7 @@ class HtmlParameter
         $htmlParameter = new HtmlParameter();
         $htmlParameter->setName($params["name"]);
         $htmlParameter->setValue($params["value"]);
-        $htmlParameter->setValue($params["mapped"]);
+        $htmlParameter->setMapped($params["mapped"]);
         return $htmlParameter;
     }
 
@@ -127,7 +127,11 @@ class HtmlParameter
      */
     public function setMapped($mapped)
     {
-        $this->mapped = $mapped;
+
+        if($mapped)
+            $this->mapped = 1;
+        else
+            $this->mapped = 0;
 
         return $this;
     }
