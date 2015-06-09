@@ -60,8 +60,11 @@ var App = App || {};
                 if(selected.parent().data("container")) {
                     // icone de selection du container parent
                 }
-                //icone de suppression
             }
+            //icone de suppression du container
+            console.log(selected);
+            $($('#widget-edit').html()).offset(selected.offset()).appendTo("body");
+            console.log($('#widget-edit'));
         },
         /**
          *

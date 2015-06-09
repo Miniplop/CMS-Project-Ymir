@@ -2,7 +2,9 @@ var App = App || {};
 /**
  * name :
  * type :
- * cssName :
+ * inputType :
+ * indentifier :
+ * value
  */
 App.Models.Property = Backbone.Model.extend({
     parse: function(result) {
