@@ -179,7 +179,7 @@ class HtmlElement
     public function codeGenCssInline()
     {   
         $has_css = false;
-        $css_attr .= " style=\"";
+        $css_attr = " style=\"";
         foreach($this->getCssProperties() as $p)
         {
             $has_css = true;
@@ -223,7 +223,7 @@ class HtmlElement
             else {
                 //add the attribute
                 $code .= " ".$p->getName()."=\"";
-                if($editedParams[$p->getName()]) { //override par les properties
+                if(array_key_exists($p->getName(), $editedParams)) { //override par les properties
                     $code .= $editedParams[$p->getName()]."\"";
                 } else {
                     $code .= $p->getValue()."\""; //valeur par defaut

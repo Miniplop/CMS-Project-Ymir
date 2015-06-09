@@ -142,7 +142,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 // put column size
                 htmlElementChild.get('htmlParameters').push({
                     name: "class",
-                    value: "large-" + containerParameters.columnsSizes[i] + " columns" + (i == containerParameters.nb_column ? " end" : "")
+                    value: "large-" + containerParameters.columnsSizes[i][0] + 
+                    " medium-" + containerParameters.columnsSizes[i][1] +
+                    " small-" + containerParameters.columnsSizes[i][2] +
+                    " columns" + (i == containerParameters.nb_column ? "end" : "")
                 });
                 htmlElementChild.set('widgetChildren', new App.Collections.WidgetList());
                 htmlElementChild.set('htmlChildren', new App.Collections.HtmlElementList());
@@ -152,7 +155,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
 
                 // build subs div {*|jQuery|HTMLElement} with size, order, htmlElementId
                 var column = $('<div>');
-                column.addClass('large-' + containerParameters.columnsSizes[i] + ' droppable columns');
+                column.addClass('large-' + containerParameters.columnsSizes[i][0] +
+                    ' medium-' + containerParameters.columnsSizes[i][1] +
+                    ' small-' + containerParameters.columnsSizes[i][2] +
+                    ' droppable columns');
                 column.attr("data-info", "replaceable");
                 column.attr("data-order", i); // we need to keep order in the DOM. When this div will be replaced by a widget, widget.order will have this value
                 column.attr("data-html-element-id", htmlElementChild.get('id'));
