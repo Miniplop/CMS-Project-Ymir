@@ -44,10 +44,12 @@ App.Models.Page = Backbone.Model.extend({
      * @param widget
      */
     addWidget : function (container_html_element_id, widget) {
-        if(container_html_element_id == null)
-            this.get("widgets").add(widget);
-        else
+        if(container_html_element_id == null){
+            this.get("widgets").add(widget, {at: widget.get('order') - 1});
+        }
+        else {
             this.get("widgets").addWidget(container_html_element_id, widget);
+        }
     },
     /**
      *

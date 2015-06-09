@@ -91,10 +91,12 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
         var columnsSizes = [];
         var container = [];
         // get column size and add them to the structure.
+        var i = 0;
         $("#container-modal .row").each(function (index) {
-            var large = $("#container-modal .row .columnsSize-Large").val();
-            var medium = $("#container-modal .row .columnsSize-Medium").val();
-            var small = $("#container-modal .row .columnsSize-Small").val();
+            var large = $('#container-modal .columnsSize-Large[name=columnsSize_'+i+']').val();
+            var medium = $('#container-modal .columnsSize-Medium[name=columnsSize_'+i+']').val();
+            var small = $('#container-modal .columnsSize-Small[name=columnsSize_'+i+']').val();
+            i = i + 1;
             container = [large, medium, small];
             columnsSizes.push(container);
         });
