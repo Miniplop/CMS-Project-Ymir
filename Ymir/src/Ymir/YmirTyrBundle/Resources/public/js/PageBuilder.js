@@ -515,7 +515,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             });
             tablet.ready(function () {
                 tablet.contents().find("body").append(tabletElement);
-                //tablet.contents().find("body").find("a").removeAttr("href");
+               // tablet.contents().find("body").find("a").removeAttr("href");
             });
         },
 
