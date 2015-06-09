@@ -869,6 +869,27 @@
                   "type": "css",
                   "identifier": "text-decoration",
                   "defaultValue": "none"
+                },
+                {
+                  "name": "font style",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-style",
+                  "defaultValue": "normal"
+                },
+                {
+                  "name": "font weight",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-weight",
+                  "defaultValue": "normal"
+                },
+				{
+                  "name": "font family",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-family",
+                  "defaultValue": "Sans-serif"
                 }
               ],
               "metaHtmlParameters": [
@@ -921,6 +942,41 @@
                   "type": "css",
                   "identifier": "text-decoration",
                   "defaultValue": "none"
+                },
+                {
+                  "name": "font style",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-style",
+                  "defaultValue": "normal"
+                },
+                {
+                  "name": "font weight",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-weight",
+                  "defaultValue": "normal"
+                },
+                {
+                  "name": "font size",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-size",
+                  "defaultValue": "100%"
+                },
+				{
+                  "name": "font family",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-family",
+                  "defaultValue": "Sans-serif"
+                },
+                {
+                  "name": "line height",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "line-height",
+                  "defaultValue": "100%"
                 }
               ],
               "metaHtmlParameters": [],
