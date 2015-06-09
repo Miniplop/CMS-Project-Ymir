@@ -172,7 +172,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     {
                         name: "data-info",
                         value: "replaceable",
-                        mapped: true
+                        mapped: false
                     }
                 ];
                 var htmlElementChild = this.buildHtmlElement(this.page.getNewHtmlElementId(), "div", "", i, params, null, null, null);
