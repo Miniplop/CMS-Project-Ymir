@@ -309,6 +309,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             // add the widget the the tree
             this.page.addWidget(receiver_id, widget)
         },
+        
+        refreshStage : function(){
+            
+        },
 
         /**
          *

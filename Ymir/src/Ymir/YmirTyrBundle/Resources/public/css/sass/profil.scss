@@ -1,0 +1,65 @@
+@import "mixins";
+
+
+
+.section-projet{
+    
+    padding: 0% 10% 10%;
+    background: #343658;
+    font-family: "font-text", arial, sans-serif;
+    box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.2) inset;
+    border-radius: 3px;
+
+    .title-mesprojets{
+        padding: 0% 20%;
+        
+        h1{   
+            font-size: 3em;
+            margin: 1%;
+            text-align: center;
+            padding : 5% 10% 0%;
+            border-bottom: 1px solid $dark_grey_color;
+        }   
+    }
+    
+    div{
+         background: $light_grey_color;
+         
+        button{
+            border-radius: 3px;
+            margin-top: 2%;
+            color: white;
+            font-weight: bold !important;
+            margin-left: 5%;
+            background : #343658;
+            box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.2) inset;
+        }
+        
+        // Template
+        .project-list{
+            div{
+                padding: 0% 3%;
+                .project-title{
+                 
+                h2{
+                    font-size: 1.8em;
+                } 
+            }
+            
+                
+            }
+            
+            .content{
+                margin-left: 5%;
+            }
+                  
+        }
+        
+       
+        
+       
+        
+
+    }
+        
+}

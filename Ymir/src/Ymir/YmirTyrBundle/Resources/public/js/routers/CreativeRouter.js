@@ -35,8 +35,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
 
-
-
             //******************************************
             //
             //                    Events
@@ -54,10 +52,19 @@ App.Router.CreativeRouter = Backbone.Router.extend({
                 },2000);
 
             });
+            
+            $("#preview_page").click(function(){
+               App.PageBuilder.page.save({
+                    success:function(){
+                    },
+                    error:function(){
+                       
+                    }
+               });
+            });
+        
             $(".project-name-input").change(function(){
-                console.log("change name");
-                console.log($(this).val);
-                App.page.set("title",this.val());
+                App.PageBuilder.page.set("title",($(this).val()));
             });
         
             $("#save_page").click(function(){
@@ -65,7 +72,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
                 if (App.PageBuilder.page){
                     App.PageBuilder.page.save({
                         success:function(){
-
                         },
                         error:function(){
 

@@ -8,7 +8,6 @@ App.Router.ProfileRouter = Backbone.Router.extend({
 	},
     
 	profile: function () {
-        console.log('you are viewing profile page');
         var listprojet = new App.Collections.ProjectList();
         
         listprojet.fetch({

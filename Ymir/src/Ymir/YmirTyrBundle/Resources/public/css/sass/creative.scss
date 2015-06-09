@@ -211,6 +211,12 @@
 	cursor: move;
 }
 
+#text-edition{
+    position: absolute;
+    border: medium none !important;
+    box-shadow: none !important;
+}
+
  .stage-selected *:not(.ui-selected) {
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
