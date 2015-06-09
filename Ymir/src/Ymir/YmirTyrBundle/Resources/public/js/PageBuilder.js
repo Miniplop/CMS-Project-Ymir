@@ -484,16 +484,15 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     var htmlParameter = null;
                     var htmlElement = object.get("htmlElements").models[index];
                     for (var i in htmlElement.get("htmlParameters")) {
-                        htmlParameter = {name: "class", value: jqObject.attr("class"), mapped: "true"};
-                        htmlElement.get("htmlParameters").push(htmlParameter);
+                        if(object.get("htmlParameters")[i].name == "class")
+                            object.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
                     }
                 }
             } else if(object instanceof App.Models.HtmlElement) {
                 console.log("instanceof App.Models.HtmlElement");
                 for (var i in object.get("htmlParameters")) {
-                    if(object.get("htmlParameters")[i].name == "class") {
+                    if(object.get("htmlParameters")[i].name == "class")
                         object.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
-                    }
                 }
             }
         },
