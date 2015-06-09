@@ -65,8 +65,12 @@ var App = App || {};
                     (function(self) {
                         $("#get-widget-container").on("click", function(event) {
                             var widget_elem = self.getWidgetElement(selected.parent());
+                            console.log(widget_elem);
                             if(widget_elem != null) {
                                 self.initSelectWidgetUi(widget_elem);
+
+                                event.stopPropagation();
+                                event.preventDefault();
                             }
                         });
                     })(this);
@@ -93,7 +97,7 @@ var App = App || {};
         initializeWidgetOptionView: function(widget_id, selected, isContainer) {
             $($('#widget-edit').html()).offset(selected.offset()).appendTo("body");
             if(isContainer) {
-                $("#edit-widget-container").css("display", "block");
+                //$("#edit-widget-container").css("display", "block");
             } else {
                 if(selected.parent().attr("data-container")) {
                     $("#get-widget-container").css("display", "block");

@@ -39,7 +39,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          *
          */
         initialize: function () {
-            console.log("initialize");
             $(".stage").empty();
             var title = this.page.get("title");
             var mobile = $("#mobile");

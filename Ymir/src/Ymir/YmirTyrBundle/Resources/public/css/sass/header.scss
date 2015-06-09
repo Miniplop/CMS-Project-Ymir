@@ -1,7 +1,7 @@
 @import "compass/reset";
 @import "mixins";
 
-*:not(.stage) header {
+header {
 	height: $header_height !important;
 	>.top-bar {
 		height: 100% !important;
@@ -33,7 +33,7 @@
 	}
 }
 
-*:not(.stage) .image-profil {
+.image-profil {
 	.fi-torso {
 		font-size: 1.5rem !important;
 	}
