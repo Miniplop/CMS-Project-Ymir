@@ -27,14 +27,11 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         
             // Récupération id
         var CheminComplet = document.location.href;
-        const id_page = CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 );
-        
-            // Création d'un objet page 
-        var page = new  App.Models.Page({id : id_page});
-        page.set('widgets', new App.Collections.WidgetList());
+        var id_page = CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 );
+
         
             // Création du DOM et de ces utilisatires
-        App.PageBuilder = new App.Utils.PageBuilder(page);
+        App.PageBuilder = new App.Utils.PageBuilder(id_page);
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
         
