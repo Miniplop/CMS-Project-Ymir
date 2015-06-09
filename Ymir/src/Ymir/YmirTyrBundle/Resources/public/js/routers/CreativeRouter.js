@@ -40,11 +40,22 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             //                    Events
             //
             //******************************************
+            $("#save_page").click(function(){
+              
+                $("#save_page").addClass("success");
+                $("#save_page_icon").removeClass('fi-save');
+                $("#save_page_icon").addClass('fi-check');
+                setTimeout(function(){
+                  $("#save_page_icon").removeClass('fi-check');
+                  $("#save_page_icon").addClass('fi-save');
+                  $("#save_page").removeClass("success");
+                },2000);
+
+            });
             
             $("#preview_page").click(function(){
-               App.PageBuilder.page.save({
+               App.PageBuilder.page.save(null, {
                     success:function(){
-                        Backbone.history.navigate("/lama",true);
                     },
                     error:function(){
                        
@@ -57,13 +68,11 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             });
         
             $("#save_page").click(function(){
-                console.log("save");
                 if (App.PageBuilder.page){
-                    App.PageBuilder.page.save({
-                        success:function(){
-                        },
-                        error:function(){
-
+                    App.PageBuilder.page.save(null, {
+                        parse:true,
+                        success: function(model, response) {
+                            App.PageBuilder.initialize();
                         }
                     });
                 }
@@ -83,7 +92,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
            });
 
            $("#checkbox_tablet").click( function() {
-               if( !($(this).hasClass('active')) ){
+               if( !($(this).hasClass('active')) ) {
                     $("#mockup-tablet").css("display", "inline");
                     $(this).addClass("active");
                }
@@ -101,8 +110,7 @@ App.Router.CreativeRouter = Backbone.Router.extend({
                         $("#tablet").css('width', '420');
                         $("#tablet").addClass("iframe-rotate");
                     }*/
-                    if ($("#checkbox_mobile").hasClass('active')){
-                        console.log("rotation");
+                    if ($("#checkbox_mobile").hasClass('active')) {
                         $("#mockup-mobile").addClass("mockup-rotate");
                         $("#mobile").css('width', '334');
                         $("#mobile").addClass("iframe-rotate");

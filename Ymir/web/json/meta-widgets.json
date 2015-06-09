@@ -154,7 +154,7 @@
 	  "name": "navigation",
 	  "metaWidgets": [
 		{
-		  "id": 14,
+		  "id": 20,
 		  "name": "side nav",
 		  "htmlPreview": "<div disabled=\"true\" class=\"fi-list\">side nav</div>",
 		  "metaHtmlElements": [
@@ -847,14 +847,49 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "white"
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "background-color",
-                  "defaultValue": "#007095"
+                  "defaultValue": "#DADADA"
+                },
+                {
+                  "name": "text align",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "text-align",
+                  "defaultValue": "center"
+                },
+                {
+                  "name": "text decoration",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "text-decoration",
+                  "defaultValue": "none"
+                },
+                {
+                  "name": "font style",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-style",
+                  "defaultValue": "normal"
+                },
+                {
+                  "name": "font weight",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-weight",
+                  "defaultValue": "normal"
+                },
+				{
+                  "name": "font family",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-family",
+                  "defaultValue": "Sans-serif"
                 }
               ],
               "metaHtmlParameters": [
@@ -885,14 +920,63 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "white"
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "background-color",
-                  "defaultValue": "#007095"
+                  "defaultValue": "#DADADA"
+                },
+                {
+                  "name": "text align",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "text-align",
+                  "defaultValue": "center"
+                },
+                {
+                  "name": "text decoration",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "text-decoration",
+                  "defaultValue": "none"
+                },
+                {
+                  "name": "font style",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-style",
+                  "defaultValue": "normal"
+                },
+                {
+                  "name": "font weight",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-weight",
+                  "defaultValue": "normal"
+                },
+                {
+                  "name": "font size",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-size",
+                  "defaultValue": "100%"
+                },
+				{
+                  "name": "font family",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-family",
+                  "defaultValue": "Sans-serif"
+                },
+                {
+                  "name": "line height",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "line-height",
+                  "defaultValue": "100%"
                 }
               ],
               "metaHtmlParameters": [],

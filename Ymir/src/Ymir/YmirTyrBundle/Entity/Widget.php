@@ -148,13 +148,14 @@ class Widget
      * Generate Code Widget
      * 
     */
-    public function  codeGen()
+    public function  codeGen($offsetSmall, $offsetMedium, $offsetLarge)
     {
         $elements = $this->sortElements();
         $code = "";
-        $offsetSmall = 0;
+
+        /*$offsetSmall = 0;
         $offsetMedium = 0;
-        $offsetLarge = 0;
+        $offsetLarge = 0;*/
         
         foreach ($elements as $e) {
             $code .= $e->codeGen($offsetSmall, $offsetMedium, $offsetLarge);

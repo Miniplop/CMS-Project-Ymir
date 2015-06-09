@@ -37,6 +37,13 @@ class HtmlParameter
     private $value;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="mapped", type="boolean")
+     */
+    private $mapped;
+
+    /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="htmlParameters")
      * @ORM\JoinColumn(name="html_element_id", referencedColumnName="id", nullable=false)
@@ -49,6 +56,12 @@ class HtmlParameter
         $htmlParameter = new HtmlParameter();
         $htmlParameter->setName($params["name"]);
         $htmlParameter->setValue($params["value"]);
+        if(array_key_exists("mapped", $params)) {
+            $htmlParameter->setMapped($params["mapped"]);
+        } else {
+            $htmlParameter->setMapped(true);
+        }
+        
         return $htmlParameter;
     }
 
@@ -108,6 +121,34 @@ class HtmlParameter
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Set mapped
+     *
+     * @param boolean $mapped
+     *
+     * @return HtmlParameter
+     */
+    public function setMapped($mapped)
+    {
+
+        if($mapped)
+            $this->mapped = 1;
+        else
+            $this->mapped = 0;
+
+        return $this;
+    }
+
+    /**
+     * Get mapped
+     *
+     * @return boolean
+     */
+    public function getMapped()
+    {
+        return $this->mapped;
     }
 
     /**

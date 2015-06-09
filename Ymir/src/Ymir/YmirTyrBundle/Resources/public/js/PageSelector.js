@@ -57,14 +57,23 @@ var App = App || {};
                 event.preventDefault();
             });
             if(isContainer) {
-                $("#edit-widget-widget").on("click", function(event) {
+                $("#edit-widget-container").on("click", function(event) {
                     console.log("edit widget container");
                 });
             } else {
-                if(selected.parent().data("container")) {
-                    $("#get-widget-widget").on("click", function(event) {
-                        console.log("get widget container");
-                    });
+                if(selected.parent().attr("data-container")) {
+                    (function(self) {
+                        $("#get-widget-container").on("click", function(event) {
+                            var widget_elem = self.getWidgetElement(selected.parent());
+                            console.log(widget_elem);
+                            if(widget_elem != null) {
+                                self.initSelectWidgetUi(widget_elem);
+
+                                event.stopPropagation();
+                                event.preventDefault();
+                            }
+                        });
+                    })(this);
                 }
             }
         },
@@ -88,9 +97,9 @@ var App = App || {};
         initializeWidgetOptionView: function(widget_id, selected, isContainer) {
             $($('#widget-edit').html()).offset(selected.offset()).appendTo("body");
             if(isContainer) {
-                $("#edit-widget-container").css("display", "block");
+                //$("#edit-widget-container").css("display", "block");
             } else {
-                if(selected.parent().data("container")) {
+                if(selected.parent().attr("data-container")) {
                     $("#get-widget-container").css("display", "block");
                 }
             }
