@@ -23,11 +23,11 @@ class CssProperty extends Property
     private $id;
 
     /**
-     * @Exclude
-     * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="cssProperties")
-     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
+     * Exclude
+     * ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="cssProperties")
+     * ORM\JoinColumn(name="parent_element_id2", referencedColumnName="id")
      */
-    private $parentElement;
+    //private $parentElement;
 
     /**
      * Get id
@@ -49,29 +49,5 @@ class CssProperty extends Property
         $property->setValue($params["value"]);
 
         return $property;
-    }
-
-    /**
-     * Set parentElement
-     *
-     * @param \Ymir\YmirTyrBundle\Entity\HtmlElement $parentElement
-     *
-     * @return CssProperty
-     */
-    public function setParentElement(\Ymir\YmirTyrBundle\Entity\HtmlElement $parentElement = null)
-    {
-        $this->parentElement = $parentElement;
-
-        return $this;
-    }
-
-    /**
-     * Get parentElement
-     *
-     * @return \Ymir\YmirTyrBundle\Entity\HtmlElement
-     */
-    public function getParentElement()
-    {
-        return $this->parentElement;
     }
 }
