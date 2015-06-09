@@ -237,7 +237,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          *      Build the App.Models.HtmlElement based on the App.Models.MetaHtmlElement
          */
         buildHtmlElementModelFromMeta: function (metaHtmlElement) {
-            var htmlElement = this.buildHtmlElement(this.page.getNewHtmlElementId(), metaHtmlElement.get('tag'), metaHtmlElement.get('value'), 0, null, null, null, null);
+            var htmlElement = this.buildHtmlElement(this.page.getNewHtmlElementId(), metaHtmlElement.get('tag'), metaHtmlElement.get('value'), 1, null, null, null, null);
 
             // copy MetaHtmlElement.MetaProperties into HtmlElement.Properties
             var metaProperties = metaHtmlElement.get("metaProperties");
