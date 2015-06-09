@@ -170,8 +170,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                         mapped: true
                     },
                     {
-                        name: "data-container",
-                        value: "true",
+                        name: "data-info",
+                        value: "container",
                         mapped: true
                     }
                 ];
