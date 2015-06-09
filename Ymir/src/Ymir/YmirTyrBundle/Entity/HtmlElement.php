@@ -256,6 +256,7 @@ class HtmlElement
         $childOffsetMedium = 0;
         $childOffsetLarge = 0;
         foreach ($elements as $e) {
+            //$code .="yolooooooo".$childOffsetSmall." ".$offsetMedium." ".$offsetLarge;
             $code .= $e->codeGen($childOffsetSmall, $childOffsetMedium, $childOffsetLarge);
         }
 

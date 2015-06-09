@@ -56,7 +56,12 @@ class HtmlParameter
         $htmlParameter = new HtmlParameter();
         $htmlParameter->setName($params["name"]);
         $htmlParameter->setValue($params["value"]);
-        $htmlParameter->setMapped($params["mapped"]);
+        if(array_key_exists("mapped", $params)) {
+            $htmlParameter->setMapped($params["mapped"]);
+        } else {
+            $htmlParameter->setMapped(true);
+        }
+        
         return $htmlParameter;
     }
 
