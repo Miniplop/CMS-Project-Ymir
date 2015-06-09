@@ -3,7 +3,7 @@ Ymir project
 
 Welcome to the Ymir project.
 
-This application is developed by 4 students of Ensimag.
+This application is developed by 5 students of Ensimag.
 
 
 

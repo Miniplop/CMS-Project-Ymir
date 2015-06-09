@@ -21,7 +21,7 @@ var App = App || {};
                     if($(this).hasClass("not-disable-selection")) {
                         event.stopPropagation();
                     } else {
-                        self.resetSelectHtmlElementUi();
+                        self.resetSelectUi();
                     }
                 });
                 $( ".stage" ).on( "dblclick", "*", function( event ) {
@@ -46,23 +46,45 @@ var App = App || {};
         },
         /**
          *
+         * @param widget_id
+         * @param selected
+         */
+        initSelectWidgetListeners: function(widget_id, selected) {
+            console.log("initSelectWidgetListeners");
+            $("#delete-widget").on("click", function(event) {
+                console.log("click");
+                App.PageBuilder.removeWidget(widget_id, selected);
+                App.DragDropHandler.refreshDrop();
+                event.preventDefault();
+            });
+        },
+        /**
+         *
          * @param selected
          */
         initSelectWidgetUi: function(selected) {
             $( ".stage" ).addClass("stage-selected");
             selected.addClass("ui-selected");
             this.initializeWidgetOptionView(selected.data("widget-id"), selected, selected.data("container") != null);
+            this.initSelectWidgetListeners(selected.data("widget-id"), selected);
 
         },
+        /**
+         *
+         * @param widget_id
+         * @param selected
+         * @param isContainer
+         */
         initializeWidgetOptionView: function(widget_id, selected, isContainer) {
+            $($('#widget-edit').html()).offset(selected.offset()).appendTo("body");
             if(isContainer) {
                 // icone de modification des parametres du container.
             } else {
                 if(selected.parent().data("container")) {
                     // icone de selection du container parent
                 }
-                //icone de suppression
             }
+            //icone de suppression du container
         },
         /**
          *
@@ -83,10 +105,12 @@ var App = App || {};
         /**
          *
          */
-        resetSelectHtmlElementUi: function() {
+        resetSelectUi: function() {
             this.resetClass();
             App.creativeView.cancelPropertiesView();
             $('.toolbar-parameter').css('bottom', '-40%');
+            $('.widget-menu').remove();
+            $("#delete-widget").off();
         },
         resetClass: function() {
             $( ".stage" ).find("*").removeClass('ui-selected');
@@ -109,23 +133,24 @@ var App = App || {};
                     template = _.template($('#text-edition-template').html());
                     var offset = jqObject.offset();
                     var text_color = jqObject.css("color");
+                    var text_font = jqObject.css("font-family");
                     var bg_color = jqObject.css("background-color");
                     var parent_width = jqObject.css("width");
                     var parent_heigth = jqObject.css("height");
                     var parent_align = jqObject.css("text-align");
                     console.log(offset);
                     if(parent_align == "center"){
-                        console.log(parent_width + " " +parent_heigth);
-                        offset.top = offset.top + parent_width/2;
-                        offset.left = offset.left + parent_heigth/2; 
+                        offset.top = offset.top ;
+                        offset.left = offset.left ;
                     }
                     console.log(offset);
                     jqObject.css("color",bg_color);
                     var html = $(template({ value : htmlElement.get("value"),id: htmlElementId, size: htmlElement.get("value").length })).offset(offset);
                     html.css("color",text_color);
+                    html.css("font-family",text_font);
                     html.css("background-color",bg_color);
                     html.appendTo("body");
-                    
+                    html.focus();
                     // Peut etre optimiser
                     
                     // Activation de la perte de focus du formulaire d'edition de texte 

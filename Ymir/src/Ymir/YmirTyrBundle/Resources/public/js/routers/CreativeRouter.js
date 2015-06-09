@@ -35,16 +35,24 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
 
-
             //******************************************
             //
             //                    Events
             //
             //******************************************
-
+            
+            $("#preview_page").click(function(){
+               App.PageBuilder.page.save({
+                    success:function(){
+                        Backbone.history.navigate("/lama",true);
+                    },
+                    error:function(){
+                       
+                    }
+               });
+            });
+        
             $(".project-name-input").change(function(){
-                console.log("change name");
-                console.log(($(this).val()));
                 App.PageBuilder.page.set("title",($(this).val()));
             });
         

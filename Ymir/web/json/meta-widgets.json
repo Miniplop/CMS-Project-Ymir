@@ -150,6 +150,129 @@
       ]
     },
     {
+	  "id": 7,
+	  "name": "navigation",
+	  "metaWidgets": [
+		{
+		  "id": 14,
+		  "name": "side nav",
+		  "htmlPreview": "<div disabled=\"true\" class=\"fi-list\">side nav</div>",
+		  "metaHtmlElements": [
+			{
+			  "id": 60,
+			  "tag": "ul",
+			  "metaProperties": [
+			  	{
+                  "name": "Text color",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "color",
+                  "defaultValue": "black"
+                },
+                {
+                  "name": "Background color",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-color",
+                  "defaultValue": "#007095"
+                }
+			  ],
+			  "metaHtmlParameters": [
+				{
+				  "name": "class",
+				  "value": "side-nav",
+				  "mapped": "true"
+				}
+			  ],
+			  "children": [
+				{
+				  "id": 61,
+				  "tag": "li",
+				  "metaProperties": [],
+				  "metaHtmlParameters": [],
+				  "children": [
+					{
+					  "id": 62,
+					  "tag": "a",
+					  "metaProperties": [],
+					  "metaHtmlParameters": [
+						{
+						  "name": "href",
+						  "value": "#",
+						  "mapped": "true"
+						}
+					  ],
+					  "value": "link 1",
+					  "acceptAllCategorieAsChildren": "false",
+					  "possibleCategorieAsChildren": []
+					}
+				  ],
+				  "value": "",
+				  "acceptAllCategorieAsChildren": "false",
+				  "possibleCategorieAsChildren": []
+				},
+				{
+				  "id": 63,
+				  "tag": "li",
+				  "metaProperties": [],
+				  "metaHtmlParameters": [],
+				  "children": [
+					{
+					  "id": 64,
+					  "tag": "a",
+					  "metaProperties": [],
+					  "metaHtmlParameters": [
+						{
+						  "name": "href",
+						  "value": "#",
+						  "mapped": "true"
+						}
+					  ],
+					  "value": "link 2",
+					  "acceptAllCategorieAsChildren": "false",
+					  "possibleCategorieAsChildren": []
+					}
+				  ],
+				  "value": "",
+				  "acceptAllCategorieAsChildren": "false",
+				  "possibleCategorieAsChildren": []
+				},
+				{
+				  "id": 65,
+				  "tag": "li",
+				  "metaProperties": [],
+				  "metaHtmlParameters": [],
+				  "children": [
+					{
+					  "id": 66,
+					  "tag": "a",
+					  "metaProperties": [],
+					  "metaHtmlParameters": [
+						{
+						  "name": "href",
+						  "value": "#",
+						  "mapped": "true"
+						}
+					  ],
+					  "value": "link 3",
+					  "acceptAllCategorieAsChildren": "false",
+					  "possibleCategorieAsChildren": []
+					}
+				  ],
+				  "value": "",
+				  "acceptAllCategorieAsChildren": "false",
+				  "possibleCategorieAsChildren": []
+				}
+			  ],
+			  "value": "",
+			  "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": []
+			}
+		  ]
+		}
+	  ]
+    },
+    {
       "id": 3,
       "name": "Containers",
       "metaWidgets": [
@@ -776,7 +899,7 @@
                   "inputType": "text",
                   "type": "html",
                   "identifier": "src",
-                  "defaultValue": "https://c1.staticflickr.com/9/8830/18263689529_c2513153ba_h.jpg"
+                  "defaultValue": "http://websourcedemo.com/sites/infoconnection/Images/your%20image%20here.jpg"
                 },
                 {
                   "name": "Height",
