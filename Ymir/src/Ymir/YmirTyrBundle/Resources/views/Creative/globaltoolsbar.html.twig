@@ -5,7 +5,7 @@
         	{% if id_page is defined %}
 	            <ul class="button-group">
 					<li><button class="button" id="save_page"><i class="fi-save"></i></button></li>
-					<li><a href="{{ path('preview', { 'id_page': id_page}) }}" target="_blank"> <button class="button" id="preview_page"><i class="fi-play-video"></i></button></a></li>
+					<li><button class="button" id="preview_page"><i class="fi-play-video"></i></li>
 					<li><a href="{{ path('exportPage', { 'id_page': id_page}) }}"><button class="button" id="download_page"><i class="fi-upload"></i></button></a></li>
 				</ul>
 			{% endif %}
