@@ -49,14 +49,24 @@ var App = App || {};
          * @param widget_id
          * @param selected
          */
-        initSelectWidgetListeners: function(widget_id, selected) {
-            console.log("initSelectWidgetListeners");
+        initSelectWidgetListeners: function(widget_id, selected, isContainer) {
             $("#delete-widget").on("click", function(event) {
                 console.log("click");
                 App.PageBuilder.removeWidget(widget_id, selected);
                 App.DragDropHandler.refreshDrop();
                 event.preventDefault();
             });
+            if(isContainer) {
+                $("#edit-widget-widget").on("click", function(event) {
+                    console.log("edit widget container");
+                });
+            } else {
+                if(selected.parent().data("container")) {
+                    $("#get-widget-widget").on("click", function(event) {
+                        console.log("get widget container");
+                    });
+                }
+            }
         },
         /**
          *
@@ -66,7 +76,7 @@ var App = App || {};
             $( ".stage" ).addClass("stage-selected");
             selected.addClass("ui-selected");
             this.initializeWidgetOptionView(selected.data("widget-id"), selected, selected.data("container") != null);
-            this.initSelectWidgetListeners(selected.data("widget-id"), selected);
+            this.initSelectWidgetListeners(selected.data("widget-id"), selected, selected.data("container") != null);
 
         },
         /**
@@ -78,13 +88,13 @@ var App = App || {};
         initializeWidgetOptionView: function(widget_id, selected, isContainer) {
             $($('#widget-edit').html()).offset(selected.offset()).appendTo("body");
             if(isContainer) {
-                // icone de modification des parametres du container.
+                $("#edit-widget-container").css("display", "block");
             } else {
                 if(selected.parent().data("container")) {
-                    // icone de selection du container parent
+                    $("#get-widget-container").css("display", "block");
                 }
             }
-            //icone de suppression du container
+            $("#delete-widget").css("display", "block");
         },
         /**
          *
@@ -111,6 +121,9 @@ var App = App || {};
             $('.toolbar-parameter').css('bottom', '-40%');
             $('.widget-menu').remove();
             $("#delete-widget").off();
+            $($('#widget-edit').html()).find("#delete-widget").css("display", "none");
+            $($('#widget-edit').html()).find("#get-widget-container").css("display", "none");
+            $($('#widget-edit').html()).find("#edit-widget-container").css("display", "none");
         },
         resetClass: function() {
             $( ".stage" ).find("*").removeClass('ui-selected');
