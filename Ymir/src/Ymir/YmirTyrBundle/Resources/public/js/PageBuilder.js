@@ -155,6 +155,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var container = $('<' + metaHtmlTag + '>');
             if (containerParameters.isRow)
                 container.addClass('row');
+            this.addProperties(container, htmlElement.get("properties").models);
 
             // add droppable areas to the conatiner (replaceable div)
             for (var i = 1; i <= containerParameters.nb_column; i++) {
@@ -166,7 +167,13 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                             ' medium-' + containerParameters.columnsSizes[i][1] +
                             ' small-' + containerParameters.columnsSizes[i][2] +
                             ' droppable columns' + (i ==  containerParameters.nb_column ? ' end' : ''),
-                        mapped: true}
+                        mapped: true
+                    },
+                    {
+                        name: "data-container",
+                        value: "true",
+                        mapped: true
+                    }
                 ];
                 var htmlElementChild = this.buildHtmlElement(this.page.getNewHtmlElementId(), "div", "", i, params, null, null, null);
 

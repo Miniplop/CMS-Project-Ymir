@@ -1,7 +1,7 @@
 @import "compass/reset";
 @import "mixins";
 
-header {
+body > header {
 	height: $header_height !important;
 	>.top-bar {
 		height: 100% !important;

@@ -25,7 +25,7 @@ var App = App || {};
                     }
                 });
                 $( ".stage" ).on( "dblclick", "*", function( event ) {
-                    self.resetClass();
+                    self.resetSelectUi();
                     if ($(this).data("html-element-id")) {
                         self.initSelectHtmlElementUi($(this));
                     }
@@ -51,7 +51,6 @@ var App = App || {};
          */
         initSelectWidgetListeners: function(widget_id, selected, isContainer) {
             $("#delete-widget").on("click", function(event) {
-                console.log("click");
                 App.PageBuilder.removeWidget(widget_id, selected);
                 App.DragDropHandler.refreshDrop();
                 event.preventDefault();
@@ -64,6 +63,7 @@ var App = App || {};
                 if(selected.parent().attr("data-container")) {
                     (function(self) {
                         $("#get-widget-container").on("click", function(event) {
+                            self.resetSelectUi();
                             var widget_elem = self.getWidgetElement(selected.parent());
                             console.log(widget_elem);
                             if(widget_elem != null) {
@@ -110,10 +110,28 @@ var App = App || {};
          * @param selected
          */
         initSelectHtmlElementUi: function(selected) {
+            $($('#html-element-edit').html()).offset(selected.offset()).appendTo("body");
+            $("#get-html-element-container").css("display", "block");
+            this.initializeHtmlElementListeners(selected);
             $( ".stage" ).addClass("stage-selected");
             selected.addClass("ui-selected");
             this.initializeHtmlPropView(selected.data("html-element-id"), selected);
             this.showPropertiesToolbar();
+        },
+        initializeHtmlElementListeners: function(selected) {
+            (function(self) {
+                $("#get-html-element-container").on("click", function(event) {
+                    self.resetSelectUi();
+                    var widget_elem = self.getWidgetElement(selected.parent());
+                    console.log(widget_elem);
+                    if(widget_elem != null) {
+                        self.initSelectHtmlElementUi(widget_elem);
+
+                        event.stopPropagation();
+                        event.preventDefault();
+                    }
+                });
+            })(this);
         },
         /**
          *
