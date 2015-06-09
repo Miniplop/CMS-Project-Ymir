@@ -42,7 +42,18 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             //                    Events
             //
             //******************************************
+            $("#save_page").click(function(){
+              
+                $("#save_page").addClass("success");
+                $("#save_page_icon").removeClass('fi-save');
+                $("#save_page_icon").addClass('fi-check');
+                setTimeout(function(){
+                  $("#save_page_icon").removeClass('fi-check');
+                  $("#save_page_icon").addClass('fi-save');
+                  $("#save_page").removeClass("success");
+                },2000);
 
+            });
             $(".project-name-input").change(function(){
                 console.log("change name");
                 console.log($(this).val);
