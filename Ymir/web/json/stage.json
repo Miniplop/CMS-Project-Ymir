@@ -3,52 +3,42 @@
   "title": "Default page",
   "widgets": [
     {
-      "id": 78,
-      "meta_widget_id": 5,
+      "id": 120,
+      "order": 1,
+      "widget_children": [],
       "htmlElements": [
         {
-          "id": 123,
+          "id": 180,
           "tag": "section",
           "value": "",
           "order": 1,
-          "htmlParameters": [
-            {
-              "name": "data-container",
-              "value": "true",
-              "mapped": "false"
-            }
-          ],
+          "properties": [],
           "widgetChildren": [
             {
-              "id": 79,
-              "meta_widget_id": 6,
+              "id": 121,
+              "order": 2,
+              "widget_children": [],
               "htmlElements": [
                 {
-                  "id": 127,
+                  "id": 183,
                   "tag": "article",
                   "value": "",
                   "order": 1,
-                  "htmlParameters": [
-                    {
-                      "name": "data-container",
-                      "value": "true",
-                      "mapped": "false"
-                    }
-                  ],
+                  "properties": [],
                   "widgetChildren": [
                     {
-                      "id": 80,
+                      "id": 126,
                       "meta_widget_id": 1,
                       "htmlElements": [
                         {
-                          "id": 130,
+                          "id": 195,
                           "tag": "button",
                           "value": "Button",
                           "order": 0,
                           "htmlParameters": [
                             {
                               "name": "class",
-                              "value": "button large-6 medium-12 small-12 columns",
+                              "value": "button large-6 medium-12 small-12 columns end",
                               "mapped": "true"
                             }
                           ],
@@ -72,106 +62,212 @@
                           ]
                         }
                       ],
-                      "order": 1
+                      "order": null
                     },
                     {
-                      "id": 81,
-                      "meta_widget_id": 2,
+                      "id": 122,
+                      "order": 1,
+                      "widget_children": [],
                       "htmlElements": [
                         {
-                          "id": 131,
-                          "tag": "button",
-                          "value": "Button radius",
-                          "order": 0,
-                          "htmlParameters": [
+                          "id": 185,
+                          "tag": "div",
+                          "value": "",
+                          "order": 1,
+                          "properties": [],
+                          "widgetChildren": [
                             {
-                              "name": "class",
-                              "value": "button radius large-6 medium-12 small-12 columns end",
-                              "mapped": "true"
-                            }
-                          ],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": [
-                            {
-                              "name": "Text color",
-                              "type": "css",
-                              "inputType": "text",
-                              "identifier": "color",
-                              "value": "black"
+                              "id": 125,
+                              "meta_widget_id": 12,
+                              "htmlElements": [
+                                {
+                                  "id": 194,
+                                  "tag": "p",
+                                  "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+                                  "order": 0,
+                                  "htmlParameters": [
+                                    {
+                                      "name": "class",
+                                      "value": "large-12 medium-12 small-12 columns end",
+                                      "mapped": "true"
+                                    }
+                                  ],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "properties": [
+                                    {
+                                      "name": "Text color",
+                                      "type": "css",
+                                      "inputType": "text",
+                                      "identifier": "color",
+                                      "value": "black"
+                                    },
+                                    {
+                                      "name": "Background color",
+                                      "type": "css",
+                                      "inputType": "text",
+                                      "identifier": "background-color",
+                                      "value": "white"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "order": null
                             },
                             {
-                              "name": "Background color",
-                              "type": "css",
-                              "inputType": "text",
-                              "identifier": "background-color",
-                              "value": "#007095"
+                              "id": 124,
+                              "meta_widget_id": 12,
+                              "htmlElements": [
+                                {
+                                  "id": 193,
+                                  "tag": "p",
+                                  "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+                                  "order": 0,
+                                  "htmlParameters": [
+                                    {
+                                      "name": "class",
+                                      "value": "large-12 medium-12 small-12 columns",
+                                      "mapped": "true"
+                                    }
+                                  ],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "properties": [
+                                    {
+                                      "name": "Text color",
+                                      "type": "css",
+                                      "inputType": "text",
+                                      "identifier": "color",
+                                      "value": "black"
+                                    },
+                                    {
+                                      "name": "Background color",
+                                      "type": "css",
+                                      "inputType": "text",
+                                      "identifier": "background-color",
+                                      "value": "white"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "order": null
+                            },
+                            {
+                              "id": 123,
+                              "meta_widget_id": 11,
+                              "htmlElements": [
+                                {
+                                  "id": 192,
+                                  "tag": "h1",
+                                  "value": "Title 1",
+                                  "order": 0,
+                                  "htmlParameters": [
+                                    {
+                                      "name": "class",
+                                      "value": "subheader large-12 medium-12 small-12 columns",
+                                      "mapped": "true"
+                                    }
+                                  ],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "properties": [
+                                    {
+                                      "name": "Text color",
+                                      "type": "css",
+                                      "inputType": "text",
+                                      "identifier": "color",
+                                      "value": "black"
+                                    },
+                                    {
+                                      "name": "Background color",
+                                      "type": "css",
+                                      "inputType": "text",
+                                      "identifier": "background-color",
+                                      "value": "white"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "order": null
+                            }
+                          ],
+                          "htmlChildren": [],
+                          "htmlParameters": [
+                            {
+                              "id": 326,
+                              "name": "data-container",
+                              "value": "true"
+                            },
+                            {
+                              "id": 327,
+                              "name": "class",
+                              "value": "large-6 medium-12 small-12 columns"
                             }
                           ]
                         }
-                      ],
-                      "order": 2
+                      ]
                     }
                   ],
                   "htmlChildren": [],
-                  "properties": []
+                  "htmlParameters": [
+                    {
+                      "id": 323,
+                      "name": "data-container",
+                      "value": "true"
+                    },
+                    {
+                      "id": 324,
+                      "name": "class",
+                      "value": "large-12 medium-12 small-12 columns"
+                    }
+                  ]
                 }
-              ],
-              "order": 1
+              ]
             }
           ],
           "htmlChildren": [
             {
-              "id": 125,
+              "id": 181,
               "tag": "div",
               "value": "",
-              "order": 2,
-              "htmlParameters": [
-                {
-                  "name": "class",
-                  "value": "large-12 medium-12 small-12 columns"
-                },
-                {
-                  "name": "data-info",
-                  "value": "replaceable"
-                },
-                {
-                  "name": "data-order",
-                  "value": 2
-                }
-              ],
+              "order": 1,
+              "properties": [],
               "widgetChildren": [],
               "htmlChildren": [],
-              "properties": []
+              "htmlParameters": [
+                {
+                  "id": 321,
+                  "name": "class",
+                  "value": "large-12 medium-12 small-12 droppable columns"
+                }
+              ]
             },
             {
-              "id": 126,
+              "id": 182,
               "tag": "div",
               "value": "",
               "order": 3,
-              "htmlParameters": [
-                {
-                  "name": "class",
-                  "value": "large-12 medium-12 small-12 columns end"
-                },
-                {
-                  "name": "data-info",
-                  "value": "replaceable"
-                },
-                {
-                  "name": "data-order",
-                  "value": 3
-                }
-              ],
+              "properties": [],
               "widgetChildren": [],
               "htmlChildren": [],
-              "properties": []
+              "htmlParameters": [
+                {
+                  "id": 322,
+                  "name": "class",
+                  "value": "large-12 medium-12 small-12 droppable columns end"
+                }
+              ]
             }
           ],
-          "properties": []
+          "htmlParameters": [
+            {
+              "id": 320,
+              "name": "data-container",
+              "value": "true"
+            }
+          ]
         }
-      ],
-      "order": 1
+      ]
     }
   ]
 }
