@@ -202,18 +202,10 @@ class HtmlElement
         // Add the parameters
         foreach ($this->htmlParameters->toArray() as $p) {
             // est-ce qu'il faut rajouter le type de l'attribut ?
-            if ($p->getName() === "data-info" && $p->getValue() === "replaceable"){
+            if (($p->getName() === "data-info" && $p->getValue() === "replaceable") || !$p->getMapped()){
                 $emptyContainer = true;
             }
             else {
-                //add the attribute
-                $code .= " ".$p->getName()."=\"";
-                if(array_key_exists($p->getName(), $editedParams)) { //override par les properties
-                    $code .= $editedParams[$p->getName()]."\"";
-                } else {
-                    $code .= $p->getValue()."\""; //valeur par defaut
-                }
-
                 //check if we need to add the offset in the class
                 if ($p->getName() === "class") {
                     //get the offset for the next column, if any
@@ -238,6 +230,14 @@ class HtmlElement
                         $code .= " large-offset-".$previousOffsetLarge;
                     }
                     $code .="\"";
+                } else {
+                    //add the attribute
+                    $code .= " ".$p->getName()."=\"";
+                    if(array_key_exists($p->getName(), $editedParams)) { //override par les properties
+                        $code .= $editedParams[$p->getName()]."\"";
+                    } else {
+                        $code .= $p->getValue()."\""; //valeur par defaut
+                    }
                 }
             } 
         }
