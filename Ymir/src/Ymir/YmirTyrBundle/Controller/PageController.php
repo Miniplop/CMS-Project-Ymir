@@ -72,7 +72,7 @@ class PageController extends Controller
         $em = $this->get('doctrine')->getManager();
         foreach($widgets as $widget) {
             $em->remove($widget);
-        } 
+        }
 
         //instanciation des nouveaux elements
         $content = $request->getContent();
