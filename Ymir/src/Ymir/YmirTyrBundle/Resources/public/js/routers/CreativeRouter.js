@@ -70,11 +70,10 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             $("#save_page").click(function(){
                 console.log("save");
                 if (App.PageBuilder.page){
-                    App.PageBuilder.page.save({
-                        success:function(){
-                        },
-                        error:function(){
-
+                    App.PageBuilder.page.save(null, {
+                        parse:true,
+                        success: function(model, response) {
+                            App.PageBuilder.initialize();
                         }
                     });
                 }

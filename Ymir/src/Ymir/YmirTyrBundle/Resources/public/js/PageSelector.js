@@ -57,12 +57,12 @@ var App = App || {};
                 event.preventDefault();
             });
             if(isContainer) {
-                $("#edit-widget-widget").on("click", function(event) {
+                $("#edit-widget-container").on("click", function(event) {
                     console.log("edit widget container");
                 });
             } else {
-                if(selected.parent().data("container")) {
-                    $("#get-widget-widget").on("click", function(event) {
+                if(selected.parent().attr("data-container")) {
+                    $("#get-widget-container").on("click", function(event) {
                         console.log("get widget container");
                     });
                 }
@@ -90,7 +90,7 @@ var App = App || {};
             if(isContainer) {
                 $("#edit-widget-container").css("display", "block");
             } else {
-                if(selected.parent().data("container")) {
+                if(selected.parent().attr("data-container")) {
                     $("#get-widget-container").css("display", "block");
                 }
             }

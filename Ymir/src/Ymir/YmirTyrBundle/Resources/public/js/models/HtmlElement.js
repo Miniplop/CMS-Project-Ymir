@@ -18,10 +18,15 @@ App.Models.HtmlElement = Backbone.Model.extend({
      * @return {*}
      */
     parse: function (res) {
+        _.sortBy(res.widget_children, "order");
+        _.sortBy(res.html_children, "order");
         res.widgetChildren = new App.Collections.WidgetList(res.widget_children, {parse: true});
         res.htmlChildren = new App.Collections.HtmlElementList(res.html_children, {parse: true});
         res.properties = new App.Collections.PropertyList(res.properties, {parse: true});
         res.htmlParameters = res.html_parameters;
+        delete res.html_parameters;
+        delete res.html_children;
+        delete res.widget_children;
         return res;
     },
     /**

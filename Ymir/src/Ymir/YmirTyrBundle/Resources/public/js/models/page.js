@@ -24,9 +24,10 @@ App.Models.Page = Backbone.Model.extend({
      * @param result
      * @return {*}
      */
-    parse: function (result) {
-        result.widgets = new App.Collections.WidgetList(result.widgets, {parse: true});
-        return result;
+    parse: function (res) {
+        _.sortBy(res.widgets, "order");
+        res.widgets = new App.Collections.WidgetList(res.widgets, {parse: true});
+        return res;
     },
     /**
      *

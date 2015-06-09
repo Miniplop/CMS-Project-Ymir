@@ -154,7 +154,7 @@
 	  "name": "navigation",
 	  "metaWidgets": [
 		{
-		  "id": 14,
+		  "id": 20,
 		  "name": "side nav",
 		  "htmlPreview": "<div disabled=\"true\" class=\"fi-list\">side nav</div>",
 		  "metaHtmlElements": [
