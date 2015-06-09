@@ -491,8 +491,9 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             } else if(object instanceof App.Models.HtmlElement) {
                 console.log("instanceof App.Models.HtmlElement");
                 for (var i in object.get("htmlParameters")) {
-                    htmlParameter = {name: "class", value: jqObject.attr("class"), mapped: "true"};
-                    object.get("htmlParameters").push(htmlParameter);
+                    if(object.get("htmlParameters")[i].name == "class") {
+                        object.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
+                    }
                 }
             }
         },

@@ -226,9 +226,17 @@
   transform: translateY(-36px);
   &-item {
       padding: 5px;
+      width: 40px;
+      text-align: center;
+      display: none;
   }
   &-item:hover {
       background-color: #CECCCC;
-      border-radius: 10px 10px 0px 0px;
+  }
+  &-item:first-child:hover {
+      border-radius: 10px 0px 0px 0px;
+  }
+  &-item:last-child:hover {
+      border-radius: 0px 10px 0px 0px;
   }
 }
