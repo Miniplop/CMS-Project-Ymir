@@ -171,7 +171,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     },
                     {
                         name: "data-info",
-                        value: "container",
+                        value: "replaceable",
                         mapped: true
                     }
                 ];
