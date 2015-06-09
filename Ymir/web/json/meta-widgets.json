@@ -776,7 +776,7 @@
                   "inputType": "text",
                   "type": "html",
                   "identifier": "src",
-                  "defaultValue": "https://c1.staticflickr.com/9/8830/18263689529_c2513153ba_h.jpg"
+                  "defaultValue": "http://websourcedemo.com/sites/infoconnection/Images/your%20image%20here.jpg"
                 },
                 {
                   "name": "Height",
