@@ -84,7 +84,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         addWidgetFromMeta: function (mWidget, receiver) {
             var container_html_element_id = receiver.data("html-element-id");
             // build the App.Models.Widget
-            var widget = this.buildWidgetModelFromMeta(mWidget,container_html_element_id);
+            var widget = this.buildWidgetModelFromMeta(mWidget, container_html_element_id);
 
             // build {*|jQuery|HTMLElement}
             var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
@@ -213,7 +213,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var widget = new App.Models.Widget();
             // generate a new id from the current max widget contained in the page
             widget.set('id', this.page.getNewWidgetId());
-            console.log("buildWidgetModelFromMeta " + widget.get("id"));
 
             widget.set('meta_widget_id', mWidget.get('id'));
             widget.set('htmlElements', new App.Collections.HtmlElementList());
@@ -222,8 +221,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             for (var index in  mWidget.get("metaHtmlElements").models) {
                 var htmlElement = this.buildHtmlElementModelFromMeta(mWidget.get("metaHtmlElements").models[index]);
                 // initialize order
-                var order = parseInt(index);
-                if(order == null || order == 0)
+                var order = parseInt(index) + 1;
+                if(order == null || order == 0 || order == NaN)
                     console.error("Invalide order (" + order+") in widget : " + widget.get("id"));
                 htmlElement.set('order', order);
                 // add the the App.Models.Widget
@@ -254,7 +253,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             // build htmlElement children from MetaHtmlElement children
             for (var index in metaHtmlElement.get('children').models) {
                 var htmlElementChild = this.buildHtmlElementModelFromMeta(metaHtmlElement.get('children').models[index]);
-                htmlElementChild.set('order', parseInt(index));
+                var order = parseInt(index) + 1;
+                if(order == null || order == 0 || order == NaN)
+                    console.error("Invalide order (" + order+") in HtmlElement : " + htmlElement.get("id"));
+                htmlElementChild.set('order', order);
                 htmlElement.get('htmlChildren').add(htmlElementChild);
             }
             return htmlElement;
@@ -504,8 +506,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 for (var index in object.get("htmlElements").models) {
                     var htmlParameter = null;
                     var htmlElement = object.get("htmlElements").models[index];
-                    console.log("HTMLPARAMETER WIDGET");
-                    console.log(htmlElement.get("htmlParameters"));
                     var parameter = null;
                     for (var i in htmlElement.get("htmlParameters")) {
                         if(htmlElement.get("htmlParameters")[i].name == "class")
@@ -514,11 +514,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     if(parameter == null) {
                         htmlElement.get("htmlParameters").push({name: "class", value: jqObject.attr("class"), mapped: "true"});
                     }
-                    console.log(htmlElement.get("htmlParameters"));
                 }
             } else if(object instanceof App.Models.HtmlElement) {
-                console.log("HTMLPARAMETER HTMLELEMENT");
-                console.log(object.get("htmlParameters"));
                 var parameter = null;
                 for (var i in object.get("htmlParameters")) {
                     if(object.get("htmlParameters")[i].name == "class")
@@ -527,7 +524,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 if(parameter == null) {
                     object.get("htmlParameters").push({name: "class", value: jqObject.attr("class"), mapped: "true"});
                 }
-                console.log(object.get("htmlParameters"));
             }
         },
 

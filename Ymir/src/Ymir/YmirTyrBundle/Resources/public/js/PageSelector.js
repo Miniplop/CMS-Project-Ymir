@@ -62,9 +62,14 @@ var App = App || {};
                 });
             } else {
                 if(selected.parent().attr("data-container")) {
-                    $("#get-widget-container").on("click", function(event) {
-                        console.log("get widget container");
-                    });
+                    (function(self) {
+                        $("#get-widget-container").on("click", function(event) {
+                            var widget_elem = self.getWidgetElement(selected.parent());
+                            if(widget_elem != null) {
+                                self.initSelectWidgetUi(widget_elem);
+                            }
+                        });
+                    })(this);
                 }
             }
         },
