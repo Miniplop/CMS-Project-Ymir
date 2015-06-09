@@ -228,7 +228,7 @@ class HtmlElement
                     }
                     //set the offset from the previous column, if any
                     $code .= " ".$p->getName()."=\"".$p->getValue();
-                    if($previousOffsetSmall != -0){
+                    if($previousOffsetSmall != 0){
                         $code .= " small-offset-".$previousOffsetSmall;
                     }
                     if($previousOffsetMedium != 0){
