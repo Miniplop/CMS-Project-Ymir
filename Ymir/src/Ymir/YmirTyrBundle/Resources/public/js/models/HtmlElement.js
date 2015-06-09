@@ -39,16 +39,29 @@ App.Models.HtmlElement = Backbone.Model.extend({
     },
     /**
      *
-     * @param id
+     * @param id (number) id of the widget to return
+     * @return {*}
+     */
+    getWidget: function(id) {
+        var result = this.get("widgetChildren").getWidget(id);
+        if(result == null)
+            result = this.get("htmlChildren").getWidget(id);
+        return result;
+    },
+    /**
+     *
+     * @param id (number)
      * @return {*}
      */
     getHtmlElement: function(id) {
         if(this.get("id") == id)
             return this;
-        var result = this.get("widgetChildren").getHtmlElement(id);
-        if(result == null)
-            result = this.get("htmlChildren").getHtmlElement(id);
-        return result;
+        else {
+            var result = this.get("widgetChildren").getHtmlElement(id);
+            if(result == null)
+                result = this.get("htmlChildren").getHtmlElement(id);
+            return result;
+        }
     },
     /**
      *
@@ -64,7 +77,7 @@ App.Models.HtmlElement = Backbone.Model.extend({
     },
     /**
      *
-     * @param elementId
+     * @param elementId (number)
      */
     removeHtmlElement: function(elementId) {
         if(elementId == this.get("id")) {
@@ -74,5 +87,19 @@ App.Models.HtmlElement = Backbone.Model.extend({
             this.get("htmlChildren").removeHtmlElement(elementId);
             this.get("widgetChildren").removeHtmlElement(elementId);
         }
+    },
+
+    /**
+     *
+     * @param widgetId (number)
+     * @param replacerModel (App.Models.HtmlElement)
+     * @param replacerHtmlElementContainerId (number) Where to add replacerModel
+     */
+    removeWidget: function(widgetId, replacerModel, replacerHtmlElementContainerId) {
+        if(this.get("id") == replacerHtmlElementContainerId) {
+            this.get("htmlChildren").add(replacerModel);
+        }
+        this.get("htmlChildren").removeWidget(widgetId, replacerModel, replacerHtmlElementContainerId);
+        this.get("widgetChildren").removeWidget(widgetId, replacerModel, replacerHtmlElementContainerId);
     }
 });

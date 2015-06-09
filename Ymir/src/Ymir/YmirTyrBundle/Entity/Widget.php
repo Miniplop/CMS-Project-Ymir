@@ -34,14 +34,14 @@ class Widget
 
     /**
      * @JMS\Type("ArrayCollection<Ymir\YmirTyrBundle\Entity\HtmlElement>")
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentWidget", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentWidget", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"order" = "ASC"})
      */
     private $htmlElements;
 
     /**
      * @JMS\Type("ArrayCollection<Ymir\YmirTyrBundle\Entity\Widget>")
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentWidget", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentWidget", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"order" = "ASC"})
      */
     private $widgetChildren;
@@ -49,21 +49,21 @@ class Widget
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Page", inversedBy="widgets")
-     * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="page_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parentPage;
 
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="widgetChildren")
-     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
     private $parentElement;
 
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="widgetChildren")
-     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      */
     private $parentWidget;
 
