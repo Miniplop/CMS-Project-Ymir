@@ -131,7 +131,7 @@ class HtmlElement
         // Both table are not empty
         while ($childrenIndex < $childrenCount && $widgetIndex < $widgetCount){
                 // choosing the minimum
-            if ($this->htmlChildren->get($childrenIndex)->index <= $this->widgetChildren->get($widgetIndex)->index) {
+            if ($this->htmlChildren->get($childrenIndex)->getOrder()<= $this->widgetChildren->get($widgetIndex)->getOrder()) {
                     $table[$i] = $this->htmlChildren->get($childrenIndex);
                     $childrenIndex ++;
             } else {
@@ -168,7 +168,7 @@ class HtmlElement
         foreach($this->getCssProperties() as $p)
         {
             $has_css = true;
-            $css_attr .= $p->getName().":".$p->getValue().";";
+            $css_attr .= $p->getIdentifier().":".$p->getValue().";";
         }
         
         if($has_css)
