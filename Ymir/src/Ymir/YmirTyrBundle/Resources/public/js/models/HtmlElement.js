@@ -106,5 +106,35 @@ App.Models.HtmlElement = Backbone.Model.extend({
         }
         this.get("htmlChildren").removeWidget(widgetId, replacerModel, replacerHtmlElementContainerId);
         this.get("widgetChildren").removeWidget(widgetId, replacerModel, replacerHtmlElementContainerId);
+    },
+    /**
+     *
+     * @param order
+     * @return {App.Models.Widget|App.Models.HtmlElement}
+     */
+    getElementAtOrder : function(order) {
+        for(var index in this.get("widgetChildren").models) {
+            if(this.get("widgetChildren").models[index].get("order") == order)
+                return this.get("widgetChildren").models[index];
+
+            if(this.get("widgetChildren").models[index].get("order") > order) // ordred list by order
+                break;
+        }
+        for(var index in this.get("htmlChildren").models) {
+            if(this.get("htmlChildren").models[index].get("order") == order)
+                return this.get("htmlChildren").models[index];
+
+            if(this.get("htmlChildren").models[index].get("order") > order) // ordred list by order
+                break;
+        }
+        console.error("Invalid order (" + order + ") in html element : " + this.get("id"));
+        return null;
+    },
+    /**
+     *
+     * @return {number} size of widgetChildren + size of htmlChildren
+     */
+    getNbChildren : function() {
+        return this.get("widgetChildren").size() + this.get("htmlChildren").size();
     }
 });

@@ -160,18 +160,16 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             // add droppable areas to the conatiner (replaceable div)
             for (var i = 1; i <= containerParameters.nb_column; i++) {
                 // build sub div HtmlElement that will be replaced when we put a widget on it
-                var parameters = [
+                var params = [
                     {
                         name: "class",
-                        value: "large-" + containerParameters.columnsSizes[i][0] +
-                        " medium-" + containerParameters.columnsSizes[i][1] +
-                        " small-" + containerParameters.columnsSizes[i][2] +
-                        " columns" + (i == containerParameters.nb_column ? " end" : "")
-                    },
-                    {name: "data-info", value: "replaceable"},
-                    {name: "data-order", value: parseInt(i)}
+                        value:'large-' + containerParameters.columnsSizes[i][0] +
+                            ' medium-' + containerParameters.columnsSizes[i][1] +
+                            ' small-' + containerParameters.columnsSizes[i][2] +
+                            ' droppable columns' + (i ==  containerParameters.nb_column ? ' end' : ''),
+                        mapped: true}
                 ];
-                var htmlElementChild = this.buildHtmlElement(this.page.getNewHtmlElementId(), "div", "", i, parameters, null, null, null);
+                var htmlElementChild = this.buildHtmlElement(this.page.getNewHtmlElementId(), "div", "", i, params, null, null, null);
 
                 // add HtmlElement column to the HtmlElement container
                 htmlElement.get("htmlChildren").add(htmlElementChild);
@@ -224,7 +222,10 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             for (var index in  mWidget.get("metaHtmlElements").models) {
                 var htmlElement = this.buildHtmlElementModelFromMeta(mWidget.get("metaHtmlElements").models[index]);
                 // initialize order
-                htmlElement.set('order', parseInt(index));
+                var order = parseInt(index);
+                if(order == null || order == 0)
+                    console.error("Invalide order (" + order+") in widget : " + widget.get("id"));
+                htmlElement.set('order', order);
                 // add the the App.Models.Widget
                 widget.get("htmlElements").add(htmlElement);
             }
@@ -291,10 +292,14 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         addWidget: function (jqObject, receiver, widget) {
             var receiver_id = receiver.data("html-element-id");
             if (receiver.attr("data-info") == "replaceable") {
+
+
                 var order = parseInt(receiver.attr("data-order"));
-                if(order == null || order == 0)
+                if(order == null || order == 0 || order == NaN)
                     console.error("Invalide order ("+order+") for widget : " + widget.get("id"));
                 widget.set('order', order);
+
+                //add container classes
                 this.addContainerClass(jqObject, receiver.attr("class"), widget);
                 // remove replaceable HtmlElement (div data-info="replaceable") and add the widget as children of the container root (section, article,...)
                 this.page.removeHtmlElement(receiver_id);
@@ -308,7 +313,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 // add a new widget to something else than a container. we set order + 1 and append the object to the end.
                 // TODO: put a widget between 2 widgets
                 var order = parseInt(receiver.children().size() + 1);
-                if(order == null || order == 0)
+                if(order == null || order == 0 || order == NaN)
                     console.error("Invalide order ("+order+") for widget : " + widget.get("id"));
                 widget.set('order', order);
                 receiver.append(jqObject);
@@ -370,11 +375,12 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 }
 
                 // build HtmlElement.HtmlElementChildren and HtmlElement WidgetChildren
-                this.buildHtmlElementChildren(htmlElement, htmlElement.get("htmlChildren"), htmlElement.get("widgetChildren"), isNew, jqWidget);
+                this.buildHtmlElementChildren(htmlElement, isNew, jqWidget);
 
                 // if its a sub div of a container, we set it to replaceable and droppable
                 if (parent != null && parent.data("container")) {
                     jqWidget.attr("data-info", "replaceable");
+                    jqWidget.attr("data-order", htmlElement.get("order"));
                     jqWidget.addClass("droppable");
                 }
                 // add the text value
@@ -391,23 +397,21 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 this.updateHtmlIds(htmlElement.get('id'));
             return jqWidget;
         },
-        buildHtmlElementChildren: function(htmlElementParent, htmlElementList, widgetList, isNew, jqWidget) {
-            var size = htmlElementList.size() + widgetList.size();
-            for(var i = 0; i < size; i++) {
-                var htmlElement = htmlElementList.at(i - widgetList.size() < 0 ? 0 : i - widgetList.size());
-                console.log(i);
-                console.log(htmlElement);
-                if(htmlElement != null && parseInt(htmlElement.get("order")) == (i + 1)) {
-                    this.buildJqueryFromHtmlElement(htmlElement, isNew, jqWidget);
-                } else {
-                    var widget = widgetList.at(i - htmlElementList.size() < 0 ? 0 : i - htmlElementList.size());
-                    if(widget != null && parseInt(widget.get("order")) == (i + 1)) {
-                        this.buildJqueryWidgetFromWidget(widget, isNew, jqWidget);
-                    } else {
-                        console.error("There is no widget at order : " + (i + 1) + " in html element : " + htmlElementParent.get("id"));
-                    }
-
-                }
+        /**
+         *
+         * @param htmlElement
+         * @param isNew
+         * @param jqWidget
+         * @description
+         *      add elements in order.
+         */
+        buildHtmlElementChildren: function(htmlElement, isNew, jqWidget) {
+            for(var i = 1; i <= htmlElement.getNbChildren(); i++) {
+                var object = htmlElement.getElementAtOrder(i);
+                if(object instanceof App.Models.HtmlElement)
+                    this.buildJqueryFromHtmlElement(object, isNew, jqWidget);
+                else if (object instanceof App.Models.Widget)
+                    this.buildJqueryWidgetFromWidget(object, isNew, jqWidget);
             }
         },
         /**
@@ -462,46 +466,37 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
         addContainerClass: function (jqObject, classStr, object) {
             var widgetClassParameter = " ";
             var classes = classStr.split(' ');
+
             for (var i in classes) {
                 if (classes[i].contains('large-')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('small-')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('medium-')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('columns')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('end')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('column')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('row')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('small-block-grid-')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('medium-block-grid-')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
                 if (classes[i].contains('large-block-grid-')) {
                     if(jqObject != null) jqObject.addClass(classes[i]);
-                    widgetClassParameter.concat(" " + classes[i]);
                 }
 
             }
@@ -509,17 +504,28 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 for (var index in object.get("htmlElements").models) {
                     var htmlParameter = null;
                     var htmlElement = object.get("htmlElements").models[index];
+                    console.log("HTMLPARAMETER WIDGET");
+                    console.log(htmlElement.get("htmlParameters"));
+                    var parameter = null;
                     for (var i in htmlElement.get("htmlParameters")) {
                         if(htmlElement.get("htmlParameters")[i].name == "class")
-                            htmlElement.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
+                            parameter = htmlElement.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
+                    }
+                    if(parameter == null) {
+                        htmlElement.get("htmlParameters").push({name: "class", value: jqObject.attr("class"), mapped: "true"});
                     }
                     console.log(htmlElement.get("htmlParameters"));
                 }
             } else if(object instanceof App.Models.HtmlElement) {
-                console.log("instanceof App.Models.HtmlElement");
+                console.log("HTMLPARAMETER HTMLELEMENT");
+                console.log(object.get("htmlParameters"));
+                var parameter = null;
                 for (var i in object.get("htmlParameters")) {
                     if(object.get("htmlParameters")[i].name == "class")
-                        object.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
+                        parameter = object.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
+                }
+                if(parameter == null) {
+                    object.get("htmlParameters").push({name: "class", value: jqObject.attr("class"), mapped: "true"});
                 }
                 console.log(object.get("htmlParameters"));
             }
