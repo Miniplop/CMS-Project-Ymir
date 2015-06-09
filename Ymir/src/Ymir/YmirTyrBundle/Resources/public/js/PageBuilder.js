@@ -512,11 +512,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var thisObject = this;
             mobile.ready(function () {
                 mobile.contents().find("body").append(mobileElement);
-                mobile.contents().find("body").find("a").removeAttr("href");
+               // mobile.contents().find("body").find("a").removeAttr("href");
             });
             tablet.ready(function () {
                 tablet.contents().find("body").append(tabletElement);
-                tablet.contents().find("body").find("a").removeAttr("href");
+                //tablet.contents().find("body").find("a").removeAttr("href");
             });
         },
 
