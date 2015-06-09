@@ -1,4 +1,6 @@
 {
+  "id": 1,
+  "title": "Default page",
   "widgets": [
     {
       "id": 1,
@@ -378,154 +380,75 @@
           "widgetChildren": [
             {
               "id": 3,
-              "meta_widget_id": 6,
+              "meta_widget_id": 1,
               "htmlElements": [
                 {
                   "id": 26,
-                  "tag": "article",
-                  "value": "",
+                  "tag": "button",
+                  "value": "Button",
                   "htmlParameters": [
                     {
-                      "name": "data-container",
-                      "value": "true",
-                      "mapped": "false"
-                    }
-                  ],
-                  "widgetChildren": [
-                    {
-                      "id": 6,
-                      "meta_widget_id": 11,
-                      "htmlElements": [
-                        {
-                          "id": 32,
-                          "tag": "h1",
-                          "value": "Title 1",
-                          "htmlParameters": [
-                            {
-                              "name": "class",
-                              "value": "subheader",
-                              "mapped": "true"
-                            }
-                          ],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": [
-                            {
-                              "name": "Text color",
-                              "type": "css",
-                              "inputType": "text",
-                              "identifier": "color",
-                              "value": "black"
-                            },
-                            {
-                              "name": "Background color",
-                              "type": "css",
-                              "inputType": "text",
-                              "identifier": "background-color",
-                              "value": "white"
-                            }
-                          ],
-                          "order": "0"
-                        }
-                      ],
-                      "order": 1
+                      "name": "class",
+                      "value": "button",
+                      "mapped": "true"
                     },
                     {
-                      "id": 7,
-                      "meta_widget_id": 12,
-                      "htmlElements": [
-                        {
-                          "id": 33,
-                          "tag": "p",
-                          "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
-                          "htmlParameters": [],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": [
-                            {
-                              "name": "Text color",
-                              "type": "css",
-                              "inputType": "text",
-                              "identifier": "color",
-                              "value": "black"
-                            },
-                            {
-                              "name": "Background color",
-                              "type": "css",
-                              "inputType": "text",
-                              "identifier": "background-color",
-                              "value": "white"
-                            }
-                          ],
-                          "order": "0"
-                        }
-                      ],
-                      "order": 2
+                      "name": "class",
+                      "value": "button large-undefined columns",
+                      "mapped": "true"
                     }
                   ],
+                  "widgetChildren": [],
                   "htmlChildren": [],
-                  "properties": []
+                  "properties": [
+                    {
+                      "name": "Text color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "color",
+                      "value": "black"
+                    },
+                    {
+                      "name": "Background color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "background-color",
+                      "value": "#007095"
+                    }
+                  ],
+                  "order": "0"
                 }
               ],
               "order": 1
             },
             {
               "id": 4,
-              "meta_widget_id": 6,
+              "meta_widget_id": 12,
               "htmlElements": [
                 {
-                  "id": 29,
-                  "tag": "article",
-                  "value": "",
-                  "htmlParameters": [
-                    {
-                      "name": "data-container",
-                      "value": "true",
-                      "mapped": "false"
-                    }
-                  ],
-                  "widgetChildren": [
-                    {
-                      "id": 5,
-                      "meta_widget_id": 1,
-                      "htmlElements": [
-                        {
-                          "id": 31,
-                          "tag": "button",
-                          "value": "Button",
-                          "htmlParameters": [
-                            {
-                              "name": "class",
-                              "value": "button",
-                              "mapped": "true"
-                            }
-                          ],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": [
-                            {
-                              "name": "Text color",
-                              "type": "css",
-                              "inputType": "text",
-                              "identifier": "color",
-                              "value": "white"
-                            },
-                            {
-                              "name": "Background color",
-                              "type": "css",
-                              "inputType": "text",
-                              "identifier": "background-color",
-                              "value": "#007095"
-                            }
-                          ],
-                          "order": "0"
-                        }
-                      ],
-                      "order": 1
-                    }
-                  ],
+                  "id": 27,
+                  "tag": "p",
+                  "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+                  "htmlParameters": [],
+                  "widgetChildren": [],
                   "htmlChildren": [],
-                  "properties": []
+                  "properties": [
+                    {
+                      "name": "Text color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "color",
+                      "value": "white"
+                    },
+                    {
+                      "name": "Background color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "background-color",
+                      "value": "#007095"
+                    }
+                  ],
+                  "order": "0"
                 }
               ],
               "order": 2

@@ -25,7 +25,7 @@ var App = App || {};
                     }
                 });
                 $( ".stage" ).on( "dblclick", "*", function( event ) {
-                    this.resetClass();
+                    self.resetClass();
                     if ($(this).data("html-element-id")) {
                         self.initSelectHtmlElementUi($(this));
                     }

@@ -67,12 +67,6 @@ class Widget
      */
     private $parentWidget;
 
-    /**
-     * Exclude
-     * ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaWidget", inversedBy="widgets")
-     * ORM\JoinColumn(name="meta_widget_id", referencedColumnName="id")
-     */
-    //private $meta_widget;
 
     public function __construct()
     {
@@ -158,8 +152,12 @@ class Widget
     {
         $elements = $this->sortElements();
         $code = "";
+        $offsetSmall = 0;
+        $offsetMedium = 0;
+        $offsetLarge = 0;
+        
         foreach ($elements as $e) {
-            $code .= $e->codeGen();
+            $code .= $e->codeGen($offsetSmall, $offsetMedium, $offsetLarge);
         }
         return $code;
     }

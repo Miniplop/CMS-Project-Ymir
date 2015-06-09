@@ -15,8 +15,7 @@ App.Models.Page = Backbone.Model.extend({
      *
      */
     initialize: function() {
-        var base = "http://127.0.0.1:8000/pages" 
-        this.url = base + (base.charAt(base.length - 1) == '/' ? '' : '/')+ this.id;
+        this.urlRoot = App.Urls.page+"pages/";
         this.idWidgetGenerator = 0;
         this.idHtmlElementGenerator = 0;
     },
@@ -45,6 +44,7 @@ App.Models.Page = Backbone.Model.extend({
      * @param widget
      */
     addWidget : function (container_html_element_id, widget) {
+        console.log("add widget Page");
         if(container_html_element_id == null)
             this.get("widgets").add(widget);
         else

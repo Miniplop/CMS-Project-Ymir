@@ -56,4 +56,28 @@ class User extends BaseUser
     {
         return $this->projects;
     }
+
+    /**
+     * Add project
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Project $project
+     *
+     * @return User
+     */
+    public function addProject(\Ymir\YmirTyrBundle\Entity\Project $project)
+    {
+        $this->projects[] = $project;
+
+        return $this;
+    }
+
+    /**
+     * Remove project
+     *
+     * @param \Ymir\YmirTyrBundle\Entity\Project $project
+     */
+    public function removeProject(\Ymir\YmirTyrBundle\Entity\Project $project)
+    {
+        $this->projects->removeElement($project);
+    }
 }
