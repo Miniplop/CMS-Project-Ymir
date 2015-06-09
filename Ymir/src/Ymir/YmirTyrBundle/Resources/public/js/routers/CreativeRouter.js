@@ -35,29 +35,45 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
 
-
-
             //******************************************
             //
             //                    Events
             //
             //******************************************
+            $("#save_page").click(function(){
+              
+                $("#save_page").addClass("success");
+                $("#save_page_icon").removeClass('fi-save');
+                $("#save_page_icon").addClass('fi-check');
+                setTimeout(function(){
+                  $("#save_page_icon").removeClass('fi-check');
+                  $("#save_page_icon").addClass('fi-save');
+                  $("#save_page").removeClass("success");
+                },2000);
 
+            });
+            
+            $("#preview_page").click(function(){
+               App.PageBuilder.page.save({
+                    success:function(){
+                    },
+                    error:function(){
+                       
+                    }
+               });
+            });
+        
             $(".project-name-input").change(function(){
-                console.log("change name");
-                console.log($(this).val);
-                App.page.set("title",this.val());
+                App.PageBuilder.page.set("title",($(this).val()));
             });
         
             $("#save_page").click(function(){
                 console.log("save");
                 if (App.PageBuilder.page){
-                    App.PageBuilder.page.save({
-                        success:function(){
-
-                        },
-                        error:function(){
-
+                    App.PageBuilder.page.save(null, {
+                        parse:true,
+                        success: function(model, response) {
+                            App.PageBuilder.initialize();
                         }
                     });
                 }

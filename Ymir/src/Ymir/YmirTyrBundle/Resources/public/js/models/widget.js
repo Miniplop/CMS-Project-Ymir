@@ -14,7 +14,9 @@ App.Models.Widget = Backbone.Model.extend({
      * @return {*}
      */
     parse: function (res) {
+        _.sortBy(res.html_elements, "order");
         res.htmlElements = new App.Collections.HtmlElementList(res.html_elements, {parse: true});
+        delete res.html_elements;
         return res;
     },
     /**
