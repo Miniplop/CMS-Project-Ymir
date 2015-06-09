@@ -40,11 +40,22 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             //                    Events
             //
             //******************************************
+            $("#save_page").click(function(){
+              
+                $("#save_page").addClass("success");
+                $("#save_page_icon").removeClass('fi-save');
+                $("#save_page_icon").addClass('fi-check');
+                setTimeout(function(){
+                  $("#save_page_icon").removeClass('fi-check');
+                  $("#save_page_icon").addClass('fi-save');
+                  $("#save_page").removeClass("success");
+                },2000);
+
+            });
             
             $("#preview_page").click(function(){
                App.PageBuilder.page.save({
                     success:function(){
-                        Backbone.history.navigate("/lama",true);
                     },
                     error:function(){
                        
