@@ -25,7 +25,7 @@ var App = App || {};
                     }
                 });
                 $( ".stage" ).on( "dblclick", "*", function( event ) {
-                    self.resetClass();
+                    self.resetSelectUi();
                     if ($(this).data("html-element-id")) {
                         self.initSelectHtmlElementUi($(this));
                     }
@@ -51,7 +51,6 @@ var App = App || {};
          */
         initSelectWidgetListeners: function(widget_id, selected, isContainer) {
             $("#delete-widget").on("click", function(event) {
-                console.log("click");
                 App.PageBuilder.removeWidget(widget_id, selected);
                 App.DragDropHandler.refreshDrop();
                 event.preventDefault();
@@ -64,6 +63,7 @@ var App = App || {};
                 if(selected.parent().attr("data-container")) {
                     (function(self) {
                         $("#get-widget-container").on("click", function(event) {
+                            self.resetSelectUi();
                             var widget_elem = self.getWidgetElement(selected.parent());
                             console.log(widget_elem);
                             if(widget_elem != null) {
@@ -110,10 +110,28 @@ var App = App || {};
          * @param selected
          */
         initSelectHtmlElementUi: function(selected) {
+            $($('#html-element-edit').html()).offset(selected.offset()).appendTo("body");
+            $("#get-html-element-container").css("display", "block");
+            this.initializeHtmlElementListeners(selected);
             $( ".stage" ).addClass("stage-selected");
             selected.addClass("ui-selected");
             this.initializeHtmlPropView(selected.data("html-element-id"), selected);
             this.showPropertiesToolbar();
+        },
+        initializeHtmlElementListeners: function(selected) {
+            (function(self) {
+                $("#get-html-element-container").on("click", function(event) {
+                    self.resetSelectUi();
+                    var widget_elem = self.getWidgetElement(selected.parent());
+                    console.log(widget_elem);
+                    if(widget_elem != null) {
+                        self.initSelectHtmlElementUi(widget_elem);
+
+                        event.stopPropagation();
+                        event.preventDefault();
+                    }
+                });
+            })(this);
         },
         /**
          *
@@ -152,44 +170,16 @@ var App = App || {};
                 if(htmlElement.get("value")){
                     
                     // Récupération du template
-                    template = _.template($('#text-edition-template').html());
-                    var offset = jqObject.offset();
-                    var text_color = jqObject.css("color");
-                    var text_font = jqObject.css("font-family");
-                    var bg_color = jqObject.css("background-color");
-                    var parent_width = jqObject.css("width");
-                    var parent_heigth = jqObject.css("height");
-                    var parent_align = jqObject.css("text-align");
-                    console.log(offset);
-                    if(parent_align == "center"){
-                        offset.top = offset.top ;
-                        offset.left = offset.left ;
-                    }
-                    console.log(offset);
-                    jqObject.css("color",bg_color);
-                    var html = $(template({ value : htmlElement.get("value"),id: htmlElementId, size: htmlElement.get("value").length })).offset(offset);
-                    html.css("color",text_color);
-                    html.css("font-family",text_font);
-                    html.css("background-color",bg_color);
-                    html.appendTo("body");
-                    html.focus();
+                    jqObject.attr('contenteditable','true');
+                    jqObject.addClass('editing');
+                    jqObject.focus();
                     // Peut etre optimiser
                     
                     // Activation de la perte de focus du formulaire d'edition de texte 
-                    $("#text-edition").blur(function(event){
-                        App.PageBuilder.getPage().getHtmlElement(htmlElementId).set("value",$(this).val());
-                        jqObject.css("color",text_color);
-                        jqObject.text($(this).val());
-                        html.remove(); // Suppression du template sur le dom
-                         App.PageBuilder.reloadIframe();
-                    });
-                    
-                    // Activation du submit du formulaire d'edition de texte 
-                    $("#text-edition").change(function(event){
-                        App.PageBuilder.getPage().getHtmlElement(htmlElementId).set("value",$(this).val());
-                        jqObject.css("color",text_color);
-                        jqObject.text($(this).val());
-                        html.remove(); // Suppression du template sur le dom
+                    $(".editing").blur(function(event){
+                        console.log("blur");
+                        App.PageBuilder.getPage().getHtmlElement(htmlElementId).set("value",$(this).text());
+                        jqObject.removeClass('editing');
                         App.PageBuilder.reloadIframe();
                     });
                 }

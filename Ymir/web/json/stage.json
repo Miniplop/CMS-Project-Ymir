@@ -3,364 +3,565 @@
   "title": "Default page",
   "widgets": [
     {
-      "id": 1,
-      "meta_widget_id": 10,
+      "id": 6,
+      "order": 1,
+      "widget_children": [],
       "htmlElements": [
         {
-          "id": 1,
-          "tag": "nav",
+          "id": 69,
+          "tag": "header",
+          "value": "",
+          "order": 1,
+          "properties": [
+            {
+              "id": 125,
+              "name": "overflow",
+              "input_type": "text",
+              "type": "css",
+              "identifier": "overflow",
+              "value": "auto",
+              "inputType": "text"
+            }
+          ],
+          "widgetChildren": [
+            {
+              "id": 7,
+              "order": 1,
+              "widget_children": [],
+              "htmlElements": [
+                {
+                  "id": 70,
+                  "tag": "nav",
+                  "value": "",
+                  "order": 1,
+                  "properties": [],
+                  "widgetChildren": [],
+                  "htmlChildren": [
+                    {
+                      "id": 71,
+                      "tag": "ul",
+                      "value": "",
+                      "order": 1,
+                      "properties": [],
+                      "widgetChildren": [],
+                      "htmlChildren": [
+                        {
+                          "id": 72,
+                          "tag": "li",
+                          "value": "",
+                          "order": 1,
+                          "properties": [],
+                          "widgetChildren": [],
+                          "htmlChildren": [
+                            {
+                              "id": 73,
+                              "tag": "h1",
+                              "value": "",
+                              "order": 1,
+                              "properties": [],
+                              "widgetChildren": [],
+                              "htmlChildren": [
+                                {
+                                  "id": 74,
+                                  "tag": "a",
+                                  "value": "",
+                                  "order": 1,
+                                  "properties": [],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "htmlParameters": [
+                                    {
+                                      "id": 28,
+                                      "name": "href",
+                                      "value": "#",
+                                      "mapped": true
+                                    }
+                                  ]
+                                }
+                              ],
+                              "htmlParameters": []
+                            }
+                          ],
+                          "htmlParameters": [
+                            {
+                              "id": 27,
+                              "name": "class",
+                              "value": "name",
+                              "mapped": true
+                            }
+                          ]
+                        },
+                        {
+                          "id": 75,
+                          "tag": "li",
+                          "value": "",
+                          "order": 2,
+                          "properties": [],
+                          "widgetChildren": [],
+                          "htmlChildren": [
+                            {
+                              "id": 76,
+                              "tag": "a",
+                              "value": "",
+                              "order": 1,
+                              "properties": [],
+                              "widgetChildren": [],
+                              "htmlChildren": [
+                                {
+                                  "id": 77,
+                                  "tag": "span",
+                                  "value": "Menu",
+                                  "order": 1,
+                                  "properties": [],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "htmlParameters": []
+                                }
+                              ],
+                              "htmlParameters": [
+                                {
+                                  "id": 30,
+                                  "name": "href",
+                                  "value": "#",
+                                  "mapped": true
+                                }
+                              ]
+                            }
+                          ],
+                          "htmlParameters": [
+                            {
+                              "id": 29,
+                              "name": "class",
+                              "value": "toggle-topbar menu-icon",
+                              "mapped": true
+                            }
+                          ]
+                        }
+                      ],
+                      "htmlParameters": [
+                        {
+                          "id": 26,
+                          "name": "class",
+                          "value": "title-area",
+                          "mapped": true
+                        }
+                      ]
+                    },
+                    {
+                      "id": 78,
+                      "tag": "section",
+                      "value": "",
+                      "order": 2,
+                      "properties": [],
+                      "widgetChildren": [],
+                      "htmlChildren": [
+                        {
+                          "id": 79,
+                          "tag": "ul",
+                          "value": "",
+                          "order": 1,
+                          "properties": [],
+                          "widgetChildren": [],
+                          "htmlChildren": [
+                            {
+                              "id": 80,
+                              "tag": "li",
+                              "value": "",
+                              "order": 1,
+                              "properties": [],
+                              "widgetChildren": [],
+                              "htmlChildren": [
+                                {
+                                  "id": 81,
+                                  "tag": "a",
+                                  "value": "Right Button Active",
+                                  "order": 1,
+                                  "properties": [],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "htmlParameters": [
+                                    {
+                                      "id": 34,
+                                      "name": "href",
+                                      "value": "#",
+                                      "mapped": true
+                                    }
+                                  ]
+                                }
+                              ],
+                              "htmlParameters": [
+                                {
+                                  "id": 33,
+                                  "name": "class",
+                                  "value": "active",
+                                  "mapped": true
+                                }
+                              ]
+                            },
+                            {
+                              "id": 82,
+                              "tag": "li",
+                              "value": "",
+                              "order": 2,
+                              "properties": [],
+                              "widgetChildren": [],
+                              "htmlChildren": [
+                                {
+                                  "id": 83,
+                                  "tag": "a",
+                                  "value": "Right Button Dropdown",
+                                  "order": 1,
+                                  "properties": [],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "htmlParameters": [
+                                    {
+                                      "id": 36,
+                                      "name": "href",
+                                      "value": "#",
+                                      "mapped": true
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": 84,
+                                  "tag": "ul",
+                                  "value": "",
+                                  "order": 2,
+                                  "properties": [],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [
+                                    {
+                                      "id": 85,
+                                      "tag": "li",
+                                      "value": "",
+                                      "order": 1,
+                                      "properties": [],
+                                      "widgetChildren": [],
+                                      "htmlChildren": [
+                                        {
+                                          "id": 86,
+                                          "tag": "a",
+                                          "value": "First link in dropdown",
+                                          "order": 1,
+                                          "properties": [],
+                                          "widgetChildren": [],
+                                          "htmlChildren": [],
+                                          "htmlParameters": [
+                                            {
+                                              "id": 38,
+                                              "name": "href",
+                                              "value": "#",
+                                              "mapped": true
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "htmlParameters": []
+                                    },
+                                    {
+                                      "id": 87,
+                                      "tag": "li",
+                                      "value": "",
+                                      "order": 2,
+                                      "properties": [],
+                                      "widgetChildren": [],
+                                      "htmlChildren": [
+                                        {
+                                          "id": 88,
+                                          "tag": "a",
+                                          "value": "Active link in dropdown",
+                                          "order": 1,
+                                          "properties": [],
+                                          "widgetChildren": [],
+                                          "htmlChildren": [],
+                                          "htmlParameters": [
+                                            {
+                                              "id": 40,
+                                              "name": "href",
+                                              "value": "#",
+                                              "mapped": true
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "htmlParameters": [
+                                        {
+                                          "id": 39,
+                                          "name": "class",
+                                          "value": "active",
+                                          "mapped": true
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "htmlParameters": [
+                                    {
+                                      "id": 37,
+                                      "name": "class",
+                                      "value": "dropdown",
+                                      "mapped": true
+                                    }
+                                  ]
+                                }
+                              ],
+                              "htmlParameters": [
+                                {
+                                  "id": 35,
+                                  "name": "class",
+                                  "value": "has-dropdown",
+                                  "mapped": true
+                                }
+                              ]
+                            }
+                          ],
+                          "htmlParameters": [
+                            {
+                              "id": 32,
+                              "name": "class",
+                              "value": "right",
+                              "mapped": true
+                            }
+                          ]
+                        },
+                        {
+                          "id": 89,
+                          "tag": "ul ",
+                          "value": "",
+                          "order": 2,
+                          "properties": [],
+                          "widgetChildren": [],
+                          "htmlChildren": [
+                            {
+                              "id": 90,
+                              "tag": "li ",
+                              "value": "",
+                              "order": 1,
+                              "properties": [],
+                              "widgetChildren": [],
+                              "htmlChildren": [
+                                {
+                                  "id": 91,
+                                  "tag": "a ",
+                                  "value": "Left Nav Button",
+                                  "order": 1,
+                                  "properties": [],
+                                  "widgetChildren": [],
+                                  "htmlChildren": [],
+                                  "htmlParameters": [
+                                    {
+                                      "id": 42,
+                                      "name": "href",
+                                      "value": "#",
+                                      "mapped": true
+                                    }
+                                  ]
+                                }
+                              ],
+                              "htmlParameters": []
+                            }
+                          ],
+                          "htmlParameters": [
+                            {
+                              "id": 41,
+                              "name": "class",
+                              "value": "left",
+                              "mapped": true
+                            }
+                          ]
+                        }
+                      ],
+                      "htmlParameters": [
+                        {
+                          "id": 31,
+                          "name": "class",
+                          "value": "top-bar-section",
+                          "mapped": true
+                        }
+                      ]
+                    }
+                  ],
+                  "htmlParameters": [
+                    {
+                      "id": 23,
+                      "name": "class",
+                      "value": "top-bar large-12 medium-12 small-12 columns end",
+                      "mapped": true
+                    },
+                    {
+                      "id": 24,
+                      "name": "data-topbar",
+                      "value": "",
+                      "mapped": true
+                    },
+                    {
+                      "id": 25,
+                      "name": "role",
+                      "value": "navigation",
+                      "mapped": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "htmlChildren": [],
+          "htmlParameters": [
+            {
+              "id": 22,
+              "name": "data-container",
+              "value": "true",
+              "mapped": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "meta_widget_id": 5,
+      "htmlElements": [
+        {
+          "id": 97,
+          "tag": "section",
           "value": "",
           "order": 1,
           "htmlParameters": [
             {
-              "name": "class",
-              "value": "top-bar",
-              "mapped": "true"
-            },
-            {
-              "name": "data-topbar",
-              "value": "",
-              "mapped": "true"
-            },
-            {
-              "name": "role",
-              "value": "navigation",
-              "mapped": "true"
+              "name": "data-container",
+              "value": "true",
+              "mapped": "false"
             }
           ],
-          "widgetChildren": [],
-          "htmlChildren": [
+          "widgetChildren": [
             {
-              "id": 2,
-              "tag": "ul",
-              "value": "",
-              "order": 1,
-              "htmlParameters": [
+              "id": 12,
+              "meta_widget_id": 1,
+              "htmlElements": [
                 {
-                  "name": "class",
-                  "value": "title-area",
-                  "mapped": "true"
-                }
-              ],
-              "widgetChildren": [],
-              "htmlChildren": [
-                {
-                  "id": 3,
-                  "tag": "li",
-                  "value": "",
+                  "id": 101,
+                  "tag": "button",
+                  "value": "Button",
                   "order": 1,
                   "htmlParameters": [
                     {
                       "name": "class",
-                      "value": "name",
+                      "value": "button large-4 medium-12 small-12 columns",
                       "mapped": "true"
                     }
                   ],
                   "widgetChildren": [],
-                  "htmlChildren": [
+                  "htmlChildren": [],
+                  "properties": [
                     {
-                      "id": 4,
-                      "tag": "h1",
-                      "value": "",
-                      "order": 1,
-                      "htmlParameters": [],
-                      "widgetChildren": [],
-                      "htmlChildren": [
-                        {
-                          "id": 5,
-                          "tag": "a",
-                          "value": "",
-                          "order": 1,
-                          "htmlParameters": [
-                            {
-                              "name": "href",
-                              "value": "#",
-                              "mapped": "true"
-                            }
-                          ],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": []
-                        }
-                      ],
-                      "properties": []
+                      "name": "Text color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "color",
+                      "value": "white"
+                    },
+                    {
+                      "name": "Background color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "background-color",
+                      "value": "#007095"
                     }
-                  ],
-                  "properties": []
-                },
+                  ]
+                }
+              ],
+              "order": 1
+            },
+            {
+              "id": 13,
+              "meta_widget_id": 1,
+              "htmlElements": [
                 {
-                  "id": 6,
-                  "tag": "li",
-                  "value": "",
-                  "order": 2,
+                  "id": 102,
+                  "tag": "button",
+                  "value": "Button",
+                  "order": 1,
                   "htmlParameters": [
                     {
                       "name": "class",
-                      "value": "toggle-topbar menu-icon",
+                      "value": "button large-4 medium-12 small-12 columns end",
                       "mapped": "true"
                     }
                   ],
                   "widgetChildren": [],
-                  "htmlChildren": [
+                  "htmlChildren": [],
+                  "properties": [
                     {
-                      "id": 7,
-                      "tag": "a",
-                      "value": "",
-                      "order": 1,
-                      "htmlParameters": [
-                        {
-                          "name": "href",
-                          "value": "#",
-                          "mapped": "true"
-                        }
-                      ],
-                      "widgetChildren": [],
-                      "htmlChildren": [
-                        {
-                          "id": 8,
-                          "tag": "span",
-                          "value": "Menu",
-                          "order": 1,
-                          "htmlParameters": [],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": []
-                        }
-                      ],
-                      "properties": []
+                      "name": "Text color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "color",
+                      "value": "white"
+                    },
+                    {
+                      "name": "Background color",
+                      "type": "css",
+                      "inputType": "text",
+                      "identifier": "background-color",
+                      "value": "#007095"
                     }
-                  ],
-                  "properties": []
+                  ]
                 }
               ],
-              "properties": []
-            },
+              "order": 3
+            }
+          ],
+          "htmlChildren": [
             {
-              "id": 9,
-              "tag": "section",
+              "id": 99,
+              "tag": "div",
               "value": "",
               "order": 2,
               "htmlParameters": [
                 {
                   "name": "class",
-                  "value": "top-bar-section",
-                  "mapped": "true"
+                  "value": "large-4 medium-12 small-12 droppable columns",
+                  "mapped": true
                 }
               ],
               "widgetChildren": [],
-              "htmlChildren": [
-                {
-                  "id": 10,
-                  "tag": "ul",
-                  "value": "",
-                  "order": 1,
-                  "htmlParameters": [
-                    {
-                      "name": "class",
-                      "value": "right",
-                      "mapped": "true"
-                    }
-                  ],
-                  "widgetChildren": [],
-                  "htmlChildren": [
-                    {
-                      "id": 11,
-                      "tag": "li",
-                      "value": "",
-                      "order": 1,
-                      "htmlParameters": [
-                        {
-                          "name": "class",
-                          "value": "active",
-                          "mapped": "true"
-                        }
-                      ],
-                      "widgetChildren": [],
-                      "htmlChildren": [
-                        {
-                          "id": 12,
-                          "tag": "a",
-                          "value": "Right Button Active",
-                          "order": 1,
-                          "htmlParameters": [
-                            {
-                              "name": "href",
-                              "value": "#",
-                              "mapped": "true"
-                            }
-                          ],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": []
-                        }
-                      ],
-                      "properties": []
-                    },
-                    {
-                      "id": 13,
-                      "tag": "li",
-                      "value": "",
-                      "order": 2,
-                      "htmlParameters": [
-                        {
-                          "name": "class",
-                          "value": "has-dropdown",
-                          "mapped": "true"
-                        }
-                      ],
-                      "widgetChildren": [],
-                      "htmlChildren": [
-                        {
-                          "id": 14,
-                          "tag": "a",
-                          "value": "Right Button Dropdown",
-                          "order": 1,
-                          "htmlParameters": [
-                            {
-                              "name": "href",
-                              "value": "#",
-                              "mapped": "true"
-                            }
-                          ],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": []
-                        },
-                        {
-                          "id": 15,
-                          "tag": "ul",
-                          "value": "",
-                          "order": 2,
-                          "htmlParameters": [
-                            {
-                              "name": "class",
-                              "value": "dropdown",
-                              "mapped": "true"
-                            }
-                          ],
-                          "widgetChildren": [],
-                          "htmlChildren": [
-                            {
-                              "id": 16,
-                              "tag": "li",
-                              "value": "",
-                              "order": 1,
-                              "htmlParameters": [],
-                              "widgetChildren": [],
-                              "htmlChildren": [
-                                {
-                                  "id": 17,
-                                  "tag": "a",
-                                  "value": "First link in dropdown",
-                                  "order": 1,
-                                  "htmlParameters": [
-                                    {
-                                      "name": "href",
-                                      "value": "#",
-                                      "mapped": "true"
-                                    }
-                                  ],
-                                  "widgetChildren": [],
-                                  "htmlChildren": [],
-                                  "properties": []
-                                }
-                              ],
-                              "properties": []
-                            },
-                            {
-                              "id": 18,
-                              "tag": "li",
-                              "value": "",
-                              "order": 2,
-                              "htmlParameters": [
-                                {
-                                  "name": "class",
-                                  "value": "active",
-                                  "mapped": "true"
-                                }
-                              ],
-                              "widgetChildren": [],
-                              "htmlChildren": [
-                                {
-                                  "id": 19,
-                                  "tag": "a",
-                                  "value": "Active link in dropdown",
-                                  "order": 1,
-                                  "htmlParameters": [
-                                    {
-                                      "name": "href",
-                                      "value": "#",
-                                      "mapped": "true"
-                                    }
-                                  ],
-                                  "widgetChildren": [],
-                                  "htmlChildren": [],
-                                  "properties": []
-                                }
-                              ],
-                              "properties": []
-                            }
-                          ],
-                          "properties": []
-                        }
-                      ],
-                      "properties": []
-                    }
-                  ],
-                  "properties": []
-                },
-                {
-                  "id": 20,
-                  "tag": "ul ",
-                  "value": "",
-                  "order": 2,
-                  "htmlParameters": [
-                    {
-                      "name": "class",
-                      "value": "left",
-                      "mapped": "true"
-                    }
-                  ],
-                  "widgetChildren": [],
-                  "htmlChildren": [
-                    {
-                      "id": 21,
-                      "tag": "li ",
-                      "value": "",
-                      "order": 1,
-                      "htmlParameters": [],
-                      "widgetChildren": [],
-                      "htmlChildren": [
-                        {
-                          "id": 22,
-                          "tag": "a ",
-                          "value": "Left Nav Button",
-                          "order": 1,
-                          "htmlParameters": [
-                            {
-                              "name": "href",
-                              "value": "#",
-                              "mapped": "true"
-                            }
-                          ],
-                          "widgetChildren": [],
-                          "htmlChildren": [],
-                          "properties": []
-                        }
-                      ],
-                      "properties": []
-                    }
-                  ],
-                  "properties": []
-                }
-              ],
+              "htmlChildren": [],
               "properties": []
             }
           ],
-          "properties": []
+          "properties": [
+            {
+              "name": "overflow",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "overflow",
+              "value": "auto"
+            },
+            {
+              "name": "Background image",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "background-image",
+              "value": "none"
+            },
+            {
+              "name": "Background size",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "background-size",
+              "value": "none"
+            },
+            {
+              "name": "Height",
+              "type": "css",
+              "inputType": "text",
+              "identifier": "height",
+              "value": "auto"
+            }
+          ]
         }
       ],
-      "order": 1
+      "order": 2
     }
   ]
 }
