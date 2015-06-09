@@ -61,7 +61,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
                 if (App.PageBuilder.page){
                     App.PageBuilder.page.save({
                         success:function(){
-
                         },
                         error:function(){
 
