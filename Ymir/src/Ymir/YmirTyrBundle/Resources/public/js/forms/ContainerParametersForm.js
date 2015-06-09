@@ -31,6 +31,12 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
                     self.addColumnChoice(curr_index);
                     curr_index++;
                 }
+                
+                for(var i = 1; i <= nbColumn; i++){
+                    $('#container-modal .columnsSize-Large[name=columnsSize_'+i+']').val(12);
+                    $('#container-modal .columnsSize-Medium[name=columnsSize_'+i+']').val(12);
+                    $('#container-modal .columnsSize-Small[name=columnsSize_'+i+']').val(12);
+                }
 
             });
         })(this);
@@ -62,11 +68,8 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
      *      remove column if their data-column-index is greater than nbColumn
      */
     resetUI: function(nbColumn) {
-        while($("#container-modal .columnsSize:last").data("column-index") > nbColumn)
-            $("#container-modal .columnsSize:last").remove();
-
-        for(var i = 1; i <= nbColumn; i++)
-            $('#container-modal .columnsSize[name=columnsSize_'+this.options.nbColumns+']').val(12);
+        while($("#container-modal .row:last select:first").data("column-index") > nbColumn)
+            $("#container-modal .row:last").remove();        
     },
 
 	getContainer: function () {
@@ -79,10 +82,15 @@ _.extend(App.Forms.ContainerParametersForm.prototype, {
      *      build the structure that describe a container.
      */
     getContainerParameters: function () {
-        var columnsSizes = {};
+        var columnsSizes = [];
+        var container = [];
         // get column size and add them to the structure.
-        $("#container-modal .columnsSize").each(function(index) {
-            columnsSizes[index+1] = $(this).val();
+        $("#container-modal .row").each(function (index) {
+            var large = $("#container-modal .row .columnsSize-Large").val();
+            var medium = $("#container-modal .row .columnsSize-Medium").val();
+            var small = $("#container-modal .row .columnsSize-Small").val();
+            container = [large, medium, small];
+            columnsSizes.push(container);
         });
         var containerParameters = {
             meta_widget: this.options.metaWidget,
