@@ -34,7 +34,7 @@ App.Models.Widget = Backbone.Model.extend({
         if(this.get("id") == id)
             return this;
         else
-            return this.get("htmlElements").getHtmlElement(id);
+            return this.get("htmlElements").getWidget(id);
     },
     /**
      *

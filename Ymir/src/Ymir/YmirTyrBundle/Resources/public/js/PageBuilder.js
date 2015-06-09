@@ -108,7 +108,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var parentIsContainer = (jqObject.parent().attr("data-container") && jqObject.parent().attr("data-container")=="true");
             var replacerModel = null;
             var replacerJqObject = null;
-            var widget = this.page.getWidget(widget_id);
+            var widget = this.getPage().getWidget(widget_id);
             if(parentIsContainer) {
                 replacerModel = this.buildHtmlElement(this.page.getNewHtmlElementId(), "div", "", widget.get("order"), [], null, null, null);
                 replacerJqObject = $('<div>');
@@ -214,6 +214,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var widget = new App.Models.Widget();
             // generate a new id from the current max widget contained in the page
             widget.set('id', this.page.getNewWidgetId());
+            console.log("buildWidgetModelFromMeta " + widget.get("id"));
 
             widget.set('meta_widget_id', mWidget.get('id'));
             widget.set('htmlElements', new App.Collections.HtmlElementList());
@@ -321,7 +322,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
          */
         buildJqueryWidgetFromWidget: function (widget, isNew, parent) {
             var htmlsWidget = [];
-            var widget_id = widget.get('id');
+            var widget_id = widget.get("id");
             for (var index in  widget.get("htmlElements").models) {
                 // build the {{*|jQuery|HTMLElement}} from widget childrens
                 var jqWidget = this.buildJqueryFromHtmlElement(widget.get("htmlElements").models[index], isNew, null);
@@ -495,6 +496,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 }
             }
         },
+
+        /**
+         *
+         * @return {App.Models.Page|*|PageBuilder.page}
+         */
         getPage: function () {
             return this.page;
         },
