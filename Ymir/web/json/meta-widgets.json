@@ -154,7 +154,7 @@
 	  "name": "navigation",
 	  "metaWidgets": [
 		{
-		  "id": 14,
+		  "id": 20,
 		  "name": "side nav",
 		  "htmlPreview": "<div disabled=\"true\" class=\"fi-list\">side nav</div>",
 		  "metaHtmlElements": [
@@ -847,14 +847,28 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "white"
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "background-color",
-                  "defaultValue": "#007095"
+                  "defaultValue": "#DADADA"
+                },
+                {
+                  "name": "text align",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "text-align",
+                  "defaultValue": "center"
+                },
+                {
+                  "name": "text decoration",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "text-decoration",
+                  "defaultValue": "none"
                 }
               ],
               "metaHtmlParameters": [
@@ -885,14 +899,28 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "white"
+                  "defaultValue": "black"
                 },
                 {
                   "name": "Background color",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "background-color",
-                  "defaultValue": "#007095"
+                  "defaultValue": "#DADADA"
+                },
+                {
+                  "name": "text align",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "text-align",
+                  "defaultValue": "center"
+                },
+                {
+                  "name": "text decoration",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "text-decoration",
+                  "defaultValue": "none"
                 }
               ],
               "metaHtmlParameters": [],
