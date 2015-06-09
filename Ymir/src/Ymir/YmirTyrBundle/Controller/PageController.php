@@ -82,7 +82,7 @@ class PageController extends Controller
         //sauvegarde en BD
         $em->flush();
 
-        return $page->getWidgets()[0]->getHtmlElements()[0]->getProperties()[0]->getParentHtmlElement();
+        return $page;
     }
 
     /**
