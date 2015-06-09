@@ -484,15 +484,15 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     var htmlParameter = null;
                     var htmlElement = object.get("htmlElements").models[index];
                     for (var i in htmlElement.get("htmlParameters")) {
-                        htmlParameter = {name: "class", value: jqObject.attr("class"), mapped: "true"};
-                        htmlElement.get("htmlParameters").push(htmlParameter);
+                        if(object.get("htmlParameters")[i].name == "class")
+                            object.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
                     }
                 }
             } else if(object instanceof App.Models.HtmlElement) {
                 console.log("instanceof App.Models.HtmlElement");
                 for (var i in object.get("htmlParameters")) {
-                    htmlParameter = {name: "class", value: jqObject.attr("class"), mapped: "true"};
-                    object.get("htmlParameters").push(htmlParameter);
+                    if(object.get("htmlParameters")[i].name == "class")
+                        object.get("htmlParameters")[i] = {name: "class", value: jqObject.attr("class"), mapped: "true"};
                 }
             }
         },
@@ -511,11 +511,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var thisObject = this;
             mobile.ready(function () {
                 mobile.contents().find("body").append(mobileElement);
-                mobile.contents().find("body").find("a").removeAttr("href");
+               // mobile.contents().find("body").find("a").removeAttr("href");
             });
             tablet.ready(function () {
                 tablet.contents().find("body").append(tabletElement);
-                tablet.contents().find("body").find("a").removeAttr("href");
+                //tablet.contents().find("body").find("a").removeAttr("href");
             });
         },
 
