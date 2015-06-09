@@ -54,7 +54,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 for (var index in elements) {
                     console.log(elements[index]);
                     this.addWidget(elements[index], $(".stage"), widgets.models[i]);
-                }                
+                }
             }
             this.reloadIframe();
             title_target.ready(function(){
@@ -84,7 +84,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var container_html_element_id = receiver.data("html-element-id");
             var newOrder = null;
             // build the App.Models.Widget
-            var widget = this.buildWidgetModelFromMeta(mWidget);
+            var widget = this.buildWidgetModelFromMeta(mWidget,container_html_element_id);
 
             // build {*|jQuery|HTMLElement}
             var htmlsWidget = this.buildJqueryWidgetFromWidget(widget, true, null);
@@ -92,8 +92,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             // add widget to the page tree and add {*|jQuery|HTMLElement} to the stage and iframes
             for (var index in htmlsWidget) {
                 this.addWidget(htmlsWidget[index], receiver, widget);
-                this.reloadIframe();
             }
+            this.reloadIframe();
         },
 
 
@@ -119,7 +119,6 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             // get tag of the container
             var metaHtmlElements = containerParameters.meta_widget.get("metaHtmlElements");
             var metaHtmlTag = metaHtmlElements.models[0].get('tag');
-
             // build HtmlElement from MetaHtmlElement
             var htmlElement = this.buildHtmlElementModelFromMeta(metaHtmlElements.models[0]);
 
@@ -275,6 +274,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             var receiver_id = receiver.data("html-element-id");
             if (receiver.data("info") == "replaceable") {
                 widget.set('order', receiver.data("order"));
+                console.log("Order: " + receiver.data("order"));
                 this.addContainerClass(jqObject, receiver.attr("class"), widget);
                 // remove replaceable HtmlElement (div data-info="replaceable") and add the widget as children of the container root (section, article,...)
                 this.page.removeHtmlElement(receiver_id);
