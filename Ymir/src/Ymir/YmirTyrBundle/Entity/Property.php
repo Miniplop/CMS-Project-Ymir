@@ -203,7 +203,7 @@ class Property
      */
     public function getValue()
     {
-        return $this->defaultValue;
+        return $this->value;
     }
 
     /**
