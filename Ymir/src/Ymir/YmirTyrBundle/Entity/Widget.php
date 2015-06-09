@@ -67,12 +67,6 @@ class Widget
      */
     private $parentWidget;
 
-    /**
-     * Exclude
-     * ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaWidget", inversedBy="widgets")
-     * ORM\JoinColumn(name="meta_widget_id", referencedColumnName="id")
-     */
-    //private $meta_widget;
 
     public function __construct()
     {

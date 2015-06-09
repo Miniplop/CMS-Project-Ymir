@@ -72,11 +72,6 @@ class HtmlElement
      */
     private $parentWidget;
 
-    /**
-     * ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\MetaHtmlElement", inversedBy="instances")
-     * ORM\JoinColumn(name="meta_element_id", referencedColumnName="id")
-     */
-    //private $meta_element;
 
     /**
      * Constructor
