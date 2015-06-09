@@ -59,21 +59,9 @@ class HtmlElement
     private $widgetChildren;
 
     /**
-     * ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Property", mappedBy="parentHtmlElement", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Property", mappedBy="parentHtmlElement", cascade={"persist", "remove"})
      */
     private $properties;
-
-    /**
-     * Exclude
-     * ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\CssProperty", mappedBy="parentElement", cascade={"persist", "remove"})
-     */
-    //private $cssProperties;
-
-    /**
-     * Exclude
-     * ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlProperty", mappedBy="parentElement", cascade={"persist", "remove"})
-     */
-    //private $htmlProperties;
 
     /**
      * @Exclude
@@ -99,9 +87,6 @@ class HtmlElement
         $this->htmlChildren = new \Doctrine\Common\Collections\ArrayCollection();
         $this->widgetChildren = new \Doctrine\Common\Collections\ArrayCollection();
         $this->properties = new \Doctrine\Common\Collections\ArrayCollection();
-        //$this->htmlProperties = new \Doctrine\Common\Collections\ArrayCollection();
-        //$this->cssProperties = new \Doctrine\Common\Collections\ArrayCollection();
-        //$this->meta_widgets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public static function deserializeJson($params) 
@@ -534,8 +519,10 @@ class HtmlElement
      */
     public function addProperty(\Ymir\YmirTyrBundle\Entity\Property $property)
     {
-        $property->setParentHtmlElement($this);
+        //$property->setParentHtmlElement($this);
         $this->properties[] = $property;
+        $property->setParentHtmlElement($this);
+        //$accountType->setBroker($this);
 
         return $this;
     }
