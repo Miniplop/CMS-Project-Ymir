@@ -39,7 +39,17 @@ App.Models.HtmlElement = Backbone.Model.extend({
     },
     /**
      *
-     * @param id
+     * @param id (number) id of the widget to return
+     * @return {*}
+     */
+    getWidget: function(id) {
+        var result = this.get("widgetChildren").getWidget(id);
+        if(result == null)
+            return this.get("htmlChildren").getWidget(id);
+    },
+    /**
+     *
+     * @param id (number)
      * @return {*}
      */
     getHtmlElement: function(id) {
@@ -64,7 +74,7 @@ App.Models.HtmlElement = Backbone.Model.extend({
     },
     /**
      *
-     * @param elementId
+     * @param elementId (number)
      */
     removeHtmlElement: function(elementId) {
         if(elementId == this.get("id")) {
@@ -74,5 +84,19 @@ App.Models.HtmlElement = Backbone.Model.extend({
             this.get("htmlChildren").removeHtmlElement(elementId);
             this.get("widgetChildren").removeHtmlElement(elementId);
         }
+    },
+
+    /**
+     *
+     * @param widgetId (number)
+     * @param replacerModel (App.Models.HtmlElement)
+     * @param replacerHtmlElementContainerId (number) Where to add replacerModel
+     */
+    removeWidget: function(widgetId, replacerModel, replacerHtmlElementContainerId) {
+        if(this.get("id") == replacerHtmlElementContainerId) {
+            this.get("htmlChildren").add(replacerModel);
+        }
+        this.get("htmlChildren").removeWidget(widgetId, replacerModel);
+        this.get("widgetChildren").removeWidget(widgetId, replacerModel);
     }
 });

@@ -21,7 +21,7 @@ var App = App || {};
                     if($(this).hasClass("not-disable-selection")) {
                         event.stopPropagation();
                     } else {
-                        self.resetSelectHtmlElementUi();
+                        self.resetSelectUi();
                     }
                 });
                 $( ".stage" ).on( "dblclick", "*", function( event ) {
@@ -45,15 +45,36 @@ var App = App || {};
         },
         /**
          *
+         * @param widget_id
+         * @param selected
+         */
+        initSelectWidgetListeners: function(widget_id, selected) {
+            console.log("initSelectWidgetListeners");
+            $("#delete-widget").on("click", function(event) {
+                console.log("click");
+                App.PageBuilder.removeWidget(widget_id, selected);
+                event.preventDefault();
+            });
+        },
+        /**
+         *
          * @param selected
          */
         initSelectWidgetUi: function(selected) {
             $( ".stage" ).addClass("stage-selected");
             selected.addClass("ui-selected");
             this.initializeWidgetOptionView(selected.data("widget-id"), selected, selected.data("container") != null);
+            this.initSelectWidgetListeners(selected.data("widget-id"), selected);
 
         },
+        /**
+         *
+         * @param widget_id
+         * @param selected
+         * @param isContainer
+         */
         initializeWidgetOptionView: function(widget_id, selected, isContainer) {
+            $($('#widget-edit').html()).offset(selected.offset()).appendTo("body");
             if(isContainer) {
                 // icone de modification des parametres du container.
             } else {
@@ -62,9 +83,6 @@ var App = App || {};
                 }
             }
             //icone de suppression du container
-            console.log(selected);
-            $($('#widget-edit').html()).offset(selected.offset()).appendTo("body");
-            console.log($('#widget-edit'));
         },
         /**
          *
@@ -85,10 +103,12 @@ var App = App || {};
         /**
          *
          */
-        resetSelectHtmlElementUi: function() {
+        resetSelectUi: function() {
             this.resetClass();
             App.creativeView.cancelPropertiesView();
             $('.toolbar-parameter').css('bottom', '-40%');
+            $('.widget-menu').remove();
+            $("#delete-widget").off();
         },
         resetClass: function() {
             $( ".stage" ).find("*").removeClass('ui-selected');

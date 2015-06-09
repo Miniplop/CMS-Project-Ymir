@@ -44,7 +44,6 @@ App.Models.Page = Backbone.Model.extend({
      * @param widget
      */
     addWidget : function (container_html_element_id, widget) {
-        console.log("add widget Page");
         if(container_html_element_id == null)
             this.get("widgets").add(widget);
         else
@@ -52,11 +51,19 @@ App.Models.Page = Backbone.Model.extend({
     },
     /**
      *
-     * @param id
+     * @param id (number)
      * @return {*}
      */
     getHtmlElement: function(id) {
         return this.get("widgets").getHtmlElement(id);
+    },
+    /**
+     *
+     * @param id (number) id of the widget to return
+     * @return {*}
+     */
+    getWidget: function(id) {
+        return this.get("widgets").getWidget(id);
     },
     /**
      *
@@ -76,9 +83,18 @@ App.Models.Page = Backbone.Model.extend({
     },
     /**
      *
-     * @param elementId
+     * @param elementId (number)
      */
     removeHtmlElement: function(elementId) {
         this.get("widgets").removeHtmlElement(elementId);
+    },
+    /**
+     *
+     * @param widgetId (number)
+     * @param replacerModel (App.Models.HtmlElement)
+     * @param replacerHtmlElementContainerId (number) Where to add replacerModel
+     */
+    removeWidget: function(widgetId, replacerModel, replacerHtmlElementContainerId) {
+        this.get("widgets").removeWidget(widgetId, replacerModel, replacerHtmlElementContainerId);
     }
 });
