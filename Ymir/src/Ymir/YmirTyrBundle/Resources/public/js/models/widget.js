@@ -75,6 +75,6 @@ App.Models.Widget = Backbone.Model.extend({
         if(this.get("id") == widgetId)
             this.collection.remove(this);
         else
-            this.get("htmlElements").removeWidget(widgetId, parentIsContainer, replacerHtmlElementContainer);
+            this.get("htmlElements").removeWidget(widgetId, replacerModel, replacerHtmlElementContainerId);
     }
 });

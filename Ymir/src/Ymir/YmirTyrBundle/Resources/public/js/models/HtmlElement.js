@@ -96,7 +96,7 @@ App.Models.HtmlElement = Backbone.Model.extend({
         if(this.get("id") == replacerHtmlElementContainerId) {
             this.get("htmlChildren").add(replacerModel);
         }
-        this.get("htmlChildren").removeWidget(widgetId, replacerModel);
-        this.get("widgetChildren").removeWidget(widgetId, replacerModel);
+        this.get("htmlChildren").removeWidget(widgetId, replacerModel, replacerHtmlElementContainerId);
+        this.get("widgetChildren").removeWidget(widgetId, replacerModel, replacerHtmlElementContainerId);
     }
 });
