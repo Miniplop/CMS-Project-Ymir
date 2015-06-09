@@ -34,8 +34,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.PageBuilder = new App.Utils.PageBuilder(id_page);
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
-        
-        console.log('you are viewing creative page ' +id_page);
 
 
 
