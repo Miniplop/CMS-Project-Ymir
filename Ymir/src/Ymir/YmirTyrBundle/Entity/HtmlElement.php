@@ -185,6 +185,7 @@ class HtmlElement
         return $table;
     }
 
+
     /*
      *  Returns style attribut of the html element (inline css) if any property,
      *  Returns an empty string otherwise
@@ -207,26 +208,67 @@ class HtmlElement
         return $css_attr;
     }
 
-    public function codeGen()
-    {
+    public function codeGen(&$offsetSmall, &$offsetMedium, &$offsetLarge){
         //create html parameters list from html properties
         $editedParams = array();
         foreach($this->htmlProperties->toArray() as $p) {
             $editedParams[$p->getName()] = $p->getValue();
-        } // ATTENTION : BESOIN DE LA VALEUR PAR DEFAUT POUR REMPLACER LE BON CHAMP AU CAS OU IL Y EN A PLUSIEURS PAR ATTRIBUT
+        }
 
         // Opening the HTML element
         $code = "<".$this->tag ;
+        
+        // Handle the offset needed for empty containers
+        $emptyContainer = false;
+        $patternSmall = "/small-(\w*)/";
+        $patternMedium = "/medium-(\w*)/";
+        $patternLarge = "/large-(\w*)/";
+
+        $previousOffsetSmall = $offsetSmall;
+        $previousOffsetMedium = $offsetMedium;
+        $previousOffsetLarge = $offsetLarge;
 
         // Add the parameters
         foreach ($this->htmlParameters->toArray() as $p) {
-            $code .= " ".$p->getName()."=\"";
-            if($editedParams[$p->getName()]) { //override par les properties
-                $code .= $editedParams[$p->getName()]."\"";
-            } else {
-                $code .= $p->getValue()."\""; //valeur par defaut
+            // est-ce qu'il faut rajouter le type de l'attribut ?
+            if ($p->getName() === "data-info" && $p->getValue() === "replaceable"){
+                $emptyContainer = true;
             }
-            
+            else {
+                //add the attribute
+                $code .= " ".$p->getName()."=\"";
+                if($editedParams[$p->getName()]) { //override par les properties
+                    $code .= $editedParams[$p->getName()]."\"";
+                } else {
+                    $code .= $p->getValue()."\""; //valeur par defaut
+                }
+
+                //check if we need to add the offset in the class
+                if ($p->getName() === "class") {
+                    //get the offset for the next column, if any
+                    if(preg_match($patternSmall, $p->getValue(), $offsetSmall)){
+                        $offsetSmall = $offsetSmall[1];
+                    }
+                    if(preg_match($patternMedium, $p->getValue(), $offsetMedium)){
+                        $offsetMedium = $offsetMedium[1];
+                    }
+                    if(preg_match($patternLarge, $p->getValue(), $offsetLarge)){
+                        $offsetLarge = $offsetLarge[1];
+                    }
+                    //set the offset from the previous column, if any
+                    $code .= " ".$p->getName()."=\"".$p->getValue();
+                    if($previousOffsetSmall != -0){
+                        $code .= " small-offset-".$previousOffsetSmall;
+                    }
+                    if($previousOffsetMedium != 0){
+                        $code .= " medium-offset-".$previousOffsetMedium;
+                    }
+                    if($previousOffsetLarge != 0){
+                        $code .= " large-offset-".$previousOffsetLarge;
+                    }
+                    $code .="\"";
+                }
+            } 
         }
 
         //add the css attributs inline, if any (ex : style="color:red;background:black;")
@@ -239,11 +281,25 @@ class HtmlElement
 
         //children
         $elements = $this->sortElements();
+        $childOffsetSmall = 0;
+        $childOffsetMedium = 0;
+        $childOffsetLarge = 0;
         foreach ($elements as $e) {
-            $code .= $e->codeGen();
+            $code .= $e->codeGen($childOffsetSmall, $childOffsetMedium, $childOffsetLarge);
         }
+
         // Closing the HTML element
         $code .= "</".$this->tag.">\n";
+
+        if ($emptyContainer){
+            $code = "";
+            //pour plus tard : somme des offset
+        } else {
+            $offsetSmall = 0;
+            $offsetMedium = 0;
+            $offsetLarge = 0;
+        }
+
         return $code;
     } 
 
