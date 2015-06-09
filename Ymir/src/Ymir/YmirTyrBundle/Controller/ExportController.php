@@ -52,4 +52,24 @@ class ExportController extends Controller
             );    
     }
 
+    /** @Route("/preview/{id_page}", requirements={"id_page" = "\d+"}, name="preview")
+     * @Template()
+     */
+    public function previewPageAction($id_page)
+    {
+      $repository = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('TyrBundle:Page');
+
+        $page = $repository->findOneById($id_page);
+        $pageName = $page->getTitle();
+
+        //génération du code de la page
+        $code = $page->codeGen();
+        return $this->render('TyrBundle::preview.html.twig', array(
+              'code' => $code
+            ));  
+    }
+
 }
