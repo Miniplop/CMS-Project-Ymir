@@ -170,44 +170,16 @@ var App = App || {};
                 if(htmlElement.get("value")){
                     
                     // Récupération du template
-                    template = _.template($('#text-edition-template').html());
-                    var offset = jqObject.offset();
-                    var text_color = jqObject.css("color");
-                    var text_font = jqObject.css("font-family");
-                    var bg_color = jqObject.css("background-color");
-                    var parent_width = jqObject.css("width");
-                    var parent_heigth = jqObject.css("height");
-                    var parent_align = jqObject.css("text-align");
-                    console.log(offset);
-                    if(parent_align == "center"){
-                        offset.top = offset.top ;
-                        offset.left = offset.left ;
-                    }
-                    console.log(offset);
-                    jqObject.css("color",bg_color);
-                    var html = $(template({ value : htmlElement.get("value"),id: htmlElementId, size: htmlElement.get("value").length })).offset(offset);
-                    html.css("color",text_color);
-                    html.css("font-family",text_font);
-                    html.css("background-color",bg_color);
-                    html.appendTo("body");
-                    html.focus();
+                    jqObject.attr('contenteditable','true');
+                    jqObject.addClass('editing');
+                    jqObject.focus();
                     // Peut etre optimiser
                     
                     // Activation de la perte de focus du formulaire d'edition de texte 
-                    $("#text-edition").blur(function(event){
-                        App.PageBuilder.getPage().getHtmlElement(htmlElementId).set("value",$(this).val());
-                        jqObject.css("color",text_color);
-                        jqObject.text($(this).val());
-                        html.remove(); // Suppression du template sur le dom
-                         App.PageBuilder.reloadIframe();
-                    });
-                    
-                    // Activation du submit du formulaire d'edition de texte 
-                    $("#text-edition").change(function(event){
-                        App.PageBuilder.getPage().getHtmlElement(htmlElementId).set("value",$(this).val());
-                        jqObject.css("color",text_color);
-                        jqObject.text($(this).val());
-                        html.remove(); // Suppression du template sur le dom
+                    $(".editing").blur(function(event){
+                        console.log("blur");
+                        App.PageBuilder.getPage().getHtmlElement(htmlElementId).set("value",$(this).text());
+                        jqObject.removeClass('editing');
                         App.PageBuilder.reloadIframe();
                     });
                 }
