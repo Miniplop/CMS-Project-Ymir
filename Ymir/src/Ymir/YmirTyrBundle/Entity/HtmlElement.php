@@ -42,24 +42,24 @@ class HtmlElement
     private $order;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="htmlElement", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlParameter", mappedBy="htmlElement", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $htmlParameters; //attributs
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentHtmlElement", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", mappedBy="parentHtmlElement", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"order" = "ASC"})
      */
     private $htmlChildren;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentElement", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", mappedBy="parentElement", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"order" = "ASC"})
      */
     private $widgetChildren;
 
     /**
-     * ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Property", mappedBy="parentHtmlElement", cascade={"persist", "remove"})
+     * ORM\OneToMany(targetEntity="Ymir\YmirTyrBundle\Entity\Property", mappedBy="parentHtmlElement", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $properties;
 
@@ -78,14 +78,14 @@ class HtmlElement
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\HtmlElement", inversedBy="htmlChildren")
-     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="parent_element_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parentHtmlElement;
 
     /**
      * @Exclude
      * @ORM\ManyToOne(targetEntity="Ymir\YmirTyrBundle\Entity\Widget", inversedBy="htmlElements")
-     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="parent_widget_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parentWidget;
 

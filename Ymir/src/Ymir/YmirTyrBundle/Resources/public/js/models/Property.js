@@ -8,6 +8,7 @@ var App = App || {};
  */
 App.Models.Property = Backbone.Model.extend({
     parse: function(result) {
+        result.inputType = result.input_type;
         return result;
     }
 });

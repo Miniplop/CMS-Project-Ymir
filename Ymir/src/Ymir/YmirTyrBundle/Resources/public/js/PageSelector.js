@@ -53,6 +53,7 @@ var App = App || {};
             $("#delete-widget").on("click", function(event) {
                 console.log("click");
                 App.PageBuilder.removeWidget(widget_id, selected);
+                App.DragDropHandler.refreshDrop();
                 event.preventDefault();
             });
         },
