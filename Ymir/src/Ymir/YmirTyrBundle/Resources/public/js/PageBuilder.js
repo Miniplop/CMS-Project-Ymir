@@ -113,7 +113,7 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 replacerJqObject.addClass('droppable');
                 replacerJqObject.attr("data-info", "replaceable");
                 replacerJqObject.attr("data-order", widget.get("order")); // we need to keep order in the DOM. When this div will be replaced by a widget, widget.order will have this value
-                replacerJqObject.attr("data-html-element-id", replacer.get('id'));
+                replacerJqObject.attr("data-html-element-id", replacerModel.get('id'));
             }
             this.addContainerClass(replacerJqObject, jqObject.attr("class"), replacerModel);
             this.page.removeWidget(widget_id, replacerModel, jqObject.parent().data("html-element-id"));
