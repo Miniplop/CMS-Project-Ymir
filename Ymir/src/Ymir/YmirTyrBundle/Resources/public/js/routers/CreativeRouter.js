@@ -34,9 +34,6 @@ App.Router.CreativeRouter = Backbone.Router.extend({
         App.PageBuilder = new App.Utils.PageBuilder(id_page);
         App.DragDropHandler = new App.Utils.DragDropHandler();
         App.PageSelector = new App.Utils.PageSelector();
-        
-        console.log('you are viewing creative page ' +id_page);
-
 
 
             //******************************************
@@ -47,8 +44,8 @@ App.Router.CreativeRouter = Backbone.Router.extend({
 
             $(".project-name-input").change(function(){
                 console.log("change name");
-                console.log($(this).val);
-                App.page.set("title",this.val());
+                console.log(($(this).val()));
+                App.PageBuilder.page.set("title",($(this).val()));
             });
         
             $("#save_page").click(function(){
