@@ -80,6 +80,7 @@
 			margin: 5px 15px !important;
 		}
 	}
+	overflow-y: scroll;
 }
 .toolbar-parameter-edition {
 	div {
@@ -99,7 +100,7 @@
 			height: auto !important;
 			@include pad-marg(0);
 		}
-	}
+	}	
 }
 
 

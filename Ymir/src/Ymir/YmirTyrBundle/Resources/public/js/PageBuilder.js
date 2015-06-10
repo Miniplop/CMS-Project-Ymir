@@ -59,9 +59,9 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             title_target.ready(function(){
                $(title_target).val(title);
             });
-
+			
             // add css and js for iframes
-            mobile.ready(function () {
+            mobile.ready(function () {				
                 mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
             });
             tablet.ready(function () {
@@ -543,6 +543,11 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             return this.page;
         },
 
+		/**
+		*	add elements on the two iframe
+		*	@param mobileElement: element added on the mobile Iframe
+		*	@param tabletElement: element added on the tablet Iframe
+		*/
         updateIframe: function (mobileElement, tabletElement, widget) {
             var mobile = $("#mobile");
             var tablet = $("#tablet");
@@ -557,6 +562,9 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             });
         },
 
+		/**
+		*	Clear the two iframe
+		*/
         clearIframe: function() {
             var mobile = $("#mobile");
             var tablet = $("#tablet");
@@ -568,6 +576,9 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
             });
         },
         
+		/**
+		*	Reaload the two iframe from the current page.
+		*/
         reloadIframe: function () {
             var widgets = this.page.get("widgets");
             this.clearIframe();
@@ -579,13 +590,15 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     this.updateIframe(elements[index], elements[index].clone(), widgets.models[i]);
                 }
             }
-            var includeFoundationJs = '<script type="text/javascript" src="' + app.Urls.js.foundation + '">' ;
+            var includeFoundationJs = '<link rel="stylesheet" href="' + app.Urls.js.foundation + '">';
             mobile.ready(function () {
                 mobile.contents().find("body").append(includeFoundationJs);
+				mobile.contents().find("body").find("a").removeAttr('href');
             });
 
             tablet.ready(function () {
                 tablet.contents().find("body").append(includeFoundationJs);
+				tablet.contents().find("body").find("a").removeAttr('href');
             });
         },
         /**
