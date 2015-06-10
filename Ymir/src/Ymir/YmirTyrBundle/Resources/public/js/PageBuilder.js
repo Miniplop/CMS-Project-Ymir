@@ -125,6 +125,8 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                 jqObject.replaceWith(replacerJqObject);
             else
                 jqObject.remove();
+
+            this.reloadIframe();
         },
         /**
          * @param containerParameters: Array

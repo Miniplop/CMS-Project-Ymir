@@ -3,18 +3,18 @@
   "title": "Default page",
   "widgets": [
     {
-      "id": 6,
+      "id": 10,
       "order": 1,
       "widget_children": [],
       "htmlElements": [
         {
-          "id": 69,
+          "id": 94,
           "tag": "header",
           "value": "",
           "order": 1,
           "properties": [
             {
-              "id": 125,
+              "id": 132,
               "name": "overflow",
               "input_type": "text",
               "type": "css",
@@ -25,12 +25,12 @@
           ],
           "widgetChildren": [
             {
-              "id": 7,
+              "id": 11,
               "order": 1,
               "widget_children": [],
               "htmlElements": [
                 {
-                  "id": 70,
+                  "id": 95,
                   "tag": "nav",
                   "value": "",
                   "order": 1,
@@ -38,7 +38,7 @@
                   "widgetChildren": [],
                   "htmlChildren": [
                     {
-                      "id": 71,
+                      "id": 96,
                       "tag": "ul",
                       "value": "",
                       "order": 1,
@@ -46,7 +46,7 @@
                       "widgetChildren": [],
                       "htmlChildren": [
                         {
-                          "id": 72,
+                          "id": 97,
                           "tag": "li",
                           "value": "",
                           "order": 1,
@@ -54,7 +54,7 @@
                           "widgetChildren": [],
                           "htmlChildren": [
                             {
-                              "id": 73,
+                              "id": 98,
                               "tag": "h1",
                               "value": "",
                               "order": 1,
@@ -62,7 +62,7 @@
                               "widgetChildren": [],
                               "htmlChildren": [
                                 {
-                                  "id": 74,
+                                  "id": 99,
                                   "tag": "a",
                                   "value": "",
                                   "order": 1,
@@ -71,7 +71,7 @@
                                   "htmlChildren": [],
                                   "htmlParameters": [
                                     {
-                                      "id": 28,
+                                      "id": 51,
                                       "name": "href",
                                       "value": "#",
                                       "mapped": true
@@ -84,7 +84,7 @@
                           ],
                           "htmlParameters": [
                             {
-                              "id": 27,
+                              "id": 50,
                               "name": "class",
                               "value": "name",
                               "mapped": true
@@ -92,7 +92,7 @@
                           ]
                         },
                         {
-                          "id": 75,
+                          "id": 100,
                           "tag": "li",
                           "value": "",
                           "order": 2,
@@ -100,7 +100,7 @@
                           "widgetChildren": [],
                           "htmlChildren": [
                             {
-                              "id": 76,
+                              "id": 101,
                               "tag": "a",
                               "value": "",
                               "order": 1,
@@ -108,7 +108,7 @@
                               "widgetChildren": [],
                               "htmlChildren": [
                                 {
-                                  "id": 77,
+                                  "id": 102,
                                   "tag": "span",
                                   "value": "Menu",
                                   "order": 1,
@@ -120,7 +120,7 @@
                               ],
                               "htmlParameters": [
                                 {
-                                  "id": 30,
+                                  "id": 53,
                                   "name": "href",
                                   "value": "#",
                                   "mapped": true
@@ -130,7 +130,7 @@
                           ],
                           "htmlParameters": [
                             {
-                              "id": 29,
+                              "id": 52,
                               "name": "class",
                               "value": "toggle-topbar menu-icon",
                               "mapped": true
@@ -140,7 +140,7 @@
                       ],
                       "htmlParameters": [
                         {
-                          "id": 26,
+                          "id": 49,
                           "name": "class",
                           "value": "title-area",
                           "mapped": true
@@ -148,7 +148,7 @@
                       ]
                     },
                     {
-                      "id": 78,
+                      "id": 103,
                       "tag": "section",
                       "value": "",
                       "order": 2,
@@ -156,7 +156,7 @@
                       "widgetChildren": [],
                       "htmlChildren": [
                         {
-                          "id": 79,
+                          "id": 104,
                           "tag": "ul",
                           "value": "",
                           "order": 1,
@@ -164,7 +164,7 @@
                           "widgetChildren": [],
                           "htmlChildren": [
                             {
-                              "id": 80,
+                              "id": 105,
                               "tag": "li",
                               "value": "",
                               "order": 1,
@@ -172,7 +172,7 @@
                               "widgetChildren": [],
                               "htmlChildren": [
                                 {
-                                  "id": 81,
+                                  "id": 106,
                                   "tag": "a",
                                   "value": "Right Button Active",
                                   "order": 1,
@@ -181,7 +181,7 @@
                                   "htmlChildren": [],
                                   "htmlParameters": [
                                     {
-                                      "id": 34,
+                                      "id": 57,
                                       "name": "href",
                                       "value": "#",
                                       "mapped": true
@@ -191,7 +191,7 @@
                               ],
                               "htmlParameters": [
                                 {
-                                  "id": 33,
+                                  "id": 56,
                                   "name": "class",
                                   "value": "active",
                                   "mapped": true
@@ -199,7 +199,7 @@
                               ]
                             },
                             {
-                              "id": 82,
+                              "id": 107,
                               "tag": "li",
                               "value": "",
                               "order": 2,
@@ -207,7 +207,7 @@
                               "widgetChildren": [],
                               "htmlChildren": [
                                 {
-                                  "id": 83,
+                                  "id": 108,
                                   "tag": "a",
                                   "value": "Right Button Dropdown",
                                   "order": 1,
@@ -216,7 +216,7 @@
                                   "htmlChildren": [],
                                   "htmlParameters": [
                                     {
-                                      "id": 36,
+                                      "id": 59,
                                       "name": "href",
                                       "value": "#",
                                       "mapped": true
@@ -224,7 +224,7 @@
                                   ]
                                 },
                                 {
-                                  "id": 84,
+                                  "id": 109,
                                   "tag": "ul",
                                   "value": "",
                                   "order": 2,
@@ -232,7 +232,7 @@
                                   "widgetChildren": [],
                                   "htmlChildren": [
                                     {
-                                      "id": 85,
+                                      "id": 110,
                                       "tag": "li",
                                       "value": "",
                                       "order": 1,
@@ -240,7 +240,7 @@
                                       "widgetChildren": [],
                                       "htmlChildren": [
                                         {
-                                          "id": 86,
+                                          "id": 111,
                                           "tag": "a",
                                           "value": "First link in dropdown",
                                           "order": 1,
@@ -249,7 +249,7 @@
                                           "htmlChildren": [],
                                           "htmlParameters": [
                                             {
-                                              "id": 38,
+                                              "id": 61,
                                               "name": "href",
                                               "value": "#",
                                               "mapped": true
@@ -260,7 +260,7 @@
                                       "htmlParameters": []
                                     },
                                     {
-                                      "id": 87,
+                                      "id": 112,
                                       "tag": "li",
                                       "value": "",
                                       "order": 2,
@@ -268,7 +268,7 @@
                                       "widgetChildren": [],
                                       "htmlChildren": [
                                         {
-                                          "id": 88,
+                                          "id": 113,
                                           "tag": "a",
                                           "value": "Active link in dropdown",
                                           "order": 1,
@@ -277,7 +277,7 @@
                                           "htmlChildren": [],
                                           "htmlParameters": [
                                             {
-                                              "id": 40,
+                                              "id": 63,
                                               "name": "href",
                                               "value": "#",
                                               "mapped": true
@@ -287,7 +287,7 @@
                                       ],
                                       "htmlParameters": [
                                         {
-                                          "id": 39,
+                                          "id": 62,
                                           "name": "class",
                                           "value": "active",
                                           "mapped": true
@@ -297,7 +297,7 @@
                                   ],
                                   "htmlParameters": [
                                     {
-                                      "id": 37,
+                                      "id": 60,
                                       "name": "class",
                                       "value": "dropdown",
                                       "mapped": true
@@ -307,7 +307,7 @@
                               ],
                               "htmlParameters": [
                                 {
-                                  "id": 35,
+                                  "id": 58,
                                   "name": "class",
                                   "value": "has-dropdown",
                                   "mapped": true
@@ -317,7 +317,7 @@
                           ],
                           "htmlParameters": [
                             {
-                              "id": 32,
+                              "id": 55,
                               "name": "class",
                               "value": "right",
                               "mapped": true
@@ -325,7 +325,7 @@
                           ]
                         },
                         {
-                          "id": 89,
+                          "id": 114,
                           "tag": "ul ",
                           "value": "",
                           "order": 2,
@@ -333,7 +333,7 @@
                           "widgetChildren": [],
                           "htmlChildren": [
                             {
-                              "id": 90,
+                              "id": 115,
                               "tag": "li ",
                               "value": "",
                               "order": 1,
@@ -341,7 +341,7 @@
                               "widgetChildren": [],
                               "htmlChildren": [
                                 {
-                                  "id": 91,
+                                  "id": 116,
                                   "tag": "a ",
                                   "value": "Left Nav Button",
                                   "order": 1,
@@ -350,7 +350,7 @@
                                   "htmlChildren": [],
                                   "htmlParameters": [
                                     {
-                                      "id": 42,
+                                      "id": 65,
                                       "name": "href",
                                       "value": "#",
                                       "mapped": true
@@ -363,7 +363,7 @@
                           ],
                           "htmlParameters": [
                             {
-                              "id": 41,
+                              "id": 64,
                               "name": "class",
                               "value": "left",
                               "mapped": true
@@ -373,7 +373,7 @@
                       ],
                       "htmlParameters": [
                         {
-                          "id": 31,
+                          "id": 54,
                           "name": "class",
                           "value": "top-bar-section",
                           "mapped": true
@@ -383,19 +383,19 @@
                   ],
                   "htmlParameters": [
                     {
-                      "id": 23,
+                      "id": 46,
                       "name": "class",
                       "value": "top-bar large-12 medium-12 small-12 columns end",
                       "mapped": true
                     },
                     {
-                      "id": 24,
+                      "id": 47,
                       "name": "data-topbar",
                       "value": "",
                       "mapped": true
                     },
                     {
-                      "id": 25,
+                      "id": 48,
                       "name": "role",
                       "value": "navigation",
                       "mapped": true
@@ -408,7 +408,7 @@
           "htmlChildren": [],
           "htmlParameters": [
             {
-              "id": 22,
+              "id": 45,
               "name": "data-container",
               "value": "true",
               "mapped": true
@@ -418,11 +418,11 @@
       ]
     },
     {
-      "id": 11,
+      "id": 15,
       "meta_widget_id": 5,
       "htmlElements": [
         {
-          "id": 97,
+          "id": 121,
           "tag": "section",
           "value": "",
           "order": 1,
@@ -435,75 +435,196 @@
           ],
           "widgetChildren": [
             {
-              "id": 12,
-              "meta_widget_id": 1,
+              "id": 16,
+              "meta_widget_id": 6,
               "htmlElements": [
                 {
-                  "id": 101,
-                  "tag": "button",
-                  "value": "Button",
+                  "id": 125,
+                  "tag": "article",
+                  "value": "",
                   "order": 1,
                   "htmlParameters": [
                     {
+                      "name": "data-container",
+                      "value": "true",
+                      "mapped": "false"
+                    },
+                    {
                       "name": "class",
-                      "value": "button large-4 medium-12 small-12 columns",
+                      "value": "row large-12 medium-12 small-12 columns end",
                       "mapped": "true"
                     }
                   ],
-                  "widgetChildren": [],
-                  "htmlChildren": [],
-                  "properties": [
+                  "widgetChildren": [
                     {
-                      "name": "Text color",
-                      "type": "css",
-                      "inputType": "text",
-                      "identifier": "color",
-                      "value": "white"
+                      "id": 17,
+                      "meta_widget_id": 11,
+                      "htmlElements": [
+                        {
+                          "id": 128,
+                          "tag": "h1",
+                          "value": "Title 1",
+                          "order": 1,
+                          "htmlParameters": [
+                            {
+                              "name": "class",
+                              "value": "subheader large-12 medium-12 small-12 columns",
+                              "mapped": "true"
+                            }
+                          ],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [
+                            {
+                              "name": "Text color",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "color",
+                              "value": "black"
+                            },
+                            {
+                              "name": "Background color",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "background-color",
+                              "value": "inherit"
+                            },
+                            {
+                              "name": "text align",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "text-align",
+                              "value": "center"
+                            },
+                            {
+                              "name": "text decoration",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "text-decoration",
+                              "value": "none"
+                            },
+                            {
+                              "name": "font style",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "font-style",
+                              "value": "normal"
+                            },
+                            {
+                              "name": "font weight",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "font-weight",
+                              "value": "normal"
+                            },
+                            {
+                              "name": "font family",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "font-family",
+                              "value": "Sans-serif"
+                            }
+                          ]
+                        }
+                      ],
+                      "order": 1
                     },
                     {
-                      "name": "Background color",
-                      "type": "css",
-                      "inputType": "text",
-                      "identifier": "background-color",
-                      "value": "#007095"
-                    }
-                  ]
-                }
-              ],
-              "order": 1
-            },
-            {
-              "id": 13,
-              "meta_widget_id": 1,
-              "htmlElements": [
-                {
-                  "id": 102,
-                  "tag": "button",
-                  "value": "Button",
-                  "order": 1,
-                  "htmlParameters": [
-                    {
-                      "name": "class",
-                      "value": "button large-4 medium-12 small-12 columns end",
-                      "mapped": "true"
+                      "id": 18,
+                      "meta_widget_id": 12,
+                      "htmlElements": [
+                        {
+                          "id": 129,
+                          "tag": "p",
+                          "value": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
+                          "order": 1,
+                          "htmlParameters": [
+                            {
+                              "name": "class",
+                              "value": "large-12 medium-12 small-12 columns end",
+                              "mapped": "true"
+                            }
+                          ],
+                          "widgetChildren": [],
+                          "htmlChildren": [],
+                          "properties": [
+                            {
+                              "name": "Text color",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "color",
+                              "value": "black"
+                            },
+                            {
+                              "name": "Background color",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "background-color",
+                              "value": "white"
+                            },
+                            {
+                              "name": "text align",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "text-align",
+                              "value": "center"
+                            },
+                            {
+                              "name": "text decoration",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "text-decoration",
+                              "value": "none"
+                            },
+                            {
+                              "name": "font style",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "font-style",
+                              "value": "normal"
+                            },
+                            {
+                              "name": "font weight",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "font-weight",
+                              "value": "normal"
+                            },
+                            {
+                              "name": "font size",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "font-size",
+                              "value": "100%"
+                            },
+                            {
+                              "name": "font family",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "font-family",
+                              "value": "Sans-serif"
+                            },
+                            {
+                              "name": "line height",
+                              "type": "css",
+                              "inputType": "text",
+                              "identifier": "line-height",
+                              "value": "100%"
+                            }
+                          ]
+                        }
+                      ],
+                      "order": 2
                     }
                   ],
-                  "widgetChildren": [],
                   "htmlChildren": [],
                   "properties": [
                     {
-                      "name": "Text color",
+                      "name": "overflow",
                       "type": "css",
                       "inputType": "text",
-                      "identifier": "color",
-                      "value": "white"
-                    },
-                    {
-                      "name": "Background color",
-                      "type": "css",
-                      "inputType": "text",
-                      "identifier": "background-color",
-                      "value": "#007095"
+                      "identifier": "overflow",
+                      "value": "auto"
                     }
                   ]
                 }
@@ -513,14 +634,40 @@
           ],
           "htmlChildren": [
             {
-              "id": 99,
+              "id": 122,
+              "tag": "div",
+              "value": "",
+              "order": 1,
+              "htmlParameters": [
+                {
+                  "name": "class",
+                  "value": "large-12 medium-12 small-12 droppable columns",
+                  "mapped": true
+                },
+                {
+                  "name": "data-container",
+                  "value": "true",
+                  "mapped": true
+                }
+              ],
+              "widgetChildren": [],
+              "htmlChildren": [],
+              "properties": []
+            },
+            {
+              "id": 123,
               "tag": "div",
               "value": "",
               "order": 2,
               "htmlParameters": [
                 {
                   "name": "class",
-                  "value": "large-4 medium-12 small-12 droppable columns",
+                  "value": "large-12 medium-12 small-12 droppable columns",
+                  "mapped": true
+                },
+                {
+                  "name": "data-container",
+                  "value": "true",
                   "mapped": true
                 }
               ],
@@ -542,7 +689,7 @@
               "type": "css",
               "inputType": "text",
               "identifier": "background-image",
-              "value": "none"
+              "value": "url(http://www.ryanmulready.com/images/background.png)"
             },
             {
               "name": "Background size",
@@ -556,7 +703,7 @@
               "type": "css",
               "inputType": "text",
               "identifier": "height",
-              "value": "auto"
+              "value": "100%"
             }
           ]
         }
