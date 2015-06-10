@@ -1079,7 +1079,7 @@
                   "inputType": "text",
                   "type": "html",
                   "identifier": "src",
-                  "defaultValue": "http://websourcedemo.com/sites/infoconnection/Images/your%20image%20here.jpg"
+                  "defaultValue": "http://img11.hostingpics.net/pics/872495LOGOYMIR.png"
                 },
                 {
                   "name": "Height",
@@ -1101,6 +1101,29 @@
               "value": "",
               "acceptAllCategorieAsChildren": "false",
               "possibleCategorieAsChildren": [{"categorie_id": 2}]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "separator",
+      "metaWidgets": [
+        {
+          "id": 80,
+          "name": "line separator",
+          "htmlPreview": "<p> separator </p>",
+          "metaHtmlElements": [
+            {
+              "id": 40,
+              "tag": "br",
+              "metaProperties": [],
+              "metaHtmlParameters": [],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": []
             }
           ]
         }
