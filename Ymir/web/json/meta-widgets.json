@@ -18,7 +18,7 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "black"
+                  "defaultValue": "white"
                 },
                 {
                   "name": "Background color",
@@ -56,7 +56,7 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "black"
+                  "defaultValue": "white"
                 },
                 {
                   "name": "Background color",
@@ -94,7 +94,7 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "black"
+                  "defaultValue": "white"
                 },
                 {
                   "name": "Background color",
@@ -151,7 +151,7 @@
     },
     {
 	  "id": 7,
-	  "name": "navigation",
+	  "name": "Navigation",
 	  "metaWidgets": [
 		{
 		  "id": 20,
@@ -308,7 +308,36 @@
             {
               "id": 3,
               "tag": "section",
-              "metaProperties": [],
+              "metaProperties": [
+                {
+                  "name": "overflow",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "overflow",
+                  "defaultValue": "auto"
+                },
+                {
+                  "name": "Background image",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-image",
+                  "defaultValue": "none"
+                },
+                {
+                  "name": "Background size",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "background-size",
+                  "defaultValue": "none"
+                },
+                {
+                  "name": "Height",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "height",
+                  "defaultValue": "auto"
+                }
+              ],
               "metaHtmlParameters": [
                 {
                   "name": "data-container",
@@ -331,7 +360,15 @@
             {
               "id": 4,
               "tag": "article",
-              "metaProperties": [],
+              "metaProperties": [
+                {
+                  "name": "overflow",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "overflow",
+                  "defaultValue": "auto"
+                }
+              ],
               "metaHtmlParameters": [
                 {
                   "name": "data-container",
@@ -354,7 +391,14 @@
             {
               "id": 5,
               "tag": "header",
-              "metaProperties": [],
+              "metaProperties": [
+                {
+                  "name": "overflow",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "overflow",
+                  "defaultValue": "auto"
+                }],
               "metaHtmlParameters": [
                 {
                   "name": "data-container",
@@ -377,7 +421,14 @@
             {
               "id": 6,
               "tag": "footer",
-              "metaProperties": [],
+              "metaProperties": [
+                {
+                  "name": "overflow",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "overflow",
+                  "defaultValue": "auto"
+                }],
               "metaHtmlParameters": [
                 {
                   "name": "data-container",
@@ -400,7 +451,14 @@
             {
               "id": 7,
               "tag": "aside",
-              "metaProperties": [],
+              "metaProperties": [
+                {
+                  "name": "overflow",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "overflow",
+                  "defaultValue": "auto"
+                }],
               "metaHtmlParameters": [
                 {
                   "name": "data-container",
@@ -423,7 +481,14 @@
             {
               "id": 35,
               "tag": "nav",
-              "metaProperties": [],
+              "metaProperties": [
+                {
+                  "name": "overflow",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "overflow",
+                  "defaultValue": "auto"
+                }],
               "metaHtmlParameters": [
                 {
                   "name": "data-container",
@@ -446,7 +511,14 @@
             {
               "id": 36,
               "tag": "div",
-              "metaProperties": [],
+              "metaProperties": [
+                {
+                  "name": "overflow",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "overflow",
+                  "defaultValue": "auto"
+                }],
               "metaHtmlParameters": [
                 {
                   "name": "data-container",
@@ -854,7 +926,7 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "background-color",
-                  "defaultValue": "#DADADA"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "text align",
@@ -927,7 +999,7 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "background-color",
-                  "defaultValue": "#DADADA"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "text align",

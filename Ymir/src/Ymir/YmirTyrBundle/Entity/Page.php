@@ -167,7 +167,7 @@ class Page
         $content = "";
         // Generate the different widgets, starting from rows and navigating to the children
         foreach ($this->widgets->toArray() as $w) {
-            $content .= $w->codeGen();
+            $content .= $w->codeGen(0,0,0);
         }
         
         $code = 
