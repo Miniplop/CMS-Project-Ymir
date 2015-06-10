@@ -914,12 +914,12 @@
               "id": 32,
               "tag": "h1",
               "metaProperties": [
-                {
+                 {
                   "name": "Text color",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "black"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "Background color",
@@ -933,7 +933,7 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "text-align",
-                  "defaultValue": "center"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "text decoration",
@@ -947,30 +947,38 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "font-style",
-                  "defaultValue": "normal"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "font weight",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "font-weight",
-                  "defaultValue": "normal"
+                  "defaultValue": "none"
+                },
+                {
+                  "name": "font size",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "font-size",
+                  "defaultValue": "none"
                 },
 				{
                   "name": "font family",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "font-family",
-                  "defaultValue": "Sans-serif"
-                }
-              ],
-              "metaHtmlParameters": [
+                  "defaultValue": "none"
+                },
                 {
-                  "name": "class",
-                  "value": "subheader",
-                  "mapped": "true"
+                  "name": "line height",
+                  "inputType": "text",
+                  "type": "css",
+                  "identifier": "line-height",
+                  "defaultValue": "none"
                 }
               ],
+              "metaHtmlParameters": [],
               "children": [],
               "value": "Title 1",
               "acceptAllCategorieAsChildren": "false",
@@ -992,7 +1000,7 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "color",
-                  "defaultValue": "black"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "Background color",
@@ -1006,49 +1014,49 @@
                   "inputType": "text",
                   "type": "css",
                   "identifier": "text-align",
-                  "defaultValue": "center"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "text decoration",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "text-decoration",
-                  "defaultValue": "none"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "font style",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "font-style",
-                  "defaultValue": "normal"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "font weight",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "font-weight",
-                  "defaultValue": "normal"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "font size",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "font-size",
-                  "defaultValue": "100%"
+                  "defaultValue": "inherit"
                 },
 				{
                   "name": "font family",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "font-family",
-                  "defaultValue": "Sans-serif"
+                  "defaultValue": "inherit"
                 },
                 {
                   "name": "line height",
                   "inputType": "text",
                   "type": "css",
                   "identifier": "line-height",
-                  "defaultValue": "100%"
+                  "defaultValue": "inherit"
                 }
               ],
               "metaHtmlParameters": [],
