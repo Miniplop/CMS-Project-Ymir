@@ -181,13 +181,15 @@ class HtmlElement
 
     public function codeGen(&$offsetSmall, &$offsetMedium, &$offsetLarge){
         //create html parameters list from html properties
+        $code ="";
         $editedParams = array();
         foreach($this->getHtmlProperties() as $p) {
-            $editedParams[$p->getName()] = $p->getValue();
+            //$code .= " YAAAA ". $p->getIdentifier() ." AAAAY ";
+            $editedParams[$p->getIdentifier()] = $p->getValue();
         }
 
         // Opening the HTML element
-        $code = "<".$this->tag ;
+        $code .= "<".$this->tag ;
         
         // Handle the offset needed for empty containers
         $emptyContainer = false;
@@ -235,11 +237,18 @@ class HtmlElement
                     $code .= " ".$p->getName()."=\"";
                     if(array_key_exists($p->getName(), $editedParams)) { //override par les properties
                         $code .= $editedParams[$p->getName()]."\"";
+                        unset($editedParams[$p->getName()]);
                     } else {
                         $code .= $p->getValue()."\""; //valeur par defaut
                     }
                 }
             } 
+        }
+
+        //ajout des attributs restants
+        foreach ($editedParams as $key => $value) {
+            //$code .="YAAAAAAAAA";
+            $code .= " ".$key."=\"".$value."\"";
         }
 
         //add the css attributs inline, if any (ex : style="color:red;background:black;")
@@ -264,7 +273,7 @@ class HtmlElement
         $code .= "</".$this->tag.">\n";
 
         if ($emptyContainer){
-            $code = ""."yolo".$offsetLarge;
+            $code = "";
             //pour plus tard : somme des offset
         } else {
             $offsetSmall = 0;
@@ -567,7 +576,7 @@ class HtmlElement
     {
         $cssProperties = array();
         foreach($this->properties as $property) {
-            if($property->getType() === "css"){
+            if($property->getType() === "html"){
                 $cssProperties[] = $property;
             }
         }
