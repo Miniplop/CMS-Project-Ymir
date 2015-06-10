@@ -1105,6 +1105,29 @@
           ]
         }
       ]
+    },
+    {
+      "id": 8,
+      "name": "separator",
+      "metaWidgets": [
+        {
+          "id": 80,
+          "name": "line separator",
+          "htmlPreview": "<p> separator </p>",
+          "metaHtmlElements": [
+            {
+              "id": 40,
+              "tag": "br",
+              "metaProperties": [],
+              "metaHtmlParameters": [],
+              "children": [],
+              "value": "",
+              "acceptAllCategorieAsChildren": "false",
+              "possibleCategorieAsChildren": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }
