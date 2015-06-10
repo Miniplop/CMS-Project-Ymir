@@ -170,9 +170,9 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                         mapped: true
                     },
                     {
-                        name: "data-container",
-                        value: "true",
-                        mapped: true
+                        name: "data-info",
+                        value: "replaceable",
+                        mapped: false
                     }
                 ];
                 var htmlElementChild = this.buildHtmlElement(this.page.getNewHtmlElementId(), "div", "", i, params, null, null, null);
