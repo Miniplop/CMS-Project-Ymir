@@ -55,11 +55,10 @@ App.Router.CreativeRouter = Backbone.Router.extend({
             
             $("#preview_page").click(function(){
                App.PageBuilder.page.save(null, {
-                    success:function(){
-                    },
-                    error:function(){
-                       
-                    }
+                   parse:true,
+                   success: function(model, response) {
+                       App.PageBuilder.initialize();
+                   }
                });
             });
         
