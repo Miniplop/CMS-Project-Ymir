@@ -1,9 +1,11 @@
 {% extends "TyrBundle::layout.html.twig" %}
 
 {% block body %}
-<section class="section-projet">
-        Registration complete : you can now visit your profile.
-        <button class="button success radius" href="{{path('profile')}}">My profile</button>
+<section class="section-register-confirm">
+		<div class="row">
+	        <h1> Registration completed <i class="fi-check"></i> </h1>
+	        <div class="button success radius large-6" href="{{path('profile')}}">Visit my profile</div>
+        </div>
 </section>
 {% endblock body %}
   

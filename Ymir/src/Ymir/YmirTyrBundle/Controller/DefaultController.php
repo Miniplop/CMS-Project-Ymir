@@ -70,6 +70,17 @@ class DefaultController extends BaseController
     {
         return array();
     }
+
+    /**
+     * @Route("/register/confirmed", name="register")
+     * @Template("TyrBundle:Profil:confirm.html.twig")
+     */
+    public function regAction()
+    {
+        //return $this->forward("TyrBundle:Default:profile", array(), array());
+        //return $this->render( $this->generateUrl('profile', array()));
+        return array();
+    }
     
     /**
      * @Route("/creative")
