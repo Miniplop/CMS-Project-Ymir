@@ -60,14 +60,12 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                $(title_target).val(title);
             });
 			
-			var toInclude = '<meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Ymir</title> <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/normalize.css"> <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.css"> <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/modernizr.js"></script>' ;
             // add css and js for iframes
             mobile.ready(function () {				
-                //mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
-				mobile.contents().find("head").append(toInclude);
+                mobile.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
             });
             tablet.ready(function () {
-                tablet.contents().find("head").append(toInclude);
+                tablet.contents().find("head").append('<link rel="stylesheet" href="' + app.Urls.css.foundation + '">');
             });
 
             App.DragDropHandler.refreshDrop();
@@ -590,13 +588,15 @@ App.Models.HtmlElement = App.Models.HtmlElement || {};
                     this.updateIframe(elements[index], elements[index].clone(), widgets.models[i]);
                 }
             }
-            var includeFoundationJs = '<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/jquery.js"></script> <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script> <script>$(document).foundation();</script>';
+            var includeFoundationJs = '<link rel="stylesheet" href="' + app.Urls.js.foundation + '">';
             mobile.ready(function () {
                 mobile.contents().find("body").append(includeFoundationJs);
+				mobile.contents().find("body").find("a").removeAttr('href');
             });
 
             tablet.ready(function () {
                 tablet.contents().find("body").append(includeFoundationJs);
+				tablet.contents().find("body").find("a").removeAttr('href');
             });
         },
         /**
