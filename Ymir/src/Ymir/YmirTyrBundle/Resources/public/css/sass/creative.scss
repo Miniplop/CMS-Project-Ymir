@@ -11,7 +11,7 @@
 }
 .toolbar-meta-widget {
 	width: 100% !important;
-    height: 60% !important;
+    height: 45% !important;
 	>div {
       height: 100% !important;
 		>ul {
@@ -74,7 +74,7 @@
   transition: bottom 300ms;
 	div {
 		margin-bottom: 0.8em !important;
-		h2 {
+		h5 {
 			color: inherit !important;
 			font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
 			margin: 5px 15px !important;
@@ -247,3 +247,8 @@
       border-radius: 0px 10px 0px 0px;
   }
 }
+
+.label-editing{
+	color: white;	
+}
+
